@@ -1,0 +1,9 @@
+schtasks /change /tn usasyncdata /enable
+schtasks /change /tn uksyncdata /enable
+schtasks /change /tn desyncdata /enable
+schtasks /change /tn jpsyncdata /enable
+schtasks /change /tn espsyncdata /enable
+schtasks /change /tn itsyncdata /enable
+schtasks /change /tn frsyncdata /enable
+schtasks /change /tn mxsyncdata /enable
+schtasks /change /tn casyncdata /enable

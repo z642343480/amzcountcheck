@@ -1,0 +1,9 @@
+SCHTASKS /delete /TN usasyncdata /F
+SCHTASKS /delete /TN uksyncdata /F
+SCHTASKS /delete /TN desyncdata /F
+SCHTASKS /delete /TN jpsyncdata /F
+SCHTASKS /delete /TN espsyncdata /F
+SCHTASKS /delete /TN itsyncdata /F
+SCHTASKS /delete /TN frsyncdata /F
+SCHTASKS /delete /TN mxsyncdata /F
+SCHTASKS /delete /TN casyncdata /F

@@ -17,6 +17,39 @@
 <body>
 <div id="app">
     <template>
+        <div style="width:50%;float: left;margin-top: 30px;">
+          <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+              <el-form-item label="关键词">
+                <el-input v-model="form.user" placeholder="请输入关键词"></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="onSubmit">搜索</el-button>
+              </el-form-item>
+           </el-form>
+         </div>
+        <div style="width:50%;float: left;margin-top: 10px;">
+             <div class="block" style="margin-bottom: 20px;">
+                <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：</span>
+                <el-date-picker
+                  v-model="value1"
+                  type="daterange"
+                  range-separator="TO"
+                  start-placeholder="开始日期"
+                  end-placeholder="结束日期">
+                </el-date-picker>
+            </div>
+            <div>
+                <el-form ref="form" :model="form" label-width="100px">
+                      <el-form-item label="每周增长量：">
+                        <el-input v-model="form.name"></el-input>
+                      </el-form-item>
+                      <el-form-item label="每周增长率：">
+                        <el-input v-model="form.name"></el-input>
+                      </el-form-item>
+                  </el-form>
+            </div>
+        </div>
+
         <el-table
                 :data="tableData"
                 style="width: 98%;margin: 0 auto"
@@ -58,7 +91,6 @@
     </template>
     <template>
         <div class="block">
-            <span class="demonstration">完整功能</span>
             <el-pagination
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
@@ -84,6 +116,8 @@
                 currentPage2: 5,
                 currentPage3: 5,
                 currentPage4: 4,
+                form:{},
+                value1:'',
                 tableData: [
                 //     {
                 //     key_words: 'text_key_work',
@@ -198,6 +232,9 @@
             },
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
+            },
+            onSubmit() {
+                alert(222)
             }
         },
         mounted:function () {

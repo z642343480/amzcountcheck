@@ -4,9 +4,7 @@
     <list default="true" id="8d5818fa-6604-46e9-b4f5-f7039231be8d" name="默认变更列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/index/controller/Index.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/controller/Index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/index/view/Index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/view/Index/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/log/202105/29.log" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/log/202105/29.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/c8a95e048610b1d68b79fea408b3d2ed.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/c8a95e048610b1d68b79fea408b3d2ed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/1111.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1622278457618</updated>
       <workItem from="1622278491211" duration="4850000" />
-      <workItem from="1622296709607" duration="7689000" />
+      <workItem from="1622296709607" duration="8242000" />
     </task>
     <servers />
   </component>

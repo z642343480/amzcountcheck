@@ -33,13 +33,13 @@ class Index extends Controller
     	if(!empty($param['search']['key_words'])){
     		$where[]=["key_words",'like','%'.$param['search']['key_words'].'%'];
     	}
-    	if(!empty($param['search']['sdate'])){
-    		$where[]=["update_time",'>=',$param['search']['sdate'][0]];
-    		$where[]=["update_time",'<=',$param['search']['sdate'][1]];
-    	}else{
+//    	if(!empty($param['search']['sdate'])){
+//    		$where[]=["update_time",'>=',$param['search']['sdate'][0]];
+//    		$where[]=["update_time",'<=',$param['search']['sdate'][1]];
+//    	}else{
             $where[]=["update_time",'<=',$sund];
             $where[]=["update_time",'>=',$wek];
-    	}
+//    	}
 //    	if(!empty($param['search']['val_change'])){
 //    		$where[]=["chang",'>=',$param['search']['val_change']];
 //
@@ -64,6 +64,8 @@ class Index extends Controller
                     $picwhere[]=["update_time",'>=',$wek];
                     $picwhere[]=["update_time",'<=',$sund];
                 }
+
+                
                 $PicList=Db::table($this->tablename)->where($picwhere)->select();
                 $DCount=0;
                 foreach ($PicList as $pkey => $pvalue) {

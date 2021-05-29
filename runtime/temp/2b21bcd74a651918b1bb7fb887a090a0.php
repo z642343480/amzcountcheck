@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622273695;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622275657;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +30,7 @@
          </div>
         <div style="width:50%;float: left;margin-top: 10px;">
              <div class="block" style="margin-bottom: 20px;">
-                <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
+                <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
                 <el-date-picker
                   unlink-panels
                   format="yyyy-MM-dd"
@@ -44,14 +44,17 @@
             </div>
             <div>
                 <el-form ref="form" :model="form" label-width="100px">
-                      <input type="radio" name="aa" style="float: left;margin-top: 13px;"><el-form-item label="每周增长量1：">
+                      <input type="radio" name="aa" style="float: left;margin-top: 13px;">
+                      <el-form-item label="每周增长量：">
                         <el-input v-model="form.val_change" style="width: 70%;"></el-input>
                       </el-form-item>
-                      <input type="radio" name="aa" style="float: left;margin-top: 13px;"><el-form-item label="每周增长率：">
+
+                      <input type="radio" name="aa" style="float: left;margin-top: 13px;">
+                      <el-form-item label="每周增长率：">
                         <el-input v-model="form.percentage_change" style="width: 70%;"></el-input>&nbsp;%
                       </el-form-item>
-                      <el-form-item label="达标比例：">
-                        <el-input v-model="form.satisfy_p" style="width: 70%;margin-left: 13px;"></el-input>&nbsp;%
+                      <el-form-item label="达标比例：" style="margin-left: 13px;">
+                        <el-input v-model="form.satisfy_p" style="width: 71%;"></el-input>&nbsp;%
                       </el-form-item>
                   </el-form>
             </div>

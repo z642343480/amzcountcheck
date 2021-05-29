@@ -8153,3 +8153,839 @@
 [ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.024449s ]
 [ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.024130s ]
 [ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.024665s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:18:21+08:00] 127.0.0.1 GET www.amzcount.com/index/index
+[运行时间：0.019335s] [吞吐率：51.72req/s] [内存消耗：581.30kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-29T16:18:22+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.164031s] [吞吐率：6.10req/s] [内存消耗：735.59kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000957s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000869s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 0,5 [ RunTime:0.014064s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.017350s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fidget toys' [ RunTime:0.024036s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'pop it' [ RunTime:0.023539s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.023105s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.022994s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.022915s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:18:45+08:00] 127.0.0.1 GET www.amzcount.com/index/index
+[运行时间：0.036849s] [吞吐率：27.14req/s] [内存消耗：581.30kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-29T16:18:46+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.245980s] [吞吐率：4.07req/s] [内存消耗：735.59kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000917s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.001196s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 0,5 [ RunTime:0.028784s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.038551s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fidget toys' [ RunTime:0.044941s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'pop it' [ RunTime:0.027126s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.034540s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.027364s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.027635s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:19:00+08:00] 127.0.0.1 GET www.amzcount.com/index/index
+[运行时间：0.023981s] [吞吐率：41.70req/s] [内存消耗：581.30kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-29T16:19:01+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.244600s] [吞吐率：4.09req/s] [内存消耗：735.59kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002024s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000910s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 0,5 [ RunTime:0.027083s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.019431s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fidget toys' [ RunTime:0.023525s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'pop it' [ RunTime:0.062834s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.037191s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.032747s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.024409s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:19:07+08:00] 127.0.0.1 GET www.amzcount.com/index/index
+[运行时间：0.021739s] [吞吐率：46.00req/s] [内存消耗：581.30kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-29T16:19:09+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.243106s] [吞吐率：4.11req/s] [内存消耗：735.59kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002725s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000925s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 0,5 [ RunTime:0.013275s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.039677s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fidget toys' [ RunTime:0.042385s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'pop it' [ RunTime:0.033360s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.031818s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.024151s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.025002s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:22:23+08:00] 127.0.0.1 GET www.amzcount.com/index/index
+[运行时间：0.022227s] [吞吐率：44.99req/s] [内存消耗：581.30kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-29T16:22:24+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.236810s] [吞吐率：4.22req/s] [内存消耗：735.59kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000670s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000895s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 0,5 [ RunTime:0.032084s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.019842s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fidget toys' [ RunTime:0.032442s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'pop it' [ RunTime:0.039251s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.033130s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.035644s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.028222s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:22:52+08:00] 127.0.0.1 GET www.amzcount.com/index/index
+[运行时间：0.020840s] [吞吐率：47.98req/s] [内存消耗：581.30kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-29T16:22:53+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.180348s] [吞吐率：5.54req/s] [内存消耗：735.60kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001167s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.001930s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 0,5 [ RunTime:0.013585s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.027426s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fidget toys' [ RunTime:0.023573s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'pop it' [ RunTime:0.024735s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.024238s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.025006s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.024413s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:23:25+08:00] 127.0.0.1 GET www.amzcount.com/index/index
+[运行时间：0.016763s] [吞吐率：59.66req/s] [内存消耗：581.30kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-29T16:23:26+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.169590s] [吞吐率：5.90req/s] [内存消耗：735.60kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000560s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000850s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 0,5 [ RunTime:0.015028s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.017453s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fidget toys' [ RunTime:0.024289s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'pop it' [ RunTime:0.024349s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.024541s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.023160s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.024565s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:23:43+08:00] 127.0.0.1 GET www.amzcount.com/index/index
+[运行时间：0.031472s] [吞吐率：31.77req/s] [内存消耗：581.30kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-29T16:23:45+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.234282s] [吞吐率：4.27req/s] [内存消耗：735.60kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001503s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000910s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 0,5 [ RunTime:0.029340s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.020546s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fidget toys' [ RunTime:0.033922s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'pop it' [ RunTime:0.026176s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.029652s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.029803s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.027476s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:24:30+08:00] 127.0.0.1 GET www.amzcount.com/index/index
+[运行时间：0.041388s] [吞吐率：24.16req/s] [内存消耗：581.30kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-29T16:24:30+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.171226s] [吞吐率：5.84req/s] [内存消耗：735.60kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000929s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000946s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 0,5 [ RunTime:0.014110s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.017892s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fidget toys' [ RunTime:0.023756s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'pop it' [ RunTime:0.024619s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.025088s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.025855s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.023599s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:25:22+08:00] 127.0.0.1 GET www.amzcount.com/index/index
+[运行时间：0.032226s] [吞吐率：31.03req/s] [内存消耗：581.30kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-29T16:25:24+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.276676s] [吞吐率：3.61req/s] [内存消耗：735.59kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002570s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000915s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 0,5 [ RunTime:0.030799s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.028030s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fidget toys' [ RunTime:0.051756s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'pop it' [ RunTime:0.025465s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.037215s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.030726s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.035679s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:27:18+08:00] 127.0.0.1 GET www.amzcount.com/index/index
+[运行时间：0.019467s] [吞吐率：51.37req/s] [内存消耗：589.30kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-29T16:27:20+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.168888s] [吞吐率：5.92req/s] [内存消耗：735.60kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002263s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000885s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 0,5 [ RunTime:0.013653s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.018485s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fidget toys' [ RunTime:0.024073s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'pop it' [ RunTime:0.023732s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.023381s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.023295s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.023726s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:27:53+08:00] 127.0.0.1 GET www.amzcount.com/index/index
+[运行时间：0.026867s] [吞吐率：37.22req/s] [内存消耗：589.30kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-29T16:27:54+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.169070s] [吞吐率：5.91req/s] [内存消耗：735.59kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001317s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000846s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 0,5 [ RunTime:0.013334s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.018279s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fidget toys' [ RunTime:0.023145s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'pop it' [ RunTime:0.025005s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.024898s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.023780s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.023606s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:29:16+08:00] 127.0.0.1 GET www.amzcount.com/index/index
+[运行时间：0.026777s] [吞吐率：37.35req/s] [内存消耗：589.63kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-29T16:29:17+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.188663s] [吞吐率：5.30req/s] [内存消耗：735.88kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001058s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.001124s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 0,5 [ RunTime:0.021417s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.018261s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fidget toys' [ RunTime:0.025565s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'pop it' [ RunTime:0.025047s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.024584s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.023728s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.025018s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:33:01+08:00] 127.0.0.1 GET www.amzcount.com/index/index
+[运行时间：0.022489s] [吞吐率：44.47req/s] [内存消耗：593.30kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-29T16:33:02+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.183921s] [吞吐率：5.44req/s] [内存消耗：735.59kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001165s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000879s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 0,5 [ RunTime:0.019439s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.018769s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fidget toys' [ RunTime:0.024247s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'pop it' [ RunTime:0.031027s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'summer dresses for women' [ RunTime:0.025072s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'iphone' [ RunTime:0.023672s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'bluetooth headphones' [ RunTime:0.024711s ]
+---------------------------------------------------------------
+
+[2021-05-29T16:33:17+08:00] 127.0.0.1 POST www.amzcount.com/index/index/getList
+[运行时间：0.169049s] [吞吐率：5.92req/s] [内存消耗：735.23kb] [文件加载：90]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://www.amzcount.com',
+  'referer' => 'http://www.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '5',
+  'page' => '2',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000610s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000956s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30'  AND ( 1=1 ) ORDER BY `id` ASC LIMIT 5,5 [ RunTime:0.013381s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` >= '2021-05-24'  AND `update_time` <= '2021-05-30' [ RunTime:0.023132s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'earbuds' [ RunTime:0.023417s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'fathers day gifts' [ RunTime:0.023348s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'dresses' [ RunTime:0.023055s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'apple watch band' [ RunTime:0.022981s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` WHERE  `key_words` = 'apple' [ RunTime:0.022996s ]

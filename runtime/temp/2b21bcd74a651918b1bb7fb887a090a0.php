@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622276090;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622277179;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,14 +61,18 @@
                   </el-form>
             </div>
         </div>
+    <el-button type="primary" icon="el-icon-download" @click="downloadExcel">导出</el-button>
 
         <el-table
                 v-loading="loading"
                 :data="tableData"
+                tooltip-effect="dark"
+                stripe
                 style="width: 98%;margin: 0 auto"
                 height="670"
                 :header-cell-style="{textAlign: 'center'}"
-                :cell-style="{ textAlign: 'center' }">
+                :cell-style="{ textAlign: 'center' }"
+                @selection-change="handleSelectionChange">
             <el-table-column
               type="selection"
               width="55">
@@ -88,7 +92,7 @@
             </el-table-column>
             <el-table-column
                     prop="chang"
-                    label="较上周排名变化">
+                    label="排名变化">
             </el-table-column>
             <el-table-column
                     prop="update_time"
@@ -121,6 +125,7 @@
             </el-pagination>
         </div>
     </template>
+
 </div>
 
 <script>
@@ -137,6 +142,8 @@
                 form:{},
                 loading: false,
                 picdata:[],
+                multipleSelection: [], //选中的数据
+                excelData: [],
                 tableData: [
                 //     {
                 //     key_words: 'text_key_work',
@@ -279,7 +286,48 @@
             },
             onSubmit() {
                 this.getListdata()
-            }
+            },
+            downloadExcel() {
+              this.$confirm("确定下载列表文件?", "提示", {
+                  confirmButtonText: "确定",
+                 cancelButtonText: "取消",
+                  type: "warning",
+                })
+                  .then(() => {
+                   this.excelData = this.multipleSelection;
+                    this.exportExcel();
+                 })
+                 .catch(() => {});
+             },
+             // 数据写入Excel
+             exportExcel(){
+               var wb = XLSX.utils.table_to_book(document.querySelector("#out-table"));
+                 /* 获取二进制字符串作为输出 */
+                var wbout = XLSX.write(wb, {
+                     bookType: "xlsx",
+                     bookSST: true,
+                     type: "array"
+                 });
+                 try {
+                     FileSaver.saveAs(
+                     //Blob 对象表示一个不可变、原始数据的类文件对象。
+                     //Blob 表示的不一定是JavaScript原生格式的数据。
+                     //File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。
+                     //返回一个新创建的 Blob 对象，其内容由参数中给定的数组串联组成。
+                     new Blob([wbout], { type: "application/octet-stream" }),
+                     //设置导出文件名称
+                     "历史记录.xlsx"
+                     );
+                 } catch (e) {
+                     if (typeof console !== "undefined") console.log(e, wbout);
+                 }
+                 return wbout;
+         },
+          // 选中的表的数据
+     handleSelectionChange(val) {
+       this.multipleSelection = val;
+       console.log(this.multipleSelection);
+     },
         },
           watch: {
             size: function (newval, oldval) {

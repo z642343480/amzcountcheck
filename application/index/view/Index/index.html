@@ -20,47 +20,49 @@
 <div id="app">
     <template>
         <div style="width:50%;float: left;margin-top: 30px;">
-          <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
-              <el-form-item label="关键词">
-                <el-input v-model="form.key_words" placeholder="请输入关键词"></el-input>
-              </el-form-item>
-              <el-form-item>
-                <el-button type="primary" @click="onSubmit">搜索</el-button>
-              </el-form-item>
-           </el-form>
-         </div>
+            <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                <el-form-item label="关键词">
+                    <el-input v-model="form.key_words" placeholder="请输入关键词"></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="onSubmit">搜索</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
         <div style="width:50%;float: left;margin-top: 10px;">
-             <div class="block" style="margin-bottom: 20px;">
+            <div class="block" style="margin-bottom: 20px;">
                 <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
                 <el-date-picker
-                  unlink-panels
-                  format="yyyy-MM-dd"
-                  value-format="yyyy-MM-dd"
-                  v-model="form.sdate"
-                  type="daterange"
-                  range-separator="TO"
-                  start-placeholder="开始日期"
-                  end-placeholder="结束日期">
+                        unlink-panels
+                        format="yyyy-MM-dd"
+                        value-format="yyyy-MM-dd"
+                        v-model="form.sdate"
+                        type="daterange"
+                        range-separator="TO"
+                        start-placeholder="开始日期"
+                        end-placeholder="结束日期">
                 </el-date-picker>
             </div>
             <div>
                 <el-form ref="form" :model="form" label-width="100px">
-                      <input type="radio" name="aa" style="float: left;margin-top: 13px;">
-                      <el-form-item label="每周增长量：">
+                    <input type="radio" name="aa" style="float: left;margin-top: 13px;">
+                    <el-form-item label="每周增长量：">
                         <el-input v-model="form.val_change" style="width: 70%;"></el-input>
-                      </el-form-item>
+                    </el-form-item>
 
-                      <input type="radio" name="aa" style="float: left;margin-top: 13px;">
-                      <el-form-item label="每周增长率：">
+                    <input type="radio" name="aa" style="float: left;margin-top: 13px;">
+                    <el-form-item label="每周增长率：">
                         <el-input v-model="form.percentage_change" style="width: 70%;"></el-input>&nbsp;%
-                      </el-form-item>
-                      <el-form-item label="达标比例：" style="margin-left: 13px;">
+                    </el-form-item>
+                    <el-form-item label="达标比例：" style="margin-left: 13px;">
                         <el-input v-model="form.satisfy_p" style="width: 71%;"></el-input>&nbsp;%
-                      </el-form-item>
-                  </el-form>
+                    </el-form-item>
+                </el-form>
             </div>
         </div>
-    <el-button style="float: right;margin-right: 20px;" type="primary" icon="el-icon-download" @click="downloadExcel">导出</el-button>
+        <el-button style="float: right;margin-right: 20px;" type="primary" icon="el-icon-download"
+                   @click="downloadExcel">导出
+        </el-button>
 
         <el-table
                 v-loading="loading"
@@ -74,9 +76,9 @@
                 :cell-style="{ textAlign: 'center' }"
                 @selection-change="handleSelectionChange">
             <el-table-column
-              type="selection"
-              :reserve-selection="true"
-              width="55">
+                    type="selection"
+                    :reserve-selection="true"
+                    width="55">
             </el-table-column>
             <el-table-column
                     fixed
@@ -105,7 +107,7 @@
                     width="1300">
                 <template slot-scope="scope">
                     <div>
-                        {{ text(scope.$index,scope.row.id) }}
+                        {{ text(scope.$index, scope.row.id) }}
                         <div :id="`tiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
                     </div>
                 </template>
@@ -135,105 +137,105 @@
 <script>
     new Vue({
         el: '#app',
-        data: function() {
+        data: function () {
             return {
-                currentPage:1,
-                size:5,
-                totle:0,
-                form:{},
+                currentPage: 1,
+                size: 5,
+                totle: 0,
+                form: {},
                 loading: false,
-                picdata:[],
+                picdata: [],
                 multipleSelection: [], //选中的数据
                 excelData: [],
                 tableData: [
-                //     {
-                //     key_words: 'text_key_work',
-                //     c_rank: '2',
-                //     l_rank: '4',
-                //     chang: '2',
-                //     update_time: '2021-05-25',
-                //     pic: ''
-                // },{
-                //     key_words: 'text_key_work',
-                //     c_rank: '2',
-                //     l_rank: '4',
-                //     chang: '2',
-                //     update_time: '2021-05-25',
-                //     pic: ''
-                // },{
-                //     key_words: 'text_key_work',
-                //     c_rank: '2',
-                //     l_rank: '4',
-                //     chang: '2',
-                //     update_time: '2021-05-25',
-                //     pic: ''
-                // },{
-                //     key_words: 'text_key_work',
-                //     c_rank: '2',
-                //     l_rank: '4',
-                //     chang: '2',
-                //     update_time: '2021-05-25',
-                //     pic: ''
-                // },{
-                //     key_words: 'text_key_work',
-                //     c_rank: '2',
-                //     l_rank: '4',
-                //     chang: '2',
-                //     update_time: '2021-05-25',
-                //     pic: ''
-                // }
+                    //     {
+                    //     key_words: 'text_key_work',
+                    //     c_rank: '2',
+                    //     l_rank: '4',
+                    //     chang: '2',
+                    //     update_time: '2021-05-25',
+                    //     pic: ''
+                    // },{
+                    //     key_words: 'text_key_work',
+                    //     c_rank: '2',
+                    //     l_rank: '4',
+                    //     chang: '2',
+                    //     update_time: '2021-05-25',
+                    //     pic: ''
+                    // },{
+                    //     key_words: 'text_key_work',
+                    //     c_rank: '2',
+                    //     l_rank: '4',
+                    //     chang: '2',
+                    //     update_time: '2021-05-25',
+                    //     pic: ''
+                    // },{
+                    //     key_words: 'text_key_work',
+                    //     c_rank: '2',
+                    //     l_rank: '4',
+                    //     chang: '2',
+                    //     update_time: '2021-05-25',
+                    //     pic: ''
+                    // },{
+                    //     key_words: 'text_key_work',
+                    //     c_rank: '2',
+                    //     l_rank: '4',
+                    //     chang: '2',
+                    //     update_time: '2021-05-25',
+                    //     pic: ''
+                    // }
                 ]
             }
         },
         methods: {
             getListdata() {
-                this.loading=true
-               var that=this
+                this.loading = true
+                var that = this
                 $.ajax({
-                    type:"POST",
-                    url:"/index/index/getList",
-                    data:{
-                        limit:that.size,
-                        page:that.currentPage,
-                        search:that.form
+                    type: "POST",
+                    url: "/index/index/getList",
+                    data: {
+                        limit: that.size,
+                        page: that.currentPage,
+                        search: that.form
                     },
-                    dataType:"json",
-                    success:function(data){
-                        var jdata=JSON.parse( data );
-                        that.tableData=jdata.data
-                        that.totle=jdata.totle
-                        that.picdata=jdata.picdata
-                        that.loading=false
+                    dataType: "json",
+                    success: function (data) {
+                        var jdata = JSON.parse(data);
+                        that.tableData = jdata.data
+                        that.totle = jdata.totle
+                        that.picdata = jdata.picdata
+                        that.loading = false
                     },
-                    error:function(jqXHR){
-
+                    error: function (jqXHR) {
+                        that.loading = false
                     }
                 });
             },
 
-            text: function (idname,id) {
-                    // console.log(this.tableData[idname].key_words)
-                    var that=this
-                    // console.log(idname)
+            text: function (idname, id) {
+                // console.log(this.tableData[idname].key_words)
+                var that = this
+                // console.log(idname)
                 let option = {
-                    tooltip : {
+                    tooltip: {
                         trigger: 'axis',
-                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
                         formatter: function (datas) {
-                            var res = '关键词：'+that.tableData[idname].key_words+'<br/>涨跌：'+datas[0].value+'<br/>日期：'+datas[0].axisValue;
+                            var res = '关键词：' + that.tableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
                         textStyle: {
                             color: '#5c6c7c',
-                            fontSize:10
+                            fontSize: 10
                         },
                     },
                     axisLabel: {
-                        interval:0,
-                        rotate:40
+                        interval: 0,
+                        rotate: 40
                     },
                     grid: {
                         top: 7,
@@ -253,24 +255,24 @@
                         show: true,
                         type: 'value'
                     },
-                    series:  [{
+                    series: [{
                         data: this.tableData[idname][id].chang,
                         type: 'bar',
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
                         },
-                        label:{
-                            normal:{
+                        label: {
+                            normal: {
                                 // show:true,
                                 textStyle: {
-                                    fontSize:10
+                                    fontSize: 10
                                 }
                             }
                         }
                     }]
                 }
-                var id='tiger-sale-trend-index'+idname
+                var id = 'tiger-sale-trend-index' + idname
                 this.$nextTick(() => {
                     let myChart = echarts.init(document.getElementById(id), 'macarons');
                     myChart.setOption(option);
@@ -278,51 +280,80 @@
                 })
             },
             handleSizeChange(val) {
-                this.size=val
+                this.size = val
                 console.log(`每页 ${val} 条`);
             },
             handleCurrentChange(val) {
-                this.currentPage=val
+                this.currentPage = val
                 console.log(`当前页: ${val}`);
             },
             onSubmit() {
                 this.getListdata()
             },
-             handleSelectionChange(val) {
-               this.multipleSelection = val;
-               console.log(this.multipleSelection);
-             },
-             downloadExcel() {
-                alert('正在施工')
-             }
+            handleSelectionChange(val) {
+                this.multipleSelection = val;
+                // console.log(this.multipleSelection[0]);
+            },
+            downloadExcel() {
+                var that = this
+                var ids='';
+                for(var i=0;i<this.multipleSelection.length;i++){
+                    ids+=this.multipleSelection[i].id+',';
+                }
+
+                window.open("/index/index/expExcel?ids="+ids);
+                // that.loading = true
+                // $.ajax({
+                //     type: "POST",
+                //     url: "/index/index/expExcel",
+                //     data: {
+                //         ids:this.multipleSelection
+                //     },
+                //     // dataType: "json",
+                //     success: function (data) {
+                //         var obj = window.open("about:blank");
+                //         obj.document.write(data);
+                //         this.$message('导出成功');
+                //         that.loading = false
+                //     },
+                //     error: function (jqXHR) {
+                //         that.loading = false
+                //         this.$message.error('导出失败');
+                //     }
+                // });
+            }
         },
-          watch: {
+        watch: {
             size: function (newval, oldval) {
                 this.getListdata()
             },
             currentPage: function (newval, oldval) {
                 this.getListdata()
             }
-          },
-        mounted:function () {
-                this.getListdata()
+        },
+        mounted: function () {
+            this.getListdata()
         }
     })
 </script>
 <style>
-    &-frame {
+    &
+    -frame {
         display: flex;
         flex-flow: column nowrap;
         justify-content: space-between;
     }
+
     .price-bar {
         color: red !important;
     }
+
     .tiger-trend-charts {
         height: 120px;
         min-width: 100px;
     }
-    .cell{
+
+    .cell {
         font-size: 12px;
     }
 

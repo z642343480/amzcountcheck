@@ -70,22 +70,37 @@ class Index extends Controller
 
     }
 
-    public function expExcel() {
-        $data = array(
-            ['aaa'=>'111','bbb'=>'222'],
-            ['aaa'=>'111','bbb'=>'222']
-        );
+    public function expExcel(Request $request) {
+        $param = $request->param();
+        if(!empty($param['ids'])){
+            $idArr = explode(',',$param['ids']);
+        }else{
+            echo '请选择需要导出的数据';
+        }
+//        $idArr=[590202,590203,590204];
+//        foreach ($param['ids'] as $k=> $v){
+//            $idArr[]=$v['id'];
+//        }
+        $data=Db::table($this->tablename)->whereIn("id",$idArr)->select();
         $path = dirname(__FILE__);//找到当前脚本所在路径
         $PHPExcel = new \PHPExcel();//实例化phpexcel
         $PHPSheet = $PHPExcel->getActiveSheet();
         $PHPSheet->setTitle("demo");//设置表内部名称
-        $PHPSheet->setCellValue("A1", "aaa")->setCellValue("B1", "订单编号")
-            ->setCellValue("C1", "bbb");//表格数据
+        $PHPSheet->setCellValue("A1", "ID")
+            ->setCellValue("B1", "关键词")
+            ->setCellValue("C1", "本周排名")
+            ->setCellValue("D1", "上周排名")
+            ->setCellValue("E1", "较上周排名变化")
+            ->setCellValue("F1", "更新时间");
         $num=2;
         //数据
         foreach ($data as $k => $v) {
-            $PHPSheet->setCellValue("A".$num, $v['aaa']);
-            $PHPSheet->setCellValue("B".$num, $v['bbb']);
+            $PHPSheet->setCellValue("A".$num, (string)$v['id']);
+            $PHPSheet->setCellValue("B".$num, (string)$v['key_words']);
+            $PHPSheet->setCellValue("C".$num, (string)$v['c_rank']);
+            $PHPSheet->setCellValue("D".$num, (string)$v['l_rank']);
+            $PHPSheet->setCellValue("E".$num, (string)$v['chang']);
+            $PHPSheet->setCellValue("F".$num, (string)$v['update_time']);
             $num++;
         }
         $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel2007");//创建生成的格式

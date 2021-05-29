@@ -11,10 +11,12 @@ class Index extends \think\Controller
     }
 
     public function getHaveTas() {
-        $locale='en_US.UTF-8';  // 或  $locale='zh_CN.UTF-8';
-        setlocale(LC_ALL,$locale);
-        putenv('LC_ALL='.$locale);
+       // $locale='GBK';  // 或  $locale='zh_CN.UTF-8';
+       // setlocale(LC_ALL,$locale);
+       // putenv('LC_ALL='.$locale);
         $cmd="schtasks /query";
+        $aaa=system($cmd,$re);
+        dd(gbk_decode(aaa));
         dd(system($cmd,$re));
     }
 

@@ -1,4 +1,4 @@
-<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622282844;}*/ ?>
+<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622300276;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,20 +20,22 @@
 <body>
 <div id="app">
     <template>
+        <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
         <div style="width:50%;float: left;margin-top: 30px;">
             <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
                 <el-form-item label="关键词">
-                    <el-input v-model="form.key_words" placeholder="请输入关键词"></el-input>
+                    <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="onSubmit">搜索</el-button>
+                    <el-button type="primary" size="small" @click="onSubmit">搜索</el-button>
                 </el-form-item>
             </el-form>
         </div>
         <div style="width:50%;float: left;margin-top: 10px;">
-            <div class="block" style="margin-bottom: 20px;">
+            <div class="block" style="margin-bottom: 5px;">
                 <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
                 <el-date-picker
+                        size="small"
                         unlink-panels
                         format="yyyy-MM-dd"
                         value-format="yyyy-MM-dd"
@@ -46,22 +48,23 @@
             </div>
             <div>
                 <el-form ref="form" :model="form" label-width="100px">
-                    <input type="radio" name="aa" style="float: left;margin-top: 13px;">
+                    <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
                     <el-form-item label="每周增长量：">
-                        <el-input v-model="form.val_change" style="width: 70%;"></el-input>
+                        <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
                     </el-form-item>
 
-                    <input type="radio" name="aa" style="float: left;margin-top: 13px;">
+                    <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
                     <el-form-item label="每周增长率：">
-                        <el-input v-model="form.percentage_change" style="width: 70%;"></el-input>&nbsp;%
+                        <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                     </el-form-item>
                     <el-form-item label="达标比例：" style="margin-left: 13px;">
-                        <el-input v-model="form.satisfy_p" style="width: 71%;"></el-input>&nbsp;%
+                        <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                     </el-form-item>
                 </el-form>
             </div>
         </div>
-        <el-button style="float: right;margin-right: 20px;" type="primary" icon="el-icon-download"
+        </div>
+        <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
                    @click="downloadExcel">导出
         </el-button>
 
@@ -71,7 +74,7 @@
                 tooltip-effect="dark"
                 :row-key="(row)=>{ return row.id}"
                 stripe
-                style="width: 98%;margin: 0 auto"
+                style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
                 height="670"
                 :header-cell-style="{textAlign: 'center'}"
                 :cell-style="{ textAlign: 'center' }"
@@ -192,6 +195,18 @@
             getListdata() {
                 this.loading = true
                 var that = this
+                console.log(this.form)
+                if(this.form.key_words!=undefined || this.form.percentage_change != undefined || this.form.satisfy_p != undefined || this.form.sdate != undefined || this.form.val_change != undefined){
+                    console.log(this.form.length)
+                    var obj = document.getElementsByName("only_who");
+                    if(obj[0].checked==true){
+                        this.form.percentage_change='';
+                    }
+                    if(obj[1].checked==true){
+                        this.form.val_change='';
+                    }
+                }
+
                 $.ajax({
                     type: "POST",
                     url: "/index/index/getList",
@@ -282,11 +297,11 @@
             },
             handleSizeChange(val) {
                 this.size = val
-                console.log(`每页 ${val} 条`);
+                // console.log(`每页 ${val} 条`);
             },
             handleCurrentChange(val) {
                 this.currentPage = val
-                console.log(`当前页: ${val}`);
+                // console.log(`当前页: ${val}`);
             },
             onSubmit() {
                 this.getListdata()
@@ -297,31 +312,15 @@
             },
             downloadExcel() {
                 var that = this
+                if(this.multipleSelection.length==0){
+                    this.$message.error('请选择需要导出的数据');
+                    return
+                }
                 var ids='';
                 for(var i=0;i<this.multipleSelection.length;i++){
                     ids+=this.multipleSelection[i].id+',';
                 }
-
                 window.open("/index/index/expExcel?ids="+ids);
-                // that.loading = true
-                // $.ajax({
-                //     type: "POST",
-                //     url: "/index/index/expExcel",
-                //     data: {
-                //         ids:this.multipleSelection
-                //     },
-                //     // dataType: "json",
-                //     success: function (data) {
-                //         var obj = window.open("about:blank");
-                //         obj.document.write(data);
-                //         this.$message('导出成功');
-                //         that.loading = false
-                //     },
-                //     error: function (jqXHR) {
-                //         that.loading = false
-                //         this.$message.error('导出失败');
-                //     }
-                // });
             }
         },
         watch: {
@@ -357,6 +356,8 @@
     .cell {
         font-size: 12px;
     }
-
+    .el-form-item{
+        margin-bottom: 0px;
+    }
 </style>
 </html>

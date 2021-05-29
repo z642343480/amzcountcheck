@@ -40,28 +40,44 @@ class Index extends Controller
     		$where[]=["update_time",'>=',$wek];
     		$where[]=["update_time",'<=',$sund];
     	}
-    	if(!empty($param['search']['val_change'])){
-    		$where[]=["chang",'>=',$param['search']['val_change']];
-    		
-    	}
-    	if(!empty($param['search']['percentage_change'])){
-    		$whereRaw="(chang/l_rank) >=".$param['search']['percentage_change']/100;
-    	}
-    	if(!empty($param['search']['sdate'])){
-    		$where[]=["update_time",'>=',$param['search']['sdate'][0]];
-    		$where[]=["update_time",'<=',$param['search']['sdate'][1]];
-    	}
+//    	if(!empty($param['search']['val_change'])){
+//    		$where[]=["chang",'>=',$param['search']['val_change']];
+//
+//    	}
+//    	if(!empty($param['search']['percentage_change'])){
+//    		$whereRaw="(chang/l_rank) >=".$param['search']['percentage_change']/100;
+//    	}
+//    	if(!empty($param['search']['satisfy_p'])){
+//    		$where[]=["update_time",'>=',$param['search']['sdate'][0]];
+//    		$where[]=["update_time",'<=',$param['search']['sdate'][1]];
+//    	}
         $List=Db::table($this->tablename)->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->select();
-        // dd(Db::table('ca_list')->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->getLastSql());
+         dd(Db::table('ca_list')->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->getLastSql());
         $countlist=Db::table($this->tablename)->where($where)->count();
-        foreach($List as $key=>$val){
-        	$PicList=Db::table($this->tablename)->where("key_words",$val['key_words'])->select();
-        	foreach ($PicList as $pkey => $pvalue) {
-	        	$List[$key][$val['id']]['update_time'][]=$pvalue['update_time'];
-	        	$List[$key][$val['id']]['chang'][]=$pvalue['chang'];
-        	}
+        if(!empty($List)){
+            foreach($List as $key=>$val){
+                $where=["key_words",$val['key_words']];
+                if(!empty($param['search']['sdate'])){
+                    $where[]=["update_time",'>=',$param['search']['sdate'][0]];
+                    $where[]=["update_time",'<=',$param['search']['sdate'][1]];
+                }else{
+                    $where[]=["update_time",'>=',$wek];
+                    $where[]=["update_time",'<=',$sund];
+                }
+                $PicList=Db::table($this->tablename)->where($where)->select();
+                foreach ($PicList as $pkey => $pvalue) {
+                    if(!empty($param['search']['val_change']) || !empty($param['search']['percentage_change'])){
+                        if(!empty($param['search']['satisfy_p'])){
 
+                        }
+                    }
+                    $List[$key][$val['id']]['update_time'][]=$pvalue['update_time'];
+                    $List[$key][$val['id']]['chang'][]=$pvalue['chang'];
+                }
+
+            }
         }
+
         $res=array(
         	'data'=>$List,
         	'totle'=>$countlist,
@@ -75,12 +91,13 @@ class Index extends Controller
         if(!empty($param['ids'])){
             $idArr = explode(',',$param['ids']);
         }else{
-            echo '请选择需要导出的数据';
+            echo '请选择需要导出的数据';exit;
         }
 //        $idArr=[590202,590203,590204];
 //        foreach ($param['ids'] as $k=> $v){
 //            $idArr[]=$v['id'];
 //        }
+        unset($idArr[count($idArr)-1]);
         $data=Db::table($this->tablename)->whereIn("id",$idArr)->select();
         $path = dirname(__FILE__);//找到当前脚本所在路径
         $PHPExcel = new \PHPExcel();//实例化phpexcel
@@ -104,7 +121,7 @@ class Index extends Controller
             $num++;
         }
         $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel2007");//创建生成的格式
-        header('Content-Disposition: attachment;filename="表单数据.xlsx"');//下载下来的表格名
+        header('Content-Disposition: attachment;filename="amzcount.xlsx"');//下载下来的表格名
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         $PHPWriter->save("php://output");//表示在$path路径下面生成demo.xlsx文件
     }

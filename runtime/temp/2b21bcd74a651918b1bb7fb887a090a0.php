@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622275657;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622276090;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,9 @@
     <script src="/static/layui/layui.js"></script>
     <script src="/static/echarts.js"></script>
     <script src="/static/vue.js"></script>
-    <link rel="stylesheet" href="/static/element-ui.css">
+    <!-- <link rel="stylesheet" href="/static/element-ui.css"> -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
     <script src="/static/element-ui.js"></script>
 </head>
 <style>
@@ -67,6 +69,10 @@
                 height="670"
                 :header-cell-style="{textAlign: 'center'}"
                 :cell-style="{ textAlign: 'center' }">
+            <el-table-column
+              type="selection"
+              width="55">
+            </el-table-column>
             <el-table-column
                     fixed
                     prop="key_words"

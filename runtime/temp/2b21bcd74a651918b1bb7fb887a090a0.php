@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622277179;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622278129;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,12 +61,13 @@
                   </el-form>
             </div>
         </div>
-    <el-button type="primary" icon="el-icon-download" @click="downloadExcel">导出</el-button>
+    <el-button style="float: right;margin-right: 20px;" type="primary" icon="el-icon-download" @click="downloadExcel">导出</el-button>
 
         <el-table
                 v-loading="loading"
                 :data="tableData"
                 tooltip-effect="dark"
+                :row-key="(row)=>{ return row.id}"
                 stripe
                 style="width: 98%;margin: 0 auto"
                 height="670"
@@ -75,6 +76,7 @@
                 @selection-change="handleSelectionChange">
             <el-table-column
               type="selection"
+              :reserve-selection="true"
               width="55">
             </el-table-column>
             <el-table-column
@@ -287,47 +289,13 @@
             onSubmit() {
                 this.getListdata()
             },
-            downloadExcel() {
-              this.$confirm("确定下载列表文件?", "提示", {
-                  confirmButtonText: "确定",
-                 cancelButtonText: "取消",
-                  type: "warning",
-                })
-                  .then(() => {
-                   this.excelData = this.multipleSelection;
-                    this.exportExcel();
-                 })
-                 .catch(() => {});
+             handleSelectionChange(val) {
+               this.multipleSelection = val;
+               console.log(this.multipleSelection);
              },
-             // 数据写入Excel
-             exportExcel(){
-               var wb = XLSX.utils.table_to_book(document.querySelector("#out-table"));
-                 /* 获取二进制字符串作为输出 */
-                var wbout = XLSX.write(wb, {
-                     bookType: "xlsx",
-                     bookSST: true,
-                     type: "array"
-                 });
-                 try {
-                     FileSaver.saveAs(
-                     //Blob 对象表示一个不可变、原始数据的类文件对象。
-                     //Blob 表示的不一定是JavaScript原生格式的数据。
-                     //File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。
-                     //返回一个新创建的 Blob 对象，其内容由参数中给定的数组串联组成。
-                     new Blob([wbout], { type: "application/octet-stream" }),
-                     //设置导出文件名称
-                     "历史记录.xlsx"
-                     );
-                 } catch (e) {
-                     if (typeof console !== "undefined") console.log(e, wbout);
-                 }
-                 return wbout;
-         },
-          // 选中的表的数据
-     handleSelectionChange(val) {
-       this.multipleSelection = val;
-       console.log(this.multipleSelection);
-     },
+             downloadExcel() {
+
+             }
         },
           watch: {
             size: function (newval, oldval) {

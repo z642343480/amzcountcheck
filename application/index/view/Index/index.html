@@ -20,7 +20,7 @@
         <div style="width:50%;float: left;margin-top: 30px;">
           <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
               <el-form-item label="关键词">
-                <el-input v-model="form.user" placeholder="请输入关键词"></el-input>
+                <el-input v-model="form.key_words" placeholder="请输入关键词"></el-input>
               </el-form-item>
               <el-form-item>
                 <el-button type="primary" @click="onSubmit">搜索</el-button>
@@ -31,7 +31,10 @@
              <div class="block" style="margin-bottom: 20px;">
                 <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：</span>
                 <el-date-picker
-                  v-model="value1"
+                  unlink-panels
+                  format="yyyy-MM-dd"
+                  value-format="yyyy-MM-dd"
+                  v-model="form.sdate"
                   type="daterange"
                   range-separator="TO"
                   start-placeholder="开始日期"
@@ -41,19 +44,20 @@
             <div>
                 <el-form ref="form" :model="form" label-width="100px">
                       <input type="radio" name="aa" style="float: left;margin-top: 13px;"><el-form-item label="每周增长量：">
-                        <el-input v-model="form.name" style="width: 70%;"></el-input>
+                        <el-input v-model="form.val_change" style="width: 70%;"></el-input>
                       </el-form-item>
                       <input type="radio" name="aa" style="float: left;margin-top: 13px;"><el-form-item label="每周增长率：">
-                        <el-input v-model="form.name" style="width: 70%;"></el-input>
+                        <el-input v-model="form.percentage_change" style="width: 70%;"></el-input>&nbsp;%
                       </el-form-item>
-                      <el-form-item label="达标比例%：">
-                        <el-input v-model="form.name" style="width: 70%;margin-left: 13px;"></el-input>
+                      <el-form-item label="达标比例：">
+                        <el-input v-model="form.satisfy_p" style="width: 70%;margin-left: 13px;"></el-input>&nbsp;%
                       </el-form-item>
                   </el-form>
             </div>
         </div>
 
         <el-table
+                v-loading="loading"
                 :data="tableData"
                 style="width: 98%;margin: 0 auto"
                 height="550">
@@ -84,7 +88,7 @@
                     width="800">
                 <template slot-scope="scope">
                     <div>
-                        {{ text(scope.$index) }}
+                        {{ text(scope.$index,scope.row.id) }}
                         <div :id="`tiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
                     </div>
                 </template>
@@ -97,11 +101,11 @@
             <el-pagination
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
-                    :current-page="currentPage4"
-                    :page-sizes="[100, 200, 300, 400]"
-                    :page-size="100"
+                    :current-page="currentPage"
+                    :page-sizes="[5, 10, 20, 50]"
+                    :page-size="size"
                     layout="total, sizes, prev, pager, next, jumper"
-                    :total="400">
+                    :total="totle">
             </el-pagination>
         </div>
     </template>
@@ -115,12 +119,12 @@
         el: '#app',
         data: function() {
             return {
-                currentPage1: 5,
-                currentPage2: 5,
-                currentPage3: 5,
-                currentPage4: 4,
+                currentPage:1,
+                size:5,
+                totle:0,
                 form:{},
-                value1:'',
+                loading: false,
+                picdata:[],
                 tableData: [
                 //     {
                 //     key_words: 'text_key_work',
@@ -162,7 +166,32 @@
             }
         },
         methods: {
-            text: function (idname) {
+            getListdata() {
+                this.loading=true
+               var that=this
+                $.ajax({
+                    type:"POST",
+                    url:"/index/index/getList",
+                    data:{
+                        limit:that.size,
+                        page:that.currentPage,
+                        search:that.form
+                    },
+                    dataType:"json",
+                    success:function(data){
+                        var jdata=JSON.parse( data );
+                        that.tableData=jdata.data
+                        that.totle=jdata.totle
+                        that.picdata=jdata.picdata
+                        that.loading=false
+                    },
+                    error:function(jqXHR){
+
+                    }
+                });
+            },
+            text: function (idname,id) {
+                    console.log(id)
                 let option = {
                     tooltip : {
                         trigger: 'axis',
@@ -231,29 +260,27 @@
                 })
             },
             handleSizeChange(val) {
+                this.size=val
                 console.log(`每页 ${val} 条`);
             },
             handleCurrentChange(val) {
+                this.currentPage=val
                 console.log(`当前页: ${val}`);
             },
             onSubmit() {
-                alert(222)
+                this.getListdata()
             }
         },
+          watch: {
+            size: function (newval, oldval) {
+                this.getListdata()
+            },
+            currentPage: function (newval, oldval) {
+                this.getListdata()
+            }
+          },
         mounted:function () {
-            var that=this
-            $.ajax({
-                type:"GET",
-                url:"/index/index/getList",
-                dataType:"json",
-                success:function(data){
-                    var jdata=JSON.parse( data );
-                    that.tableData=jdata
-                },
-                error:function(jqXHR){
-
-                }
-            });
+                this.getListdata()
         }
     })
 </script>

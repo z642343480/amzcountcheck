@@ -40,11 +40,14 @@
             </div>
             <div>
                 <el-form ref="form" :model="form" label-width="100px">
-                      <el-form-item label="每周增长量：">
-                        <el-input v-model="form.name"></el-input>
+                      <input type="radio" name="aa" style="float: left;margin-top: 13px;"><el-form-item label="每周增长量：">
+                        <el-input v-model="form.name" style="width: 70%;"></el-input>
                       </el-form-item>
-                      <el-form-item label="每周增长率：">
-                        <el-input v-model="form.name"></el-input>
+                      <input type="radio" name="aa" style="float: left;margin-top: 13px;"><el-form-item label="每周增长率：">
+                        <el-input v-model="form.name" style="width: 70%;"></el-input>
+                      </el-form-item>
+                      <el-form-item label="达标比例%：">
+                        <el-input v-model="form.name" style="width: 70%;margin-left: 13px;"></el-input>
                       </el-form-item>
                   </el-form>
             </div>
@@ -69,7 +72,7 @@
             </el-table-column>
             <el-table-column
                     prop="chang"
-                    label="涨跌">
+                    label="较上周排名变化">
             </el-table-column>
             <el-table-column
                     prop="update_time"

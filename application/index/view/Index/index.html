@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>amzcount</title>
-    <script src="__STATIC__/jq.js"></script>
-    <link rel="stylesheet" href="__STATIC__/layui/css/layui.css">
-    <script src="__STATIC__/layui/layui.js"></script>
-    <script src="__STATIC__/echarts.js"></script>
-    <script src="__STATIC__/vue.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="/static/jq.js"></script>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <script src="/static/layui/layui.js"></script>
+    <script src="/static/echarts.js"></script>
+    <script src="/static/vue.js"></script>
+    <link rel="stylesheet" href="/static/element-ui.css">
+    <script src="/static/element-ui.js"></script>
 </head>
 <style>
 </style>
@@ -43,7 +43,7 @@
             </div>
             <div>
                 <el-form ref="form" :model="form" label-width="100px">
-                      <input type="radio" name="aa" style="float: left;margin-top: 13px;"><el-form-item label="每周增长量1222：">
+                      <input type="radio" name="aa" style="float: left;margin-top: 13px;"><el-form-item label="每周增长量1：">
                         <el-input v-model="form.val_change" style="width: 70%;"></el-input>
                       </el-form-item>
                       <input type="radio" name="aa" style="float: left;margin-top: 13px;"><el-form-item label="每周增长率：">

@@ -1,17 +1,17 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622272207;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622273695;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>amzcount</title>
-    <script src="http://127.0.0.1/amzcount/public/static/jq.js"></script>
-    <link rel="stylesheet" href="http://127.0.0.1/amzcount/public/static/layui/css/layui.css">
-    <script src="http://127.0.0.1/amzcount/public/static/layui/layui.js"></script>
-    <script src="http://127.0.0.1/amzcount/public/static/echarts.js"></script>
-    <script src="http://127.0.0.1/amzcount/public/static/vue.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <script src="http://127.0.0.1/amzcount/public/static/element-ui.js"></script>
+    <script src="/static/jq.js"></script>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <script src="/static/layui/layui.js"></script>
+    <script src="/static/echarts.js"></script>
+    <script src="/static/vue.js"></script>
+    <link rel="stylesheet" href="/static/element-ui.css">
+    <script src="/static/element-ui.js"></script>
 </head>
 <style>
 </style>
@@ -44,7 +44,7 @@
             </div>
             <div>
                 <el-form ref="form" :model="form" label-width="100px">
-                      <input type="radio" name="aa" style="float: left;margin-top: 13px;"><el-form-item label="每周增长量1222：">
+                      <input type="radio" name="aa" style="float: left;margin-top: 13px;"><el-form-item label="每周增长量1：">
                         <el-input v-model="form.val_change" style="width: 70%;"></el-input>
                       </el-form-item>
                       <input type="radio" name="aa" style="float: left;margin-top: 13px;"><el-form-item label="每周增长率：">

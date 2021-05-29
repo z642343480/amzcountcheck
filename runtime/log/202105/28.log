@@ -1,0 +1,2869 @@
+---------------------------------------------------------------
+
+[2021-05-28T10:53:18+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index
+[运行时间：0.035191s] [吞吐率：28.42req/s] [内存消耗：577.89kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\admin\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T10:53:18+08:00] 127.0.0.1 GET admin.amzcount.com/admin/Index/getListData?page=1&limit=10
+[运行时间：0.021573s] [吞吐率：46.35req/s] [内存消耗：736.12kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/admin/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002433s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.001568s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `log` [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SELECT * FROM `log` [ RunTime:0.000925s ]
+---------------------------------------------------------------
+
+[2021-05-28T10:54:11+08:00] 127.0.0.1 GET admin.amzcount.com/index
+[运行时间：0.022631s] [吞吐率：44.19req/s] [内存消耗：509.23kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T10:54:15+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.019212s] [吞吐率：52.05req/s] [内存消耗：549.00kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T10:54:16+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.014514s] [吞吐率：68.90req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001645s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.001245s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000326s ]
+---------------------------------------------------------------
+
+[2021-05-28T10:58:12+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.020079s] [吞吐率：49.80req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T10:58:13+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.016948s] [吞吐率：59.00req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002736s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.003105s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000277s ]
+---------------------------------------------------------------
+
+[2021-05-28T10:58:16+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.014101s] [吞吐率：70.92req/s] [内存消耗：549.15kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T10:58:17+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.019572s] [吞吐率：51.09req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005359s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.003911s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000326s ]
+---------------------------------------------------------------
+
+[2021-05-28T10:58:17+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.011516s] [吞吐率：86.84req/s] [内存消耗：548.73kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T10:58:18+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.019658s] [吞吐率：50.87req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003235s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.006405s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000275s ]
+---------------------------------------------------------------
+
+[2021-05-28T10:59:08+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.016088s] [吞吐率：62.16req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T10:59:09+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.025537s] [吞吐率：39.16req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003818s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.005374s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.001063s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:00:05+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.022382s] [吞吐率：44.68req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:00:05+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.023539s] [吞吐率：42.48req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002246s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.001320s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000343s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:00:47+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.013519s] [吞吐率：73.97req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:00:48+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.019201s] [吞吐率：52.08req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002056s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.001311s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000368s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:01:35+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.017442s] [吞吐率：57.33req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:01:36+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.013761s] [吞吐率：72.67req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001982s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.001304s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000257s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:02:33+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.018335s] [吞吐率：54.54req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:02:34+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.022896s] [吞吐率：43.68req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007527s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.005231s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000352s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:03:13+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.030466s] [吞吐率：32.82req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:03:14+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.013843s] [吞吐率：72.24req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000581s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.001274s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000284s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:03:24+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.024489s] [吞吐率：40.83req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:03:25+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.023455s] [吞吐率：42.64req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002770s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.004706s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.001333s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:13:16+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.030471s] [吞吐率：32.82req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:13:17+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.015334s] [吞吐率：65.22req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002286s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.001361s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000272s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:14:00+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.015288s] [吞吐率：65.41req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:14:01+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.018652s] [吞吐率：53.61req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001509s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.001440s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000290s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:14:09+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.033068s] [吞吐率：30.24req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:14:10+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.016883s] [吞吐率：59.23req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001579s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.001623s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000337s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:21:52+08:00] 127.0.0.1 GET admin.amzcount.com/admin/Index/getListData?page=1&limit=10
+[运行时间：0.030926s] [吞吐率：32.34req/s] [内存消耗：735.19kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/admin/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004250s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.002923s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `log` [ RunTime:0.001196s ]
+[ sql ] [ SQL ] SELECT * FROM `log` [ RunTime:0.001086s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:21:53+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.013883s] [吞吐率：72.03req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:21:54+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.018842s] [吞吐率：53.07req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001585s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.003008s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000280s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:22:13+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.013382s] [吞吐率：74.73req/s] [内存消耗：549.15kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:22:14+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.018626s] [吞吐率：53.69req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006874s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000952s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000311s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:22:52+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.023925s] [吞吐率：41.80req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:22:53+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.012988s] [吞吐率：76.99req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001927s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000855s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000270s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:23:14+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.016106s] [吞吐率：62.09req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:23:15+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.012688s] [吞吐率：78.82req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001315s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000910s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000348s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:25:06+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.030280s] [吞吐率：33.02req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:25:11+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.012606s] [吞吐率：79.33req/s] [内存消耗：549.15kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:25:37+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.020440s] [吞吐率：48.92req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:25:38+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.020931s] [吞吐率：47.78req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001756s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.003007s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.002068s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:30:20+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.030245s] [吞吐率：33.06req/s] [内存消耗：577.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:30:21+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.022489s] [吞吐率：44.47req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007868s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.002106s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000324s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:33:28+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.018355s] [吞吐率：54.48req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:33:29+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.024110s] [吞吐率：41.48req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005952s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000971s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000361s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:34:20+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.016018s] [吞吐率：62.43req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:34:21+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.021011s] [吞吐率：47.59req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003463s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000954s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000592s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:34:38+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.021255s] [吞吐率：47.05req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:34:39+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.013931s] [吞吐率：71.78req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001456s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000737s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000349s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:35:03+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.021367s] [吞吐率：46.80req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:35:04+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.021349s] [吞吐率：46.84req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001039s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.002291s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000285s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:35:28+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.025968s] [吞吐率：38.51req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:35:29+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.017653s] [吞吐率：56.65req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001531s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.002244s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000290s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:38:13+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.045931s] [吞吐率：21.77req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:38:14+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.015438s] [吞吐率：64.78req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002817s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000785s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000262s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:38:55+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.013645s] [吞吐率：73.29req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:38:56+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.014976s] [吞吐率：66.77req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002842s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000737s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000314s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:39:03+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.017659s] [吞吐率：56.63req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:39:04+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.016202s] [吞吐率：61.72req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002329s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.001623s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000268s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:51:46+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.027065s] [吞吐率：36.95req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:51:47+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.016258s] [吞吐率：61.51req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001484s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.002230s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000286s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:52:01+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.020189s] [吞吐率：49.53req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:52:02+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.016838s] [吞吐率：59.39req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001643s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.004186s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000322s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:52:31+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.020670s] [吞吐率：48.38req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:52:32+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.014472s] [吞吐率：69.10req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002531s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000728s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000279s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:52:44+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.020920s] [吞吐率：47.80req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:52:44+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.021410s] [吞吐率：46.71req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002443s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000969s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.002922s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:52:54+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.016308s] [吞吐率：61.32req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:52:55+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.014842s] [吞吐率：67.38req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001243s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.001905s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000271s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:52:57+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.014812s] [吞吐率：67.51req/s] [内存消耗：553.15kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:52:57+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.014018s] [吞吐率：71.34req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001778s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000769s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000271s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:53:03+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.018482s] [吞吐率：54.11req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:53:04+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.014700s] [吞吐率：68.03req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001395s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.002288s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000316s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:53:15+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.015608s] [吞吐率：64.07req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:53:16+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.013256s] [吞吐率：75.44req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001217s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000726s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000988s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:53:24+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.015966s] [吞吐率：62.63req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:53:25+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.014807s] [吞吐率：67.54req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000985s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000742s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.001386s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:53:53+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.016663s] [吞吐率：60.01req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:53:54+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.020191s] [吞吐率：49.53req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006822s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.002772s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000323s ]
+---------------------------------------------------------------
+
+[2021-05-28T11:54:13+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.019973s] [吞吐率：50.07req/s] [内存消耗：581.29kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T11:54:14+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.014625s] [吞吐率：68.38req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002419s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.000839s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000260s ]
+---------------------------------------------------------------
+
+[2021-05-28T12:01:31+08:00] 127.0.0.1 GET admin.amzcount.com/index/index
+[运行时间：0.032948s] [吞吐率：30.35req/s] [内存消耗：553.15kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+
+[2021-05-28T12:01:32+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.022617s] [吞吐率：44.21req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000748s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.006386s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000799s ]
+---------------------------------------------------------------
+
+[2021-05-28T12:07:31+08:00] 183.15.179.154 GET www.amzcount.com/
+[运行时间：0.021999s] [吞吐率：45.46req/s] [内存消耗：602.10kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:85.0) Gecko/20100101 Firefox/85.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-language' => 'en-US,en;q=0.5',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T12:09:21+08:00] 183.15.179.154 GET www.amzcount.com/
+[运行时间：0.018650s] [吞吐率：53.62req/s] [内存消耗：508.55kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:85.0) Gecko/20100101 Firefox/85.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-language' => 'en-US,en;q=0.5',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T12:09:48+08:00] 183.15.179.154 GET www.amzcount.com/
+[运行时间：0.014099s] [吞吐率：70.93req/s] [内存消耗：602.10kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:85.0) Gecko/20100101 Firefox/85.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-language' => 'en-US,en;q=0.5',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T12:10:19+08:00] 183.15.179.154 GET admin.amzcount.com/
+[运行时间：0.017013s] [吞吐率：58.78req/s] [内存消耗：602.10kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:85.0) Gecko/20100101 Firefox/85.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-language' => 'en-US,en;q=0.5',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T12:11:42+08:00] 183.15.179.154 GET www.amzcount.com/
+[运行时间：0.019720s] [吞吐率：50.71req/s] [内存消耗：508.55kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:85.0) Gecko/20100101 Firefox/85.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-language' => 'en-US,en;q=0.5',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T12:12:05+08:00] 183.15.179.154 GET www.amzcount.com/
+[运行时间：0.013991s] [吞吐率：71.48req/s] [内存消耗：602.10kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.amzcount.com',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:85.0) Gecko/20100101 Firefox/85.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-language' => 'en-US,en;q=0.5',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T12:13:02+08:00] 183.15.179.154 GET admin.amzcount.com/
+[运行时间：0.015410s] [吞吐率：64.89req/s] [内存消耗：602.10kb] [文件加载：86]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:85.0) Gecko/20100101 Firefox/85.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-language' => 'en-US,en;q=0.5',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:17:23+08:00] 127.0.0.1 GET admin.amzcount.com/index/index/getList
+[运行时间：0.030849s] [吞吐率：32.42req/s] [内存消耗：731.44kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/index/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003496s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.004255s ]
+[ sql ] [ SQL ] SELECT * FROM `usa_list` LIMIT 11 [ RunTime:0.000333s ]
+---------------------------------------------------------------
+
+[2021-05-28T18:17:23+08:00] 127.0.0.1 GET admin.amzcount.com/admin/Index/getListData?page=1&limit=10
+[运行时间：0.017722s] [吞吐率：56.43req/s] [内存消耗：735.19kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://admin.amzcount.com/admin/index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003228s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `log` [ RunTime:0.000761s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `log` [ RunTime:0.000461s ]
+[ sql ] [ SQL ] SELECT * FROM `log` [ RunTime:0.000286s ]
+---------------------------------------------------------------
+
+[2021-05-28T18:17:33+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.262698s] [吞吐率：3.81req/s] [内存消耗：545.41kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:20:02+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.148896s] [吞吐率：6.72req/s] [内存消耗：516.46kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [8]未定义变量: WSTask                                   N/A                    ����[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T18:21:32+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.153851s] [吞吐率：6.50req/s] [内存消耗：516.32kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [8]未定义变量: WSTask                                   N/A                    ����[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T18:24:05+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.136919s] [吞吐率：7.30req/s] [内存消耗：546.38kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:25:23+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.136417s] [吞吐率：7.33req/s] [内存消耗：575.89kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:25:24+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.132275s] [吞吐率：7.56req/s] [内存消耗：575.30kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:25:25+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.133455s] [吞吐率：7.49req/s] [内存消耗：575.30kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:25:25+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.134162s] [吞吐率：7.45req/s] [内存消耗：575.30kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:25:32+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.133510s] [吞吐率：7.49req/s] [内存消耗：546.38kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:33:56+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.145233s] [吞吐率：6.89req/s] [内存消耗：546.80kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:33:57+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.135006s] [吞吐率：7.41req/s] [内存消耗：546.21kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:33:58+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.131963s] [吞吐率：7.58req/s] [内存消耗：546.21kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:33:58+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.131254s] [吞吐率：7.62req/s] [内存消耗：546.21kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:34:58+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.142899s] [吞吐率：7.00req/s] [内存消耗：576.31kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:34:59+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.156919s] [吞吐率：6.37req/s] [内存消耗：575.72kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:34:59+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.141177s] [吞吐率：7.08req/s] [内存消耗：575.72kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:35:00+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.134778s] [吞吐率：7.42req/s] [内存消耗：575.72kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:35:00+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.134140s] [吞吐率：7.45req/s] [内存消耗：575.72kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:35:00+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.335160s] [吞吐率：2.98req/s] [内存消耗：575.72kb] [文件加载：81]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-28T18:43:41+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.171984s] [吞吐率：5.81req/s] [内存消耗：516.35kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [2]Use of undefined constant aaa - assumed 'aaa' (this will throw an Error in a future version of PHP)[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T18:43:44+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.163170s] [吞吐率：6.13req/s] [内存消耗：515.76kb] [文件加载：89]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [2]Use of undefined constant aaa - assumed 'aaa' (this will throw an Error in a future version of PHP)[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T18:43:59+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.153400s] [吞吐率：6.52req/s] [内存消耗：514.98kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]致命错误: Call to undefined function app\admin\controller\gbk_decode()[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T18:44:00+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.143229s] [吞吐率：6.98req/s] [内存消耗：514.28kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]致命错误: Call to undefined function app\admin\controller\gbk_decode()[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T18:44:00+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.162551s] [吞吐率：6.15req/s] [内存消耗：514.28kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]致命错误: Call to undefined function app\admin\controller\gbk_decode()[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T18:44:00+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.484698s] [吞吐率：2.06req/s] [内存消耗：514.28kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]致命错误: Call to undefined function app\admin\controller\gbk_decode()[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T18:44:00+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.322382s] [吞吐率：3.10req/s] [内存消耗：514.28kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]致命错误: Call to undefined function app\admin\controller\gbk_decode()[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T18:44:01+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.259873s] [吞吐率：3.85req/s] [内存消耗：514.28kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]致命错误: Call to undefined function app\admin\controller\gbk_decode()[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T18:44:01+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.514969s] [吞吐率：1.94req/s] [内存消耗：514.28kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]致命错误: Call to undefined function app\admin\controller\gbk_decode()[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T18:44:01+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.364294s] [吞吐率：2.75req/s] [内存消耗：514.28kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]致命错误: Call to undefined function app\admin\controller\gbk_decode()[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T18:44:01+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.235989s] [吞吐率：4.24req/s] [内存消耗：514.28kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]致命错误: Call to undefined function app\admin\controller\gbk_decode()[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T18:44:01+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.307709s] [吞吐率：3.25req/s] [内存消耗：514.28kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]致命错误: Call to undefined function app\admin\controller\gbk_decode()[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T18:44:01+08:00] 127.0.0.1 GET admin.amzcount.com/admin/index/getHaveTas
+[运行时间：0.142868s] [吞吐率：7.00req/s] [内存消耗：514.28kb] [文件加载：88]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]致命错误: Call to undefined function app\admin\controller\gbk_decode()[C:\newwww\wamp64\www\amzcount\application\admin\controller\Index.php:19]
+---------------------------------------------------------------
+
+[2021-05-28T23:55:04+08:00] 127.0.0.1 GET admin.amzcount.com/admin/Log/usa
+[运行时间：3.273209s] [吞吐率：0.31req/s] [内存消耗：1,963.79kb] [文件加载：142]
+[ info ] [ LANG ] C:\newwww\wamp64\www\amzcount\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.amzcount.com',
+  'user-agent' => 'curl/7.64.1',
+  'accept' => '*/*',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005250s ] mysql:host=127.0.0.1;port=3306;dbname=amzcount;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `usa_list` [ RunTime:0.001187s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `usa_list` WHERE  `update_time` = '2021-05-25' [ RunTime:0.072879s ]
+[ error ] [2]DOMDocument::loadHTML(): Tag header invalid in Entity, line: 65[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Tag svg invalid in Entity, line: 667[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Tag path invalid in Entity, line: 667[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Tag path invalid in Entity, line: 667[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Tag svg invalid in Entity, line: 689[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Tag path invalid in Entity, line: 691[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Tag path invalid in Entity, line: 693[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Tag main invalid in Entity, line: 714[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 788[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Tag main invalid in Entity, line: 790[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 795[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 796[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 797[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 798[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 799[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 806[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 807[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 808[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 809[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 810[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 4637[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 4638[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 5846[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Tag nav invalid in Entity, line: 5847[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 5848[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 5848[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 5848[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : main in Entity, line: 5850[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 5855[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : main in Entity, line: 5856[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Tag footer invalid in Entity, line: 5865[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 5889[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 5930[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : span in Entity, line: 6451[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : span in Entity, line: 6451[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : span in Entity, line: 6451[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : span in Entity, line: 6451[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : span in Entity, line: 6451[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 6460[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 6543[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 6544[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 6545[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 6546[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 6547[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]
+[ error ] [2]DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 6549[C:\newwww\wamp64\www\amzcount\vendor\jaeger\phpquery-single\phpQuery.php:328]

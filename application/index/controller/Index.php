@@ -5,6 +5,7 @@ use think\Db;
 use think\Request;
 class Index extends Controller
 {
+	private $tablename='usa_list';
     public function index()
     {
         return $this->fetch();
@@ -48,9 +49,17 @@ class Index extends Controller
     		$where[]=["update_time",'>=',$param['search']['sdate'][0]];
     		$where[]=["update_time",'<=',$param['search']['sdate'][1]];
     	}
-        $List=Db::table('ca_list')->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->select();
+        $List=Db::table($this->tablename)->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->select();
         // dd(Db::table('ca_list')->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->getLastSql());
-        $countlist=Db::table('ca_list')->where($where)->count();
+        $countlist=Db::table($this->tablename)->where($where)->count();
+        foreach($List as $key=>$val){
+        	$PicList=Db::table($this->tablename)->where("key_words",$val['key_words'])->select();
+        	foreach ($PicList as $pkey => $pvalue) {
+	        	$List[$key][$val['id']]['update_time'][]=$pvalue['update_time'];
+	        	$List[$key][$val['id']]['chang'][]=$pvalue['chang'];
+        	}
+
+        }
         $res=array(
         	'data'=>$List,
         	'totle'=>$countlist,

@@ -71,28 +71,21 @@ class Index extends Controller
     }
 
     public function expExcel() {
-        $data = session('data');//我的数据是存储在了Session里面，所以这里的获取数据
+        $data = array(
+            ['aaa'=>'111','bbb'=>'222'],
+            ['aaa'=>'111','bbb'=>'222']
+        );
         $path = dirname(__FILE__);//找到当前脚本所在路径
         $PHPExcel = new \PHPExcel();//实例化phpexcel
         $PHPSheet = $PHPExcel->getActiveSheet();
         $PHPSheet->setTitle("demo");//设置表内部名称
-        $PHPSheet->setCellValue("A1", "ID")->setCellValue("B1", "订单编号")
-            ->setCellValue("C1", "企业名称")
-            ->setCellValue("D1", "企业邮箱")
-            ->setCellValue("E1", "下单时间")
-            ->setCellValue("F1", "购买套餐")
-            ->setCellValue("G1", "金额");//表格数据
+        $PHPSheet->setCellValue("A1", "aaa")->setCellValue("B1", "订单编号")
+            ->setCellValue("C1", "bbb");//表格数据
         $num=2;
         //数据
         foreach ($data as $k => $v) {
-            $PHPSheet->setCellValue("A" . $num, $v['order_id']);
-            $PHPSheet->setCellValue("B" . $num, $v['order_num']);
-            $PHPSheet->setCellValue("C" . $num, $v['trade_name']);
-            $PHPSheet->setCellValue("D" . $num, $v['trade_email']);
-            $v['now_time']=date("Y-m-d H:i",$v['now_time']) ;
-            $PHPSheet->setCellValue("E" . $num, $v['now_time']);
-            $PHPSheet->setCellValue("F" . $num, $v['static_name']);
-            $PHPSheet->setCellValue("G" . $num, $v['money']);
+            $PHPSheet->setCellValue("A".$num, $v['aaa']);
+            $PHPSheet->setCellValue("B".$num, $v['bbb']);
             $num++;
         }
         $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel2007");//创建生成的格式

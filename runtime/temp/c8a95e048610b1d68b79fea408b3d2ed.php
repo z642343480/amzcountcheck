@@ -1,27 +1,84 @@
-<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622047002;}*/ ?>
+<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622278174;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>amzcount</title>
-    <script src="http://127.0.0.1/amzcount/public/static/jq.js"></script>
-    <link rel="stylesheet" href="http://127.0.0.1/amzcount/public/static/layui/css/layui.css">
-    <script src="http://127.0.0.1/amzcount/public/static/layui/layui.js"></script>
-    <script src="http://127.0.0.1/amzcount/public/static/echarts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/static/jq.js"></script>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <script src="/static/layui/layui.js"></script>
+    <script src="/static/echarts.js"></script>
+    <script src="/static/vue.js"></script>
+    <!-- <link rel="stylesheet" href="/static/element-ui.css"> -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+    <script src="/static/element-ui.js"></script>
 </head>
 <style>
 </style>
 <body>
 <div id="app">
     <template>
+        <div style="width:50%;float: left;margin-top: 30px;">
+          <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+              <el-form-item label="关键词">
+                <el-input v-model="form.key_words" placeholder="请输入关键词"></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="onSubmit">搜索</el-button>
+              </el-form-item>
+           </el-form>
+         </div>
+        <div style="width:50%;float: left;margin-top: 10px;">
+             <div class="block" style="margin-bottom: 20px;">
+                <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
+                <el-date-picker
+                  unlink-panels
+                  format="yyyy-MM-dd"
+                  value-format="yyyy-MM-dd"
+                  v-model="form.sdate"
+                  type="daterange"
+                  range-separator="TO"
+                  start-placeholder="开始日期"
+                  end-placeholder="结束日期">
+                </el-date-picker>
+            </div>
+            <div>
+                <el-form ref="form" :model="form" label-width="100px">
+                      <input type="radio" name="aa" style="float: left;margin-top: 13px;">
+                      <el-form-item label="每周增长量：">
+                        <el-input v-model="form.val_change" style="width: 70%;"></el-input>
+                      </el-form-item>
+
+                      <input type="radio" name="aa" style="float: left;margin-top: 13px;">
+                      <el-form-item label="每周增长率：">
+                        <el-input v-model="form.percentage_change" style="width: 70%;"></el-input>&nbsp;%
+                      </el-form-item>
+                      <el-form-item label="达标比例：" style="margin-left: 13px;">
+                        <el-input v-model="form.satisfy_p" style="width: 71%;"></el-input>&nbsp;%
+                      </el-form-item>
+                  </el-form>
+            </div>
+        </div>
+    <el-button style="float: right;margin-right: 20px;" type="primary" icon="el-icon-download" @click="downloadExcel">导出</el-button>
+
         <el-table
+                v-loading="loading"
                 :data="tableData"
+                tooltip-effect="dark"
+                :row-key="(row)=>{ return row.id}"
+                stripe
                 style="width: 98%;margin: 0 auto"
-                height="550">
+                height="670"
+                :header-cell-style="{textAlign: 'center'}"
+                :cell-style="{ textAlign: 'center' }"
+                @selection-change="handleSelectionChange">
+            <el-table-column
+              type="selection"
+              :reserve-selection="true"
+              width="55">
+            </el-table-column>
             <el-table-column
                     fixed
                     prop="key_words"
@@ -37,7 +94,7 @@
             </el-table-column>
             <el-table-column
                     prop="chang"
-                    label="涨跌">
+                    label="排名变化">
             </el-table-column>
             <el-table-column
                     prop="update_time"
@@ -46,10 +103,10 @@
             <el-table-column
                     prop="pic"
                     label="图表"
-                    width="800">
+                    width="1300">
                 <template slot-scope="scope">
                     <div>
-                        {{ text(scope.$index) }}
+                        {{ text(scope.$index,scope.row.id) }}
                         <div :id="`tiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
                     </div>
                 </template>
@@ -59,18 +116,18 @@
     </template>
     <template>
         <div class="block">
-            <span class="demonstration">完整功能</span>
             <el-pagination
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
-                    :current-page="currentPage4"
-                    :page-sizes="[100, 200, 300, 400]"
-                    :page-size="100"
+                    :current-page="currentPage"
+                    :page-sizes="[5, 10, 20, 50]"
+                    :page-size="size"
                     layout="total, sizes, prev, pager, next, jumper"
-                    :total="400">
+                    :total="totle">
             </el-pagination>
         </div>
     </template>
+
 </div>
 
 <script>
@@ -81,10 +138,14 @@
         el: '#app',
         data: function() {
             return {
-                currentPage1: 5,
-                currentPage2: 5,
-                currentPage3: 5,
-                currentPage4: 4,
+                currentPage:1,
+                size:5,
+                totle:0,
+                form:{},
+                loading: false,
+                picdata:[],
+                multipleSelection: [], //选中的数据
+                excelData: [],
                 tableData: [
                 //     {
                 //     key_words: 'text_key_work',
@@ -126,7 +187,35 @@
             }
         },
         methods: {
-            text: function (idname) {
+            getListdata() {
+                this.loading=true
+               var that=this
+                $.ajax({
+                    type:"POST",
+                    url:"/index/index/getList",
+                    data:{
+                        limit:that.size,
+                        page:that.currentPage,
+                        search:that.form
+                    },
+                    dataType:"json",
+                    success:function(data){
+                        var jdata=JSON.parse( data );
+                        that.tableData=jdata.data
+                        that.totle=jdata.totle
+                        that.picdata=jdata.picdata
+                        that.loading=false
+                    },
+                    error:function(jqXHR){
+
+                    }
+                });
+            },
+
+            text: function (idname,id) {
+                    // console.log(this.tableData[idname].key_words)
+                    var that=this
+                    // console.log(idname)
                 let option = {
                     tooltip : {
                         trigger: 'axis',
@@ -134,7 +223,7 @@
                             type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
                         formatter: function (datas) {
-                            var res = '关键词：key_word<br/>涨跌：12<br/>日期：2021-05-18';
+                            var res = '关键词：'+that.tableData[idname].key_words+'<br/>涨跌：'+datas[0].value+'<br/>日期：'+datas[0].axisValue;
 
                             return res;
                         },
@@ -159,19 +248,14 @@
                         //     interval:0,
                         //     rotate:30
                         // },
-                        data: ['2020-05-18', '2020-05-25', '2020-06-1', '2020-06-8', '2020-06-15', '2020-06-22']
+                        data: this.tableData[idname][id].update_time
                     },
                     yAxis: {
                         show: true,
                         type: 'value'
                     },
                     series:  [{
-                        data: [12, {
-                            value: 20,
-                            itemStyle: {
-                                color: '#a90000'
-                            }
-                        }, 3, 5, 16, 12],
+                        data: this.tableData[idname][id].chang,
                         type: 'bar',
                         showBackground: true,
                         backgroundStyle: {
@@ -195,26 +279,34 @@
                 })
             },
             handleSizeChange(val) {
+                this.size=val
                 console.log(`每页 ${val} 条`);
             },
             handleCurrentChange(val) {
+                this.currentPage=val
                 console.log(`当前页: ${val}`);
-            }
+            },
+            onSubmit() {
+                this.getListdata()
+            },
+             handleSelectionChange(val) {
+               this.multipleSelection = val;
+               console.log(this.multipleSelection);
+             },
+             downloadExcel() {
+                alert('正在施工')
+             }
         },
+          watch: {
+            size: function (newval, oldval) {
+                this.getListdata()
+            },
+            currentPage: function (newval, oldval) {
+                this.getListdata()
+            }
+          },
         mounted:function () {
-            var that=this
-            $.ajax({
-                type:"GET",
-                url:"/index/index/getList",
-                dataType:"json",
-                success:function(data){
-                    var jdata=JSON.parse( data );
-                    that.tableData=jdata
-                },
-                error:function(jqXHR){
-
-                }
-            });
+                this.getListdata()
         }
     })
 </script>
@@ -228,8 +320,11 @@
         color: red !important;
     }
     .tiger-trend-charts {
-        height: 100px;
+        height: 120px;
         min-width: 100px;
+    }
+    .cell{
+        font-size: 12px;
     }
 
 </style>

@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622278129;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622278174;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -294,7 +294,7 @@
                console.log(this.multipleSelection);
              },
              downloadExcel() {
-
+                alert('正在施工')
              }
         },
           watch: {

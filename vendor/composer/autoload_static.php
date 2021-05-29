@@ -159,6 +159,16 @@ class ComposerStaticInit8ab75f382338e50b90d0f1c8ed213c9e
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PHPExcel' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Callback' => __DIR__ . '/..' . '/jaeger/phpquery-single/phpQuery.php',
@@ -185,6 +195,7 @@ class ComposerStaticInit8ab75f382338e50b90d0f1c8ed213c9e
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit8ab75f382338e50b90d0f1c8ed213c9e::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit8ab75f382338e50b90d0f1c8ed213c9e::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit8ab75f382338e50b90d0f1c8ed213c9e::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit8ab75f382338e50b90d0f1c8ed213c9e::$classMap;
 
         }, null, ClassLoader::class);

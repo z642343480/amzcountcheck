@@ -3,6 +3,8 @@ namespace app\index\controller;
 use think\Controller;
 use think\Db;
 use think\Request;
+use PHPExcel;
+use PHPExcel_IOFactory;
 class Index extends Controller
 {
 	private $tablename='usa_list';
@@ -66,6 +68,37 @@ class Index extends Controller
         );
         return json_encode($res,true);
 
+    }
+
+    public function expExcel() {
+        $data = session('data');//我的数据是存储在了Session里面，所以这里的获取数据
+        $path = dirname(__FILE__);//找到当前脚本所在路径
+        $PHPExcel = new \PHPExcel();//实例化phpexcel
+        $PHPSheet = $PHPExcel->getActiveSheet();
+        $PHPSheet->setTitle("demo");//设置表内部名称
+        $PHPSheet->setCellValue("A1", "ID")->setCellValue("B1", "订单编号")
+            ->setCellValue("C1", "企业名称")
+            ->setCellValue("D1", "企业邮箱")
+            ->setCellValue("E1", "下单时间")
+            ->setCellValue("F1", "购买套餐")
+            ->setCellValue("G1", "金额");//表格数据
+        $num=2;
+        //数据
+        foreach ($data as $k => $v) {
+            $PHPSheet->setCellValue("A" . $num, $v['order_id']);
+            $PHPSheet->setCellValue("B" . $num, $v['order_num']);
+            $PHPSheet->setCellValue("C" . $num, $v['trade_name']);
+            $PHPSheet->setCellValue("D" . $num, $v['trade_email']);
+            $v['now_time']=date("Y-m-d H:i",$v['now_time']) ;
+            $PHPSheet->setCellValue("E" . $num, $v['now_time']);
+            $PHPSheet->setCellValue("F" . $num, $v['static_name']);
+            $PHPSheet->setCellValue("G" . $num, $v['money']);
+            $num++;
+        }
+        $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel2007");//创建生成的格式
+        header('Content-Disposition: attachment;filename="表单数据.xlsx"');//下载下来的表格名
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        $PHPWriter->save("php://output");//表示在$path路径下面生成demo.xlsx文件
     }
 
 

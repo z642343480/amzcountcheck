@@ -1,4 +1,4 @@
-<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622300276;}*/ ?>
+<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622303856;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -195,9 +195,9 @@
             getListdata() {
                 this.loading = true
                 var that = this
-                console.log(this.form)
+                // console.log(this.form)
                 if(this.form.key_words!=undefined || this.form.percentage_change != undefined || this.form.satisfy_p != undefined || this.form.sdate != undefined || this.form.val_change != undefined){
-                    console.log(this.form.length)
+                    // console.log(this.form.length)
                     var obj = document.getElementsByName("only_who");
                     if(obj[0].checked==true){
                         this.form.percentage_change='';

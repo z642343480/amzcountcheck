@@ -37,8 +37,8 @@ class Index extends Controller
     		$where[]=["update_time",'>=',$param['search']['sdate'][0]];
     		$where[]=["update_time",'<=',$param['search']['sdate'][1]];
     	}else{
-    		$where[]=["update_time",'>=',$wek];
-    		$where[]=["update_time",'<=',$sund];
+            $where[]=["update_time",'<=',$sund];
+            $where[]=["update_time",'>=',$wek];
     	}
 //    	if(!empty($param['search']['val_change'])){
 //    		$where[]=["chang",'>=',$param['search']['val_change']];
@@ -51,33 +51,50 @@ class Index extends Controller
 //    		$where[]=["update_time",'>=',$param['search']['sdate'][0]];
 //    		$where[]=["update_time",'<=',$param['search']['sdate'][1]];
 //    	}
-        $List=Db::table($this->tablename)->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->select();
-         dd(Db::table('ca_list')->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->getLastSql());
+        $List=Db::table($this->tablename)->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->orderRaw("update_time desc,c_rank asc")->select();
+//         dd(Db::table('ca_list')->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->getLastSql());
         $countlist=Db::table($this->tablename)->where($where)->count();
         if(!empty($List)){
             foreach($List as $key=>$val){
-                $where=["key_words",$val['key_words']];
+                $picwhere=[["key_words",'=',$val['key_words']]];
                 if(!empty($param['search']['sdate'])){
-                    $where[]=["update_time",'>=',$param['search']['sdate'][0]];
-                    $where[]=["update_time",'<=',$param['search']['sdate'][1]];
+                    $picwhere[]=["update_time",'>=',$param['search']['sdate'][0]];
+                    $picwhere[]=["update_time",'<=',$param['search']['sdate'][1]];
                 }else{
-                    $where[]=["update_time",'>=',$wek];
-                    $where[]=["update_time",'<=',$sund];
+                    $picwhere[]=["update_time",'>=',$wek];
+                    $picwhere[]=["update_time",'<=',$sund];
                 }
-                $PicList=Db::table($this->tablename)->where($where)->select();
+                $PicList=Db::table($this->tablename)->where($picwhere)->select();
+                $DCount=0;
                 foreach ($PicList as $pkey => $pvalue) {
-                    if(!empty($param['search']['val_change']) || !empty($param['search']['percentage_change'])){
+                    if(!empty($param['search']['val_change'])){
                         if(!empty($param['search']['satisfy_p'])){
-
+                            $CurNum=count($PicList);
+                            $CanShowCount=($param['search']['satisfy_p']*$CurNum)/100;
+                            if($pvalue['chang']>=$param['search']['val_change']){
+                                $DCount++;
+                            }
+                            if($DCount>=$CanShowCount){
+                                $List[$key][$val['id']]['update_time'][]=$pvalue['update_time'];
+                                $List[$key][$val['id']]['chang'][]=$pvalue['chang'];
+                            }
+                        }else{
+                            if($pvalue['chang']>=$param['search']['val_change']){
+                                $List[$key][$val['id']]['update_time'][]=$pvalue['update_time'];
+                                $List[$key][$val['id']]['chang'][]=$pvalue['chang'];
+                            }
                         }
+                    }else if(!empty($param['search']['percentage_change'])){
+
+                    }else{
+                        $List[$key][$val['id']]['update_time'][]=$pvalue['update_time'];
+                        $List[$key][$val['id']]['chang'][]=$pvalue['chang'];
                     }
-                    $List[$key][$val['id']]['update_time'][]=$pvalue['update_time'];
-                    $List[$key][$val['id']]['chang'][]=$pvalue['chang'];
+
                 }
 
             }
         }
-
         $res=array(
         	'data'=>$List,
         	'totle'=>$countlist,

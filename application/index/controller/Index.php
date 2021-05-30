@@ -229,7 +229,7 @@ class Index extends Controller
             $num++;
         }
         $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel2007");//创建生成的格式
-        header('Content-Disposition: attachment;filename="'.$this->tablename.'.xlsx"');//下载下来的表格名
+        header('Content-Disposition: attachment;filename="'.$this->tablename.'.csv"');//下载下来的表格名
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         $PHPWriter->save("php://output");//表示在$path路径下面生成demo.xlsx文件
     }

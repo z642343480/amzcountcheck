@@ -28,7 +28,7 @@
                                 <el-input v-model="usaform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
-                                <el-button type="primary" size="small" @click="onSubmit('usa')">搜索</el-button>
+                                <el-button type="primary" size="small" @click="usaonSubmit('usa')">搜索</el-button>
                             </el-form-item>
                         </el-form>
                     </div>
@@ -139,7 +139,7 @@
                                 <el-input v-model="ukform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
-                                <el-button type="primary" size="small" @click="onSubmit('uk')">搜索</el-button>
+                                <el-button type="primary" size="small" @click="ukonSubmit('uk')">搜索</el-button>
                             </el-form-item>
                         </el-form>
                     </div>
@@ -250,7 +250,7 @@
                                 <el-input v-model="deform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
-                                <el-button type="primary" size="small" @click="onSubmit('de')">搜索</el-button>
+                                <el-button type="primary" size="small" @click="deonSubmit('de')">搜索</el-button>
                             </el-form-item>
                         </el-form>
                     </div>
@@ -361,7 +361,7 @@
                                 <el-input v-model="jpform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
-                                <el-button type="primary" size="small" @click="onSubmit('jp')">搜索</el-button>
+                                <el-button type="primary" size="small" @click="jponSubmit('jp')">搜索</el-button>
                             </el-form-item>
                         </el-form>
                     </div>
@@ -472,7 +472,7 @@
                                 <el-input v-model="espform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
-                                <el-button type="primary" size="small" @click="onSubmit('esp')">搜索</el-button>
+                                <el-button type="primary" size="small" @click="esponSubmit('esp')">搜索</el-button>
                             </el-form-item>
                         </el-form>
                     </div>
@@ -583,7 +583,7 @@
                                 <el-input v-model="itform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
-                                <el-button type="primary" size="small" @click="onSubmit('ti')">搜索</el-button>
+                                <el-button type="primary" size="small" @click="itonSubmit('it')">搜索</el-button>
                             </el-form-item>
                         </el-form>
                     </div>
@@ -694,7 +694,7 @@
                                 <el-input v-model="frform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
-                                <el-button type="primary" size="small" @click="onSubmit('fr')">搜索</el-button>
+                                <el-button type="primary" size="small" @click="fronSubmit('fr')">搜索</el-button>
                             </el-form-item>
                         </el-form>
                     </div>
@@ -805,7 +805,7 @@
                                 <el-input v-model="mxform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
-                                <el-button type="primary" size="small" @click="onSubmit('mx')">搜索</el-button>
+                                <el-button type="primary" size="small" @click="mxonSubmit('mx')">搜索</el-button>
                             </el-form-item>
                         </el-form>
                     </div>
@@ -916,7 +916,7 @@
                                 <el-input v-model="caform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
-                                <el-button type="primary" size="small" @click="onSubmit('ca')">搜索</el-button>
+                                <el-button type="primary" size="small" @click="caonSubmit('ca')">搜索</el-button>
                             </el-form-item>
                         </el-form>
                     </div>
@@ -1087,13 +1087,12 @@
                 caform: {},
                 catableData: [],
 
-                form: {},
+
                 loading: false,
-                picdata: [],
                 multipleSelection: [], //选中的数据
                 excelData: [],
-                tableData: [],
-                activeName: 'usa'
+                activeName: 'usa',
+                isclicktabs:['usa']
             }
         },
         methods: {
@@ -1236,6 +1235,306 @@
                             that.loading = false
                         }else{
                             that.detableData = []
+                            that.loading = false
+                            that.$message.error(jdata.message);
+                        }
+
+
+                    },
+                    error: function (jqXHR) {
+                        that.loading = false
+                    }
+                });
+            },
+            jpgetListdata(cu) {
+                this.loading = true
+                var that = this
+                if(this.jpform.key_words!=undefined || this.jpform.percentage_change != undefined || this.jpform.satisfy_p != undefined || this.jpform.sdate != undefined || this.jpform.val_change != undefined){
+                    // console.log(this.form.length)
+                    var obj = document.getElementsByName("jponly_who");
+                    if(obj[0].checked==true){
+                        this.jpform.percentage_change='';
+                    }
+                    if(obj[1].checked==true){
+                        this.jpform.val_change='';
+                    }
+                    if(this.jpform.usasatisfy_p != undefined){
+                        if((this.jpform.val_change == undefined && this.jpform.percentage_change == '') || (this.jpform.val_change == '' && this.jpform.percentage_change == undefined)){
+                            this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
+                            this.loading = false
+                            return false
+                        }
+                    }
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "/index/index/getList",
+                    data: {
+                        limit: that.jpsize,
+                        page: that.jpcurrentPage,
+                        search: that.jpform,
+                        cu: cu
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        var jdata = JSON.parse(data);
+                        if(jdata.code==1){
+                            that.jptableData = jdata.data
+                            that.jptotle = jdata.totle
+                            that.jppicdata = jdata.picdata
+                            that.loading = false
+                        }else{
+                            that.jptableData = []
+                            that.loading = false
+                            that.$message.error(jdata.message);
+                        }
+
+
+                    },
+                    error: function (jqXHR) {
+                        that.loading = false
+                    }
+                });
+            },
+            espgetListdata(cu) {
+                this.loading = true
+                var that = this
+                if(this.espform.key_words!=undefined || this.espform.percentage_change != undefined || this.espform.satisfy_p != undefined || this.espform.sdate != undefined || this.espform.val_change != undefined){
+                    // console.log(this.form.length)
+                    var obj = document.getElementsByName("esponly_who");
+                    if(obj[0].checked==true){
+                        this.espform.percentage_change='';
+                    }
+                    if(obj[1].checked==true){
+                        this.espform.val_change='';
+                    }
+                    if(this.espform.usasatisfy_p != undefined){
+                        if((this.espform.val_change == undefined && this.espform.percentage_change == '') || (this.espform.val_change == '' && this.espform.percentage_change == undefined)){
+                            this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
+                            this.loading = false
+                            return false
+                        }
+                    }
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "/index/index/getList",
+                    data: {
+                        limit: that.espsize,
+                        page: that.espcurrentPage,
+                        search: that.espform,
+                        cu: cu
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        var jdata = JSON.parse(data);
+                        if(jdata.code==1){
+                            that.esptableData = jdata.data
+                            that.esptotle = jdata.totle
+                            that.esppicdata = jdata.picdata
+                            that.loading = false
+                        }else{
+                            that.esptableData = []
+                            that.loading = false
+                            that.$message.error(jdata.message);
+                        }
+
+
+                    },
+                    error: function (jqXHR) {
+                        that.loading = false
+                    }
+                });
+            },
+            itgetListdata(cu) {
+                this.loading = true
+                var that = this
+                if(this.itform.key_words!=undefined || this.itform.percentage_change != undefined || this.itform.satisfy_p != undefined || this.itform.sdate != undefined || this.itform.val_change != undefined){
+                    // console.log(this.form.length)
+                    var obj = document.getElementsByName("itonly_who");
+                    if(obj[0].checked==true){
+                        this.itform.percentage_change='';
+                    }
+                    if(obj[1].checked==true){
+                        this.itform.val_change='';
+                    }
+                    if(this.itform.usasatisfy_p != undefined){
+                        if((this.itform.val_change == undefined && this.itform.percentage_change == '') || (this.itform.val_change == '' && this.itform.percentage_change == undefined)){
+                            this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
+                            this.loading = false
+                            return false
+                        }
+                    }
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "/index/index/getList",
+                    data: {
+                        limit: that.itsize,
+                        page: that.itcurrentPage,
+                        search: that.itform,
+                        cu: cu
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        var jdata = JSON.parse(data);
+                        if(jdata.code==1){
+                            that.ittableData = jdata.data
+                            that.ittotle = jdata.totle
+                            that.itpicdata = jdata.picdata
+                            that.loading = false
+                        }else{
+                            that.ittableData = []
+                            that.loading = false
+                            that.$message.error(jdata.message);
+                        }
+
+
+                    },
+                    error: function (jqXHR) {
+                        that.loading = false
+                    }
+                });
+            },
+            frgetListdata(cu) {
+                this.loading = true
+                var that = this
+                if(this.frform.key_words!=undefined || this.frform.percentage_change != undefined || this.frform.satisfy_p != undefined || this.frform.sdate != undefined || this.frform.val_change != undefined){
+                    // console.log(this.form.length)
+                    var obj = document.getElementsByName("fronly_who");
+                    if(obj[0].checked==true){
+                        this.frform.percentage_change='';
+                    }
+                    if(obj[1].checked==true){
+                        this.frform.val_change='';
+                    }
+                    if(this.frform.satisfy_p != undefined){
+                        if((this.frform.val_change == undefined && this.frform.percentage_change == '') || (this.frform.val_change == '' && this.frform.percentage_change == undefined)){
+                            this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
+                            this.loading = false
+                            return false
+                        }
+                    }
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "/index/index/getList",
+                    data: {
+                        limit: that.frsize,
+                        page: that.frcurrentPage,
+                        search: that.frform,
+                        cu: cu
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        var jdata = JSON.parse(data);
+                        if(jdata.code==1){
+                            that.frtableData = jdata.data
+                            that.frtotle = jdata.totle
+                            that.frpicdata = jdata.picdata
+                            that.loading = false
+                        }else{
+                            that.frtableData = []
+                            that.loading = false
+                            that.$message.error(jdata.message);
+                        }
+
+
+                    },
+                    error: function (jqXHR) {
+                        that.loading = false
+                    }
+                });
+            },
+            mxgetListdata(cu) {
+                this.loading = true
+                var that = this
+                if(this.mxform.key_words!=undefined || this.mxform.percentage_change != undefined || this.mxform.satisfy_p != undefined || this.mxform.sdate != undefined || this.mxform.val_change != undefined){
+                    // console.log(this.form.length)
+                    var obj = document.getElementsByName("mxonly_who");
+                    if(obj[0].checked==true){
+                        this.mxform.percentage_change='';
+                    }
+                    if(obj[1].checked==true){
+                        this.mxform.val_change='';
+                    }
+                    if(this.mxform.satisfy_p != undefined){
+                        if((this.mxform.val_change == undefined && this.mxform.percentage_change == '') || (this.mxform.val_change == '' && this.mxform.percentage_change == undefined)){
+                            this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
+                            this.loading = false
+                            return false
+                        }
+                    }
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "/index/index/getList",
+                    data: {
+                        limit: that.mxsize,
+                        page: that.mxcurrentPage,
+                        search: that.mxform,
+                        cu: cu
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        var jdata = JSON.parse(data);
+                        if(jdata.code==1){
+                            that.mxtableData = jdata.data
+                            that.mxtotle = jdata.totle
+                            that.mxpicdata = jdata.picdata
+                            that.loading = false
+                        }else{
+                            that.mxtableData = []
+                            that.loading = false
+                            that.$message.error(jdata.message);
+                        }
+
+
+                    },
+                    error: function (jqXHR) {
+                        that.loading = false
+                    }
+                });
+            },
+            cagetListdata(cu) {
+                this.loading = true
+                var that = this
+                if(this.caform.key_words!=undefined || this.caform.percentage_change != undefined || this.caform.satisfy_p != undefined || this.caform.sdate != undefined || this.caform.val_change != undefined){
+                    // console.log(this.form.length)
+                    var obj = document.getElementsByName("caonly_who");
+                    if(obj[0].checked==true){
+                        this.caform.percentage_change='';
+                    }
+                    if(obj[1].checked==true){
+                        this.caform.val_change='';
+                    }
+                    if(this.caform.satisfy_p != undefined){
+                        if((this.caform.val_change == undefined && this.caform.percentage_change == '') || (this.caform.val_change == '' && this.caform.percentage_change == undefined)){
+                            this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
+                            this.loading = false
+                            return false
+                        }
+                    }
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "/index/index/getList",
+                    data: {
+                        limit: that.casize,
+                        page: that.cacurrentPage,
+                        search: that.caform,
+                        cu: cu
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        var jdata = JSON.parse(data);
+                        if(jdata.code==1){
+                            that.catableData = jdata.data
+                            that.catotle = jdata.totle
+                            that.capicdata = jdata.picdata
+                            that.loading = false
+                        }else{
+                            that.catableData = []
                             that.loading = false
                             that.$message.error(jdata.message);
                         }
@@ -1925,9 +2224,35 @@
             },
 
 
-            onSubmit(cu) {
-                this.getListdata(cu)
+            usaonSubmit(cu) {
+                this.usagetListdata(cu)
             },
+            ukonSubmit(cu) {
+                this.ukgetListdata(cu)
+            },
+            deonSubmit(cu) {
+                this.degetListdata(cu)
+            },
+            jponSubmit(cu) {
+                this.jpgetListdata(cu)
+            },
+            esponSubmit(cu) {
+                this.espgetListdata(cu)
+            },
+            itonSubmit(cu) {
+                this.itgetListdata(cu)
+            },
+            fronSubmit(cu) {
+                this.frgetListdata(cu)
+            },
+            mxonSubmit(cu) {
+                this.mxgetListdata(cu)
+            },
+            caonSubmit(cu) {
+                this.cagetListdata(cu)
+            },
+
+
             handleSelectionChange(val) {
                 this.multipleSelection = val;
                 // console.log(this.multipleSelection[0]);
@@ -1945,7 +2270,37 @@
                 window.open("/index/index/expExcel?ids="+ids);
             },
             handleClick(tab, event) {
-                console.log(tab, event);
+                if(this.isclicktabs.indexOf(tab.name)==-1){
+                    if(tab.name=='usa'){
+                        this.usagetListdata('usa')
+                    }
+                    if(tab.name=='uk'){
+                        this.ukgetListdata('uk')
+                    }
+                    if(tab.name=='de'){
+                        this.degetListdata('de')
+                    }
+                    if(tab.name=='jp'){
+                        this.jpgetListdata('jp')
+                    }
+                    if(tab.name=='esp'){
+                        this.espgetListdata('esp')
+                    }
+                    if(tab.name=='it'){
+                        this.itgetListdata('it')
+                    }
+                    if(tab.name=='fr'){
+                        this.frgetListdata('fr')
+                    }
+                    if(tab.name=='mx'){
+                        this.mxgetListdata('mx')
+                    }
+                    if(tab.name=='ca'){
+                        this.cagetListdata('ca')
+                    }
+                    this.isclicktabs.push(tab.name)
+                }
+                
             }
         },
         watch: {
@@ -1955,14 +2310,14 @@
         },
         mounted: function () {
             this.usagetListdata('usa')
-            this.ukgetListdata('uk')
-            this.degetListdata('de')
-            this.jpgetListdata('jp')
-            this.espgetListdata('esp')
-            this.itgetListdata('it')
-            this.frgetListdata('fr')
-            this.mxgetListdata('mx')
-            this.cagetListdata('ca')
+            // this.ukgetListdata('uk')
+            // this.degetListdata('de')
+            // this.jpgetListdata('jp')
+            // this.espgetListdata('esp')
+            // this.itgetListdata('it')
+            // this.frgetListdata('fr')
+            // this.mxgetListdata('mx')
+            // this.cagetListdata('ca')
         }
     })
 </script>

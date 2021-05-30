@@ -128,7 +128,6 @@ class Index extends Controller
                                 }
                             }
                         }else{
-//                            跌的时候还没处理
                             if(((int)$pvalue['chang'] / (int)$pvalue['l_rank'])>=((int)$param['search']['percentage_change']/100)){
                                 $List[$key][$val['id']]['update_time'][]=$pvalue['update_time'];
                                 $List[$key][$val['id']]['chang'][]=$pvalue['chang'];

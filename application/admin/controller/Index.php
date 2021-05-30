@@ -36,8 +36,13 @@ class Index extends \think\Controller
 
     public function getListData()
     {
-        $LogCount=Db::table('log')->count();
-        $LogData=Db::table('log')->select();
+        $pages=($_GET['page'] - 1) * $_GET['limit'];
+        $where=[];
+        if(!empty($_GET['errortime'])){
+            $where[]=['error_time','>=',$_GET['errortime']];
+        }
+        $LogCount=Db::table('log')->where($where)->count();
+        $LogData=Db::table('log')->where($where)->limit($pages,$_GET['limit'])->select();
         $res= array(
             'code'=>0,
             'count'=>$LogCount,

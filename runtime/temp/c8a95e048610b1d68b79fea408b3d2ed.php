@@ -1,4 +1,4 @@
-<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622344223;}*/ ?>
+<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622355254;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,104 +20,909 @@
 <body>
 <div id="app">
     <template>
-        <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
-        <div style="width:50%;float: left;margin-top: 30px;">
-            <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
-                <el-form-item label="关键词">
-                    <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
-                </el-form-item>
-                <el-form-item>
-                    <el-button type="primary" size="small" @click="onSubmit">搜索</el-button>
-                </el-form-item>
-            </el-form>
-        </div>
-        <div style="width:50%;float: left;margin-top: 10px;">
-            <div class="block" style="margin-bottom: 5px;">
-                <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
-                <el-date-picker
-                        size="small"
-                        unlink-panels
-                        format="yyyy-MM-dd"
-                        value-format="yyyy-MM-dd"
-                        v-model="form.sdate"
-                        type="daterange"
-                        range-separator="TO"
-                        start-placeholder="开始日期"
-                        end-placeholder="结束日期">
-                </el-date-picker>
-            </div>
-            <div>
-                <el-form ref="form" :model="form" label-width="100px">
-                    <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
-                    <el-form-item label="每周增长量：">
-                        <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
-                    </el-form-item>
-
-                    <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
-                    <el-form-item label="每周增长率：">
-                        <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
-                    </el-form-item>
-                    <el-form-item label="达标比例：" style="margin-left: 13px;">
-                        <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
-                    </el-form-item>
-                </el-form>
-            </div>
-        </div>
-        </div>
-        <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
-                   @click="downloadExcel">导出
-        </el-button>
-
-        <el-table
-                v-loading="loading"
-                :data="tableData"
-                tooltip-effect="dark"
-                :row-key="(row)=>{ return row.id}"
-                stripe
-                style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
-                height="670"
-                :header-cell-style="{textAlign: 'center'}"
-                :cell-style="{ textAlign: 'center' }"
-                @selection-change="handleSelectionChange">
-            <el-table-column
-                    type="selection"
-                    :reserve-selection="true"
-                    width="55">
-            </el-table-column>
-            <el-table-column
-                    fixed
-                    prop="key_words"
-                    label="关键词">
-            </el-table-column>
-            <el-table-column
-                    prop="c_rank"
-                    label="本周排名">
-            </el-table-column>
-            <el-table-column
-                    prop="l_rank"
-                    label="上周排名">
-            </el-table-column>
-            <el-table-column
-                    prop="chang"
-                    label="排名变化">
-            </el-table-column>
-            <el-table-column
-                    prop="update_time"
-                    label="更新时间">
-            </el-table-column>
-            <el-table-column
-                    prop="pic"
-                    label="图表"
-                    width="1300">
-                <template slot-scope="scope">
-                    <div>
-                        {{ text(scope.$index, scope.row.id) }}
-                        <div :id="`tiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
+        <el-tabs v-model="activeName" @tab-click="handleClick" style="width: 98%;margin:0 auto;">
+            <el-tab-pane label="美国" name="usa">
+                <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
+                    <div style="width:50%;float: left;margin-top: 30px;">
+                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                            <el-form-item label="关键词">
+                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="primary" size="small" @click="onSubmit('usa')">搜索</el-button>
+                            </el-form-item>
+                        </el-form>
                     </div>
-                </template>
-            </el-table-column>
-            </el-table-column>
-        </el-table>
+                    <div style="width:50%;float: left;margin-top: 10px;">
+                        <div class="block" style="margin-bottom: 5px;">
+                            <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
+                            <el-date-picker
+                                    size="small"
+                                    unlink-panels
+                                    format="yyyy-MM-dd"
+                                    value-format="yyyy-MM-dd"
+                                    v-model="form.sdate"
+                                    type="daterange"
+                                    range-separator="TO"
+                                    start-placeholder="开始日期"
+                                    end-placeholder="结束日期">
+                            </el-date-picker>
+                        </div>
+                        <div>
+                            <el-form ref="form" :model="form" label-width="100px">
+                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长量：">
+                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                </el-form-item>
+
+                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长率：">
+                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                </el-form-item>
+                                <el-form-item label="达标比例：" style="margin-left: 13px;">
+                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                </el-form-item>
+                            </el-form>
+                        </div>
+                    </div>
+                </div>
+                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
+                           @click="downloadExcel">导出
+                </el-button>
+
+                <el-table
+                        v-loading="loading"
+                        :data="tableData"
+                        tooltip-effect="dark"
+                        :row-key="(row)=>{ return row.id}"
+                        stripe
+                        style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
+                        height="670"
+                        :header-cell-style="{textAlign: 'center'}"
+                        :cell-style="{ textAlign: 'center' }"
+                        @selection-change="handleSelectionChange">
+                    <el-table-column
+                            type="selection"
+                            :reserve-selection="true"
+                            width="55">
+                    </el-table-column>
+                    <el-table-column
+                            fixed
+                            prop="key_words"
+                            label="关键词">
+                    </el-table-column>
+                    <el-table-column
+                            prop="c_rank"
+                            label="本周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="l_rank"
+                            label="上周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="chang"
+                            label="排名变化">
+                    </el-table-column>
+                    <el-table-column
+                            prop="update_time"
+                            label="更新时间">
+                    </el-table-column>
+                    <el-table-column
+                            prop="pic"
+                            label="图表"
+                            width="1300">
+                        <template slot-scope="scope">
+                            <div>
+                                {{ text(scope.$index, scope.row.id,'usa') }}
+                                <div :id="`usatiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
+                            </div>
+                        </template>
+                    </el-table-column>
+                    </el-table-column>
+                </el-table>
+            </el-tab-pane>
+            <el-tab-pane label="英国" name="second">
+                <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
+                    <div style="width:50%;float: left;margin-top: 30px;">
+                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                            <el-form-item label="关键词">
+                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="primary" size="small" @click="onSubmit('uk')">搜索</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </div>
+                    <div style="width:50%;float: left;margin-top: 10px;">
+                        <div class="block" style="margin-bottom: 5px;">
+                            <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
+                            <el-date-picker
+                                    size="small"
+                                    unlink-panels
+                                    format="yyyy-MM-dd"
+                                    value-format="yyyy-MM-dd"
+                                    v-model="form.sdate"
+                                    type="daterange"
+                                    range-separator="TO"
+                                    start-placeholder="开始日期"
+                                    end-placeholder="结束日期">
+                            </el-date-picker>
+                        </div>
+                        <div>
+                            <el-form ref="form" :model="form" label-width="100px">
+                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长量：">
+                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                </el-form-item>
+
+                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长率：">
+                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                </el-form-item>
+                                <el-form-item label="达标比例：" style="margin-left: 13px;">
+                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                </el-form-item>
+                            </el-form>
+                        </div>
+                    </div>
+                </div>
+                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
+                           @click="downloadExcel">导出
+                </el-button>
+
+                <el-table
+                        v-loading="loading"
+                        :data="tableData"
+                        tooltip-effect="dark"
+                        :row-key="(row)=>{ return row.id}"
+                        stripe
+                        style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
+                        height="670"
+                        :header-cell-style="{textAlign: 'center'}"
+                        :cell-style="{ textAlign: 'center' }"
+                        @selection-change="handleSelectionChange">
+                    <el-table-column
+                            type="selection"
+                            :reserve-selection="true"
+                            width="55">
+                    </el-table-column>
+                    <el-table-column
+                            fixed
+                            prop="key_words"
+                            label="关键词">
+                    </el-table-column>
+                    <el-table-column
+                            prop="c_rank"
+                            label="本周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="l_rank"
+                            label="上周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="chang"
+                            label="排名变化">
+                    </el-table-column>
+                    <el-table-column
+                            prop="update_time"
+                            label="更新时间">
+                    </el-table-column>
+                    <el-table-column
+                            prop="pic"
+                            label="图表"
+                            width="1300">
+                        <template slot-scope="scope">
+                            <div>
+                                {{ text(scope.$index, scope.row.id,'uk') }}
+                                <div :id="`uktiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
+                            </div>
+                        </template>
+                    </el-table-column>
+                    </el-table-column>
+                </el-table>
+            </el-tab-pane>
+            <el-tab-pane label="德国" name="third">
+                <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
+                    <div style="width:50%;float: left;margin-top: 30px;">
+                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                            <el-form-item label="关键词">
+                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="primary" size="small" @click="onSubmit('de')">搜索</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </div>
+                    <div style="width:50%;float: left;margin-top: 10px;">
+                        <div class="block" style="margin-bottom: 5px;">
+                            <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
+                            <el-date-picker
+                                    size="small"
+                                    unlink-panels
+                                    format="yyyy-MM-dd"
+                                    value-format="yyyy-MM-dd"
+                                    v-model="form.sdate"
+                                    type="daterange"
+                                    range-separator="TO"
+                                    start-placeholder="开始日期"
+                                    end-placeholder="结束日期">
+                            </el-date-picker>
+                        </div>
+                        <div>
+                            <el-form ref="form" :model="form" label-width="100px">
+                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长量：">
+                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                </el-form-item>
+
+                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长率：">
+                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                </el-form-item>
+                                <el-form-item label="达标比例：" style="margin-left: 13px;">
+                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                </el-form-item>
+                            </el-form>
+                        </div>
+                    </div>
+                </div>
+                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
+                           @click="downloadExcel">导出
+                </el-button>
+
+                <el-table
+                        v-loading="loading"
+                        :data="tableData"
+                        tooltip-effect="dark"
+                        :row-key="(row)=>{ return row.id}"
+                        stripe
+                        style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
+                        height="670"
+                        :header-cell-style="{textAlign: 'center'}"
+                        :cell-style="{ textAlign: 'center' }"
+                        @selection-change="handleSelectionChange">
+                    <el-table-column
+                            type="selection"
+                            :reserve-selection="true"
+                            width="55">
+                    </el-table-column>
+                    <el-table-column
+                            fixed
+                            prop="key_words"
+                            label="关键词">
+                    </el-table-column>
+                    <el-table-column
+                            prop="c_rank"
+                            label="本周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="l_rank"
+                            label="上周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="chang"
+                            label="排名变化">
+                    </el-table-column>
+                    <el-table-column
+                            prop="update_time"
+                            label="更新时间">
+                    </el-table-column>
+                    <el-table-column
+                            prop="pic"
+                            label="图表"
+                            width="1300">
+                        <template slot-scope="scope">
+                            <div>
+                                {{ text(scope.$index, scope.row.id,'de') }}
+                                <div :id="`detiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
+                            </div>
+                        </template>
+                    </el-table-column>
+                    </el-table-column>
+                </el-table>
+            </el-tab-pane>
+            <el-tab-pane label="日本" name="fourth">
+                <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
+                    <div style="width:50%;float: left;margin-top: 30px;">
+                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                            <el-form-item label="关键词">
+                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="primary" size="small" @click="onSubmit('jp')">搜索</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </div>
+                    <div style="width:50%;float: left;margin-top: 10px;">
+                        <div class="block" style="margin-bottom: 5px;">
+                            <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
+                            <el-date-picker
+                                    size="small"
+                                    unlink-panels
+                                    format="yyyy-MM-dd"
+                                    value-format="yyyy-MM-dd"
+                                    v-model="form.sdate"
+                                    type="daterange"
+                                    range-separator="TO"
+                                    start-placeholder="开始日期"
+                                    end-placeholder="结束日期">
+                            </el-date-picker>
+                        </div>
+                        <div>
+                            <el-form ref="form" :model="form" label-width="100px">
+                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长量：">
+                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                </el-form-item>
+
+                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长率：">
+                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                </el-form-item>
+                                <el-form-item label="达标比例：" style="margin-left: 13px;">
+                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                </el-form-item>
+                            </el-form>
+                        </div>
+                    </div>
+                </div>
+                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
+                           @click="downloadExcel">导出
+                </el-button>
+
+                <el-table
+                        v-loading="loading"
+                        :data="tableData"
+                        tooltip-effect="dark"
+                        :row-key="(row)=>{ return row.id}"
+                        stripe
+                        style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
+                        height="670"
+                        :header-cell-style="{textAlign: 'center'}"
+                        :cell-style="{ textAlign: 'center' }"
+                        @selection-change="handleSelectionChange">
+                    <el-table-column
+                            type="selection"
+                            :reserve-selection="true"
+                            width="55">
+                    </el-table-column>
+                    <el-table-column
+                            fixed
+                            prop="key_words"
+                            label="关键词">
+                    </el-table-column>
+                    <el-table-column
+                            prop="c_rank"
+                            label="本周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="l_rank"
+                            label="上周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="chang"
+                            label="排名变化">
+                    </el-table-column>
+                    <el-table-column
+                            prop="update_time"
+                            label="更新时间">
+                    </el-table-column>
+                    <el-table-column
+                            prop="pic"
+                            label="图表"
+                            width="1300">
+                        <template slot-scope="scope">
+                            <div>
+                                {{ text(scope.$index, scope.row.id,'jp') }}
+                                <div :id="`jptiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
+                            </div>
+                        </template>
+                    </el-table-column>
+                    </el-table-column>
+                </el-table>
+            </el-tab-pane>
+            <el-tab-pane label="西班牙" name="fourth">
+                <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
+                    <div style="width:50%;float: left;margin-top: 30px;">
+                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                            <el-form-item label="关键词">
+                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="primary" size="small" @click="onSubmit('esp')">搜索</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </div>
+                    <div style="width:50%;float: left;margin-top: 10px;">
+                        <div class="block" style="margin-bottom: 5px;">
+                            <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
+                            <el-date-picker
+                                    size="small"
+                                    unlink-panels
+                                    format="yyyy-MM-dd"
+                                    value-format="yyyy-MM-dd"
+                                    v-model="form.sdate"
+                                    type="daterange"
+                                    range-separator="TO"
+                                    start-placeholder="开始日期"
+                                    end-placeholder="结束日期">
+                            </el-date-picker>
+                        </div>
+                        <div>
+                            <el-form ref="form" :model="form" label-width="100px">
+                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长量：">
+                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                </el-form-item>
+
+                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长率：">
+                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                </el-form-item>
+                                <el-form-item label="达标比例：" style="margin-left: 13px;">
+                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                </el-form-item>
+                            </el-form>
+                        </div>
+                    </div>
+                </div>
+                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
+                           @click="downloadExcel">导出
+                </el-button>
+
+                <el-table
+                        v-loading="loading"
+                        :data="tableData"
+                        tooltip-effect="dark"
+                        :row-key="(row)=>{ return row.id}"
+                        stripe
+                        style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
+                        height="670"
+                        :header-cell-style="{textAlign: 'center'}"
+                        :cell-style="{ textAlign: 'center' }"
+                        @selection-change="handleSelectionChange">
+                    <el-table-column
+                            type="selection"
+                            :reserve-selection="true"
+                            width="55">
+                    </el-table-column>
+                    <el-table-column
+                            fixed
+                            prop="key_words"
+                            label="关键词">
+                    </el-table-column>
+                    <el-table-column
+                            prop="c_rank"
+                            label="本周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="l_rank"
+                            label="上周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="chang"
+                            label="排名变化">
+                    </el-table-column>
+                    <el-table-column
+                            prop="update_time"
+                            label="更新时间">
+                    </el-table-column>
+                    <el-table-column
+                            prop="pic"
+                            label="图表"
+                            width="1300">
+                        <template slot-scope="scope">
+                            <div>
+                                {{ text(scope.$index, scope.row.id,'esp') }}
+                                <div :id="`esptiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
+                            </div>
+                        </template>
+                    </el-table-column>
+                    </el-table-column>
+                </el-table>
+            </el-tab-pane>
+            <el-tab-pane label="意大利" name="fourth">
+                <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
+                    <div style="width:50%;float: left;margin-top: 30px;">
+                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                            <el-form-item label="关键词">
+                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="primary" size="small" @click="onSubmit('ti')">搜索</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </div>
+                    <div style="width:50%;float: left;margin-top: 10px;">
+                        <div class="block" style="margin-bottom: 5px;">
+                            <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
+                            <el-date-picker
+                                    size="small"
+                                    unlink-panels
+                                    format="yyyy-MM-dd"
+                                    value-format="yyyy-MM-dd"
+                                    v-model="form.sdate"
+                                    type="daterange"
+                                    range-separator="TO"
+                                    start-placeholder="开始日期"
+                                    end-placeholder="结束日期">
+                            </el-date-picker>
+                        </div>
+                        <div>
+                            <el-form ref="form" :model="form" label-width="100px">
+                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长量：">
+                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                </el-form-item>
+
+                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长率：">
+                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                </el-form-item>
+                                <el-form-item label="达标比例：" style="margin-left: 13px;">
+                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                </el-form-item>
+                            </el-form>
+                        </div>
+                    </div>
+                </div>
+                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
+                           @click="downloadExcel">导出
+                </el-button>
+
+                <el-table
+                        v-loading="loading"
+                        :data="tableData"
+                        tooltip-effect="dark"
+                        :row-key="(row)=>{ return row.id}"
+                        stripe
+                        style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
+                        height="670"
+                        :header-cell-style="{textAlign: 'center'}"
+                        :cell-style="{ textAlign: 'center' }"
+                        @selection-change="handleSelectionChange">
+                    <el-table-column
+                            type="selection"
+                            :reserve-selection="true"
+                            width="55">
+                    </el-table-column>
+                    <el-table-column
+                            fixed
+                            prop="key_words"
+                            label="关键词">
+                    </el-table-column>
+                    <el-table-column
+                            prop="c_rank"
+                            label="本周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="l_rank"
+                            label="上周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="chang"
+                            label="排名变化">
+                    </el-table-column>
+                    <el-table-column
+                            prop="update_time"
+                            label="更新时间">
+                    </el-table-column>
+                    <el-table-column
+                            prop="pic"
+                            label="图表"
+                            width="1300">
+                        <template slot-scope="scope">
+                            <div>
+                                {{ text(scope.$index, scope.row.id,'it') }}
+                                <div :id="`ittiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
+                            </div>
+                        </template>
+                    </el-table-column>
+                    </el-table-column>
+                </el-table>
+            </el-tab-pane>
+            <el-tab-pane label="法国" name="fourth">
+                <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
+                    <div style="width:50%;float: left;margin-top: 30px;">
+                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                            <el-form-item label="关键词">
+                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="primary" size="small" @click="onSubmit('fr')">搜索</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </div>
+                    <div style="width:50%;float: left;margin-top: 10px;">
+                        <div class="block" style="margin-bottom: 5px;">
+                            <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
+                            <el-date-picker
+                                    size="small"
+                                    unlink-panels
+                                    format="yyyy-MM-dd"
+                                    value-format="yyyy-MM-dd"
+                                    v-model="form.sdate"
+                                    type="daterange"
+                                    range-separator="TO"
+                                    start-placeholder="开始日期"
+                                    end-placeholder="结束日期">
+                            </el-date-picker>
+                        </div>
+                        <div>
+                            <el-form ref="form" :model="form" label-width="100px">
+                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长量：">
+                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                </el-form-item>
+
+                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长率：">
+                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                </el-form-item>
+                                <el-form-item label="达标比例：" style="margin-left: 13px;">
+                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                </el-form-item>
+                            </el-form>
+                        </div>
+                    </div>
+                </div>
+                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
+                           @click="downloadExcel">导出
+                </el-button>
+
+                <el-table
+                        v-loading="loading"
+                        :data="tableData"
+                        tooltip-effect="dark"
+                        :row-key="(row)=>{ return row.id}"
+                        stripe
+                        style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
+                        height="670"
+                        :header-cell-style="{textAlign: 'center'}"
+                        :cell-style="{ textAlign: 'center' }"
+                        @selection-change="handleSelectionChange">
+                    <el-table-column
+                            type="selection"
+                            :reserve-selection="true"
+                            width="55">
+                    </el-table-column>
+                    <el-table-column
+                            fixed
+                            prop="key_words"
+                            label="关键词">
+                    </el-table-column>
+                    <el-table-column
+                            prop="c_rank"
+                            label="本周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="l_rank"
+                            label="上周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="chang"
+                            label="排名变化">
+                    </el-table-column>
+                    <el-table-column
+                            prop="update_time"
+                            label="更新时间">
+                    </el-table-column>
+                    <el-table-column
+                            prop="pic"
+                            label="图表"
+                            width="1300">
+                        <template slot-scope="scope">
+                            <div>
+                                {{ text(scope.$index, scope.row.id,'fr') }}
+                                <div :id="`frtiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
+                            </div>
+                        </template>
+                    </el-table-column>
+                    </el-table-column>
+                </el-table>
+            </el-tab-pane>
+            <el-tab-pane label="墨西哥" name="fourth">
+                <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
+                    <div style="width:50%;float: left;margin-top: 30px;">
+                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                            <el-form-item label="关键词">
+                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="primary" size="small" @click="onSubmit('mx')">搜索</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </div>
+                    <div style="width:50%;float: left;margin-top: 10px;">
+                        <div class="block" style="margin-bottom: 5px;">
+                            <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
+                            <el-date-picker
+                                    size="small"
+                                    unlink-panels
+                                    format="yyyy-MM-dd"
+                                    value-format="yyyy-MM-dd"
+                                    v-model="form.sdate"
+                                    type="daterange"
+                                    range-separator="TO"
+                                    start-placeholder="开始日期"
+                                    end-placeholder="结束日期">
+                            </el-date-picker>
+                        </div>
+                        <div>
+                            <el-form ref="form" :model="form" label-width="100px">
+                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长量：">
+                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                </el-form-item>
+
+                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长率：">
+                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                </el-form-item>
+                                <el-form-item label="达标比例：" style="margin-left: 13px;">
+                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                </el-form-item>
+                            </el-form>
+                        </div>
+                    </div>
+                </div>
+                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
+                           @click="downloadExcel">导出
+                </el-button>
+
+                <el-table
+                        v-loading="loading"
+                        :data="tableData"
+                        tooltip-effect="dark"
+                        :row-key="(row)=>{ return row.id}"
+                        stripe
+                        style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
+                        height="670"
+                        :header-cell-style="{textAlign: 'center'}"
+                        :cell-style="{ textAlign: 'center' }"
+                        @selection-change="handleSelectionChange">
+                    <el-table-column
+                            type="selection"
+                            :reserve-selection="true"
+                            width="55">
+                    </el-table-column>
+                    <el-table-column
+                            fixed
+                            prop="key_words"
+                            label="关键词">
+                    </el-table-column>
+                    <el-table-column
+                            prop="c_rank"
+                            label="本周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="l_rank"
+                            label="上周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="chang"
+                            label="排名变化">
+                    </el-table-column>
+                    <el-table-column
+                            prop="update_time"
+                            label="更新时间">
+                    </el-table-column>
+                    <el-table-column
+                            prop="pic"
+                            label="图表"
+                            width="1300">
+                        <template slot-scope="scope">
+                            <div>
+                                {{ text(scope.$index, scope.row.id,'mx') }}
+                                <div :id="`mxtiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
+                            </div>
+                        </template>
+                    </el-table-column>
+                    </el-table-column>
+                </el-table>
+            </el-tab-pane>
+            <el-tab-pane label="加拿大" name="fourth">
+                <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
+                    <div style="width:50%;float: left;margin-top: 30px;">
+                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                            <el-form-item label="关键词">
+                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="primary" size="small" @click="onSubmit('ca')">搜索</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </div>
+                    <div style="width:50%;float: left;margin-top: 10px;">
+                        <div class="block" style="margin-bottom: 5px;">
+                            <span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：&nbsp;&nbsp;</span>
+                            <el-date-picker
+                                    size="small"
+                                    unlink-panels
+                                    format="yyyy-MM-dd"
+                                    value-format="yyyy-MM-dd"
+                                    v-model="form.sdate"
+                                    type="daterange"
+                                    range-separator="TO"
+                                    start-placeholder="开始日期"
+                                    end-placeholder="结束日期">
+                            </el-date-picker>
+                        </div>
+                        <div>
+                            <el-form ref="form" :model="form" label-width="100px">
+                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长量：">
+                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                </el-form-item>
+
+                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <el-form-item label="每周增长率：">
+                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                </el-form-item>
+                                <el-form-item label="达标比例：" style="margin-left: 13px;">
+                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                </el-form-item>
+                            </el-form>
+                        </div>
+                    </div>
+                </div>
+                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
+                           @click="downloadExcel">导出
+                </el-button>
+
+                <el-table
+                        v-loading="loading"
+                        :data="tableData"
+                        tooltip-effect="dark"
+                        :row-key="(row)=>{ return row.id}"
+                        stripe
+                        style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
+                        height="670"
+                        :header-cell-style="{textAlign: 'center'}"
+                        :cell-style="{ textAlign: 'center' }"
+                        @selection-change="handleSelectionChange">
+                    <el-table-column
+                            type="selection"
+                            :reserve-selection="true"
+                            width="55">
+                    </el-table-column>
+                    <el-table-column
+                            fixed
+                            prop="key_words"
+                            label="关键词">
+                    </el-table-column>
+                    <el-table-column
+                            prop="c_rank"
+                            label="本周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="l_rank"
+                            label="上周排名">
+                    </el-table-column>
+                    <el-table-column
+                            prop="chang"
+                            label="排名变化">
+                    </el-table-column>
+                    <el-table-column
+                            prop="update_time"
+                            label="更新时间">
+                    </el-table-column>
+                    <el-table-column
+                            prop="pic"
+                            label="图表"
+                            width="1300">
+                        <template slot-scope="scope">
+                            <div>
+                                {{ text(scope.$index, scope.row.id,'ca') }}
+                                <div :id="`catiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
+                            </div>
+                        </template>
+                    </el-table-column>
+                    </el-table-column>
+                </el-table>
+            </el-tab-pane>
+        </el-tabs>
+
     </template>
     <template>
         <div class="block">
@@ -151,48 +956,12 @@
                 picdata: [],
                 multipleSelection: [], //选中的数据
                 excelData: [],
-                tableData: [
-                    //     {
-                    //     key_words: 'text_key_work',
-                    //     c_rank: '2',
-                    //     l_rank: '4',
-                    //     chang: '2',
-                    //     update_time: '2021-05-25',
-                    //     pic: ''
-                    // },{
-                    //     key_words: 'text_key_work',
-                    //     c_rank: '2',
-                    //     l_rank: '4',
-                    //     chang: '2',
-                    //     update_time: '2021-05-25',
-                    //     pic: ''
-                    // },{
-                    //     key_words: 'text_key_work',
-                    //     c_rank: '2',
-                    //     l_rank: '4',
-                    //     chang: '2',
-                    //     update_time: '2021-05-25',
-                    //     pic: ''
-                    // },{
-                    //     key_words: 'text_key_work',
-                    //     c_rank: '2',
-                    //     l_rank: '4',
-                    //     chang: '2',
-                    //     update_time: '2021-05-25',
-                    //     pic: ''
-                    // },{
-                    //     key_words: 'text_key_work',
-                    //     c_rank: '2',
-                    //     l_rank: '4',
-                    //     chang: '2',
-                    //     update_time: '2021-05-25',
-                    //     pic: ''
-                    // }
-                ]
+                tableData: [],
+                activeName: 'second'
             }
         },
         methods: {
-            getListdata() {
+            getListdata(cu) {
                 this.loading = true
                 var that = this
                 // console.log(this.form)
@@ -205,6 +974,15 @@
                     if(obj[1].checked==true){
                         this.form.val_change='';
                     }
+                    if(this.form.satisfy_p != undefined){
+                        console.log(this.form.val_change)
+                        console.log(this.form.percentage_change)
+                        if((this.form.val_change == undefined && this.form.percentage_change == '') || (this.form.val_change == '' && this.form.percentage_change == undefined)){
+                            this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
+                            this.loading = false
+                            return false
+                        }
+                    }
                 }
 
                 $.ajax({
@@ -213,15 +991,23 @@
                     data: {
                         limit: that.size,
                         page: that.currentPage,
-                        search: that.form
+                        search: that.form,
+                        cu: cu
                     },
                     dataType: "json",
                     success: function (data) {
                         var jdata = JSON.parse(data);
-                        that.tableData = jdata.data
-                        that.totle = jdata.totle
-                        that.picdata = jdata.picdata
-                        that.loading = false
+                        if(jdata.code==1){
+                            that.tableData = jdata.data
+                            that.totle = jdata.totle
+                            that.picdata = jdata.picdata
+                            that.loading = false
+                        }else{
+                            that.tableData = []
+                            that.loading = false
+                            that.$message.error(jdata.message);
+                        }
+
                     },
                     error: function (jqXHR) {
                         that.loading = false
@@ -229,7 +1015,7 @@
                 });
             },
 
-            text: function (idname, id) {
+            text: function (idname, id,cu) {
                 // console.log(this.tableData[idname].key_words)
                 var that = this
                 // console.log(idname)
@@ -288,7 +1074,7 @@
                         }
                     }]
                 }
-                var id = 'tiger-sale-trend-index' + idname
+                var id = cu+'tiger-sale-trend-index' + idname
                 this.$nextTick(() => {
                     let myChart = echarts.init(document.getElementById(id), 'macarons');
                     myChart.setOption(option);
@@ -297,14 +1083,16 @@
             },
             handleSizeChange(val) {
                 this.size = val
+                this.getListdata()
                 // console.log(`每页 ${val} 条`);
             },
             handleCurrentChange(val) {
                 this.currentPage = val
+                this.getListdata()
                 // console.log(`当前页: ${val}`);
             },
-            onSubmit() {
-                this.getListdata()
+            onSubmit(cu) {
+                this.getListdata(cu)
             },
             handleSelectionChange(val) {
                 this.multipleSelection = val;
@@ -321,15 +1109,15 @@
                     ids+=this.multipleSelection[i].id+',';
                 }
                 window.open("/index/index/expExcel?ids="+ids);
+            },
+            handleClick(tab, event) {
+                console.log(tab, event);
             }
         },
         watch: {
             size: function (newval, oldval) {
-                this.getListdata()
+
             },
-            currentPage: function (newval, oldval) {
-                this.getListdata()
-            }
         },
         mounted: function () {
             this.getListdata()

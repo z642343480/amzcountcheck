@@ -18,7 +18,44 @@ class Index extends Controller
     	if(!isset($param['page']) || !isset($param['limit'])){
     		exit;
     	}
-    	$date=new \DateTime();//时间对象
+    	if(isset($param['search']['val_change']) && !empty($param['search']['val_change'])){
+            if(!is_numeric($param['search']['val_change'])){
+                $res=array(
+                    'data'=>[],
+                    'totle'=>0,
+                    'code'=>0,
+                    'message'=>'每周增长量必须输入数字'
+                );
+                return json_encode($res,true);exit;
+
+            }
+    	}
+    	if(isset($param['search']['percentage_change'])  && !empty($param['search']['percentage_change'])){
+            if(!is_numeric($param['search']['percentage_change'])){
+                $res=array(
+                    'data'=>[],
+                    'totle'=>0,
+                    'code'=>0,
+                    'message'=>'每周增长率必须输入数字'
+                );
+                return json_encode($res,true);exit;
+
+            }
+    	}
+    	if(isset($param['search']['satisfy_p'])){
+            if(!is_numeric($param['search']['satisfy_p'])){
+                $res=array(
+                    'data'=>[],
+                    'totle'=>0,
+                    'code'=>0,
+                    'message'=>'达标比例必须输入数字'
+                );
+                return json_encode($res,true);exit;
+
+            }
+    	}
+
+        $date=new \DateTime();//时间对象
 		$date->modify('this week');
 		$wek =$date->format('Y-m-d');
 		$date->modify('this week +6 days');
@@ -60,10 +97,11 @@ class Index extends Controller
                 if(!empty($param['search']['sdate'])){
                     $picwhere[]=["update_time",'>=',$param['search']['sdate'][0]];
                     $picwhere[]=["update_time",'<=',$param['search']['sdate'][1]];
-                }else{
-                    $picwhere[]=["update_time",'>=',$wek];
-                    $picwhere[]=["update_time",'<=',$sund];
                 }
+//                else{
+//                    $picwhere[]=["update_time",'>=',$wek];
+//                    $picwhere[]=["update_time",'<=',$sund];
+//                }
 
 
                 $PicList=Db::table($this->tablename)->where($picwhere)->select();
@@ -148,6 +186,7 @@ class Index extends Controller
         $res=array(
         	'data'=>$List,
         	'totle'=>$countlist,
+            'code'=>1
         );
         return json_encode($res,true);
 

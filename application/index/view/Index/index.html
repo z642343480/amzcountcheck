@@ -19,13 +19,13 @@
 <body>
 <div id="app">
     <template>
-        <el-tabs v-model="activeName" @tab-click="handleClick" style="width: 98%;margin:0 auto;">
+        <el-tabs type="border-card" v-model="activeName" @tab-click="handleClick" style="width: 98%;margin:0 auto;">
             <el-tab-pane label="美国" name="usa">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="usaform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="usaform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="onSubmit('usa')">搜索</el-button>
@@ -40,7 +40,7 @@
                                     unlink-panels
                                     format="yyyy-MM-dd"
                                     value-format="yyyy-MM-dd"
-                                    v-model="form.sdate"
+                                    v-model="usaform.sdate"
                                     type="daterange"
                                     range-separator="TO"
                                     start-placeholder="开始日期"
@@ -48,18 +48,18 @@
                             </el-date-picker>
                         </div>
                         <div>
-                            <el-form ref="form" :model="form" label-width="100px">
-                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                            <el-form ref="form" :model="usaform" label-width="100px">
+                                <input type="radio" name="usaonly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model="usaform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
-                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <input type="radio" name="usaonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model="usaform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model="usaform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -71,7 +71,7 @@
 
                 <el-table
                         v-loading="loading"
-                        :data="tableData"
+                        :data="usatableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
                         stripe
@@ -112,20 +112,31 @@
                             width="1300">
                         <template slot-scope="scope">
                             <div>
-                                {{ text(scope.$index, scope.row.id,'usa') }}
+                                {{ usatext(scope.$index, scope.row.id,'usa') }}
                                 <div :id="`usatiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
                             </div>
                         </template>
                     </el-table-column>
                     </el-table-column>
                 </el-table>
+                <div class="block">
+                    <el-pagination
+                            @size-change="usahandleSizeChange"
+                            @current-change="usahandleCurrentChange"
+                            :current-page="usacurrentPage"
+                            :page-sizes="[5, 10, 20, 50]"
+                            :page-size="usasize"
+                            layout="total, sizes, prev, pager, next, jumper"
+                            :total="usatotle">
+                    </el-pagination>
+                </div>
             </el-tab-pane>
-            <el-tab-pane label="英国" name="second">
+            <el-tab-pane label="英国" name="uk">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="ukform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="ukform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="onSubmit('uk')">搜索</el-button>
@@ -140,7 +151,7 @@
                                     unlink-panels
                                     format="yyyy-MM-dd"
                                     value-format="yyyy-MM-dd"
-                                    v-model="form.sdate"
+                                    v-model="ukform.sdate"
                                     type="daterange"
                                     range-separator="TO"
                                     start-placeholder="开始日期"
@@ -148,18 +159,18 @@
                             </el-date-picker>
                         </div>
                         <div>
-                            <el-form ref="form" :model="form" label-width="100px">
-                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                            <el-form ref="form" :model="ukform" label-width="100px">
+                                <input type="radio" name="ukonly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model="ukform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
-                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <input type="radio" name="ukonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model="ukform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model="ukform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -171,7 +182,7 @@
 
                 <el-table
                         v-loading="loading"
-                        :data="tableData"
+                        :data="uktableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
                         stripe
@@ -212,20 +223,31 @@
                             width="1300">
                         <template slot-scope="scope">
                             <div>
-                                {{ text(scope.$index, scope.row.id,'uk') }}
+                                {{ uktext(scope.$index, scope.row.id,'uk') }}
                                 <div :id="`uktiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
                             </div>
                         </template>
                     </el-table-column>
                     </el-table-column>
                 </el-table>
+                <div class="block">
+                    <el-pagination
+                            @size-change="ukhandleSizeChange"
+                            @current-change="ukhandleCurrentChange"
+                            :current-page="ukcurrentPage"
+                            :page-sizes="[5, 10, 20, 50]"
+                            :page-size="uksize"
+                            layout="total, sizes, prev, pager, next, jumper"
+                            :total="uktotle">
+                    </el-pagination>
+                </div>
             </el-tab-pane>
-            <el-tab-pane label="德国" name="third">
+            <el-tab-pane label="德国" name="de">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="deform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="deform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="onSubmit('de')">搜索</el-button>
@@ -240,7 +262,7 @@
                                     unlink-panels
                                     format="yyyy-MM-dd"
                                     value-format="yyyy-MM-dd"
-                                    v-model="form.sdate"
+                                    v-model="deform.sdate"
                                     type="daterange"
                                     range-separator="TO"
                                     start-placeholder="开始日期"
@@ -248,18 +270,18 @@
                             </el-date-picker>
                         </div>
                         <div>
-                            <el-form ref="form" :model="form" label-width="100px">
-                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                            <el-form ref="form" :model="deform" label-width="100px">
+                                <input type="radio" name="deonly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model="deform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
-                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <input type="radio" name="deonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model="deform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model="deform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -271,7 +293,7 @@
 
                 <el-table
                         v-loading="loading"
-                        :data="tableData"
+                        :data="detableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
                         stripe
@@ -312,20 +334,31 @@
                             width="1300">
                         <template slot-scope="scope">
                             <div>
-                                {{ text(scope.$index, scope.row.id,'de') }}
+                                {{ detext(scope.$index, scope.row.id,'de') }}
                                 <div :id="`detiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
                             </div>
                         </template>
                     </el-table-column>
                     </el-table-column>
                 </el-table>
+                <div class="block">
+                    <el-pagination
+                            @size-change="dehandleSizeChange"
+                            @current-change="dehandleCurrentChange"
+                            :current-page="decurrentPage"
+                            :page-sizes="[5, 10, 20, 50]"
+                            :page-size="desize"
+                            layout="total, sizes, prev, pager, next, jumper"
+                            :total="detotle">
+                    </el-pagination>
+                </div>
             </el-tab-pane>
-            <el-tab-pane label="日本" name="fourth">
+            <el-tab-pane label="日本" name="jp">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="jpform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="jpform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="onSubmit('jp')">搜索</el-button>
@@ -340,7 +373,7 @@
                                     unlink-panels
                                     format="yyyy-MM-dd"
                                     value-format="yyyy-MM-dd"
-                                    v-model="form.sdate"
+                                    v-model="jpform.sdate"
                                     type="daterange"
                                     range-separator="TO"
                                     start-placeholder="开始日期"
@@ -348,18 +381,18 @@
                             </el-date-picker>
                         </div>
                         <div>
-                            <el-form ref="form" :model="form" label-width="100px">
-                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                            <el-form ref="form" :model="jpform" label-width="100px">
+                                <input type="radio" name="jponly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model="jpform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
-                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <input type="radio" name="jponly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model="jpform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model="jpform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -371,7 +404,7 @@
 
                 <el-table
                         v-loading="loading"
-                        :data="tableData"
+                        :data="jptableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
                         stripe
@@ -412,20 +445,31 @@
                             width="1300">
                         <template slot-scope="scope">
                             <div>
-                                {{ text(scope.$index, scope.row.id,'jp') }}
+                                {{ jptext(scope.$index, scope.row.id,'jp') }}
                                 <div :id="`jptiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
                             </div>
                         </template>
                     </el-table-column>
                     </el-table-column>
                 </el-table>
+                <div class="block">
+                    <el-pagination
+                            @size-change="jphandleSizeChange"
+                            @current-change="jphandleCurrentChange"
+                            :current-page="jpcurrentPage"
+                            :page-sizes="[5, 10, 20, 50]"
+                            :page-size="jpsize"
+                            layout="total, sizes, prev, pager, next, jumper"
+                            :total="jptotle">
+                    </el-pagination>
+                </div>
             </el-tab-pane>
-            <el-tab-pane label="西班牙" name="fourth">
+            <el-tab-pane label="西班牙" name="esp">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="espform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="espform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="onSubmit('esp')">搜索</el-button>
@@ -440,7 +484,7 @@
                                     unlink-panels
                                     format="yyyy-MM-dd"
                                     value-format="yyyy-MM-dd"
-                                    v-model="form.sdate"
+                                    v-model="espform.sdate"
                                     type="daterange"
                                     range-separator="TO"
                                     start-placeholder="开始日期"
@@ -448,18 +492,18 @@
                             </el-date-picker>
                         </div>
                         <div>
-                            <el-form ref="form" :model="form" label-width="100px">
-                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                            <el-form ref="form" :model="espform" label-width="100px">
+                                <input type="radio" name="esponly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model="espform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
-                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <input type="radio" name="esponly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model="espform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model="espform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -471,7 +515,7 @@
 
                 <el-table
                         v-loading="loading"
-                        :data="tableData"
+                        :data="esptableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
                         stripe
@@ -512,20 +556,31 @@
                             width="1300">
                         <template slot-scope="scope">
                             <div>
-                                {{ text(scope.$index, scope.row.id,'esp') }}
+                                {{ esptext(scope.$index, scope.row.id,'esp') }}
                                 <div :id="`esptiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
                             </div>
                         </template>
                     </el-table-column>
                     </el-table-column>
                 </el-table>
+                <div class="block">
+                    <el-pagination
+                            @size-change="esphandleSizeChange"
+                            @current-change="esphandleCurrentChange"
+                            :current-page="espcurrentPage"
+                            :page-sizes="[5, 10, 20, 50]"
+                            :page-size="espsize"
+                            layout="total, sizes, prev, pager, next, jumper"
+                            :total="esptotle">
+                    </el-pagination>
+                </div>
             </el-tab-pane>
-            <el-tab-pane label="意大利" name="fourth">
+            <el-tab-pane label="意大利" name="it">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="itform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="itform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="onSubmit('ti')">搜索</el-button>
@@ -540,7 +595,7 @@
                                     unlink-panels
                                     format="yyyy-MM-dd"
                                     value-format="yyyy-MM-dd"
-                                    v-model="form.sdate"
+                                    v-model="itform.sdate"
                                     type="daterange"
                                     range-separator="TO"
                                     start-placeholder="开始日期"
@@ -548,18 +603,18 @@
                             </el-date-picker>
                         </div>
                         <div>
-                            <el-form ref="form" :model="form" label-width="100px">
-                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                            <el-form ref="form" :model="itform" label-width="100px">
+                                <input type="radio" name="itonly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model="itform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
-                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <input type="radio" name="itonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model="itform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model="itform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -571,7 +626,7 @@
 
                 <el-table
                         v-loading="loading"
-                        :data="tableData"
+                        :data="ittableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
                         stripe
@@ -612,20 +667,31 @@
                             width="1300">
                         <template slot-scope="scope">
                             <div>
-                                {{ text(scope.$index, scope.row.id,'it') }}
+                                {{ ittext(scope.$index, scope.row.id,'it') }}
                                 <div :id="`ittiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
                             </div>
                         </template>
                     </el-table-column>
                     </el-table-column>
                 </el-table>
+                <div class="block">
+                    <el-pagination
+                            @size-change="ithandleSizeChange"
+                            @current-change="ithandleCurrentChange"
+                            :current-page="itcurrentPage"
+                            :page-sizes="[5, 10, 20, 50]"
+                            :page-size="itsize"
+                            layout="total, sizes, prev, pager, next, jumper"
+                            :total="ittotle">
+                    </el-pagination>
+                </div>
             </el-tab-pane>
-            <el-tab-pane label="法国" name="fourth">
+            <el-tab-pane label="法国" name="fr">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="frform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="frform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="onSubmit('fr')">搜索</el-button>
@@ -640,7 +706,7 @@
                                     unlink-panels
                                     format="yyyy-MM-dd"
                                     value-format="yyyy-MM-dd"
-                                    v-model="form.sdate"
+                                    v-model="frform.sdate"
                                     type="daterange"
                                     range-separator="TO"
                                     start-placeholder="开始日期"
@@ -648,18 +714,18 @@
                             </el-date-picker>
                         </div>
                         <div>
-                            <el-form ref="form" :model="form" label-width="100px">
-                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                            <el-form ref="form" :model="frform" label-width="100px">
+                                <input type="radio" name="fronly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model="frform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
-                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <input type="radio" name="fronly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model="frform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model="frform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -671,7 +737,7 @@
 
                 <el-table
                         v-loading="loading"
-                        :data="tableData"
+                        :data="frtableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
                         stripe
@@ -712,20 +778,31 @@
                             width="1300">
                         <template slot-scope="scope">
                             <div>
-                                {{ text(scope.$index, scope.row.id,'fr') }}
+                                {{ frtext(scope.$index, scope.row.id,'fr') }}
                                 <div :id="`frtiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
                             </div>
                         </template>
                     </el-table-column>
                     </el-table-column>
                 </el-table>
+                <div class="block">
+                    <el-pagination
+                            @size-change="frhandleSizeChange"
+                            @current-change="frhandleCurrentChange"
+                            :current-page="frcurrentPage"
+                            :page-sizes="[5, 10, 20, 50]"
+                            :page-size="frsize"
+                            layout="total, sizes, prev, pager, next, jumper"
+                            :total="frtotle">
+                    </el-pagination>
+                </div>
             </el-tab-pane>
-            <el-tab-pane label="墨西哥" name="fourth">
+            <el-tab-pane label="墨西哥" name="mx">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="mxform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="mxform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="onSubmit('mx')">搜索</el-button>
@@ -740,7 +817,7 @@
                                     unlink-panels
                                     format="yyyy-MM-dd"
                                     value-format="yyyy-MM-dd"
-                                    v-model="form.sdate"
+                                    v-model="mxform.sdate"
                                     type="daterange"
                                     range-separator="TO"
                                     start-placeholder="开始日期"
@@ -748,18 +825,18 @@
                             </el-date-picker>
                         </div>
                         <div>
-                            <el-form ref="form" :model="form" label-width="100px">
-                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                            <el-form ref="form" :model="mxform" label-width="100px">
+                                <input type="radio" name="mxonly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model="mxform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
-                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <input type="radio" name="mxonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model="mxform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model="mxform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -771,7 +848,7 @@
 
                 <el-table
                         v-loading="loading"
-                        :data="tableData"
+                        :data="mxtableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
                         stripe
@@ -812,20 +889,31 @@
                             width="1300">
                         <template slot-scope="scope">
                             <div>
-                                {{ text(scope.$index, scope.row.id,'mx') }}
+                                {{ mxtext(scope.$index, scope.row.id,'mx') }}
                                 <div :id="`mxtiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
                             </div>
                         </template>
                     </el-table-column>
                     </el-table-column>
                 </el-table>
+                <div class="block">
+                    <el-pagination
+                            @size-change="mxhandleSizeChange"
+                            @current-change="mxhandleCurrentChange"
+                            :current-page="mxcurrentPage"
+                            :page-sizes="[5, 10, 20, 50]"
+                            :page-size="mxsize"
+                            layout="total, sizes, prev, pager, next, jumper"
+                            :total="mxtotle">
+                    </el-pagination>
+                </div>
             </el-tab-pane>
-            <el-tab-pane label="加拿大" name="fourth">
+            <el-tab-pane label="加拿大" name="ca">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="form" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="caform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="form.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="caform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="onSubmit('ca')">搜索</el-button>
@@ -840,7 +928,7 @@
                                     unlink-panels
                                     format="yyyy-MM-dd"
                                     value-format="yyyy-MM-dd"
-                                    v-model="form.sdate"
+                                    v-model="caform.sdate"
                                     type="daterange"
                                     range-separator="TO"
                                     start-placeholder="开始日期"
@@ -848,18 +936,18 @@
                             </el-date-picker>
                         </div>
                         <div>
-                            <el-form ref="form" :model="form" label-width="100px">
-                                <input type="radio" name="only_who" checked="checked" style="float: left;margin-top: 13px;">
+                            <el-form ref="form" :model="caform" label-width="100px">
+                                <input type="radio" name="caonly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="form.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model="caform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
-                                <input type="radio" name="only_who" style="float: left;margin-top: 13px;">
+                                <input type="radio" name="caonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="form.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model="caform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="form.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model="caform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -871,7 +959,7 @@
 
                 <el-table
                         v-loading="loading"
-                        :data="tableData"
+                        :data="catableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
                         stripe
@@ -912,29 +1000,27 @@
                             width="1300">
                         <template slot-scope="scope">
                             <div>
-                                {{ text(scope.$index, scope.row.id,'ca') }}
+                                {{ catext(scope.$index, scope.row.id,'ca') }}
                                 <div :id="`catiger-sale-trend-index` + scope.$index" class="tiger-trend-charts"></div>
                             </div>
                         </template>
                     </el-table-column>
                     </el-table-column>
                 </el-table>
+                <div class="block">
+                    <el-pagination
+                            @size-change="cahandleSizeChange"
+                            @current-change="cahandleCurrentChange"
+                            :current-page="cacurrentPage"
+                            :page-sizes="[5, 10, 20, 50]"
+                            :page-size="casize"
+                            layout="total, sizes, prev, pager, next, jumper"
+                            :total="catotle">
+                    </el-pagination>
+                </div>
             </el-tab-pane>
         </el-tabs>
 
-    </template>
-    <template>
-        <div class="block">
-            <el-pagination
-                    @size-change="handleSizeChange"
-                    @current-change="handleCurrentChange"
-                    :current-page="currentPage"
-                    :page-sizes="[5, 10, 20, 50]"
-                    :page-size="size"
-                    layout="total, sizes, prev, pager, next, jumper"
-                    :total="totle">
-            </el-pagination>
-        </div>
     </template>
 
 </div>
@@ -947,65 +1033,213 @@
         el: '#app',
         data: function () {
             return {
-                currentPage: 1,
-                size: 5,
-                totle: 0,
+                usacurrentPage: 1,
+                usasize: 5,
+                usatotle: 0,
+                usaform: {},
+                usatableData: [],
+
+                ukcurrentPage: 1,
+                uksize: 5,
+                uktotle: 0,
+                ukform: {},
+                uktableData: [],
+
+                decurrentPage: 1,
+                desize: 5,
+                detotle: 0,
+                deform: {},
+                detableData: [],
+
+                jpcurrentPage: 1,
+                jpsize: 5,
+                jptotle: 0,
+                jpform: {},
+                jptableData: [],
+
+                espcurrentPage: 1,
+                espsize: 5,
+                esptotle: 0,
+                espform: {},
+                esptableData: [],
+
+                itcurrentPage: 1,
+                itsize: 5,
+                ittotle: 0,
+                itform: {},
+                ittableData: [],
+
+                frcurrentPage: 1,
+                frsize: 5,
+                frtotle: 0,
+                frform: {},
+                frtableData: [],
+
+                mxcurrentPage: 1,
+                mxsize: 5,
+                mxtotle: 0,
+                mxform: {},
+                mxtableData: [],
+
+                cacurrentPage: 1,
+                casize: 5,
+                catotle: 0,
+                caform: {},
+                catableData: [],
+
                 form: {},
                 loading: false,
                 picdata: [],
                 multipleSelection: [], //选中的数据
                 excelData: [],
                 tableData: [],
-                activeName: 'second'
+                activeName: 'usa'
             }
         },
         methods: {
-            getListdata(cu) {
+            usagetListdata(cu) {
                 this.loading = true
                 var that = this
-                // console.log(this.form)
-                if(this.form.key_words!=undefined || this.form.percentage_change != undefined || this.form.satisfy_p != undefined || this.form.sdate != undefined || this.form.val_change != undefined){
+                if(this.usaform.key_words!=undefined || this.usaform.percentage_change != undefined || this.usaform.satisfy_p != undefined || this.usaform.sdate != undefined || this.usaform.val_change != undefined){
                     // console.log(this.form.length)
-                    var obj = document.getElementsByName("only_who");
+                    var obj = document.getElementsByName("usaonly_who");
                     if(obj[0].checked==true){
-                        this.form.percentage_change='';
+                        this.usaform.percentage_change='';
                     }
                     if(obj[1].checked==true){
-                        this.form.val_change='';
+                        this.usaform.val_change='';
                     }
-                    if(this.form.satisfy_p != undefined){
-                        console.log(this.form.val_change)
-                        console.log(this.form.percentage_change)
-                        if((this.form.val_change == undefined && this.form.percentage_change == '') || (this.form.val_change == '' && this.form.percentage_change == undefined)){
+                    if(this.usaform.usasatisfy_p != undefined){
+                        if((this.usaform.val_change == undefined && this.usaform.percentage_change == '') || (this.usaform.val_change == '' && this.usaform.percentage_change == undefined)){
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
                             this.loading = false
                             return false
                         }
                     }
                 }
-
                 $.ajax({
                     type: "POST",
                     url: "/index/index/getList",
                     data: {
-                        limit: that.size,
-                        page: that.currentPage,
-                        search: that.form,
+                        limit: that.usasize,
+                        page: that.usacurrentPage,
+                        search: that.usaform,
+                        cu: cu
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        var jdata = JSON.parse(data);
+                            if(jdata.code==1){
+                                that.usatableData = jdata.data
+                                that.usatotle = jdata.totle
+                                that.usapicdata = jdata.picdata
+                                that.loading = false
+                            }else{
+                                that.usatableData = []
+                                that.loading = false
+                                that.$message.error(jdata.message);
+                            }
+
+
+                    },
+                    error: function (jqXHR) {
+                        that.loading = false
+                    }
+                });
+            },
+            ukgetListdata(cu) {
+                this.loading = true
+                var that = this
+                if(this.ukform.key_words!=undefined || this.ukform.percentage_change != undefined || this.ukform.satisfy_p != undefined || this.ukform.sdate != undefined || this.ukform.val_change != undefined){
+                    // console.log(this.form.length)
+                    var obj = document.getElementsByName("ukonly_who");
+                    if(obj[0].checked==true){
+                        this.ukform.percentage_change='';
+                    }
+                    if(obj[1].checked==true){
+                        this.ukform.val_change='';
+                    }
+                    if(this.ukform.usasatisfy_p != undefined){
+                        if((this.ukform.val_change == undefined && this.ukform.percentage_change == '') || (this.ukform.val_change == '' && this.ukform.percentage_change == undefined)){
+                            this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
+                            this.loading = false
+                            return false
+                        }
+                    }
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "/index/index/getList",
+                    data: {
+                        limit: that.uksize,
+                        page: that.ukcurrentPage,
+                        search: that.ukform,
                         cu: cu
                     },
                     dataType: "json",
                     success: function (data) {
                         var jdata = JSON.parse(data);
                         if(jdata.code==1){
-                            that.tableData = jdata.data
-                            that.totle = jdata.totle
-                            that.picdata = jdata.picdata
+                            that.uktableData = jdata.data
+                            that.uktotle = jdata.totle
+                            that.ukpicdata = jdata.picdata
                             that.loading = false
                         }else{
-                            that.tableData = []
+                            that.uktableData = []
                             that.loading = false
                             that.$message.error(jdata.message);
                         }
+
+
+                    },
+                    error: function (jqXHR) {
+                        that.loading = false
+                    }
+                });
+            },
+            degetListdata(cu) {
+                this.loading = true
+                var that = this
+                if(this.deform.key_words!=undefined || this.deform.percentage_change != undefined || this.deform.satisfy_p != undefined || this.deform.sdate != undefined || this.deform.val_change != undefined){
+                    // console.log(this.form.length)
+                    var obj = document.getElementsByName("deonly_who");
+                    if(obj[0].checked==true){
+                        this.deform.percentage_change='';
+                    }
+                    if(obj[1].checked==true){
+                        this.deform.val_change='';
+                    }
+                    if(this.deform.usasatisfy_p != undefined){
+                        if((this.deform.val_change == undefined && this.deform.percentage_change == '') || (this.deform.val_change == '' && this.deform.percentage_change == undefined)){
+                            this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
+                            this.loading = false
+                            return false
+                        }
+                    }
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "/index/index/getList",
+                    data: {
+                        limit: that.desize,
+                        page: that.decurrentPage,
+                        search: that.deform,
+                        cu: cu
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        var jdata = JSON.parse(data);
+                        if(jdata.code==1){
+                            that.detableData = jdata.data
+                            that.detotle = jdata.totle
+                            that.depicdata = jdata.picdata
+                            that.loading = false
+                        }else{
+                            that.detableData = []
+                            that.loading = false
+                            that.$message.error(jdata.message);
+                        }
+
 
                     },
                     error: function (jqXHR) {
@@ -1014,7 +1248,7 @@
                 });
             },
 
-            text: function (idname, id,cu) {
+            usatext: function (idname, id,cu) {
                 // console.log(this.tableData[idname].key_words)
                 var that = this
                 // console.log(idname)
@@ -1025,7 +1259,7 @@
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.tableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.usatableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1050,14 +1284,14 @@
                         //     interval:0,
                         //     rotate:30
                         // },
-                        data: this.tableData[idname][id].update_time
+                        data: this.usatableData[idname][id].update_time
                     },
                     yAxis: {
                         show: true,
                         type: 'value'
                     },
                     series: [{
-                        data: this.tableData[idname][id].chang,
+                        data: this.usatableData[idname][id].chang,
                         type: 'bar',
                         showBackground: true,
                         backgroundStyle: {
@@ -1080,16 +1314,617 @@
                     myChart.resize();
                 })
             },
-            handleSizeChange(val) {
-                this.size = val
-                this.getListdata()
-                // console.log(`每页 ${val} 条`);
+            uktext: function (idname, id,cu) {
+                // console.log(this.tableData[idname].key_words)
+                var that = this
+                // console.log(idname)
+                let option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        formatter: function (datas) {
+                            var res = '关键词：' + that.uktableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+
+                            return res;
+                        },
+                        textStyle: {
+                            color: '#5c6c7c',
+                            fontSize: 10
+                        },
+                    },
+                    axisLabel: {
+                        interval: 0,
+                        rotate: 40
+                    },
+                    grid: {
+                        top: 7,
+                        bottom: 20
+                        // containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        // axisLabel:{
+                        //     clickable:true,
+                        //     interval:0,
+                        //     rotate:30
+                        // },
+                        data: this.uktableData[idname][id].update_time
+                    },
+                    yAxis: {
+                        show: true,
+                        type: 'value'
+                    },
+                    series: [{
+                        data: this.uktableData[idname][id].chang,
+                        type: 'bar',
+                        showBackground: true,
+                        backgroundStyle: {
+                            color: 'rgba(180, 180, 180, 0.2)'
+                        },
+                        label: {
+                            normal: {
+                                // show:true,
+                                textStyle: {
+                                    fontSize: 10
+                                }
+                            }
+                        }
+                    }]
+                }
+                var id = cu+'tiger-sale-trend-index' + idname
+                this.$nextTick(() => {
+                    let myChart = echarts.init(document.getElementById(id), 'macarons');
+                    myChart.setOption(option);
+                    myChart.resize();
+                })
             },
-            handleCurrentChange(val) {
-                this.currentPage = val
-                this.getListdata()
-                // console.log(`当前页: ${val}`);
+            detext: function (idname, id,cu) {
+                // console.log(this.tableData[idname].key_words)
+                var that = this
+                // console.log(idname)
+                let option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        formatter: function (datas) {
+                            var res = '关键词：' + that.detableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+
+                            return res;
+                        },
+                        textStyle: {
+                            color: '#5c6c7c',
+                            fontSize: 10
+                        },
+                    },
+                    axisLabel: {
+                        interval: 0,
+                        rotate: 40
+                    },
+                    grid: {
+                        top: 7,
+                        bottom: 20
+                        // containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        // axisLabel:{
+                        //     clickable:true,
+                        //     interval:0,
+                        //     rotate:30
+                        // },
+                        data: this.detableData[idname][id].update_time
+                    },
+                    yAxis: {
+                        show: true,
+                        type: 'value'
+                    },
+                    series: [{
+                        data: this.detableData[idname][id].chang,
+                        type: 'bar',
+                        showBackground: true,
+                        backgroundStyle: {
+                            color: 'rgba(180, 180, 180, 0.2)'
+                        },
+                        label: {
+                            normal: {
+                                // show:true,
+                                textStyle: {
+                                    fontSize: 10
+                                }
+                            }
+                        }
+                    }]
+                }
+                var id = cu+'tiger-sale-trend-index' + idname
+                this.$nextTick(() => {
+                    let myChart = echarts.init(document.getElementById(id), 'macarons');
+                    myChart.setOption(option);
+                    myChart.resize();
+                })
             },
+            jptext: function (idname, id,cu) {
+                // console.log(this.tableData[idname].key_words)
+                var that = this
+                // console.log(idname)
+                let option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        formatter: function (datas) {
+                            var res = '关键词：' + that.jptableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+
+                            return res;
+                        },
+                        textStyle: {
+                            color: '#5c6c7c',
+                            fontSize: 10
+                        },
+                    },
+                    axisLabel: {
+                        interval: 0,
+                        rotate: 40
+                    },
+                    grid: {
+                        top: 7,
+                        bottom: 20
+                        // containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        // axisLabel:{
+                        //     clickable:true,
+                        //     interval:0,
+                        //     rotate:30
+                        // },
+                        data: this.jptableData[idname][id].update_time
+                    },
+                    yAxis: {
+                        show: true,
+                        type: 'value'
+                    },
+                    series: [{
+                        data: this.jptableData[idname][id].chang,
+                        type: 'bar',
+                        showBackground: true,
+                        backgroundStyle: {
+                            color: 'rgba(180, 180, 180, 0.2)'
+                        },
+                        label: {
+                            normal: {
+                                // show:true,
+                                textStyle: {
+                                    fontSize: 10
+                                }
+                            }
+                        }
+                    }]
+                }
+                var id = cu+'tiger-sale-trend-index' + idname
+                this.$nextTick(() => {
+                    let myChart = echarts.init(document.getElementById(id), 'macarons');
+                    myChart.setOption(option);
+                    myChart.resize();
+                })
+            },
+            esptext: function (idname, id,cu) {
+                // console.log(this.tableData[idname].key_words)
+                var that = this
+                // console.log(idname)
+                let option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        formatter: function (datas) {
+                            var res = '关键词：' + that.esptableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+
+                            return res;
+                        },
+                        textStyle: {
+                            color: '#5c6c7c',
+                            fontSize: 10
+                        },
+                    },
+                    axisLabel: {
+                        interval: 0,
+                        rotate: 40
+                    },
+                    grid: {
+                        top: 7,
+                        bottom: 20
+                        // containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        // axisLabel:{
+                        //     clickable:true,
+                        //     interval:0,
+                        //     rotate:30
+                        // },
+                        data: this.esptableData[idname][id].update_time
+                    },
+                    yAxis: {
+                        show: true,
+                        type: 'value'
+                    },
+                    series: [{
+                        data: this.esptableData[idname][id].chang,
+                        type: 'bar',
+                        showBackground: true,
+                        backgroundStyle: {
+                            color: 'rgba(180, 180, 180, 0.2)'
+                        },
+                        label: {
+                            normal: {
+                                // show:true,
+                                textStyle: {
+                                    fontSize: 10
+                                }
+                            }
+                        }
+                    }]
+                }
+                var id = cu+'tiger-sale-trend-index' + idname
+                this.$nextTick(() => {
+                    let myChart = echarts.init(document.getElementById(id), 'macarons');
+                    myChart.setOption(option);
+                    myChart.resize();
+                })
+            },
+            ittext: function (idname, id,cu) {
+                // console.log(this.tableData[idname].key_words)
+                var that = this
+                // console.log(idname)
+                let option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        formatter: function (datas) {
+                            var res = '关键词：' + that.ittableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+
+                            return res;
+                        },
+                        textStyle: {
+                            color: '#5c6c7c',
+                            fontSize: 10
+                        },
+                    },
+                    axisLabel: {
+                        interval: 0,
+                        rotate: 40
+                    },
+                    grid: {
+                        top: 7,
+                        bottom: 20
+                        // containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        // axisLabel:{
+                        //     clickable:true,
+                        //     interval:0,
+                        //     rotate:30
+                        // },
+                        data: this.ittableData[idname][id].update_time
+                    },
+                    yAxis: {
+                        show: true,
+                        type: 'value'
+                    },
+                    series: [{
+                        data: this.ittableData[idname][id].chang,
+                        type: 'bar',
+                        showBackground: true,
+                        backgroundStyle: {
+                            color: 'rgba(180, 180, 180, 0.2)'
+                        },
+                        label: {
+                            normal: {
+                                // show:true,
+                                textStyle: {
+                                    fontSize: 10
+                                }
+                            }
+                        }
+                    }]
+                }
+                var id = cu+'tiger-sale-trend-index' + idname
+                this.$nextTick(() => {
+                    let myChart = echarts.init(document.getElementById(id), 'macarons');
+                    myChart.setOption(option);
+                    myChart.resize();
+                })
+            },
+            mxtext: function (idname, id,cu) {
+                // console.log(this.tableData[idname].key_words)
+                var that = this
+                // console.log(idname)
+                let option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        formatter: function (datas) {
+                            var res = '关键词：' + that.mxtableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+
+                            return res;
+                        },
+                        textStyle: {
+                            color: '#5c6c7c',
+                            fontSize: 10
+                        },
+                    },
+                    axisLabel: {
+                        interval: 0,
+                        rotate: 40
+                    },
+                    grid: {
+                        top: 7,
+                        bottom: 20
+                        // containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        // axisLabel:{
+                        //     clickable:true,
+                        //     interval:0,
+                        //     rotate:30
+                        // },
+                        data: this.mxtableData[idname][id].update_time
+                    },
+                    yAxis: {
+                        show: true,
+                        type: 'value'
+                    },
+                    series: [{
+                        data: this.mxtableData[idname][id].chang,
+                        type: 'bar',
+                        showBackground: true,
+                        backgroundStyle: {
+                            color: 'rgba(180, 180, 180, 0.2)'
+                        },
+                        label: {
+                            normal: {
+                                // show:true,
+                                textStyle: {
+                                    fontSize: 10
+                                }
+                            }
+                        }
+                    }]
+                }
+                var id = cu+'tiger-sale-trend-index' + idname
+                this.$nextTick(() => {
+                    let myChart = echarts.init(document.getElementById(id), 'macarons');
+                    myChart.setOption(option);
+                    myChart.resize();
+                })
+            },
+            frtext: function (idname, id,cu) {
+                // console.log(this.tableData[idname].key_words)
+                var that = this
+                // console.log(idname)
+                let option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        formatter: function (datas) {
+                            var res = '关键词：' + that.frtableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+
+                            return res;
+                        },
+                        textStyle: {
+                            color: '#5c6c7c',
+                            fontSize: 10
+                        },
+                    },
+                    axisLabel: {
+                        interval: 0,
+                        rotate: 40
+                    },
+                    grid: {
+                        top: 7,
+                        bottom: 20
+                        // containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        // axisLabel:{
+                        //     clickable:true,
+                        //     interval:0,
+                        //     rotate:30
+                        // },
+                        data: this.frtableData[idname][id].update_time
+                    },
+                    yAxis: {
+                        show: true,
+                        type: 'value'
+                    },
+                    series: [{
+                        data: this.frtableData[idname][id].chang,
+                        type: 'bar',
+                        showBackground: true,
+                        backgroundStyle: {
+                            color: 'rgba(180, 180, 180, 0.2)'
+                        },
+                        label: {
+                            normal: {
+                                // show:true,
+                                textStyle: {
+                                    fontSize: 10
+                                }
+                            }
+                        }
+                    }]
+                }
+                var id = cu+'tiger-sale-trend-index' + idname
+                this.$nextTick(() => {
+                    let myChart = echarts.init(document.getElementById(id), 'macarons');
+                    myChart.setOption(option);
+                    myChart.resize();
+                })
+            },
+            catext: function (idname, id,cu) {
+                // console.log(this.tableData[idname].key_words)
+                var that = this
+                // console.log(idname)
+                let option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        formatter: function (datas) {
+                            var res = '关键词：' + that.catableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+
+                            return res;
+                        },
+                        textStyle: {
+                            color: '#5c6c7c',
+                            fontSize: 10
+                        },
+                    },
+                    axisLabel: {
+                        interval: 0,
+                        rotate: 40
+                    },
+                    grid: {
+                        top: 7,
+                        bottom: 20
+                        // containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        // axisLabel:{
+                        //     clickable:true,
+                        //     interval:0,
+                        //     rotate:30
+                        // },
+                        data: this.catableData[idname][id].update_time
+                    },
+                    yAxis: {
+                        show: true,
+                        type: 'value'
+                    },
+                    series: [{
+                        data: this.catableData[idname][id].chang,
+                        type: 'bar',
+                        showBackground: true,
+                        backgroundStyle: {
+                            color: 'rgba(180, 180, 180, 0.2)'
+                        },
+                        label: {
+                            normal: {
+                                // show:true,
+                                textStyle: {
+                                    fontSize: 10
+                                }
+                            }
+                        }
+                    }]
+                }
+                var id = cu+'tiger-sale-trend-index' + idname
+                this.$nextTick(() => {
+                    let myChart = echarts.init(document.getElementById(id), 'macarons');
+                    myChart.setOption(option);
+                    myChart.resize();
+                })
+            },
+            usahandleSizeChange(val) {
+                this.usasize = val
+                this.usagetListdata('usa')
+            },
+            usahandleCurrentChange(val) {
+                this.usacurrentPage = val
+                this.usagetListdata('usa')
+            },
+
+
+            ukhandleSizeChange(val) {
+                this.uksize = val
+                this.ukgetListdata('uk')
+            },
+            ukhandleCurrentChange(val) {
+                this.ukcurrentPage = val
+                this.ukgetListdata('uk')
+            },
+
+            dehandleSizeChange(val) {
+                this.desize = val
+                this.degetListdata('de')
+            },
+            dehandleCurrentChange(val) {
+                this.decurrentPage = val
+                this.degetListdata('de')
+            },
+
+            jphandleSizeChange(val) {
+                this.jpsize = val
+                this.jpgetListdata('jp')
+            },
+            jphandleCurrentChange(val) {
+                this.jpcurrentPage = val
+                this.jpgetListdata('jp')
+            },
+
+            esphandleSizeChange(val) {
+                this.espsize = val
+                this.espgetListdata('esp')
+            },
+            esphandleCurrentChange(val) {
+                this.espcurrentPage = val
+                this.espgetListdata('esp')
+            },
+
+            ithandleSizeChange(val) {
+                this.itsize = val
+                this.itgetListdata('it')
+            },
+            ithandleCurrentChange(val) {
+                this.itcurrentPage = val
+                this.itgetListdata('it')
+            },
+
+            frhandleSizeChange(val) {
+                this.frsize = val
+                this.frgetListdata('fr')
+            },
+            frhandleCurrentChange(val) {
+                this.frcurrentPage = val
+                this.frgetListdata('fr')
+            },
+
+            mxhandleSizeChange(val) {
+                this.mxsize = val
+                this.mxgetListdata('mx')
+            },
+            mxhandleCurrentChange(val) {
+                this.mxcurrentPage = val
+                this.mxgetListdata('mx')
+            },
+
+            cahandleSizeChange(val) {
+                this.casize = val
+                this.cagetListdata('ca')
+            },
+            cahandleCurrentChange(val) {
+                this.cacurrentPage = val
+                this.cagetListdata('ca')
+            },
+
+
             onSubmit(cu) {
                 this.getListdata(cu)
             },
@@ -1119,7 +1954,15 @@
             },
         },
         mounted: function () {
-            this.getListdata()
+            this.usagetListdata('usa')
+            this.ukgetListdata('uk')
+            this.degetListdata('de')
+            this.jpgetListdata('jp')
+            this.espgetListdata('esp')
+            this.itgetListdata('it')
+            this.frgetListdata('fr')
+            this.mxgetListdata('mx')
+            this.cagetListdata('ca')
         }
     })
 </script>

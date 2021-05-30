@@ -15,6 +15,7 @@ class Index extends Controller
 
     public function getList(Request $request) {
     	$param = $request->param();
+    	$this->tablename=$param['cu'].'_list';
     	if(!isset($param['page']) || !isset($param['limit'])){
     		exit;
     	}

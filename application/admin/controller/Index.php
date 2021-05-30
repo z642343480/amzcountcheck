@@ -21,17 +21,34 @@ class Index extends \think\Controller
     }
 
     public function openTask() {
+        $prog = Db::table('prog')->where("id",1)->update(['is_auto'=>1]);
+
 //        增加管理员账号密码
 //        $cmd="schtasks /create /tn anrainie11-03-23 /tr rec.php /sc MINUTE /mo 10 /ru system /rp password";
-        $opath='D:\wamp64\www\amzcount\atuotask\starttask.bat';
+//        $opath='D:\wamp64\www\amzcount\atuotask\starttask.bat';
+        $opath='D:\wamp64\www\amzcount\atuotask\startsyncdate.bat';
         $res=exec($opath);
         echo 1;
     }
 
     public function closeTask() {
-        $cpath='D:\wamp64\www\amzcount\atuotask\disabletask.bat';
+        $prog = Db::table('prog')->where("id",1)->update(['is_auto'=>0]);
+//        $cpath='D:\wamp64\www\amzcount\atuotask\disabletask.bat';
+        $cpath='D:\wamp64\www\amzcount\atuotask\disablesyncdate.bat';
         $res=exec($cpath);
+
         echo 1;
+    }
+    public function hsync() {
+
+//        $LogCount=Db::table('log')->where('')->count();
+//
+//        for($i=0;$i<9;$i++){
+//            $cpath='D:\wamp64\www\amzcount\atuotask\usa_run.bat.bat';
+//            $res=exec($cpath);
+//            $LogCount=Db::table('log')->where('')->count();
+//
+//        }
     }
 
     public function getListData()

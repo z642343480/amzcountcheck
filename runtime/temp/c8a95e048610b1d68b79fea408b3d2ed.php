@@ -1,4 +1,4 @@
-<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622364582;}*/ ?>
+<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622368937;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,7 +111,7 @@
                     <el-table-column
                             prop="pic"
                             label="图表"
-                            width="1300">
+                            width="1100">
                         <template slot-scope="scope">
                             <div>
                                 {{ usatext(scope.$index, scope.row.id,'usa') }}
@@ -126,7 +126,7 @@
                             @size-change="usahandleSizeChange"
                             @current-change="usahandleCurrentChange"
                             :current-page="usacurrentPage"
-                            :page-sizes="[5, 10, 20, 50]"
+                            :page-sizes="[5, 10, 20, 50,100]"
                             :page-size="usasize"
                             layout="total, sizes, prev, pager, next, jumper"
                             :total="usatotle">
@@ -223,7 +223,7 @@
                     <el-table-column
                             prop="pic"
                             label="图表"
-                            width="1300">
+                            width="1100">
                         <template slot-scope="scope">
                             <div>
                                 {{ uktext(scope.$index, scope.row.id,'uk') }}
@@ -238,7 +238,7 @@
                             @size-change="ukhandleSizeChange"
                             @current-change="ukhandleCurrentChange"
                             :current-page="ukcurrentPage"
-                            :page-sizes="[5, 10, 20, 50]"
+                            :page-sizes="[5, 10, 20, 50,100]"
                             :page-size="uksize"
                             layout="total, sizes, prev, pager, next, jumper"
                             :total="uktotle">
@@ -335,7 +335,7 @@
                     <el-table-column
                             prop="pic"
                             label="图表"
-                            width="1300">
+                            width="1100">
                         <template slot-scope="scope">
                             <div>
                                 {{ detext(scope.$index, scope.row.id,'de') }}
@@ -350,7 +350,7 @@
                             @size-change="dehandleSizeChange"
                             @current-change="dehandleCurrentChange"
                             :current-page="decurrentPage"
-                            :page-sizes="[5, 10, 20, 50]"
+                            :page-sizes="[5, 10, 20, 50,100]"
                             :page-size="desize"
                             layout="total, sizes, prev, pager, next, jumper"
                             :total="detotle">
@@ -447,7 +447,7 @@
                     <el-table-column
                             prop="pic"
                             label="图表"
-                            width="1300">
+                            width="1100">
                         <template slot-scope="scope">
                             <div>
                                 {{ jptext(scope.$index, scope.row.id,'jp') }}
@@ -462,7 +462,7 @@
                             @size-change="jphandleSizeChange"
                             @current-change="jphandleCurrentChange"
                             :current-page="jpcurrentPage"
-                            :page-sizes="[5, 10, 20, 50]"
+                            :page-sizes="[5, 10, 20, 50,100]"
                             :page-size="jpsize"
                             layout="total, sizes, prev, pager, next, jumper"
                             :total="jptotle">
@@ -559,7 +559,7 @@
                     <el-table-column
                             prop="pic"
                             label="图表"
-                            width="1300">
+                            width="1100">
                         <template slot-scope="scope">
                             <div>
                                 {{ esptext(scope.$index, scope.row.id,'esp') }}
@@ -574,7 +574,7 @@
                             @size-change="esphandleSizeChange"
                             @current-change="esphandleCurrentChange"
                             :current-page="espcurrentPage"
-                            :page-sizes="[5, 10, 20, 50]"
+                            :page-sizes="[5, 10, 20, 50,100]"
                             :page-size="espsize"
                             layout="total, sizes, prev, pager, next, jumper"
                             :total="esptotle">
@@ -671,7 +671,7 @@
                     <el-table-column
                             prop="pic"
                             label="图表"
-                            width="1300">
+                            width="1100">
                         <template slot-scope="scope">
                             <div>
                                 {{ ittext(scope.$index, scope.row.id,'it') }}
@@ -686,7 +686,7 @@
                             @size-change="ithandleSizeChange"
                             @current-change="ithandleCurrentChange"
                             :current-page="itcurrentPage"
-                            :page-sizes="[5, 10, 20, 50]"
+                            :page-sizes="[5, 10, 20, 50,100]"
                             :page-size="itsize"
                             layout="total, sizes, prev, pager, next, jumper"
                             :total="ittotle">
@@ -783,7 +783,7 @@
                     <el-table-column
                             prop="pic"
                             label="图表"
-                            width="1300">
+                            width="1100">
                         <template slot-scope="scope">
                             <div>
                                 {{ frtext(scope.$index, scope.row.id,'fr') }}
@@ -798,7 +798,7 @@
                             @size-change="frhandleSizeChange"
                             @current-change="frhandleCurrentChange"
                             :current-page="frcurrentPage"
-                            :page-sizes="[5, 10, 20, 50]"
+                            :page-sizes="[5, 10, 20, 50,100]"
                             :page-size="frsize"
                             layout="total, sizes, prev, pager, next, jumper"
                             :total="frtotle">
@@ -895,7 +895,7 @@
                     <el-table-column
                             prop="pic"
                             label="图表"
-                            width="1300">
+                            width="1100">
                         <template slot-scope="scope">
                             <div>
                                 {{ mxtext(scope.$index, scope.row.id,'mx') }}
@@ -910,7 +910,7 @@
                             @size-change="mxhandleSizeChange"
                             @current-change="mxhandleCurrentChange"
                             :current-page="mxcurrentPage"
-                            :page-sizes="[5, 10, 20, 50]"
+                            :page-sizes="[5, 10, 20, 50,100]"
                             :page-size="mxsize"
                             layout="total, sizes, prev, pager, next, jumper"
                             :total="mxtotle">
@@ -1007,7 +1007,7 @@
                     <el-table-column
                             prop="pic"
                             label="图表"
-                            width="1300">
+                            width="1100">
                         <template slot-scope="scope">
                             <div>
                                 {{ catext(scope.$index, scope.row.id,'ca') }}
@@ -1022,7 +1022,7 @@
                             @size-change="cahandleSizeChange"
                             @current-change="cahandleCurrentChange"
                             :current-page="cacurrentPage"
-                            :page-sizes="[5, 10, 20, 50]"
+                            :page-sizes="[5, 10, 20, 50,100]"
                             :page-size="casize"
                             layout="total, sizes, prev, pager, next, jumper"
                             :total="catotle">
@@ -2308,33 +2308,33 @@
                 this.$refs.mxTable.clearSelection();
                 this.$refs.caTable.clearSelection();
                 if(this.isclicktabs.indexOf(tab.name)==-1){
-                    if(tab.name=='usa'){
-                        this.usagetListdata('usa')
-                    }
-                    if(tab.name=='uk'){
-                        this.ukgetListdata('uk')
-                    }
-                    if(tab.name=='de'){
-                        this.degetListdata('de')
-                    }
-                    if(tab.name=='jp'){
-                        this.jpgetListdata('jp')
-                    }
-                    if(tab.name=='esp'){
-                        this.espgetListdata('esp')
-                    }
-                    if(tab.name=='it'){
-                        this.itgetListdata('it')
-                    }
-                    if(tab.name=='fr'){
-                        this.frgetListdata('fr')
-                    }
-                    if(tab.name=='mx'){
-                        this.mxgetListdata('mx')
-                    }
-                    if(tab.name=='ca'){
-                        this.cagetListdata('ca')
-                    }
+                    // if(tab.name=='usa'){
+                    //     this.usagetListdata('usa')
+                    // }
+                    // if(tab.name=='uk'){
+                    //     this.ukgetListdata('uk')
+                    // }
+                    // if(tab.name=='de'){
+                    //     this.degetListdata('de')
+                    // }
+                    // if(tab.name=='jp'){
+                    //     this.jpgetListdata('jp')
+                    // }
+                    // if(tab.name=='esp'){
+                    //     this.espgetListdata('esp')
+                    // }
+                    // if(tab.name=='it'){
+                    //     this.itgetListdata('it')
+                    // }
+                    // if(tab.name=='fr'){
+                    //     this.frgetListdata('fr')
+                    // }
+                    // if(tab.name=='mx'){
+                    //     this.mxgetListdata('mx')
+                    // }
+                    // if(tab.name=='ca'){
+                    //     this.cagetListdata('ca')
+                    // }
                     this.isclicktabs.push(tab.name)
                 }
 

@@ -1,4 +1,4 @@
-<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622363152;}*/ ?>
+<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622364406;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,10 +71,11 @@
                 </el-button>
 
                 <el-table
-                        v-loading="loading"
+                        v-loading="loadingusa"
                         :data="usatableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
+                        ref="usaTable"
                         stripe
                         style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
                         height="670"
@@ -182,10 +183,11 @@
                 </el-button>
 
                 <el-table
-                        v-loading="loading"
+                        v-loading="loadinguk"
                         :data="uktableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
+                        ref="ukTable"
                         stripe
                         style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
                         height="670"
@@ -293,10 +295,11 @@
                 </el-button>
 
                 <el-table
-                        v-loading="loading"
+                        v-loading="loadingde"
                         :data="detableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
+                        ref="deTable"
                         stripe
                         style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
                         height="670"
@@ -404,10 +407,11 @@
                 </el-button>
 
                 <el-table
-                        v-loading="loading"
+                        v-loading="loadingjp"
                         :data="jptableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
+                        ref="jpTable"
                         stripe
                         style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
                         height="670"
@@ -515,10 +519,11 @@
                 </el-button>
 
                 <el-table
-                        v-loading="loading"
+                        v-loading="loadingesp"
                         :data="esptableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
+                        ref="espTable"
                         stripe
                         style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
                         height="670"
@@ -626,10 +631,11 @@
                 </el-button>
 
                 <el-table
-                        v-loading="loading"
+                        v-loading="loadingit"
                         :data="ittableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
+                        ref="itTable"
                         stripe
                         style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
                         height="670"
@@ -737,10 +743,11 @@
                 </el-button>
 
                 <el-table
-                        v-loading="loading"
+                        v-loading="loadingfr"
                         :data="frtableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
+                        ref="frTable"
                         stripe
                         style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
                         height="670"
@@ -848,10 +855,11 @@
                 </el-button>
 
                 <el-table
-                        v-loading="loading"
+                        v-loading="loadingmx"
                         :data="mxtableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
+                        ref="mxTable"
                         stripe
                         style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
                         height="670"
@@ -959,10 +967,11 @@
                 </el-button>
 
                 <el-table
-                        v-loading="loading"
+                        v-loading="loadingca"
                         :data="catableData"
                         tooltip-effect="dark"
                         :row-key="(row)=>{ return row.id}"
+                        ref="caTable"
                         stripe
                         style="width: 98%;margin: 0 auto;border: 1px solid #d1dbe5;"
                         height="670"
@@ -1039,66 +1048,83 @@
                 usatotle: 0,
                 usaform: {},
                 usatableData: [],
+                loadingusa: false,
+
 
                 ukcurrentPage: 1,
                 uksize: 5,
                 uktotle: 0,
                 ukform: {},
                 uktableData: [],
+                loadinguk: false,
+
 
                 decurrentPage: 1,
                 desize: 5,
                 detotle: 0,
                 deform: {},
                 detableData: [],
+                loadingde: false,
+
 
                 jpcurrentPage: 1,
                 jpsize: 5,
                 jptotle: 0,
                 jpform: {},
                 jptableData: [],
+                loadingjp: false,
+
 
                 espcurrentPage: 1,
                 espsize: 5,
                 esptotle: 0,
                 espform: {},
                 esptableData: [],
+                loadingesp: false,
+
 
                 itcurrentPage: 1,
                 itsize: 5,
                 ittotle: 0,
                 itform: {},
                 ittableData: [],
+                loadingit: false,
+
 
                 frcurrentPage: 1,
                 frsize: 5,
                 frtotle: 0,
                 frform: {},
                 frtableData: [],
+                loadingfr: false,
+
 
                 mxcurrentPage: 1,
                 mxsize: 5,
                 mxtotle: 0,
                 mxform: {},
                 mxtableData: [],
+                loadingmx: false,
+
 
                 cacurrentPage: 1,
                 casize: 5,
                 catotle: 0,
                 caform: {},
                 catableData: [],
+                loadingca: false,
 
 
-                loading: false,
+
                 multipleSelection: [], //选中的数据
                 excelData: [],
-                activeName: 'usa',
+                activeName: 'uk',
                 isclicktabs:['usa']
             }
         },
         methods: {
             usagetListdata(cu) {
-                this.loading = true
+                this.loadingusa = true
                 var that = this
                 if(this.usaform.key_words!=undefined || this.usaform.percentage_change != undefined || this.usaform.satisfy_p != undefined || this.usaform.sdate != undefined || this.usaform.val_change != undefined){
                     // console.log(this.form.length)
@@ -1112,7 +1138,7 @@
                     if(this.usaform.usasatisfy_p != undefined){
                         if((this.usaform.val_change == undefined && this.usaform.percentage_change == '') || (this.usaform.val_change == '' && this.usaform.percentage_change == undefined)){
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
-                            this.loading = false
+                            this.loadingusa = false
                             return false
                         }
                     }
@@ -1133,22 +1159,22 @@
                                 that.usatableData = jdata.data
                                 that.usatotle = jdata.totle
                                 that.usapicdata = jdata.picdata
-                                that.loading = false
+                                that.loadingusa = false
                             }else{
                                 that.usatableData = []
-                                that.loading = false
+                                that.loadingusa = false
                                 that.$message.error(jdata.message);
                             }
 
 
                     },
                     error: function (jqXHR) {
-                        that.loading = false
+                        that.loadingusa = false
                     }
                 });
             },
             ukgetListdata(cu) {
-                this.loading = true
+                this.loadinguk = true
                 var that = this
                 if(this.ukform.key_words!=undefined || this.ukform.percentage_change != undefined || this.ukform.satisfy_p != undefined || this.ukform.sdate != undefined || this.ukform.val_change != undefined){
                     // console.log(this.form.length)
@@ -1162,7 +1188,7 @@
                     if(this.ukform.usasatisfy_p != undefined){
                         if((this.ukform.val_change == undefined && this.ukform.percentage_change == '') || (this.ukform.val_change == '' && this.ukform.percentage_change == undefined)){
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
-                            this.loading = false
+                            this.loadinguk = false
                             return false
                         }
                     }
@@ -1183,22 +1209,22 @@
                             that.uktableData = jdata.data
                             that.uktotle = jdata.totle
                             that.ukpicdata = jdata.picdata
-                            that.loading = false
+                            that.loadinguk = false
                         }else{
                             that.uktableData = []
-                            that.loading = false
+                            that.loadinguk = false
                             that.$message.error(jdata.message);
                         }
 
 
                     },
                     error: function (jqXHR) {
-                        that.loading = false
+                        that.loadinguk = false
                     }
                 });
             },
             degetListdata(cu) {
-                this.loading = true
+                this.loadingde = true
                 var that = this
                 if(this.deform.key_words!=undefined || this.deform.percentage_change != undefined || this.deform.satisfy_p != undefined || this.deform.sdate != undefined || this.deform.val_change != undefined){
                     // console.log(this.form.length)
@@ -1212,7 +1238,7 @@
                     if(this.deform.usasatisfy_p != undefined){
                         if((this.deform.val_change == undefined && this.deform.percentage_change == '') || (this.deform.val_change == '' && this.deform.percentage_change == undefined)){
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
-                            this.loading = false
+                            this.loadingde = false
                             return false
                         }
                     }
@@ -1233,22 +1259,22 @@
                             that.detableData = jdata.data
                             that.detotle = jdata.totle
                             that.depicdata = jdata.picdata
-                            that.loading = false
+                            that.loadingde = false
                         }else{
                             that.detableData = []
-                            that.loading = false
+                            that.loadingde = false
                             that.$message.error(jdata.message);
                         }
 
 
                     },
                     error: function (jqXHR) {
-                        that.loading = false
+                        that.loadingde = false
                     }
                 });
             },
             jpgetListdata(cu) {
-                this.loading = true
+                this.loadingjp = true
                 var that = this
                 if(this.jpform.key_words!=undefined || this.jpform.percentage_change != undefined || this.jpform.satisfy_p != undefined || this.jpform.sdate != undefined || this.jpform.val_change != undefined){
                     // console.log(this.form.length)
@@ -1262,7 +1288,7 @@
                     if(this.jpform.usasatisfy_p != undefined){
                         if((this.jpform.val_change == undefined && this.jpform.percentage_change == '') || (this.jpform.val_change == '' && this.jpform.percentage_change == undefined)){
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
-                            this.loading = false
+                            this.loadingjp = false
                             return false
                         }
                     }
@@ -1283,22 +1309,22 @@
                             that.jptableData = jdata.data
                             that.jptotle = jdata.totle
                             that.jppicdata = jdata.picdata
-                            that.loading = false
+                            that.loadingjp = false
                         }else{
                             that.jptableData = []
-                            that.loading = false
+                            that.loadingjp = false
                             that.$message.error(jdata.message);
                         }
 
 
                     },
                     error: function (jqXHR) {
-                        that.loading = false
+                        that.loadingjp = false
                     }
                 });
             },
             espgetListdata(cu) {
-                this.loading = true
+                this.loadingesp = true
                 var that = this
                 if(this.espform.key_words!=undefined || this.espform.percentage_change != undefined || this.espform.satisfy_p != undefined || this.espform.sdate != undefined || this.espform.val_change != undefined){
                     // console.log(this.form.length)
@@ -1312,7 +1338,7 @@
                     if(this.espform.usasatisfy_p != undefined){
                         if((this.espform.val_change == undefined && this.espform.percentage_change == '') || (this.espform.val_change == '' && this.espform.percentage_change == undefined)){
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
-                            this.loading = false
+                            this.loadingesp = false
                             return false
                         }
                     }
@@ -1333,22 +1359,22 @@
                             that.esptableData = jdata.data
                             that.esptotle = jdata.totle
                             that.esppicdata = jdata.picdata
-                            that.loading = false
+                            that.loadingesp = false
                         }else{
                             that.esptableData = []
-                            that.loading = false
+                            that.loadingesp = false
                             that.$message.error(jdata.message);
                         }
 
 
                     },
                     error: function (jqXHR) {
-                        that.loading = false
+                        that.loadingesp = false
                     }
                 });
             },
             itgetListdata(cu) {
-                this.loading = true
+                this.loadingit = true
                 var that = this
                 if(this.itform.key_words!=undefined || this.itform.percentage_change != undefined || this.itform.satisfy_p != undefined || this.itform.sdate != undefined || this.itform.val_change != undefined){
                     // console.log(this.form.length)
@@ -1362,7 +1388,7 @@
                     if(this.itform.usasatisfy_p != undefined){
                         if((this.itform.val_change == undefined && this.itform.percentage_change == '') || (this.itform.val_change == '' && this.itform.percentage_change == undefined)){
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
-                            this.loading = false
+                            this.loadingit = false
                             return false
                         }
                     }
@@ -1383,22 +1409,22 @@
                             that.ittableData = jdata.data
                             that.ittotle = jdata.totle
                             that.itpicdata = jdata.picdata
-                            that.loading = false
+                            that.loadingit = false
                         }else{
                             that.ittableData = []
-                            that.loading = false
+                            that.loadingit = false
                             that.$message.error(jdata.message);
                         }
 
 
                     },
                     error: function (jqXHR) {
-                        that.loading = false
+                        that.loadingit = false
                     }
                 });
             },
             frgetListdata(cu) {
-                this.loading = true
+                this.loadingfr = true
                 var that = this
                 if(this.frform.key_words!=undefined || this.frform.percentage_change != undefined || this.frform.satisfy_p != undefined || this.frform.sdate != undefined || this.frform.val_change != undefined){
                     // console.log(this.form.length)
@@ -1412,7 +1438,7 @@
                     if(this.frform.satisfy_p != undefined){
                         if((this.frform.val_change == undefined && this.frform.percentage_change == '') || (this.frform.val_change == '' && this.frform.percentage_change == undefined)){
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
-                            this.loading = false
+                            this.loadingfr = false
                             return false
                         }
                     }
@@ -1433,22 +1459,22 @@
                             that.frtableData = jdata.data
                             that.frtotle = jdata.totle
                             that.frpicdata = jdata.picdata
-                            that.loading = false
+                            that.loadingfr = false
                         }else{
                             that.frtableData = []
-                            that.loading = false
+                            that.loadingfr = false
                             that.$message.error(jdata.message);
                         }
 
 
                     },
                     error: function (jqXHR) {
-                        that.loading = false
+                        that.loadingfr = false
                     }
                 });
             },
             mxgetListdata(cu) {
-                this.loading = true
+                this.loadingmx = true
                 var that = this
                 if(this.mxform.key_words!=undefined || this.mxform.percentage_change != undefined || this.mxform.satisfy_p != undefined || this.mxform.sdate != undefined || this.mxform.val_change != undefined){
                     // console.log(this.form.length)
@@ -1462,7 +1488,7 @@
                     if(this.mxform.satisfy_p != undefined){
                         if((this.mxform.val_change == undefined && this.mxform.percentage_change == '') || (this.mxform.val_change == '' && this.mxform.percentage_change == undefined)){
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
-                            this.loading = false
+                            this.loadingmx = false
                             return false
                         }
                     }
@@ -1483,22 +1509,22 @@
                             that.mxtableData = jdata.data
                             that.mxtotle = jdata.totle
                             that.mxpicdata = jdata.picdata
-                            that.loading = false
+                            that.loadingmx = false
                         }else{
                             that.mxtableData = []
-                            that.loading = false
+                            that.loadingmx = false
                             that.$message.error(jdata.message);
                         }
 
 
                     },
                     error: function (jqXHR) {
-                        that.loading = false
+                        that.loadingmx = false
                     }
                 });
             },
             cagetListdata(cu) {
-                this.loading = true
+                this.loadingca = true
                 var that = this
                 if(this.caform.key_words!=undefined || this.caform.percentage_change != undefined || this.caform.satisfy_p != undefined || this.caform.sdate != undefined || this.caform.val_change != undefined){
                     // console.log(this.form.length)
@@ -1512,7 +1538,7 @@
                     if(this.caform.satisfy_p != undefined){
                         if((this.caform.val_change == undefined && this.caform.percentage_change == '') || (this.caform.val_change == '' && this.caform.percentage_change == undefined)){
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
-                            this.loading = false
+                            this.loadingca = false
                             return false
                         }
                     }
@@ -1533,17 +1559,17 @@
                             that.catableData = jdata.data
                             that.catotle = jdata.totle
                             that.capicdata = jdata.picdata
-                            that.loading = false
+                            that.loadingca = false
                         }else{
                             that.catableData = []
-                            that.loading = false
+                            that.loadingca = false
                             that.$message.error(jdata.message);
                         }
 
 
                     },
                     error: function (jqXHR) {
-                        that.loading = false
+                        that.loadingca = false
                     }
                 });
             },
@@ -2272,6 +2298,15 @@
             },
             handleClick(tab, event) {
                 this.multipleSelection=[];
+                this.$refs.usaTable.clearSelection();
+                this.$refs.ukTable.clearSelection();
+                this.$refs.deTable.clearSelection();
+                this.$refs.jpTable.clearSelection();
+                this.$refs.espTable.clearSelection();
+                this.$refs.itTable.clearSelection();
+                this.$refs.frTable.clearSelection();
+                this.$refs.mxTable.clearSelection();
+                this.$refs.caTable.clearSelection();
                 if(this.isclicktabs.indexOf(tab.name)==-1){
                     if(tab.name=='usa'){
                         this.usagetListdata('usa')

@@ -1,4 +1,4 @@
-<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622364406;}*/ ?>
+<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622364582;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -1118,7 +1118,7 @@
 
                 multipleSelection: [], //选中的数据
                 excelData: [],
-                activeName: 'uk',
+                activeName: 'usa',
                 isclicktabs:['usa']
             }
         },

@@ -195,6 +195,7 @@ class Index extends Controller
 
     public function expExcel(Request $request) {
         $param = $request->param();
+        $this->tablename=$param['cu'].'_list';
         if(!empty($param['ids'])){
             $idArr = explode(',',$param['ids']);
         }else{
@@ -205,7 +206,7 @@ class Index extends Controller
 //            $idArr[]=$v['id'];
 //        }
         unset($idArr[count($idArr)-1]);
-        $data=Db::table($this->tablename)->whereIn("id",$idArr)->select();
+        $data=Db::table($this->tablename)->whereIn("id",$idArr)->orderRaw("update_time desc,c_rank asc")->select();
         $path = dirname(__FILE__);//找到当前脚本所在路径
         $PHPExcel = new \PHPExcel();//实例化phpexcel
         $PHPSheet = $PHPExcel->getActiveSheet();
@@ -228,7 +229,7 @@ class Index extends Controller
             $num++;
         }
         $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel2007");//创建生成的格式
-        header('Content-Disposition: attachment;filename="amzcount.xlsx"');//下载下来的表格名
+        header('Content-Disposition: attachment;filename="'.$this->tablename.'.xlsx"');//下载下来的表格名
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         $PHPWriter->save("php://output");//表示在$path路径下面生成demo.xlsx文件
     }

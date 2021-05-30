@@ -1,4 +1,4 @@
-<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622362443;}*/ ?>
+<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622363152;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
-                           @click="downloadExcel">导出
+                           @click="downloadExcel('usa')">导出
                 </el-button>
 
                 <el-table
@@ -178,7 +178,7 @@
                     </div>
                 </div>
                 <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
-                           @click="downloadExcel">导出
+                           @click="downloadExcel('uk')">导出
                 </el-button>
 
                 <el-table
@@ -289,7 +289,7 @@
                     </div>
                 </div>
                 <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
-                           @click="downloadExcel">导出
+                           @click="downloadExcel('de')">导出
                 </el-button>
 
                 <el-table
@@ -400,7 +400,7 @@
                     </div>
                 </div>
                 <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
-                           @click="downloadExcel">导出
+                           @click="downloadExcel('jp')">导出
                 </el-button>
 
                 <el-table
@@ -511,7 +511,7 @@
                     </div>
                 </div>
                 <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
-                           @click="downloadExcel">导出
+                           @click="downloadExcel('esp')">导出
                 </el-button>
 
                 <el-table
@@ -622,7 +622,7 @@
                     </div>
                 </div>
                 <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
-                           @click="downloadExcel">导出
+                           @click="downloadExcel('it')">导出
                 </el-button>
 
                 <el-table
@@ -733,7 +733,7 @@
                     </div>
                 </div>
                 <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
-                           @click="downloadExcel">导出
+                           @click="downloadExcel('fr')">导出
                 </el-button>
 
                 <el-table
@@ -844,7 +844,7 @@
                     </div>
                 </div>
                 <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
-                           @click="downloadExcel">导出
+                           @click="downloadExcel('mx')">导出
                 </el-button>
 
                 <el-table
@@ -955,7 +955,7 @@
                     </div>
                 </div>
                 <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small" type="primary" icon="el-icon-download"
-                           @click="downloadExcel">导出
+                           @click="downloadExcel('ca')">导出
                 </el-button>
 
                 <el-table
@@ -2258,7 +2258,7 @@
                 this.multipleSelection = val;
                 // console.log(this.multipleSelection[0]);
             },
-            downloadExcel() {
+            downloadExcel(cu) {
                 var that = this
                 if(this.multipleSelection.length==0){
                     this.$message.error('请选择需要导出的数据');
@@ -2268,9 +2268,10 @@
                 for(var i=0;i<this.multipleSelection.length;i++){
                     ids+=this.multipleSelection[i].id+',';
                 }
-                window.open("/index/index/expExcel?ids="+ids);
+                window.open("/index/index/expExcel?ids="+ids+'&cu='+cu);
             },
             handleClick(tab, event) {
+                this.multipleSelection=[];
                 if(this.isclicktabs.indexOf(tab.name)==-1){
                     if(tab.name=='usa'){
                         this.usagetListdata('usa')
@@ -2302,8 +2303,6 @@
                     this.isclicktabs.push(tab.name)
                 }
 
-                console.log(this.isclicktabs);
-                console.log(tab, event);
             }
         },
         watch: {

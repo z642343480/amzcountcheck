@@ -1,13 +1,13 @@
-<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\admin\view\index\index.html";i:1621961022;}*/ ?>
+<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\admin\view\index\index.html";i:1622306529;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>amzcount</title>
-    <script src="http://127.0.0.1/amzcount/public/static/jq.js"></script>
-    <link rel="stylesheet" href="http://127.0.0.1/amzcount/public/static/layui/css/layui.css">
-    <script src="http://127.0.0.1/amzcount/public/static/layui/layui.js"></script>
+    <script src="/static/jq.js"></script>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <script src="/static/layui/layui.js"></script>
 </head>
 <style>
 </style>

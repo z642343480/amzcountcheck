@@ -1,4 +1,4 @@
-<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622303856;}*/ ?>
+<?php /*a:1:{s:62:"D:\wamp64\www\amzcount\application\index\view\index\index.html";i:1622344223;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>

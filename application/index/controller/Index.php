@@ -94,7 +94,18 @@ class Index extends Controller
         $List=Db::table($this->tablename)->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->orderRaw("update_time desc,c_rank asc")->select();
 //         dd(Db::table('ca_list')->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->getLastSql());
         $countlist=Db::table($this->tablename)->where($where)->count();
-        if(!empty($List)){
+            
+        $res=array(
+        	'data'=>$this->getPicData($List,$param),
+        	'totle'=>$countlist,
+            'code'=>1
+        );
+        return json_encode($res,true);
+
+    }
+
+    public function getPicData($List,$param) {
+                if(!empty($List)){
             foreach($List as $key=>$val){
                 $picwhere=[["key_words",'=',$val['key_words']]];
                 if(!empty($param['search']['sdate'])){
@@ -186,13 +197,7 @@ class Index extends Controller
 
             }
         }
-        $res=array(
-        	'data'=>$List,
-        	'totle'=>$countlist,
-            'code'=>1
-        );
-        return json_encode($res,true);
-
+        return $List;
     }
 
     public function expExcel(Request $request) {
@@ -208,26 +213,27 @@ class Index extends Controller
 //            $idArr[]=$v['id'];
 //        }
         unset($idArr[count($idArr)-1]);
-        $data=Db::table($this->tablename)->whereIn("id",$idArr)->orderRaw("update_time desc,c_rank asc")->select();
+        $List=Db::table($this->tablename)->whereIn("id",$idArr)->order("update_time asc")->select();
+        $data=$this->getPicData($List,$param);
         $path = dirname(__FILE__);//找到当前脚本所在路径
         $PHPExcel = new \PHPExcel();//实例化phpexcel
         $PHPSheet = $PHPExcel->getActiveSheet();
         $PHPSheet->setTitle("demo");//设置表内部名称
-        $PHPSheet->setCellValue("A1", "ID")
-            ->setCellValue("B1", "关键词")
-            ->setCellValue("C1", "本周排名")
-            ->setCellValue("D1", "上周排名")
-            ->setCellValue("E1", "较上周排名变化")
-            ->setCellValue("F1", "更新时间");
-        $num=2;
+        $PHPSheet->setCellValue("A1", "")
+            ->setCellValue("B1", "")
+            ->setCellValue("C1", "")
+            ->setCellValue("D1", "")
+            ->setCellValue("E1", "")
+            ->setCellValue("F1", "");
+        $num=1;
         //数据
         foreach ($data as $k => $v) {
-            $PHPSheet->setCellValue("A".$num, (string)$v['id']);
-            $PHPSheet->setCellValue("B".$num, (string)$v['key_words']);
-            $PHPSheet->setCellValue("C".$num, (string)$v['c_rank']);
-            $PHPSheet->setCellValue("D".$num, (string)$v['l_rank']);
-            $PHPSheet->setCellValue("E".$num, (string)$v['chang']);
-            $PHPSheet->setCellValue("F".$num, (string)$v['update_time']);
+            $PHPSheet->setCellValue("A1", (string)$v['id']);
+            $PHPSheet->setCellValue("B1".$num, (string)$v['key_words']);
+            $PHPSheet->setCellValue("C1".$num, (string)$v['c_rank']);
+            $PHPSheet->setCellValue("D1".$num, (string)$v['l_rank']);
+            $PHPSheet->setCellValue("E1".$num, (string)$v['chang']);
+            $PHPSheet->setCellValue("F1".$num, (string)$v['update_time']);
             $num++;
         }
         $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel2007");//创建生成的格式

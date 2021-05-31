@@ -219,23 +219,28 @@ class Index extends Controller
         $PHPExcel = new \PHPExcel();//实例化phpexcel
         $PHPSheet = $PHPExcel->getActiveSheet();
         $PHPSheet->setTitle("demo");//设置表内部名称
-        $PHPSheet->setCellValue("A1", "")
+        $PHPSheet->setCellValue("A1", "关键词")
             ->setCellValue("B1", "")
-            ->setCellValue("C1", "")
-            ->setCellValue("D1", "")
-            ->setCellValue("E1", "")
-            ->setCellValue("F1", "");
+            ->setCellValue("C1", "");
+            
         $num=1;
+        //dd($data);
         //数据
-        foreach ($data as $k => $v) {
-            $PHPSheet->setCellValue("A1", (string)$v['id']);
-            $PHPSheet->setCellValue("B1".$num, (string)$v['key_words']);
-            $PHPSheet->setCellValue("C1".$num, (string)$v['c_rank']);
-            $PHPSheet->setCellValue("D1".$num, (string)$v['l_rank']);
-            $PHPSheet->setCellValue("E1".$num, (string)$v['chang']);
-            $PHPSheet->setCellValue("F1".$num, (string)$v['update_time']);
-            $num++;
+        $A=['B','C','D','E','F','G','H'];
+        foreach($data as $k =>$v){
+            $i=($k+1)*3;
+            $ia=$i+1;
+            $PHPSheet->setCellValue("A".$i, (string)$v['key_words']);
+            foreach ($v[$v['id']]['update_time'] as $key => $value) {
+               $PHPSheet->setCellValue($A[$key].$i, (string)$value);
+            }
+            foreach ($v[$v['id']]['chang'] as $key => $value) {
+               $PHPSheet->setCellValue($A[$key].$ia, (string)$value);
+            }
+            
+         
         }
+     
         $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel2007");//创建生成的格式
         header('Content-Disposition: attachment;filename="'.$this->tablename.'.csv"');//下载下来的表格名
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

@@ -75,8 +75,10 @@ class Index extends Controller
 //    		$where[]=["update_time",'>=',$param['search']['sdate'][0]];
 //    		$where[]=["update_time",'<=',$param['search']['sdate'][1]];
 //    	}else{
-            $where[]=["update_time",'<=',$sund];
-            $where[]=["update_time",'>=',$wek];
+            $datadate=Db::table($this->tablename)->order("update_time","desc")->limit(1)->select();
+            $where[]=["update_time",'>=',$datadate[0]['update_time']];
+            //$where[]=["update_time",'<=',$sund];
+            //$where[]=["update_time",'>=',$wek];
 //    	}
 //    	if(!empty($param['search']['val_change'])){
 //    		$where[]=["chang",'>=',$param['search']['val_change']];

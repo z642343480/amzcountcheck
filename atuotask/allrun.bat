@@ -1,2 +1,2 @@
-curl -s http://admin.amzcount.com/admin/Log/hsync
+curl -s http://localhost/admin/Log/hsync
 exit

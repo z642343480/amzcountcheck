@@ -230,7 +230,7 @@ class Index extends Controller
         foreach($data as $k =>$v){
             $i=($k+1)*3;
             $ia=$i+1;
-            $PHPSheet->setCellValue("A".$i, (string)$v['key_words']);
+            $PHPSheet->setCellValue("A".$ia, (string)$v['key_words']);
             foreach ($v[$v['id']]['update_time'] as $key => $value) {
                $PHPSheet->setCellValue($A[$key].$i, (string)$value);
             }

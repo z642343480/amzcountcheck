@@ -11,169 +11,193 @@ use GuzzleHttp\Client;
 class Log
 {
     private $is_auto = 1;
-    private $datacount=0;
+    private $datacount = 0;
 
 
     public function index()
     {
         return 1;
     }
-    public function getlong() {
-        $prog=Db::table('prog')->select();
-        echo json_encode($prog,true);
+
+    public function getlong()
+    {
+        $prog = Db::table('prog')->select();
+        echo json_encode($prog, true);
     }
-    public function stopt() {
-        $prog = Db::table('prog')->where("id",1)->update(['is_stop'=>1]);
+
+    public function stopt()
+    {
+        $prog = Db::table('prog')->where("id", 1)->update(['is_stop' => 1]);
     }
-    public function hsync() {
-        if(!empty($_GET['type'])){
-            $this->is_auto=0;
+
+    public function hsync()
+    {
+        if (!empty($_GET['type'])) {
+            $this->is_auto = 0;
         }
-        $prog = Db::table('prog')->where("id",1)->update(['progress'=>0]);
-        $prog = Db::table('prog')->where("id",1)->update(['is_stop'=>0]);
-        set_time_limit ( 0);
+        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 0]);
+        $prog = Db::table('prog')->where("id", 1)->update(['is_stop' => 0]);
+        set_time_limit(0);
         ob_end_clean();
         ob_implicit_flush(1);
-        $prog=Db::table('prog')->select();
-        if($prog[0]['is_stop']==1){
+        $prog = Db::table('prog')->select();
+        if ($prog[0]['is_stop'] == 1) {
             return 1;
         }
         $this->usa();
-        $prog = Db::table('prog')->where("id",1)->update(['progress'=>10]);
+        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 10]);
 
         echo 10;
 
-        $prog=Db::table('prog')->select();
-        if($prog[0]['is_stop']==1){
+        $prog = Db::table('prog')->select();
+        if ($prog[0]['is_stop'] == 1) {
             return 1;
         }
         $this->uk();
-        $prog = Db::table('prog')->where("id",1)->update(['progress'=>22]);
+        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 22]);
 
         echo 22;
 
-        $prog=Db::table('prog')->select();
-        if($prog[0]['is_stop']==1){
+        $prog = Db::table('prog')->select();
+        if ($prog[0]['is_stop'] == 1) {
             return 1;
         }
         $this->de();
 
-        $prog = Db::table('prog')->where("id",1)->update(['progress'=>33]);
+        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 33]);
         echo 33;
 
 
-        $prog=Db::table('prog')->select();
-        if($prog[0]['is_stop']==1){
+        $prog = Db::table('prog')->select();
+        if ($prog[0]['is_stop'] == 1) {
             return 1;
         }
         $this->jp();
 
-        $prog = Db::table('prog')->where("id",1)->update(['progress'=>44]);
+        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 44]);
         echo 44;
 
 
-        $prog=Db::table('prog')->select();
-        if($prog[0]['is_stop']==1){
+        $prog = Db::table('prog')->select();
+        if ($prog[0]['is_stop'] == 1) {
             return 1;
         }
         $this->esp();
 
-        $prog = Db::table('prog')->where("id",1)->update(['progress'=>55]);
+        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 55]);
         echo 55;
 
 
-        $prog=Db::table('prog')->select();
-        if($prog[0]['is_stop']==1){
+        $prog = Db::table('prog')->select();
+        if ($prog[0]['is_stop'] == 1) {
             return 1;
         }
         $this->it();
 
-        $prog = Db::table('prog')->where("id",1)->update(['progress'=>66]);
+        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 66]);
         echo 66;
 
 
-        $prog=Db::table('prog')->select();
-        if($prog[0]['is_stop']==1){
+        $prog = Db::table('prog')->select();
+        if ($prog[0]['is_stop'] == 1) {
             return 1;
         }
         $this->mx();
 
-        $prog = Db::table('prog')->where("id",1)->update(['progress'=>77]);
+        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 77]);
         echo 77;
 
-        $prog=Db::table('prog')->select();
-        if($prog[0]['is_stop']==1){
+        $prog = Db::table('prog')->select();
+        if ($prog[0]['is_stop'] == 1) {
             return 1;
         }
         $this->ca();
 
-        $prog = Db::table('prog')->where("id",1)->update(['progress'=>88]);
+        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 88]);
         echo 88;
 
 
-        $prog=Db::table('prog')->select();
-        if($prog[0]['is_stop']==1){
+        $prog = Db::table('prog')->select();
+        if ($prog[0]['is_stop'] == 1) {
             return 1;
         }
         $this->fr();
 
-        $prog = Db::table('prog')->where("id",1)->update(['progress'=>100]);
+        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 100]);
         echo 100;
 
 
     }
+
     //    美国
-    public function usa() {
-        $area='usa';
+    public function usa()
+    {
+        $area = 'usa';
         $this->getAmzList($area);
     }
+
     //    英国
-    public function uk() {
-        $area='uk';
+    public function uk()
+    {
+        $area = 'uk';
         $this->getAmzList($area);
     }
+
     //    德国
-    public function de() {
-        $area='de';
+    public function de()
+    {
+        $area = 'de';
         $this->getAmzList($area);
     }
+
     //    日本
-    public function jp() {
-        $area='jp';
+    public function jp()
+    {
+        $area = 'jp';
         $this->getAmzList($area);
     }
+
     //    西班牙
-    public function esp() {
-        $area='esp';
+    public function esp()
+    {
+        $area = 'esp';
         $this->getAmzList($area);
     }
+
     //    意大利
-    public function it() {
-        $area='it';
+    public function it()
+    {
+        $area = 'it';
         $this->getAmzList($area);
     }
+
     //    法国
-    public function fr() {
-        $area='fr';
+    public function fr()
+    {
+        $area = 'fr';
         $this->getAmzList($area);
     }
+
     //    墨西哥
-    public function mx() {
-        $area='mx';
+    public function mx()
+    {
+        $area = 'mx';
         $this->getAmzList($area);
     }
+
     //    加拿大
-    public function ca() {
-        $area='ca';
+    public function ca()
+    {
+        $area = 'ca';
         $this->getAmzList($area);
     }
 
     public function getAmzList($area)
     {
 
-        set_time_limit ( 0);
-        $table_update_time='';
-        $error_data=array();
+        set_time_limit(0);
+        $table_update_time = '';
+        $error_data = array();
         $error_e = '';
         $is_error = '';
         $page = ['1_1000', '1001_10000', '10001_50000', '50000'];
@@ -185,43 +209,43 @@ class Log
                 $forcount = 17;
             }
             for ($i = 1; $i <= $forcount; $i++) {
-                $prog=Db::table('prog')->select();
-                if($prog[0]['is_stop']==1){
+                $prog = Db::table('prog')->select();
+                if ($prog[0]['is_stop'] == 1) {
                     return false;
                 }
                 try {
-                    $ql = QueryList::get('https://www.amz123.com/'.$area.'topkeywords-' . $i . '-1-.htm?rank=' . $doval . '&uprank=');
+                    $ql = QueryList::get('https://www.amz123.com/' . $area . 'topkeywords-' . $i . '-1-.htm?rank=' . $doval . '&uprank=');
                 } catch (RequestException $e) {
                     $error_e = $e;
                     $is_error = "get_error";
                     break 2;
                     exit;
                 }
-                $TempData=array();
-                $kw=array();
-                $rg=array();
+                $TempData = array();
+                $kw = array();
+                $rg = array();
                 $kw = $ql->find('.listdata>.keywords')->texts()->all();
                 $rg = $ql->find('.listdata>.rank')->texts()->all();
 //                $count = count($kw);//总条数
-                foreach($kw as $kk =>$vk){
-                    $TempData[$kk][]=$vk;
-                    $c=$kk+1;
-                    $start=($c-1)*3;
-                    $rgarr= array_slice($rg,$start,3);
-                    foreach($rgarr as $rk=>$rv){
-                        $TempData[$kk][]=$rv;
+                foreach ($kw as $kk => $vk) {
+                    $TempData[$kk][] = $vk;
+                    $c = $kk + 1;
+                    $start = ($c - 1) * 3;
+                    $rgarr = array_slice($rg, $start, 3);
+                    foreach ($rgarr as $rk => $rv) {
+                        $TempData[$kk][] = $rv;
                     }
                 }
                 $UpdateHtml = $ql->find('.banner-form>div')->texts();
                 $UpdateText = $UpdateHtml->take(-1)->all();
                 $update_time = substr($UpdateText[2], -16);
-                $update_time=substr($update_time,0,strlen($update_time)-6);
-                $is_existence=0;
-                if($table_update_time==''){
-                    $is_existence=Db::table($area.'_list')->where('update_time',$update_time)->count();
-                    $table_update_time=$update_time;
+                $update_time = substr($update_time, 0, strlen($update_time) - 6);
+                $is_existence = 0;
+                if ($table_update_time == '') {
+                    $is_existence = Db::table($area . '_list')->where('update_time', $update_time)->count();
+                    $table_update_time = $update_time;
                 }
-                if($is_existence){
+                if ($is_existence) {
                     return false;
                     break 2;
                 }
@@ -256,25 +280,25 @@ class Log
                 }
 
                 try {
-                    $IsSuccess = Db::table($area.'_list')->insertAll($TempData);
-                    $this->datacount+=$IsSuccess;
+                    $IsSuccess = Db::table($area . '_list')->insertAll($TempData);
+                    $this->datacount += $IsSuccess;
                 } catch (\Exception $e) {
                     $error_e = $e;
                     $is_error = "insert_error";
-                    $error_data=$TempData;
+                    $error_data = $TempData;
                     break 2;
                 }
                 sleep(1);
             }
         }
         if ($is_error == '') {
-            $logData = ['error_code' => 200, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => '任务执行成功', 'is_success' => 1,'data_count'=>$this->datacount,'area'=>$area];
+            $logData = ['error_code' => 200, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => '任务执行成功', 'is_success' => 1, 'data_count' => $this->datacount, 'area' => $area];
             $IsSuccess = Db::table('log')->insert($logData);
             Db::commit();
         } else {
             if ($is_error == 'insert_error') {
                 Db::rollback();
-                $logData = ['error_code' => 10000, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => '任务执行失败' . $error_e->getMessage(), 'is_success' => 0,'data_count'=>$this->datacount,'area'=>$area];
+                $logData = ['error_code' => 10000, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => '任务执行失败' . $error_e->getMessage(), 'is_success' => 0, 'data_count' => $this->datacount, 'area' => $area];
                 $IsSuccess = Db::table('log')->insert($logData);
 
             }
@@ -283,7 +307,7 @@ class Log
                 if ($e->hasResponse()) {
                     $error_code = $e->getCode();
                     $error_remark = $e->getMessage();
-                    $ErrorData = ['error_code' => $error_code, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => $error_remark, 'is_success' => 0,'data_count'=>$this->datacount,'area'=>$area];
+                    $ErrorData = ['error_code' => $error_code, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => $error_remark, 'is_success' => 0, 'data_count' => $this->datacount, 'area' => $area];
                     $IsSuccess = Db::table('log')->insert($ErrorData);
 
                 }

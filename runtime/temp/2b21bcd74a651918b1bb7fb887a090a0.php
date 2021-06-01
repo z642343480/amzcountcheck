@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622546508;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622558438;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -1584,8 +1584,34 @@
                         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
+                        position: function (point, params, dom, rect, size) {                            
+                              var x = 0; // x坐标位置
+                              var y = 0; // y坐标位置
+                             
+                              // 当前鼠标位置
+                              var pointX = point[0];
+                              var pointY = point[1];
+                              // 提示框大小
+                              var boxWidth = size.contentSize[0];
+                              var boxHeight = size.contentSize[1];
+                             
+                              // boxWidth > pointX 说明鼠标左边放不下提示框
+                              if (boxWidth > pointX) {
+                                x = 5;
+                              } else { // 左边放的下
+                                x = pointX - boxWidth;
+                              }
+                             
+                              // boxHeight > pointY 说明鼠标上边放不下提示框
+                              if (boxHeight > pointY) {
+                                y = 5;
+                              } else { // 上边放得下
+                                y = pointY - boxHeight;
+                              }                             
+                              return [x, y];
+                            },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.usatableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.usatableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>上周排名：'+ that.usatableData[idname].l_rank +'<br/>排名变化：'+that.usatableData[idname].chang+'<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1650,8 +1676,34 @@
                         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
+                         position: function (point, params, dom, rect, size) {                            
+                              var x = 0; // x坐标位置
+                              var y = 0; // y坐标位置
+                             
+                              // 当前鼠标位置
+                              var pointX = point[0];
+                              var pointY = point[1];
+                              // 提示框大小
+                              var boxWidth = size.contentSize[0];
+                              var boxHeight = size.contentSize[1];
+                             
+                              // boxWidth > pointX 说明鼠标左边放不下提示框
+                              if (boxWidth > pointX) {
+                                x = 5;
+                              } else { // 左边放的下
+                                x = pointX - boxWidth;
+                              }
+                             
+                              // boxHeight > pointY 说明鼠标上边放不下提示框
+                              if (boxHeight > pointY) {
+                                y = 5;
+                              } else { // 上边放得下
+                                y = pointY - boxHeight;
+                              }                             
+                              return [x, y];
+                            },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.uktableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.uktableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>上周排名：'+that.uktableData[idname].l_rank+'<br/>排名变化：'+that.uktableData[idname].chang+'<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1716,8 +1768,34 @@
                         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
+                         position: function (point, params, dom, rect, size) {                            
+                              var x = 0; // x坐标位置
+                              var y = 0; // y坐标位置
+                             
+                              // 当前鼠标位置
+                              var pointX = point[0];
+                              var pointY = point[1];
+                              // 提示框大小
+                              var boxWidth = size.contentSize[0];
+                              var boxHeight = size.contentSize[1];
+                             
+                              // boxWidth > pointX 说明鼠标左边放不下提示框
+                              if (boxWidth > pointX) {
+                                x = 5;
+                              } else { // 左边放的下
+                                x = pointX - boxWidth;
+                              }
+                             
+                              // boxHeight > pointY 说明鼠标上边放不下提示框
+                              if (boxHeight > pointY) {
+                                y = 5;
+                              } else { // 上边放得下
+                                y = pointY - boxHeight;
+                              }                             
+                              return [x, y];
+                            },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.detableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.detableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>上周排名：'+that.detableData[idname].l_rank+'<br/>排名变化：'+that.detableData[idname].chang+'<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1783,7 +1861,7 @@
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.jptableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.jptableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>上周排名：'+that.jptableData[idname].l_rank+'<br/>排名变化：'+that.jptableData[idname].chang+'<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1848,8 +1926,34 @@
                         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
+                         position: function (point, params, dom, rect, size) {                            
+                              var x = 0; // x坐标位置
+                              var y = 0; // y坐标位置
+                             
+                              // 当前鼠标位置
+                              var pointX = point[0];
+                              var pointY = point[1];
+                              // 提示框大小
+                              var boxWidth = size.contentSize[0];
+                              var boxHeight = size.contentSize[1];
+                             
+                              // boxWidth > pointX 说明鼠标左边放不下提示框
+                              if (boxWidth > pointX) {
+                                x = 5;
+                              } else { // 左边放的下
+                                x = pointX - boxWidth;
+                              }
+                             
+                              // boxHeight > pointY 说明鼠标上边放不下提示框
+                              if (boxHeight > pointY) {
+                                y = 5;
+                              } else { // 上边放得下
+                                y = pointY - boxHeight;
+                              }                             
+                              return [x, y];
+                            },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.esptableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.esptableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>上周排名：'+that.esptableData[idname].l_rank+'<br/>排名变化：'+that.esptableData[idname].chang+'<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1914,8 +2018,34 @@
                         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
+                         position: function (point, params, dom, rect, size) {                            
+                              var x = 0; // x坐标位置
+                              var y = 0; // y坐标位置
+                             
+                              // 当前鼠标位置
+                              var pointX = point[0];
+                              var pointY = point[1];
+                              // 提示框大小
+                              var boxWidth = size.contentSize[0];
+                              var boxHeight = size.contentSize[1];
+                             
+                              // boxWidth > pointX 说明鼠标左边放不下提示框
+                              if (boxWidth > pointX) {
+                                x = 5;
+                              } else { // 左边放的下
+                                x = pointX - boxWidth;
+                              }
+                             
+                              // boxHeight > pointY 说明鼠标上边放不下提示框
+                              if (boxHeight > pointY) {
+                                y = 5;
+                              } else { // 上边放得下
+                                y = pointY - boxHeight;
+                              }                             
+                              return [x, y];
+                            },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.ittableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.ittableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>上周排名：'+that.ittableData[idname].l_rank+'<br/>排名变化：'+that.ittableData[idname].chang+'<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1980,8 +2110,34 @@
                         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
+                         position: function (point, params, dom, rect, size) {                            
+                              var x = 0; // x坐标位置
+                              var y = 0; // y坐标位置
+                             
+                              // 当前鼠标位置
+                              var pointX = point[0];
+                              var pointY = point[1];
+                              // 提示框大小
+                              var boxWidth = size.contentSize[0];
+                              var boxHeight = size.contentSize[1];
+                             
+                              // boxWidth > pointX 说明鼠标左边放不下提示框
+                              if (boxWidth > pointX) {
+                                x = 5;
+                              } else { // 左边放的下
+                                x = pointX - boxWidth;
+                              }
+                             
+                              // boxHeight > pointY 说明鼠标上边放不下提示框
+                              if (boxHeight > pointY) {
+                                y = 5;
+                              } else { // 上边放得下
+                                y = pointY - boxHeight;
+                              }                             
+                              return [x, y];
+                            },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.mxtableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.mxtableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>上周排名：'+that.mxtableData[idname].l_rank+'<br/>排名变化：'+that.mxtableData[idname].chang+'<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -2046,8 +2202,34 @@
                         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
+                         position: function (point, params, dom, rect, size) {                            
+                              var x = 0; // x坐标位置
+                              var y = 0; // y坐标位置
+                             
+                              // 当前鼠标位置
+                              var pointX = point[0];
+                              var pointY = point[1];
+                              // 提示框大小
+                              var boxWidth = size.contentSize[0];
+                              var boxHeight = size.contentSize[1];
+                             
+                              // boxWidth > pointX 说明鼠标左边放不下提示框
+                              if (boxWidth > pointX) {
+                                x = 5;
+                              } else { // 左边放的下
+                                x = pointX - boxWidth;
+                              }
+                             
+                              // boxHeight > pointY 说明鼠标上边放不下提示框
+                              if (boxHeight > pointY) {
+                                y = 5;
+                              } else { // 上边放得下
+                                y = pointY - boxHeight;
+                              }                             
+                              return [x, y];
+                            },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.frtableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.frtableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>上周排名：'+ that.frtableData[idname].l_rank +'<br/>排名变化：'+ that.frtableData[idname].chang +'<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -2112,8 +2294,34 @@
                         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
+                         position: function (point, params, dom, rect, size) {                            
+                              var x = 0; // x坐标位置
+                              var y = 0; // y坐标位置
+                             
+                              // 当前鼠标位置
+                              var pointX = point[0];
+                              var pointY = point[1];
+                              // 提示框大小
+                              var boxWidth = size.contentSize[0];
+                              var boxHeight = size.contentSize[1];
+                             
+                              // boxWidth > pointX 说明鼠标左边放不下提示框
+                              if (boxWidth > pointX) {
+                                x = 5;
+                              } else { // 左边放的下
+                                x = pointX - boxWidth;
+                              }
+                             
+                              // boxHeight > pointY 说明鼠标上边放不下提示框
+                              if (boxHeight > pointY) {
+                                y = 5;
+                              } else { // 上边放得下
+                                y = pointY - boxHeight;
+                              }                             
+                              return [x, y];
+                            },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.catableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.catableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>上周排名：'+that.catableData[idname].l_rank+'<br/>排名变化：'+that.catableData[idname].chang+'<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },

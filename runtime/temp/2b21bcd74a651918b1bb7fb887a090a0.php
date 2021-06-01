@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622538142;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622538304;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +52,7 @@
                             <el-form ref="form" :model="usaform" label-width="100px">
                                 <input type="radio" name="usaonly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="usaform.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model.number="usaform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="usaonly_who" style="float: left;margin-top: 13px;">
@@ -164,15 +164,15 @@
                             <el-form ref="form" :model="ukform" label-width="100px">
                                 <input type="radio" name="ukonly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="ukform.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model.number="ukform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="ukonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="ukform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="ukform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="ukform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="ukform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -276,15 +276,15 @@
                             <el-form ref="form" :model="deform" label-width="100px">
                                 <input type="radio" name="deonly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="deform.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model.number="deform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="deonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="deform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="deform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="deform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="deform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -388,15 +388,15 @@
                             <el-form ref="form" :model="jpform" label-width="100px">
                                 <input type="radio" name="jponly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="jpform.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model.number="jpform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="jponly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="jpform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="jpform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="jpform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="jpform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -500,15 +500,15 @@
                             <el-form ref="form" :model="espform" label-width="100px">
                                 <input type="radio" name="esponly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="espform.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model.number="espform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="esponly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="espform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="espform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="espform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="espform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -612,15 +612,15 @@
                             <el-form ref="form" :model="itform" label-width="100px">
                                 <input type="radio" name="itonly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="itform.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model.number="itform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="itonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="itform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="itform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="itform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="itform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -724,15 +724,15 @@
                             <el-form ref="form" :model="frform" label-width="100px">
                                 <input type="radio" name="fronly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="frform.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model.number="frform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="fronly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="frform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="frform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="frform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="frform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -836,15 +836,15 @@
                             <el-form ref="form" :model="mxform" label-width="100px">
                                 <input type="radio" name="mxonly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="mxform.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model.number="mxform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="mxonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="mxform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="mxform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="mxform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="mxform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -948,15 +948,15 @@
                             <el-form ref="form" :model="caform" label-width="100px">
                                 <input type="radio" name="caonly_who" checked="checked" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model="caform.val_change" size="small" style="width: 70%;"></el-input>
+                                    <el-input v-model.number="caform.val_change" size="small" style="width: 70%;"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="caonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="caform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="caform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="caform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="caform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>

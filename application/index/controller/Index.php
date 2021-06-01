@@ -29,6 +29,16 @@ class Index extends Controller
                 );
                 return json_encode($res,true);exit;
 
+            }else{
+                if($param['search']['val_change']<0){
+                    $res=array(
+                    'data'=>[],
+                    'totle'=>0,
+                    'code'=>0,
+                    'message'=>'每周增长量必须是正数'
+                );
+                return json_encode($res,true);exit;
+                }
             }
     	}
     	if(isset($param['search']['percentage_change'])  && !empty($param['search']['percentage_change'])){
@@ -41,8 +51,18 @@ class Index extends Controller
                 );
                 return json_encode($res,true);exit;
 
-            }
+            }else{
+                if($param['search']['percentage_change']<0){
+                    $res=array(
+                    'data'=>[],
+                    'totle'=>0,
+                    'code'=>0,
+                    'message'=>'每周增长率必须是正数'
+                );
+                return json_encode($res,true);exit;
+                }
     	}
+    }
     	if(isset($param['search']['satisfy_p'])){
             if(!is_numeric($param['search']['satisfy_p'])){
                 $res=array(
@@ -60,6 +80,16 @@ class Index extends Controller
                     'totle'=>0,
                     'code'=>0,
                     'message'=>'达标比例必须小于100%'
+                );
+                return json_encode($res,true);exit;
+                }
+
+                 if($param['search']['satisfy_p']<0){
+                    $res=array(
+                    'data'=>[],
+                    'totle'=>0,
+                    'code'=>0,
+                    'message'=>'达标比例必须正数'
                 );
                 return json_encode($res,true);exit;
                 }
@@ -81,26 +111,10 @@ class Index extends Controller
     	if(!empty($param['search']['key_words'])){
     		$where[]=["key_words",'like','%'.$param['search']['key_words'].'%'];
     	}
-//    	if(!empty($param['search']['sdate'])){
-//    		$where[]=["update_time",'>=',$param['search']['sdate'][0]];
-//    		$where[]=["update_time",'<=',$param['search']['sdate'][1]];
-//    	}else{
+
             $datadate=Db::table($this->tablename)->order("update_time","desc")->limit(1)->select();
             $where[]=["update_time",'>=',$datadate[0]['update_time']];
-            //$where[]=["update_time",'<=',$sund];
-            //$where[]=["update_time",'>=',$wek];
-//    	}
-//    	if(!empty($param['search']['val_change'])){
-//    		$where[]=["chang",'>=',$param['search']['val_change']];
-//
-//    	}
-//    	if(!empty($param['search']['percentage_change'])){
-//    		$whereRaw="(chang/l_rank) >=".$param['search']['percentage_change']/100;
-//    	}
-//    	if(!empty($param['search']['satisfy_p'])){
-//    		$where[]=["update_time",'>=',$param['search']['sdate'][0]];
-//    		$where[]=["update_time",'<=',$param['search']['sdate'][1]];
-//    	}
+
         $List=Db::table($this->tablename)->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->orderRaw("update_time desc,c_rank asc")->select();
 //         dd(Db::table('ca_list')->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->getLastSql());
         $countlist=Db::table($this->tablename)->where($where)->count();
@@ -115,7 +129,7 @@ class Index extends Controller
     }
 
     public function getPicData($List,$param) {
-    $botime=date("Y-m-d", strtotime("-6 month"));
+         $botime=date("Y-m-d", strtotime("-6 month"));
 
                 if(!empty($List)){
             foreach($List as $key=>$val){
@@ -148,13 +162,26 @@ class Index extends Controller
                         if(($pvalue['chang']>=$val_change) && (((int)$pvalue['chang'] / (int)$pvalue['l_rank'])>=((int)$percentage_change/100))){
                         $List[$key][$val['id']]['update_time'][]=$pvalue['update_time'];
                          $List[$key][$val['id']]['chang'][]=$pvalue['chang'];
-                         $num++;
                     }else{
                         $List[$key][$val['id']]['update_time'][]=null;
                         $List[$key][$val['id']]['chang'][]=null;
                     }
                 }else{
+                    if(($pvalue['chang']>=$val_change) && (((int)$pvalue['chang'] / (int)$pvalue['l_rank'])>=((int)$percentage_change/100))){
+                         $num++;
+                    }
                     if($pkey==$ArrToa){
+                        $CurNum=count($PicList);
+                        $CanNum=($satisfy_p * $CurNum)/100;
+                        if($num>=$CanNum){
+                            foreach ($PicList as $pokey => $povalue) {
+                                $List[$key][$val['id']]['update_time'][]=$povalue['update_time'];
+                                $List[$key][$val['id']]['chang'][]=$povalue['chang'];
+                            }
+                        }else{
+                            $List[$key][$val['id']]['update_time'][]=null;
+                            $List[$key][$val['id']]['chang'][]=null;
+                        }
 
                      }
                 }
@@ -164,6 +191,7 @@ class Index extends Controller
 
             }
         }
+
         return $List;
     }
 

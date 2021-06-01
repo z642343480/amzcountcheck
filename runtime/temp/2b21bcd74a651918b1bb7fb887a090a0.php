@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622538304;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622546508;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -1585,7 +1585,7 @@
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.usatableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.usatableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1617,7 +1617,7 @@
                         type: 'value'
                     },
                     series: [{
-                        data: this.usatableData[idname][id].chang,
+                        data: this.usatableData[idname][id].c_rank,
                         type: 'bar',
                         showBackground: true,
                         backgroundStyle: {
@@ -1651,7 +1651,7 @@
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.uktableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.uktableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1683,7 +1683,7 @@
                         type: 'value'
                     },
                     series: [{
-                        data: this.uktableData[idname][id].chang,
+                        data: this.uktableData[idname][id].c_rank,
                         type: 'bar',
                         showBackground: true,
                         backgroundStyle: {
@@ -1717,7 +1717,7 @@
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.detableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.detableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1749,7 +1749,7 @@
                         type: 'value'
                     },
                     series: [{
-                        data: this.detableData[idname][id].chang,
+                        data: this.detableData[idname][id].c_rank,
                         type: 'bar',
                         showBackground: true,
                         backgroundStyle: {
@@ -1783,7 +1783,7 @@
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.jptableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.jptableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1815,7 +1815,7 @@
                         type: 'value'
                     },
                     series: [{
-                        data: this.jptableData[idname][id].chang,
+                        data: this.jptableData[idname][id].c_rank,
                         type: 'bar',
                         showBackground: true,
                         backgroundStyle: {
@@ -1849,7 +1849,7 @@
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.esptableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.esptableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1881,7 +1881,7 @@
                         type: 'value'
                     },
                     series: [{
-                        data: this.esptableData[idname][id].chang,
+                        data: this.esptableData[idname][id].c_rank,
                         type: 'bar',
                         showBackground: true,
                         backgroundStyle: {
@@ -1915,7 +1915,7 @@
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.ittableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.ittableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1947,7 +1947,7 @@
                         type: 'value'
                     },
                     series: [{
-                        data: this.ittableData[idname][id].chang,
+                        data: this.ittableData[idname][id].c_rank,
                         type: 'bar',
                         showBackground: true,
                         backgroundStyle: {
@@ -1981,7 +1981,7 @@
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.mxtableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.mxtableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -2013,7 +2013,7 @@
                         type: 'value'
                     },
                     series: [{
-                        data: this.mxtableData[idname][id].chang,
+                        data: this.mxtableData[idname][id].c_rank,
                         type: 'bar',
                         showBackground: true,
                         backgroundStyle: {
@@ -2047,7 +2047,7 @@
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.frtableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.frtableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -2079,7 +2079,7 @@
                         type: 'value'
                     },
                     series: [{
-                        data: this.frtableData[idname][id].chang,
+                        data: this.frtableData[idname][id].c_rank,
                         type: 'bar',
                         showBackground: true,
                         backgroundStyle: {
@@ -2113,7 +2113,7 @@
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.catableData[idname].key_words + '<br/>涨跌：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.catableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -2145,7 +2145,7 @@
                         type: 'value'
                     },
                     series: [{
-                        data: this.catableData[idname][id].chang,
+                        data: this.catableData[idname][id].c_rank,
                         type: 'bar',
                         showBackground: true,
                         backgroundStyle: {

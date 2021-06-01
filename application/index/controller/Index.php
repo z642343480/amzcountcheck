@@ -161,10 +161,10 @@ class Index extends Controller
                     if($satisfy_p == 100){
                         if(($pvalue['chang']>=$val_change) && (((int)$pvalue['chang'] / (int)$pvalue['l_rank'])>=((int)$percentage_change/100))){
                         $List[$key][$val['id']]['update_time'][]=$pvalue['update_time'];
-                         $List[$key][$val['id']]['chang'][]=$pvalue['chang'];
+                         $List[$key][$val['id']]['c_rank'][]=$pvalue['c_rank'];
                     }else{
-                        $List[$key][$val['id']]['update_time'][]=null;
-                        $List[$key][$val['id']]['chang'][]=null;
+                        $List[$key][$val['id']]['update_time'][]='null';
+                        $List[$key][$val['id']]['c_rank'][]='null';
                     }
                 }else{
                     if(($pvalue['chang']>=$val_change) && (((int)$pvalue['chang'] / (int)$pvalue['l_rank'])>=((int)$percentage_change/100))){
@@ -176,11 +176,11 @@ class Index extends Controller
                         if($num>=$CanNum){
                             foreach ($PicList as $pokey => $povalue) {
                                 $List[$key][$val['id']]['update_time'][]=$povalue['update_time'];
-                                $List[$key][$val['id']]['chang'][]=$povalue['chang'];
+                                $List[$key][$val['id']]['c_rank'][]=$povalue['c_rank'];
                             }
                         }else{
-                            $List[$key][$val['id']]['update_time'][]=null;
-                            $List[$key][$val['id']]['chang'][]=null;
+                            $List[$key][$val['id']]['update_time'][]='null';
+                            $List[$key][$val['id']]['c_rank'][]='null';
                         }
 
                      }
@@ -191,7 +191,19 @@ class Index extends Controller
 
             }
         }
-
+        //dd($List);
+        foreach ($List as $key => $value) {
+            //dd($value[$value['id']]);
+            foreach ($value[$value['id']] as $k => $v) {
+                foreach ($v as $kk => $vv) {
+                    if($vv === 'null'){
+                        unset($List[$key]);
+                    }
+                }
+               
+            }
+        }
+        $List=array_merge($List);
         return $List;
     }
 

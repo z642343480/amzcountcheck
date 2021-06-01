@@ -226,22 +226,23 @@ class Index extends Controller
         $PHPExcel = new \PHPExcel();//实例化phpexcel
         $PHPSheet = $PHPExcel->getActiveSheet();
         $PHPSheet->setTitle("demo");//设置表内部名称
-        $PHPSheet->setCellValue("A1", "关键词")
-            ->setCellValue("B1", "")
-            ->setCellValue("C1", "");
+       
             
         $num=1;
         //dd($data);
         //数据
         $A=['B','C','D','E','F','G','H'];
         foreach($data as $k =>$v){
-            $i=($k+1)*3;
+            $i=($k+1);
             $ia=$i+1;
             $PHPSheet->setCellValue("A".$ia, (string)$v['key_words']);
-            foreach ($v[$v['id']]['update_time'] as $key => $value) {
+            if($k==0){
+                 foreach ($v[$v['id']]['update_time'] as $key => $value) {
                $PHPSheet->setCellValue($A[$key].$i, (string)$value);
             }
-            foreach ($v[$v['id']]['chang'] as $key => $value) {
+            }
+           
+            foreach ($v[$v['id']]['c_rank'] as $key => $value) {
                $PHPSheet->setCellValue($A[$key].$ia, (string)$value);
             }
             

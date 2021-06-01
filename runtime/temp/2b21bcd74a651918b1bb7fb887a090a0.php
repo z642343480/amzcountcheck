@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622443992;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622538142;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,7 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="usaform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="usaform.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model.lazy="usaform.key_words" placeholder="请输入关键词" size="small"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="usaonSubmit('usa')">搜索</el-button>
@@ -57,10 +57,10 @@
 
                                 <input type="radio" name="usaonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model="usaform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="usaform.percentage_change" size="small" style="width: 70%;"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model="usaform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
+                                    <el-input v-model.number="usaform.satisfy_p" size="small" style="width: 71%;"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -1130,10 +1130,10 @@
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("usaonly_who");
                     if(obj[0].checked==true){
-                        this.usaform.percentage_change='';
+                        delete this.usaform.percentage_change
                     }
                     if(obj[1].checked==true){
-                        this.usaform.val_change='';
+                       delete this.usaform.val_change
                     }
                     if(this.usaform.usasatisfy_p != undefined){
                         if((this.usaform.val_change == undefined && this.usaform.percentage_change == '') || (this.usaform.val_change == '' && this.usaform.percentage_change == undefined)){
@@ -1180,10 +1180,10 @@
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("ukonly_who");
                     if(obj[0].checked==true){
-                        this.ukform.percentage_change='';
+                       delete this.ukform.percentage_change
                     }
                     if(obj[1].checked==true){
-                        this.ukform.val_change='';
+                      delete this.ukform.val_change
                     }
                     if(this.ukform.usasatisfy_p != undefined){
                         if((this.ukform.val_change == undefined && this.ukform.percentage_change == '') || (this.ukform.val_change == '' && this.ukform.percentage_change == undefined)){
@@ -1230,10 +1230,10 @@
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("deonly_who");
                     if(obj[0].checked==true){
-                        this.deform.percentage_change='';
+                       delete this.deform.percentage_change
                     }
                     if(obj[1].checked==true){
-                        this.deform.val_change='';
+                      delete this.deform.val_change
                     }
                     if(this.deform.usasatisfy_p != undefined){
                         if((this.deform.val_change == undefined && this.deform.percentage_change == '') || (this.deform.val_change == '' && this.deform.percentage_change == undefined)){
@@ -1280,10 +1280,10 @@
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("jponly_who");
                     if(obj[0].checked==true){
-                        this.jpform.percentage_change='';
+                       delete this.jpform.percentage_change
                     }
                     if(obj[1].checked==true){
-                        this.jpform.val_change='';
+                      delete this.jpform.val_change
                     }
                     if(this.jpform.usasatisfy_p != undefined){
                         if((this.jpform.val_change == undefined && this.jpform.percentage_change == '') || (this.jpform.val_change == '' && this.jpform.percentage_change == undefined)){
@@ -1330,10 +1330,10 @@
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("esponly_who");
                     if(obj[0].checked==true){
-                        this.espform.percentage_change='';
+                       delete this.espform.percentage_change
                     }
                     if(obj[1].checked==true){
-                        this.espform.val_change='';
+                       delete this.espform.val_change
                     }
                     if(this.espform.usasatisfy_p != undefined){
                         if((this.espform.val_change == undefined && this.espform.percentage_change == '') || (this.espform.val_change == '' && this.espform.percentage_change == undefined)){
@@ -1380,10 +1380,10 @@
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("itonly_who");
                     if(obj[0].checked==true){
-                        this.itform.percentage_change='';
+                       delete this.itform.percentage_change
                     }
                     if(obj[1].checked==true){
-                        this.itform.val_change='';
+                      delete this.itform.val_change
                     }
                     if(this.itform.usasatisfy_p != undefined){
                         if((this.itform.val_change == undefined && this.itform.percentage_change == '') || (this.itform.val_change == '' && this.itform.percentage_change == undefined)){
@@ -1430,10 +1430,10 @@
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("fronly_who");
                     if(obj[0].checked==true){
-                        this.frform.percentage_change='';
+                       delete this.frform.percentage_change
                     }
                     if(obj[1].checked==true){
-                        this.frform.val_change='';
+                       delete this.frform.val_change
                     }
                     if(this.frform.satisfy_p != undefined){
                         if((this.frform.val_change == undefined && this.frform.percentage_change == '') || (this.frform.val_change == '' && this.frform.percentage_change == undefined)){
@@ -1480,10 +1480,10 @@
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("mxonly_who");
                     if(obj[0].checked==true){
-                        this.mxform.percentage_change='';
+                       delete this.mxform.percentage_change
                     }
                     if(obj[1].checked==true){
-                        this.mxform.val_change='';
+                       delete this.mxform.val_change
                     }
                     if(this.mxform.satisfy_p != undefined){
                         if((this.mxform.val_change == undefined && this.mxform.percentage_change == '') || (this.mxform.val_change == '' && this.mxform.percentage_change == undefined)){
@@ -1530,10 +1530,10 @@
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("caonly_who");
                     if(obj[0].checked==true){
-                        this.caform.percentage_change='';
+                       delete this.caform.percentage_change
                     }
                     if(obj[1].checked==true){
-                        this.caform.val_change='';
+                      delete this.caform.val_change
                     }
                     if(this.caform.satisfy_p != undefined){
                         if((this.caform.val_change == undefined && this.caform.percentage_change == '') || (this.caform.val_change == '' && this.caform.percentage_change == undefined)){

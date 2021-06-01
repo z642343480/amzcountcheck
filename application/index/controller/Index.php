@@ -53,6 +53,16 @@ class Index extends Controller
                 );
                 return json_encode($res,true);exit;
 
+            }else{
+                if($param['search']['satisfy_p']>100){
+                    $res=array(
+                    'data'=>[],
+                    'totle'=>0,
+                    'code'=>0,
+                    'message'=>'达标比例必须小于100%'
+                );
+                return json_encode($res,true);exit;
+                }
             }
     	}
 
@@ -105,94 +115,51 @@ class Index extends Controller
     }
 
     public function getPicData($List,$param) {
+    $botime=date("Y-m-d", strtotime("-6 month"));
+
                 if(!empty($List)){
             foreach($List as $key=>$val){
                 $picwhere=[["key_words",'=',$val['key_words']]];
                 if(!empty($param['search']['sdate'])){
                     $picwhere[]=["update_time",'>=',$param['search']['sdate'][0]];
                     $picwhere[]=["update_time",'<=',$param['search']['sdate'][1]];
+                }else{
+                    $picwhere[]=["update_time",'>=',$botime];
+                    $picwhere[]=["update_time",'<=',date("Y-m-d",time())];
                 }
-//                else{
-//                    $picwhere[]=["update_time",'>=',$wek];
-//                    $picwhere[]=["update_time",'<=',$sund];
-//                }
-
 
                 $PicList=Db::table($this->tablename)->where($picwhere)->select();
-                $DCount=0;
-                $i=0;
-                $findkey='';
+                $val_change=-100000;
+                $percentage_change=-100000;
+                $satisfy_p=100;
+                if(!empty($param['search']['val_change'])){
+                     $val_change=$param['search']['val_change'];
+                }
+                 if(!empty($param['search']['percentage_change'])){
+                     $percentage_change=$param['search']['percentage_change'];
+                }
+                 if(!empty($param['search']['satisfy_p'])){
+                     $satisfy_p=$param['search']['satisfy_p'];
+                }
+                $ArrToa=count($PicList)-1;
+                $num=0;
                 foreach ($PicList as $pkey => $pvalue) {
-                    if(!empty($param['search']['val_change'])){
-                        if(!empty($param['search']['satisfy_p'])){
-                            $CurNum=count($PicList);
-                            $CanShowCount=($param['search']['satisfy_p']*$CurNum)/100;
-                            if($pvalue['chang']>=$param['search']['val_change']){
-                                $DCount++;
-                                $findkey.=$pkey.',';
-                            }
-                            if($DCount>=$CanShowCount){
-                                if($i==0){
-                                    foreach ($PicList as $cpkey => $cpvalue) {
-                                        $List[$key][$val['id']]['update_time'][]=$cpvalue['update_time'];
-                                        $List[$key][$val['id']]['chang'][]=$cpvalue['chang'];
-                                    }
-                                    $i++;
-                                }
-                            }
-                            if($DCount>0 && $i==0 && ($pkey==(count($PicList)-1))){
-                                $okkey = explode(',',$findkey);
-                                unset($okkey[count($okkey)-1]);
-                                foreach ($okkey as $okk => $okv){
-                                    $List[$key][$val['id']]['update_time'][]=$PicList[$okv]['update_time'];
-                                    $List[$key][$val['id']]['chang'][]=$PicList[$okv]['chang'];
-                                }
-                            }
-                        }else{
-                            if($pvalue['chang']>=$param['search']['val_change']){
-                                $List[$key][$val['id']]['update_time'][]=$pvalue['update_time'];
-                                $List[$key][$val['id']]['chang'][]=$pvalue['chang'];
-                            }
-                        }
-                    }else if(!empty($param['search']['percentage_change'])){
-                        if(!empty($param['search']['satisfy_p'])){
-                            $CurNum=count($PicList);
-                            $CanShowCount=($param['search']['satisfy_p']*$CurNum)/100;
-                            if(((int)$pvalue['chang'] / (int)$pvalue['l_rank'])>=((int)$param['search']['percentage_change']/100)){
-                                $DCount++;
-                                $findkey.=$pkey.',';
-                            }
-                            if($DCount>=$CanShowCount){
-                                if($i==0){
-                                    foreach ($PicList as $cpkey => $cpvalue) {
-                                        $List[$key][$val['id']]['update_time'][]=$cpvalue['update_time'];
-                                        $List[$key][$val['id']]['chang'][]=$cpvalue['chang'];
-                                    }
-                                    $i++;
-                                }
-                            }
-                            if($DCount>0 && $i==0 && ($pkey==(count($PicList)-1))){
-                                $okkey = explode(',',$findkey);
-                                unset($okkey[count($okkey)-1]);
-                                foreach ($okkey as $okk => $okv){
-                                    $List[$key][$val['id']]['update_time'][]=$PicList[$okv]['update_time'];
-                                    $List[$key][$val['id']]['chang'][]=$PicList[$okv]['chang'];
-                                }
-                            }
-                        }else{
-                            if(((int)$pvalue['chang'] / (int)$pvalue['l_rank'])>=((int)$param['search']['percentage_change']/100)){
-                                $List[$key][$val['id']]['update_time'][]=$pvalue['update_time'];
-                                $List[$key][$val['id']]['chang'][]=$pvalue['chang'];
-                            }
-                        }
-                    }else{
+                    if($satisfy_p == 100){
+                        if(($pvalue['chang']>=$val_change) && (((int)$pvalue['chang'] / (int)$pvalue['l_rank'])>=((int)$percentage_change/100))){
                         $List[$key][$val['id']]['update_time'][]=$pvalue['update_time'];
-                        $List[$key][$val['id']]['chang'][]=$pvalue['chang'];
+                         $List[$key][$val['id']]['chang'][]=$pvalue['chang'];
+                         $num++;
+                    }else{
+                        $List[$key][$val['id']]['update_time'][]=null;
+                        $List[$key][$val['id']]['chang'][]=null;
                     }
-                    if(empty($List[$key][$val['id']]['update_time'])){
-                        $List[$key][$val['id']]['update_time']=[];
-                        $List[$key][$val['id']]['chang']=[];
-                    }
+                }else{
+                    if($pkey==$ArrToa){
+
+                     }
+                }
+                    
+
                 }
 
             }

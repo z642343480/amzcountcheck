@@ -125,13 +125,23 @@ class Index extends Controller
         $datadate = Db::table($this->tablename)->order("update_time", "desc")->limit(1)->select();
         $where[] = ["update_time", '>=', $datadate[0]['update_time']];
 
-        $List = Db::table($this->tablename)->where($where)->whereRaw($whereRaw)->limit($pages, $param['limit'])->orderRaw("update_time desc,c_rank asc")->select();
+        //$List = Db::table($this->tablename)->where($where)->whereRaw($whereRaw)->limit($pages, $param['limit'])->orderRaw("update_time desc,c_rank asc")->select();
 //         dd(Db::table('ca_list')->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->getLastSql());
-        $countlist = Db::table($this->tablename)->where($where)->count();
+        //$countlist = Db::table($this->tablename)->where($where)->count();
+        $List=Db::query("
+            select * from usa_list u
+            where  update_time>='2021-05-15' and update_time <='2021-06-03' and 
+            (select count(1) z from usa_list 
+            where update_time>='2021-05-15' and update_time <='2021-06-03' and chang >= 1 and -100000 <= (chang/l_rank) and key_words=u.key_words)
+            / 
+            (select count(1) from usa_list 
+            where update_time>='2021-05-15' and update_time <='2021-06-03'  and key_words=u.key_words) >=1 ORDER BY update_time desc,c_rank asc limit 0,15
+            ");
+        dd($List);
 
         $res = array(
             'data' => $this->getPicData($List, $param),
-            'totle' => $countlist,
+            'totle' => count($List),
             'code' => 1
         );
         return json_encode($res, true);
@@ -203,7 +213,17 @@ class Index extends Controller
             }
         }
         //dd($List);
+        foreach ($List as $key => $value) {
+            //dd($value[$value['id']]);
+            foreach ($value[$value['id']] as $k => $v) {
+                foreach ($v as $kk => $vv) {
+                    if ($vv === 'null') {
+                        unset($List[$key]);
+                    }
+                }
 
+            }
+        }
         $List = array_merge($List);
         return $List;
     }

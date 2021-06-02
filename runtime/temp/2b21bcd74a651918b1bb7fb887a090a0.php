@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622601235;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622601632;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -1655,7 +1655,7 @@
                             return [x, y];
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.usatableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.usatableData[idname].key_words + '<br/>排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1747,7 +1747,7 @@
                             return [x, y];
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.uktableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.uktableData[idname].key_words + '<br/>排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1839,7 +1839,7 @@
                             return [x, y];
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.detableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.detableData[idname].key_words + '<br/>排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -1997,7 +1997,7 @@
                             return [x, y];
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.esptableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.esptableData[idname].key_words + '<br/>排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -2089,7 +2089,7 @@
                             return [x, y];
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.ittableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.ittableData[idname].key_words + '<br/>排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -2181,7 +2181,7 @@
                             return [x, y];
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.mxtableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.mxtableData[idname].key_words + '<br/>排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -2273,7 +2273,7 @@
                             return [x, y];
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.frtableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.frtableData[idname].key_words + '<br/>排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },
@@ -2365,7 +2365,7 @@
                             return [x, y];
                         },
                         formatter: function (datas) {
-                            var res = '关键词：' + that.catableData[idname].key_words + '<br/>本周排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
+                            var res = '关键词：' + that.catableData[idname].key_words + '<br/>排名：' + datas[0].value + '<br/>日期：' + datas[0].axisValue;
 
                             return res;
                         },

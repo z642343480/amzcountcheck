@@ -117,10 +117,7 @@ class Index extends Controller
 
         $pages = ($param['page'] - 1) * $param['limit'];
         $where = [];
-        $whereRaw = '1=1';
-        if (!empty($param['search']['key_words'])) {
-            $where[] = ["key_words", 'like', '%' . $param['search']['key_words'] . '%'];
-        }
+        $whereRaw = '1=1';      
 
         $datadate = Db::table($this->tablename)->order("update_time", "desc")->limit(1)->select();
         $where[] = ["update_time", '>=', $datadate[0]['update_time']];
@@ -140,24 +137,35 @@ class Index extends Controller
         if (!empty($param['search']['satisfy_p'])) {
           $satisfy_p = $param['search']['satisfy_p'];
         }
+         if (!empty($param['search']['key_words'])) {
+            $where[] = ["key_words", 'like', '%' . $param['search']['key_words'] . '%'];
+        }
+        if (!empty($param['search']['sdate'])) {
+                    $picwhere[] = ["update_time", '>=', $param['search']['sdate'][0]];
+                    $picwhere[] = ["update_time", '<=', $param['search']['sdate'][1]];
+                } else {
+                     $wherestr=" and update_time>='".$datadate[0]['update_time'];
+                }
         $ssatisfy_p=$satisfy_p/100;
         $List=Db::query("
+            select * from (
+            select * from usa_list u
+            where update_time>='".$datadate[0]['update_time']."' and 
+            (select count(1) z from usa_list 
+            where update_time>='".$datadate[0]['update_time']."' and chang >= ".$val_change." and ".$percentage_change." <= (chang/l_rank) and key_words=u.key_words)
+            / 
+            (select count(1) from usa_list 
+            where update_time>='".$datadate[0]['update_time']."'  and key_words=u.key_words) >=".$ssatisfy_p." ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY update_time desc,c_rank asc limit ".$pages.",".$param['limit']."
+            ");
+         $Listcount=Db::query("
+            select count(1) as num from (
             select * from usa_list u
             where  update_time>='".$datadate[0]['update_time']."' and 
             (select count(1) z from usa_list 
             where update_time>='".$datadate[0]['update_time']."' and chang >= ".$val_change." and ".$percentage_change." <= (chang/l_rank) and key_words=u.key_words)
             / 
             (select count(1) from usa_list 
-            where update_time>='".$datadate[0]['update_time']."'  and key_words=u.key_words) >=".$ssatisfy_p." ORDER BY update_time desc,c_rank asc limit ".$pages.",".$param['limit']."
-            ");
-         $Listcount=Db::query("
-            select count(1) num from usa_list u
-            where  update_time>='".$datadate[0]['update_time']."' and 
-            (select count(1) z from usa_list 
-            where update_time>='".$datadate[0]['update_time']."' and chang >= ".$val_change." and ".$percentage_change." <= (chang/l_rank) and key_words=u.key_words)
-            / 
-            (select count(1) from usa_list 
-            where update_time>='".$datadate[0]['update_time']."'  and key_words=u.key_words) >=".$ssatisfy_p." ORDER BY update_time desc,c_rank asc
+            where update_time>='".$datadate[0]['update_time']."'  and key_words=u.key_words) >=".$ssatisfy_p." ORDER BY update_time desc limit 9999999999) T1
             ");
     
 

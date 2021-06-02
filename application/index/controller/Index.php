@@ -128,20 +128,42 @@ class Index extends Controller
         //$List = Db::table($this->tablename)->where($where)->whereRaw($whereRaw)->limit($pages, $param['limit'])->orderRaw("update_time desc,c_rank asc")->select();
 //         dd(Db::table('ca_list')->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->getLastSql());
         //$countlist = Db::table($this->tablename)->where($where)->count();
+        $val_change = -100000;
+        $percentage_change = -100000;
+        $satisfy_p = 100;
+        if (!empty($param['search']['val_change'])) {
+            $val_change = $param['search']['val_change'];
+        }
+        if (!empty($param['search']['percentage_change'])) {
+             $percentage_change = $param['search']['percentage_change'];
+        }
+        if (!empty($param['search']['satisfy_p'])) {
+          $satisfy_p = $param['search']['satisfy_p'];
+        }
+        $ssatisfy_p=$satisfy_p/100;
         $List=Db::query("
             select * from usa_list u
-            where  update_time>='2021-05-15' and update_time <='2021-06-03' and 
+            where  update_time>='".$datadate[0]['update_time']."' and 
             (select count(1) z from usa_list 
-            where update_time>='2021-05-15' and update_time <='2021-06-03' and chang >= 1 and -100000 <= (chang/l_rank) and key_words=u.key_words)
+            where update_time>='".$datadate[0]['update_time']."' and chang >= ".$val_change." and ".$percentage_change." <= (chang/l_rank) and key_words=u.key_words)
             / 
             (select count(1) from usa_list 
-            where update_time>='2021-05-15' and update_time <='2021-06-03'  and key_words=u.key_words) >=1 ORDER BY update_time desc,c_rank asc limit 0,15
+            where update_time>='".$datadate[0]['update_time']."'  and key_words=u.key_words) >=".$ssatisfy_p." ORDER BY update_time desc,c_rank asc limit ".$pages.",".$param['limit']."
             ");
-        dd($List);
+         $Listcount=Db::query("
+            select count(1) num from usa_list u
+            where  update_time>='".$datadate[0]['update_time']."' and 
+            (select count(1) z from usa_list 
+            where update_time>='".$datadate[0]['update_time']."' and chang >= ".$val_change." and ".$percentage_change." <= (chang/l_rank) and key_words=u.key_words)
+            / 
+            (select count(1) from usa_list 
+            where update_time>='".$datadate[0]['update_time']."'  and key_words=u.key_words) >=".$ssatisfy_p." ORDER BY update_time desc,c_rank asc
+            ");
+    
 
         $res = array(
             'data' => $this->getPicData($List, $param),
-            'totle' => count($List),
+            'totle' => $Listcount[0]['num'],
             'code' => 1
         );
         return json_encode($res, true);

@@ -119,8 +119,8 @@ class Index extends Controller
         //$where = [];
         //$whereRaw = '1=1';      
 
-        //$datadate = Db::table($this->tablename)->order("update_time", "desc")->limit(1)->select();
-        //$where[] = ["update_time", '>=', $datadate[0]['update_time']];
+        $datadate = Db::table($this->tablename)->order("update_time", "desc")->limit(1)->select();
+        $where[] = ["update_time", '>=', $datadate[0]['update_time']];
 
         //$List = Db::table($this->tablename)->where($where)->whereRaw($whereRaw)->limit($pages, $param['limit'])->orderRaw("update_time desc,c_rank asc")->select();
 //         dd(Db::table('ca_list')->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->getLastSql());
@@ -151,7 +151,7 @@ class Index extends Controller
                     $zsdate = " update_time >='". $param['search']['sdate'][0]."' ";
                     $zedate = " and update_time <='". $param['search']['sdate'][1]."' ";
                 } else {
-                     $fsdate = " update_time >='". $wek."' ";
+                     $fsdate = " update_time >='". $datadate[0]['update_time']."' ";
                     $fedate = " and update_time <='". $sund."' ";
                     $zsdate = "1=1";
                     $zedate = "  ";
@@ -199,7 +199,7 @@ class Index extends Controller
                     $picwhere[] = ["update_time", '>=', $param['search']['sdate'][0]];
                     $picwhere[] = ["update_time", '<=', $param['search']['sdate'][1]];
                 } else {
-                    $picwhere[] = ["update_time", '>=', $botime];
+                    $picwhere[] = ["update_time", '>=', '2021-05-18'];
                     $picwhere[] = ["update_time", '<=', date("Y-m-d", time())];
                 }
 
@@ -313,7 +313,7 @@ class Index extends Controller
         }
 
         $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel2007");//创建生成的格式
-        header('Content-Disposition: attachment;filename="' . $this->tablename . '.csv"');//下载下来的表格名
+        header('Content-Disposition: attachment;filename="' . $this->tablename .date('Y-m-d') .'.csv"');//下载下来的表格名
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         $PHPWriter->save("php://output");//表示在$path路径下面生成demo.xlsx文件
     }

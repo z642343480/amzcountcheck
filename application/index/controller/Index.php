@@ -119,7 +119,7 @@ class Index extends Controller
         //$where = [];
         //$whereRaw = '1=1';      
 
-        $datadate = Db::table($this->tablename)->order("update_time", "desc")->limit(1)->select();
+        //$datadate = Db::table($this->tablename)->order("update_time", "desc")->limit(1)->select();
         //$where[] = ["update_time", '>=', $datadate[0]['update_time']];
 
         //$List = Db::table($this->tablename)->where($where)->whereRaw($whereRaw)->limit($pages, $param['limit'])->orderRaw("update_time desc,c_rank asc")->select();
@@ -221,9 +221,11 @@ class Index extends Controller
                 foreach ($PicList as $pkey => $pvalue) {
                     if ($satisfy_p == 100) {
                         if (($pvalue['chang'] >= $val_change) && (((int)$pvalue['chang'] / (int)$pvalue['l_rank']) >= ((int)$percentage_change / 100))) {
+                            echo $pkey;
                             $List[$key][$val['id']]['update_time'][] = $pvalue['update_time'];
                             $List[$key][$val['id']]['c_rank'][] = $pvalue['c_rank'];
                         } else {
+                            echo $pkey;
                             $List[$key][$val['id']]['update_time'][] = 'null';
                             $List[$key][$val['id']]['c_rank'][] = 'null';
                         }

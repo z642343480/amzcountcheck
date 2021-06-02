@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622601632;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622630475;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -2563,9 +2563,9 @@
                     // if(tab.name=='usa'){
                     //     this.usagetListdata('usa')
                     // }
-                    // if(tab.name=='uk'){
-                    //     this.ukgetListdata('uk')
-                    // }
+                     if(tab.name=='uk'){
+                         this.ukgetListdata('uk')
+                     }
                     // if(tab.name=='de'){
                     //     this.degetListdata('de')
                     // }

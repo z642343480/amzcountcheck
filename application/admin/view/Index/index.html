@@ -156,12 +156,18 @@
                 //开关是否开启，true或者false
                 var checked = data.elem.checked;
                 if (checked) {
-                    htmlobj = $.ajax({url: "/admin/Index/openTask", async: false});
+                    htmlobj = $.ajax({
+                        url: "/admin/Index/openTask",
+                         async: false
+                     });
                     if (htmlobj == 1) {
                         layer.msg('定时任务开启成功')
                     }
                 } else {
-                    htmlobj = $.ajax({url: "/admin/Index/closeTask", async: false});
+                    htmlobj = $.ajax({
+                        url: "/admin/Index/closeTask",
+                         async: false
+                     });
                     if (htmlobj == 1) {
                         layer.msg('定时任务已关闭')
                     }

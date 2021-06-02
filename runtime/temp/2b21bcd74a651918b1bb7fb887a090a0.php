@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622630475;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622643703;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -2560,33 +2560,33 @@
                 this.$refs.mxTable.clearSelection();
                 this.$refs.caTable.clearSelection();
                 if (this.isclicktabs.indexOf(tab.name) == -1) {
-                    // if(tab.name=='usa'){
-                    //     this.usagetListdata('usa')
-                    // }
+                    if(tab.name=='usa'){
+                        this.usagetListdata('usa')
+                    }
                      if(tab.name=='uk'){
                          this.ukgetListdata('uk')
                      }
-                    // if(tab.name=='de'){
-                    //     this.degetListdata('de')
-                    // }
-                    // if(tab.name=='jp'){
-                    //     this.jpgetListdata('jp')
-                    // }
-                    // if(tab.name=='esp'){
-                    //     this.espgetListdata('esp')
-                    // }
-                    // if(tab.name=='it'){
-                    //     this.itgetListdata('it')
-                    // }
-                    // if(tab.name=='fr'){
-                    //     this.frgetListdata('fr')
-                    // }
-                    // if(tab.name=='mx'){
-                    //     this.mxgetListdata('mx')
-                    // }
-                    // if(tab.name=='ca'){
-                    //     this.cagetListdata('ca')
-                    // }
+                    if(tab.name=='de'){
+                        this.degetListdata('de')
+                    }
+                    if(tab.name=='jp'){
+                        this.jpgetListdata('jp')
+                    }
+                    if(tab.name=='esp'){
+                        this.espgetListdata('esp')
+                    }
+                    if(tab.name=='it'){
+                        this.itgetListdata('it')
+                    }
+                    if(tab.name=='fr'){
+                        this.frgetListdata('fr')
+                    }
+                    if(tab.name=='mx'){
+                        this.mxgetListdata('mx')
+                    }
+                    if(tab.name=='ca'){
+                        this.cagetListdata('ca')
+                    }
                     this.isclicktabs.push(tab.name)
                 }
 

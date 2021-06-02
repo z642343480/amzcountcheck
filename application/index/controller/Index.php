@@ -159,22 +159,22 @@ class Index extends Controller
         $ssatisfy_p=$satisfy_p/100;
         $List=Db::query("
             select * from (
-            select * from usa_list u
+            select * from ".$this->tablename." u
             where ".$fsdate.$fedate.$keywhere." and 
-            (select count(1) z from usa_list 
+            (select count(1) z from ".$this->tablename." 
             where ".$zsdate.$zedate." and chang >= ".$val_change." and ".$percentage_change." <= (chang/l_rank) and key_words=u.key_words)
             / 
-            (select count(1) from usa_list 
+            (select count(1) from ".$this->tablename." 
             where ".$zsdate.$zedate."  and key_words=u.key_words) >=".$ssatisfy_p." ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY update_time desc,c_rank asc limit ".$pages.",".$param['limit']."
             ");
          $Listcount=Db::query("
             select count(1) num from (
-            select * from usa_list u
+            select * from ".$this->tablename." u
             where ".$fsdate.$fedate.$keywhere." and 
-            (select count(1) z from usa_list 
+            (select count(1) z from ".$this->tablename." 
             where ".$zsdate.$zedate." and chang >= ".$val_change." and ".$percentage_change." <= (chang/l_rank) and key_words=u.key_words)
             / 
-            (select count(1) from usa_list 
+            (select count(1) from ".$this->tablename." 
             where ".$zsdate.$zedate."  and key_words=u.key_words) >=".$ssatisfy_p." ORDER BY update_time desc limit 9999999999) T1 
             ");
     
@@ -224,7 +224,6 @@ class Index extends Controller
                             $List[$key][$val['id']]['update_time'][] = $pvalue['update_time'];
                             $List[$key][$val['id']]['c_rank'][] = $pvalue['c_rank'];
                         } else {
-                            echo $pkey;
                             $List[$key][$val['id']]['update_time'][] = 'null';
                             $List[$key][$val['id']]['c_rank'][] = 'null';
                         }

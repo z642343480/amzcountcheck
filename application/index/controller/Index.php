@@ -116,15 +116,20 @@ class Index extends Controller
 
 
         $pages = ($param['page'] - 1) * $param['limit'];
-        $where = [];
-        $whereRaw = '1=1';      
+        //$where = [];
+        //$whereRaw = '1=1';      
 
         $datadate = Db::table($this->tablename)->order("update_time", "desc")->limit(1)->select();
-        $where[] = ["update_time", '>=', $datadate[0]['update_time']];
+        //$where[] = ["update_time", '>=', $datadate[0]['update_time']];
 
         //$List = Db::table($this->tablename)->where($where)->whereRaw($whereRaw)->limit($pages, $param['limit'])->orderRaw("update_time desc,c_rank asc")->select();
 //         dd(Db::table('ca_list')->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->getLastSql());
         //$countlist = Db::table($this->tablename)->where($where)->count();
+        $keywhere='';
+        $fsdate='';
+        $fedate='';
+        $zsdate='';
+        $zedate='';
         $val_change = -100000;
         $percentage_change = -100000;
         $satisfy_p = 100;
@@ -138,34 +143,39 @@ class Index extends Controller
           $satisfy_p = $param['search']['satisfy_p'];
         }
          if (!empty($param['search']['key_words'])) {
-            $where[] = ["key_words", 'like', '%' . $param['search']['key_words'] . '%'];
+            $keywhere = " and key_words like '%" . $param['search']['key_words'] . "%'";
         }
         if (!empty($param['search']['sdate'])) {
-                    $picwhere[] = ["update_time", '>=', $param['search']['sdate'][0]];
-                    $picwhere[] = ["update_time", '<=', $param['search']['sdate'][1]];
+                    $fsdate = " update_time >='". $param['search']['sdate'][0]."' ";
+                    $fedate = " and update_time <='". $param['search']['sdate'][1]."' ";
+                    $zsdate = " update_time >='". $param['search']['sdate'][0]."' ";
+                    $zedate = " and update_time <='". $param['search']['sdate'][1]."' ";
                 } else {
-                     $wherestr=" and update_time>='".$datadate[0]['update_time'];
+                     $fsdate = " update_time >='". $wek."' ";
+                    $fedate = " and update_time <='". $sund."' ";
+                    $zsdate = "1=1";
+                    $zedate = "  ";
                 }
         $ssatisfy_p=$satisfy_p/100;
         $List=Db::query("
             select * from (
             select * from usa_list u
-            where update_time>='".$datadate[0]['update_time']."' and 
+            where ".$fsdate.$fedate.$keywhere." and 
             (select count(1) z from usa_list 
-            where update_time>='".$datadate[0]['update_time']."' and chang >= ".$val_change." and ".$percentage_change." <= (chang/l_rank) and key_words=u.key_words)
+            where ".$zsdate.$zedate." and chang >= ".$val_change." and ".$percentage_change." <= (chang/l_rank) and key_words=u.key_words)
             / 
             (select count(1) from usa_list 
-            where update_time>='".$datadate[0]['update_time']."'  and key_words=u.key_words) >=".$ssatisfy_p." ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY update_time desc,c_rank asc limit ".$pages.",".$param['limit']."
+            where ".$zsdate.$zedate."  and key_words=u.key_words) >=".$ssatisfy_p." ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY update_time desc,c_rank asc limit ".$pages.",".$param['limit']."
             ");
          $Listcount=Db::query("
-            select count(1) as num from (
+            select count(1) num from (
             select * from usa_list u
-            where  update_time>='".$datadate[0]['update_time']."' and 
+            where ".$fsdate.$fedate.$keywhere." and 
             (select count(1) z from usa_list 
-            where update_time>='".$datadate[0]['update_time']."' and chang >= ".$val_change." and ".$percentage_change." <= (chang/l_rank) and key_words=u.key_words)
+            where ".$zsdate.$zedate." and chang >= ".$val_change." and ".$percentage_change." <= (chang/l_rank) and key_words=u.key_words)
             / 
             (select count(1) from usa_list 
-            where update_time>='".$datadate[0]['update_time']."'  and key_words=u.key_words) >=".$ssatisfy_p." ORDER BY update_time desc limit 9999999999) T1
+            where ".$zsdate.$zedate."  and key_words=u.key_words) >=".$ssatisfy_p." ORDER BY update_time desc limit 9999999999) T1 
             ");
     
 

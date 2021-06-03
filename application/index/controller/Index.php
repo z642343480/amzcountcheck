@@ -16,6 +16,10 @@ class Index extends Controller
     {
         return $this->fetch();
     }
+    public function tt()
+    {
+        return $this->fetch();
+    }
 
     public function getList(Request $request)
     {
@@ -124,11 +128,11 @@ class Index extends Controller
         //$List = Db::table($this->tablename)->where($where)->whereRaw($whereRaw)->limit($pages, $param['limit'])->orderRaw("update_time desc,c_rank asc")->select();
 //         dd(Db::table('ca_list')->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->getLastSql());
         //$countlist = Db::table($this->tablename)->where($where)->count();
-        $keywhere='';
-        $fsdate='';
-        $fedate='';
-        $zsdate='';
-        $zedate='';
+        $keywhere = '';
+        $fsdate = '';
+        $fedate = '';
+        $zsdate = '';
+        $zedate = '';
         $val_change = -100000;
         $percentage_change = -100000;
         $satisfy_p = 100;
@@ -136,55 +140,55 @@ class Index extends Controller
             $val_change = $param['search']['val_change'];
         }
         if (!empty($param['search']['percentage_change'])) {
-             $percentage_change = $param['search']['percentage_change'];
+            $percentage_change = $param['search']['percentage_change'];
         }
         if (!empty($param['search']['satisfy_p'])) {
-          $satisfy_p = $param['search']['satisfy_p'];
+            $satisfy_p = $param['search']['satisfy_p'];
         }
-         if (!empty($param['search']['key_words'])) {
+        if (!empty($param['search']['key_words'])) {
             $keywhere = " and key_words like '%" . $param['search']['key_words'] . "%'";
         }
         $botime = date("Y-m-d", strtotime("-6 month"));
         if (!empty($param['search']['sdate'])) {
-                    $fsdate = " update_time >='". $param['search']['sdate'][0]."' ";
-                    $fedate = " and update_time <='". $param['search']['sdate'][1]."' ";
-                    $mindata = Db::table($this->tablename)->where('update_time','>=',$param['search']['sdate'][0])->order("update_time")->limit(1)->select();
-                    $nextwe= date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
-                    $zsdate = " update_time >='". $nextwe."' ";
-                    $zedate = " and update_time <='". $param['search']['sdate'][1]."' ";
-                } else {
-                     $fsdate = " update_time >='". $datadate[0]['update_time']."' ";
-                    $fedate = " and update_time <='". $sund."' ";
-                     $mindata = Db::table($this->tablename)->where('update_time','>=',$botime)->order("update_time")->limit(1)->select();
+            $fsdate = " update_time >='" . $param['search']['sdate'][0] . "' ";
+            $fedate = " and update_time <='" . $param['search']['sdate'][1] . "' ";
+            $mindata = Db::table($this->tablename)->where('update_time', '>=', $param['search']['sdate'][0])->order("update_time")->limit(1)->select();
+            $nextwe = date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
+            $zsdate = " update_time >='" . $nextwe . "' ";
+            $zedate = " and update_time <='" . $param['search']['sdate'][1] . "' ";
+        } else {
+            $fsdate = " update_time >='" . $datadate[0]['update_time'] . "' ";
+            $fedate = " and update_time <='" . $sund . "' ";
+            $mindata = Db::table($this->tablename)->where('update_time', '>=', $botime)->order("update_time")->limit(1)->select();
 
-                    $nextwe= date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
+            $nextwe = date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
 
-                    $zsdate = " update_time >='".$nextwe."'";
-                    $zedate = "  ";
-                }
-        $ssatisfy_p=$satisfy_p/100;
-        $percentage_change=$percentage_change/100;
-        $List=Db::query("
+            $zsdate = " update_time >='" . $nextwe . "'";
+            $zedate = "  ";
+        }
+        $ssatisfy_p = $satisfy_p / 100;
+        $percentage_change = $percentage_change / 100;
+        $List = Db::query("
             select * from (
-            select * from ".$this->tablename." u
-            where ".$fsdate.$fedate.$keywhere." and 
-            (select count(1) z from ".$this->tablename." 
-            where ".$zsdate.$zedate." and chang >= ".$val_change." and ".$percentage_change." <= (chang/l_rank) and key_words=u.key_words)
+            select * from " . $this->tablename . " u
+            where " . $fsdate . $fedate . $keywhere . " and 
+            (select count(1) z from " . $this->tablename . " 
+            where " . $zsdate . $zedate . " and chang >= " . $val_change . " and " . $percentage_change . " <= (chang/l_rank) and key_words=u.key_words)
             / 
-            (select count(1) from ".$this->tablename." 
-            where ".$zsdate.$zedate."  and key_words=u.key_words) >=".$ssatisfy_p." ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY update_time desc,c_rank asc limit ".$pages.",".$param['limit']."
+            (select count(1) from " . $this->tablename . " 
+            where " . $zsdate . $zedate . "  and key_words=u.key_words) >=" . $ssatisfy_p . " ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY update_time desc,c_rank asc limit " . $pages . "," . $param['limit'] . "
             ");
-         $Listcount=Db::query("
+        $Listcount = Db::query("
             select count(1) num from (
-            select * from ".$this->tablename." u
-            where ".$fsdate.$fedate.$keywhere." and 
-            (select count(1) z from ".$this->tablename." 
-            where ".$zsdate.$zedate." and chang >= ".$val_change." and ".$percentage_change." <= (chang/l_rank) and key_words=u.key_words)
+            select * from " . $this->tablename . " u
+            where " . $fsdate . $fedate . $keywhere . " and 
+            (select count(1) z from " . $this->tablename . " 
+            where " . $zsdate . $zedate . " and chang >= " . $val_change . " and " . $percentage_change . " <= (chang/l_rank) and key_words=u.key_words)
             / 
-            (select count(1) from ".$this->tablename." 
-            where ".$zsdate.$zedate."  and key_words=u.key_words) >=".$ssatisfy_p." ORDER BY update_time desc limit 9999999999) T1 
+            (select count(1) from " . $this->tablename . " 
+            where " . $zsdate . $zedate . "  and key_words=u.key_words) >=" . $ssatisfy_p . " ORDER BY update_time desc limit 9999999999) T1 
             ");
-    
+
 
         $res = array(
             'data' => $this->getPicData($List, $param),
@@ -227,32 +231,32 @@ class Index extends Controller
                 $num = 0;
                 foreach ($PicList as $pkey => $pvalue) {
                     // if ($satisfy_p == 100) {
-                        //if (($pvalue['chang'] >= $val_change) && (((int)$pvalue['chang'] / (int)$pvalue['l_rank']) >= ((int)$percentage_change / 100))) {
-                            $List[$key][$val['id']]['update_time'][] = $pvalue['update_time'];
-                            $List[$key][$val['id']]['c_rank'][] = $pvalue['c_rank'];
-                        //}
-                        /** else {
-                            $List[$key][$val['id']]['update_time'][] = 'null';
-                            $List[$key][$val['id']]['c_rank'][] = 'null';
-                        }**/
-                   // } else {
-                       // if (($pvalue['chang'] >= $val_change) && (((int)$pvalue['chang'] / (int)$pvalue['l_rank']) >= ((int)$percentage_change / 100))) {
-                       //     $num++;
-                       // }
-                       /** if ($pkey == $ArrToa) {
-                            $CurNum = count($PicList);
-                            $CanNum = ($satisfy_p * $CurNum) / 100;
-                            if ($num >= $CanNum) {
-                                foreach ($PicList as $pokey => $povalue) {
-                                    $List[$key][$val['id']]['update_time'][] = $povalue['update_time'];
-                                    $List[$key][$val['id']]['c_rank'][] = $povalue['c_rank'];
-                                }
-                            } else {
-                                $List[$key][$val['id']]['update_time'][] = 'null';
-                                $List[$key][$val['id']]['c_rank'][] = 'null';
-                            }
-
-                        }**/
+                    //if (($pvalue['chang'] >= $val_change) && (((int)$pvalue['chang'] / (int)$pvalue['l_rank']) >= ((int)$percentage_change / 100))) {
+                    $List[$key][$val['id']]['update_time'][] = $pvalue['update_time'];
+                    $List[$key][$val['id']]['c_rank'][] = $pvalue['c_rank'];
+                    //}
+                    /** else {
+                     * $List[$key][$val['id']]['update_time'][] = 'null';
+                     * $List[$key][$val['id']]['c_rank'][] = 'null';
+                     * }**/
+                    // } else {
+                    // if (($pvalue['chang'] >= $val_change) && (((int)$pvalue['chang'] / (int)$pvalue['l_rank']) >= ((int)$percentage_change / 100))) {
+                    //     $num++;
+                    // }
+                    /** if ($pkey == $ArrToa) {
+                     * $CurNum = count($PicList);
+                     * $CanNum = ($satisfy_p * $CurNum) / 100;
+                     * if ($num >= $CanNum) {
+                     * foreach ($PicList as $pokey => $povalue) {
+                     * $List[$key][$val['id']]['update_time'][] = $povalue['update_time'];
+                     * $List[$key][$val['id']]['c_rank'][] = $povalue['c_rank'];
+                     * }
+                     * } else {
+                     * $List[$key][$val['id']]['update_time'][] = 'null';
+                     * $List[$key][$val['id']]['c_rank'][] = 'null';
+                     * }
+                     *
+                     * }**/
                     // }
 
 
@@ -296,8 +300,12 @@ class Index extends Controller
         $path = dirname(__FILE__);//找到当前脚本所在路径
         $PHPExcel = new \PHPExcel();//实例化phpexcel
         $PHPSheet = $PHPExcel->getActiveSheet();
-        $PHPSheet->setTitle("demo");//设置表内部名称
-
+        $PHPSheet->setTitle("amzcount");//设置表内部名称
+        $PHPSheet->getColumnDimension('A')->setWidth(30);#设置单元格宽度
+        $PHPSheet->getColumnDimension('B')->setWidth(15);
+        $PHPSheet->getColumnDimension('C')->setWidth(15);
+        $PHPSheet->getColumnDimension('D')->setWidth(15);
+        $PHPExcel->getDefaultStyle()->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
         $num = 1;
         //dd($data);
@@ -319,11 +327,15 @@ class Index extends Controller
 
 
         }
+        $objWriter = new  \PHPExcel_Writer_CSV ($PHPExcel);
+        header('Content-Disposition: attachment;filename="' . $this->tablename . date('Y-m-d') . '.csv"');
+        $objWriter -> save("php://output");
 
-        $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel2007");//创建生成的格式
-        header('Content-Disposition: attachment;filename="' . $this->tablename .date('Y-m-d') .'.csv"');//下载下来的表格名
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        $PHPWriter->save("php://output");//表示在$path路径下面生成demo.xlsx文件
+//        $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel5");//创建生成的格式
+//        header('Content-Disposition: attachment;filename="' . $this->tablename . date('Y-m-d') . '.xls"');//下载下来的表格名
+//        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+//        $PHPWriter->save("php://output");//表示在$path路径下面生成demo.xlsx文件
+        exit;
     }
 
 

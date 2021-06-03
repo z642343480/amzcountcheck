@@ -121,7 +121,6 @@ class Index extends Controller
 
         $datadate = Db::table($this->tablename)->order("update_time", "desc")->limit(1)->select();
         $where[] = ["update_time", '>=', $datadate[0]['update_time']];
-
         //$List = Db::table($this->tablename)->where($where)->whereRaw($whereRaw)->limit($pages, $param['limit'])->orderRaw("update_time desc,c_rank asc")->select();
 //         dd(Db::table('ca_list')->where($where)->whereRaw($whereRaw)->limit($pages,$param['limit'])->order("id","asc")->getLastSql());
         //$countlist = Db::table($this->tablename)->where($where)->count();
@@ -145,18 +144,26 @@ class Index extends Controller
          if (!empty($param['search']['key_words'])) {
             $keywhere = " and key_words like '%" . $param['search']['key_words'] . "%'";
         }
+        $botime = date("Y-m-d", strtotime("-6 month"));
         if (!empty($param['search']['sdate'])) {
                     $fsdate = " update_time >='". $param['search']['sdate'][0]."' ";
                     $fedate = " and update_time <='". $param['search']['sdate'][1]."' ";
-                    $zsdate = " update_time >='". $param['search']['sdate'][0]."' ";
+                    $mindata = Db::table($this->tablename)->where('update_time','>=',$param['search']['sdate'][0])->order("update_time")->limit(1)->select();
+                    $nextwe= date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
+                    $zsdate = " update_time >='". $nextwe."' ";
                     $zedate = " and update_time <='". $param['search']['sdate'][1]."' ";
                 } else {
                      $fsdate = " update_time >='". $datadate[0]['update_time']."' ";
                     $fedate = " and update_time <='". $sund."' ";
-                    $zsdate = "1=1";
+                     $mindata = Db::table($this->tablename)->where('update_time','>=',$botime)->order("update_time")->limit(1)->select();
+
+                    $nextwe= date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
+
+                    $zsdate = " update_time >='".$nextwe."'";
                     $zedate = "  ";
                 }
         $ssatisfy_p=$satisfy_p/100;
+        $percentage_change=$percentage_change/100;
         $List=Db::query("
             select * from (
             select * from ".$this->tablename." u
@@ -199,11 +206,11 @@ class Index extends Controller
                     $picwhere[] = ["update_time", '>=', $param['search']['sdate'][0]];
                     $picwhere[] = ["update_time", '<=', $param['search']['sdate'][1]];
                 } else {
-                    $picwhere[] = ["update_time", '>=', '2021-05-18'];
+                    $picwhere[] = ["update_time", '>=', $botime];
                     $picwhere[] = ["update_time", '<=', date("Y-m-d", time())];
                 }
 
-                $PicList = Db::table($this->tablename)->where($picwhere)->select();
+                $PicList = Db::table($this->tablename)->where($picwhere)->order("update_time")->select();
                 $val_change = -100000;
                 $percentage_change = -100000;
                 $satisfy_p = 100;
@@ -219,19 +226,20 @@ class Index extends Controller
                 $ArrToa = count($PicList) - 1;
                 $num = 0;
                 foreach ($PicList as $pkey => $pvalue) {
-                    if ($satisfy_p == 100) {
-                        if (($pvalue['chang'] >= $val_change) && (((int)$pvalue['chang'] / (int)$pvalue['l_rank']) >= ((int)$percentage_change / 100))) {
+                    // if ($satisfy_p == 100) {
+                        //if (($pvalue['chang'] >= $val_change) && (((int)$pvalue['chang'] / (int)$pvalue['l_rank']) >= ((int)$percentage_change / 100))) {
                             $List[$key][$val['id']]['update_time'][] = $pvalue['update_time'];
                             $List[$key][$val['id']]['c_rank'][] = $pvalue['c_rank'];
-                        } else {
+                        //}
+                        /** else {
                             $List[$key][$val['id']]['update_time'][] = 'null';
                             $List[$key][$val['id']]['c_rank'][] = 'null';
-                        }
-                    } else {
-                        if (($pvalue['chang'] >= $val_change) && (((int)$pvalue['chang'] / (int)$pvalue['l_rank']) >= ((int)$percentage_change / 100))) {
-                            $num++;
-                        }
-                        if ($pkey == $ArrToa) {
+                        }**/
+                   // } else {
+                       // if (($pvalue['chang'] >= $val_change) && (((int)$pvalue['chang'] / (int)$pvalue['l_rank']) >= ((int)$percentage_change / 100))) {
+                       //     $num++;
+                       // }
+                       /** if ($pkey == $ArrToa) {
                             $CurNum = count($PicList);
                             $CanNum = ($satisfy_p * $CurNum) / 100;
                             if ($num >= $CanNum) {
@@ -244,8 +252,8 @@ class Index extends Controller
                                 $List[$key][$val['id']]['c_rank'][] = 'null';
                             }
 
-                        }
-                    }
+                        }**/
+                    // }
 
 
                 }

@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622643703;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622692452;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -1689,6 +1689,7 @@
                     series: [{
                         data: this.usatableData[idname][id].c_rank,
                         type: 'bar',
+                        barWidth : 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -1781,6 +1782,7 @@
                     series: [{
                         data: this.uktableData[idname][id].c_rank,
                         type: 'bar',
+                        barWidth : 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -1873,6 +1875,7 @@
                     series: [{
                         data: this.detableData[idname][id].c_rank,
                         type: 'bar',
+                        barWidth : 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -1939,6 +1942,7 @@
                     series: [{
                         data: this.jptableData[idname][id].c_rank,
                         type: 'bar',
+                        barWidth : 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -2031,6 +2035,7 @@
                     series: [{
                         data: this.esptableData[idname][id].c_rank,
                         type: 'bar',
+                        barWidth : 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -2123,6 +2128,7 @@
                     series: [{
                         data: this.ittableData[idname][id].c_rank,
                         type: 'bar',
+                        barWidth : 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -2215,6 +2221,7 @@
                     series: [{
                         data: this.mxtableData[idname][id].c_rank,
                         type: 'bar',
+                        barWidth : 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -2307,6 +2314,7 @@
                     series: [{
                         data: this.frtableData[idname][id].c_rank,
                         type: 'bar',
+                        barWidth : 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -2399,6 +2407,7 @@
                     series: [{
                         data: this.catableData[idname][id].c_rank,
                         type: 'bar',
+                        barWidth : 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -2566,7 +2575,7 @@
                      if(tab.name=='uk'){
                          this.ukgetListdata('uk')
                      }
-                    if(tab.name=='de'){
+                    /**if(tab.name=='de'){
                         this.degetListdata('de')
                     }
                     if(tab.name=='jp'){
@@ -2586,7 +2595,7 @@
                     }
                     if(tab.name=='ca'){
                         this.cagetListdata('ca')
-                    }
+                    }**/
                     this.isclicktabs.push(tab.name)
                 }
 

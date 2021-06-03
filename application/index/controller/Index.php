@@ -265,17 +265,17 @@ class Index extends Controller
             }
         }
         //dd($List);
-        foreach ($List as $key => $value) {
-            //dd($value[$value['id']]);
-            foreach ($value[$value['id']] as $k => $v) {
-                foreach ($v as $kk => $vv) {
-                    if ($vv === 'null') {
-                        unset($List[$key]);
-                    }
-                }
-
-            }
-        }
+//        foreach ($List as $key => $value) {
+//            //dd($value[$value['id']]);
+//            foreach ($value[$value['id']] as $k => $v) {
+//                foreach ($v as $kk => $vv) {
+//                    if ($vv === 'null') {
+//                        unset($List[$key]);
+//                    }
+//                }
+//
+//            }
+//        }
         $List = array_merge($List);
         return $List;
     }

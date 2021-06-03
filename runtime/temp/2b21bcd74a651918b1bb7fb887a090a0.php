@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622692452;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622737738;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,8 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="usaform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model.lazy="usaform.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model.lazy="usaform.key_words" placeholder="请输入关键词" size="small"  @input="updateValue($event)"></el-input>
+
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="usaonSubmit('usa')">搜索</el-button>
@@ -54,17 +55,17 @@
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
                                     <el-input v-model.number="usaform.val_change" size="small"
-                                              style="width: 70%;"></el-input>
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="usaonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
                                     <el-input v-model.number="usaform.percentage_change" size="small"
-                                              style="width: 70%;"></el-input>&nbsp;%
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
                                     <el-input v-model.number="usaform.satisfy_p" size="small"
-                                              style="width: 71%;"></el-input>&nbsp;%
+                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -143,7 +144,7 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="ukform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="ukform.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="ukform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="ukonSubmit('uk')">搜索</el-button>
@@ -171,17 +172,17 @@
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
                                     <el-input v-model.number="ukform.val_change" size="small"
-                                              style="width: 70%;"></el-input>
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="ukonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
                                     <el-input v-model.number="ukform.percentage_change" size="small"
-                                              style="width: 70%;"></el-input>&nbsp;%
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
                                     <el-input v-model.number="ukform.satisfy_p" size="small"
-                                              style="width: 71%;"></el-input>&nbsp;%
+                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -260,7 +261,7 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="deform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="deform.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="deform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="deonSubmit('de')">搜索</el-button>
@@ -288,17 +289,17 @@
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
                                     <el-input v-model.number="deform.val_change" size="small"
-                                              style="width: 70%;"></el-input>
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="deonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
                                     <el-input v-model.number="deform.percentage_change" size="small"
-                                              style="width: 70%;"></el-input>&nbsp;%
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
                                     <el-input v-model.number="deform.satisfy_p" size="small"
-                                              style="width: 71%;"></el-input>&nbsp;%
+                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -377,7 +378,7 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="jpform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="jpform.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="jpform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="jponSubmit('jp')">搜索</el-button>
@@ -405,17 +406,17 @@
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
                                     <el-input v-model.number="jpform.val_change" size="small"
-                                              style="width: 70%;"></el-input>
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="jponly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
                                     <el-input v-model.number="jpform.percentage_change" size="small"
-                                              style="width: 70%;"></el-input>&nbsp;%
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
                                     <el-input v-model.number="jpform.satisfy_p" size="small"
-                                              style="width: 71%;"></el-input>&nbsp;%
+                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -494,7 +495,7 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="espform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="espform.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="espform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="esponSubmit('esp')">搜索</el-button>
@@ -522,17 +523,17 @@
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
                                     <el-input v-model.number="espform.val_change" size="small"
-                                              style="width: 70%;"></el-input>
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="esponly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
                                     <el-input v-model.number="espform.percentage_change" size="small"
-                                              style="width: 70%;"></el-input>&nbsp;%
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
                                     <el-input v-model.number="espform.satisfy_p" size="small"
-                                              style="width: 71%;"></el-input>&nbsp;%
+                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -611,7 +612,7 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="itform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="itform.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="itform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="itonSubmit('it')">搜索</el-button>
@@ -639,17 +640,17 @@
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
                                     <el-input v-model.number="itform.val_change" size="small"
-                                              style="width: 70%;"></el-input>
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="itonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
                                     <el-input v-model.number="itform.percentage_change" size="small"
-                                              style="width: 70%;"></el-input>&nbsp;%
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
                                     <el-input v-model.number="itform.satisfy_p" size="small"
-                                              style="width: 71%;"></el-input>&nbsp;%
+                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -728,7 +729,7 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="frform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="frform.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="frform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="fronSubmit('fr')">搜索</el-button>
@@ -756,17 +757,17 @@
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
                                     <el-input v-model.number="frform.val_change" size="small"
-                                              style="width: 70%;"></el-input>
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="fronly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
                                     <el-input v-model.number="frform.percentage_change" size="small"
-                                              style="width: 70%;"></el-input>&nbsp;%
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
                                     <el-input v-model.number="frform.satisfy_p" size="small"
-                                              style="width: 71%;"></el-input>&nbsp;%
+                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -845,7 +846,7 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="mxform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="mxform.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="mxform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="mxonSubmit('mx')">搜索</el-button>
@@ -873,17 +874,17 @@
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
                                     <el-input v-model.number="mxform.val_change" size="small"
-                                              style="width: 70%;"></el-input>
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="mxonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
                                     <el-input v-model.number="mxform.percentage_change" size="small"
-                                              style="width: 70%;"></el-input>&nbsp;%
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
                                     <el-input v-model.number="mxform.satisfy_p" size="small"
-                                              style="width: 71%;"></el-input>&nbsp;%
+                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -962,7 +963,7 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="caform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="caform.key_words" placeholder="请输入关键词" size="small"></el-input>
+                                <el-input v-model="caform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="caonSubmit('ca')">搜索</el-button>
@@ -990,17 +991,17 @@
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
                                     <el-input v-model.number="caform.val_change" size="small"
-                                              style="width: 70%;"></el-input>
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>
                                 </el-form-item>
 
                                 <input type="radio" name="caonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
                                     <el-input v-model.number="caform.percentage_change" size="small"
-                                              style="width: 70%;"></el-input>&nbsp;%
+                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
                                     <el-input v-model.number="caform.satisfy_p" size="small"
-                                              style="width: 71%;"></el-input>&nbsp;%
+                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -1166,7 +1167,14 @@
                 isclicktabs: ['usa']
             }
         },
+        components: {},
         methods: {
+            updateValue: function (value) {
+                // var formattedValue = value //对值进行处理
+                // //
+                // // //手动触发input事件,将格式化后的值传过去,这是最终显示输入框的输出
+                // this.$emit('input', Number(formattedValue))
+            },
             usagetListdata(cu) {
                 this.loadingusa = true
                 var that = this
@@ -2619,6 +2627,7 @@
         }
     })
 </script>
+
 <style>
     &
     -frame {

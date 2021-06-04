@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622776787;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622782641;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,6 +77,7 @@
                     <template slot="title">导出格式</template>
                     <el-menu-item index="2-1" @click="downloadExcel('usa','excel')">导出Excel</el-menu-item>
                     <el-menu-item index="2-2" @click="downloadExcel('usa','csv')">导出csv</el-menu-item>
+                    <el-menu-item index="2-3" @click="downloadExcel('usa','csv',1)">导出全部(csv)</el-menu-item>
                   </el-submenu>
                 </el-menu>
                 <!-- <el-button class="dexc" style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
@@ -2625,9 +2626,24 @@
                 this.multipleSelection = val;
                 // console.log(this.multipleSelection[0]);
             },
-            downloadExcel(cu,type) {
+            downloadExcel(cu,type,all=0) {
                 var that = this
-                if (this.multipleSelection.length == 0) {
+                if(cu=='usa'){
+                   var satisfy_p=that.usaform.satisfy_p
+                   var val_change=that.usaform.val_change
+                   var key_words=that.usaform.key_words
+                   var percentage_change=that.usaform.percentage_change                   
+                   if(that.usaform.sdate !=undefined){
+                    var sdate=that.usaform.sdate[0]
+                   var edate=that.usaform.sdate[1]
+               }else{
+                var sdate='undefined'
+                   var edate='undefined'
+               }
+                   
+                }
+                
+                if (this.multipleSelection.length == 0 && all==0) {
                     this.$message.error('请选择需要导出的数据');
                     return
                 }
@@ -2635,7 +2651,7 @@
                 for (var i = 0; i < this.multipleSelection.length; i++) {
                     ids += this.multipleSelection[i].id + ',';
                 }
-                window.open("/index/index/expExcel?ids=" + ids + '&cu=' + cu+"&type="+type);
+                window.open("/index/index/expExcel?ids=" + ids + '&cu=' + cu+"&type="+type+"&all="+all+"&satisfy_p="+satisfy_p+"&val_change="+val_change+"&key_words="+key_words+"&percentage_change="+percentage_change+"&sdate="+sdate+"&edate="+edate);
             },
             handleClick(tab, event) {
                 this.multipleSelection = [];

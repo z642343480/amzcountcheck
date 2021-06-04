@@ -277,7 +277,7 @@ class Index extends Controller
         //     }
         // }
 
-        
+
         $List = array_merge($List);
         return $List;
     }
@@ -329,15 +329,23 @@ class Index extends Controller
 
 
         }
+        if($param['type']=='excel'){
+       $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel5");//创建生成的格式
+       header('Content-Disposition: attachment;filename="' . $this->tablename . date('Y-m-d') . '.xls"');//下载下来的表格名
+       header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+       $PHPWriter->save("php://output");//表示在$path路径下面生成demo.xlsx文件
+        exit;
+        }
+        if($param['type']=='csv'){
         $objWriter = new  \PHPExcel_Writer_CSV ($PHPExcel);
         header('Content-Disposition: attachment;filename="' . $this->tablename . date('Y-m-d') . '.csv"');
         $objWriter -> save("php://output");
-
-//        $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel5");//创建生成的格式
-//        header('Content-Disposition: attachment;filename="' . $this->tablename . date('Y-m-d') . '.xls"');//下载下来的表格名
-//        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-//        $PHPWriter->save("php://output");//表示在$path路径下面生成demo.xlsx文件
         exit;
+        }
+       
+
+
+        
     }
 
 

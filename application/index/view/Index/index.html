@@ -70,10 +70,18 @@
                         </div>
                     </div>
                 </div>
-                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
+                <!-- <div style="widt:50px;height:30px;float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;background: #3a8ee6;border-color: #3a8ee6;color: #FFF;border: 1px solid block">导出</div> -->
+                <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                  <el-submenu index="2" style="float: right;">
+                    <template slot="title">导出格式</template>
+                    <el-menu-item index="2-1" @click="downloadExcel('usa','excel')">导出Excel</el-menu-item>
+                    <el-menu-item index="2-2" @click="downloadExcel('usa','csv')">导出csv</el-menu-item>
+                  </el-submenu>
+                </el-menu>
+                <!-- <el-button class="dexc" style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
                            @click="downloadExcel('usa')">导出
-                </el-button>
+                </el-button> -->
 
                 <el-table
                         v-loading="loadingusa"
@@ -187,10 +195,17 @@
                         </div>
                     </div>
                 </div>
-                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
+                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                  <el-submenu index="2" style="float: right;">
+                    <template slot="title">导出格式</template>
+                    <el-menu-item index="2-1" @click="downloadExcel('uk','excel')">导出Excel</el-menu-item>
+                    <el-menu-item index="2-2" @click="downloadExcel('uk','csv')">导出csv</el-menu-item>
+                  </el-submenu>
+                </el-menu>
+               <!--  <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
                            @click="downloadExcel('uk')">导出
-                </el-button>
+                </el-button> -->
 
                 <el-table
                         v-loading="loadinguk"
@@ -304,10 +319,17 @@
                         </div>
                     </div>
                 </div>
-                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
+                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                  <el-submenu index="2" style="float: right;">
+                    <template slot="title">导出格式</template>
+                    <el-menu-item index="2-1" @click="downloadExcel('de','excel')">导出Excel</el-menu-item>
+                    <el-menu-item index="2-2" @click="downloadExcel('de','csv')">导出csv</el-menu-item>
+                  </el-submenu>
+                </el-menu>
+                <!-- <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
                            @click="downloadExcel('de')">导出
-                </el-button>
+                </el-button> -->
 
                 <el-table
                         v-loading="loadingde"
@@ -421,10 +443,17 @@
                         </div>
                     </div>
                 </div>
-                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
+                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                  <el-submenu index="2" style="float: right;">
+                    <template slot="title">导出格式</template>
+                    <el-menu-item index="2-1" @click="downloadExcel('jp','excel')">导出Excel</el-menu-item>
+                    <el-menu-item index="2-2" @click="downloadExcel('jp','csv')">导出csv</el-menu-item>
+                  </el-submenu>
+                </el-menu>
+                <!-- <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
                            @click="downloadExcel('jp')">导出
-                </el-button>
+                </el-button> -->
 
                 <el-table
                         v-loading="loadingjp"
@@ -538,9 +567,16 @@
                         </div>
                     </div>
                 </div>
-                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
+                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                  <el-submenu index="2" style="float: right;">
+                    <template slot="title">导出格式</template>
+                    <el-menu-item index="2-1" @click="downloadExcel('esp','excel')">导出Excel</el-menu-item>
+                    <el-menu-item index="2-2" @click="downloadExcel('esp','csv')">导出csv</el-menu-item>
+                  </el-submenu>
+                </el-menu>
+                <!-- <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
-                           @click="downloadExcel('esp')">导出
+                           @click="downloadExcel('esp')">导出 -->
                 </el-button>
 
                 <el-table
@@ -655,9 +691,16 @@
                         </div>
                     </div>
                 </div>
-                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
+                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                  <el-submenu index="2" style="float: right;">
+                    <template slot="title">导出格式</template>
+                    <el-menu-item index="2-1" @click="downloadExcel('it','excel')">导出Excel</el-menu-item>
+                    <el-menu-item index="2-2" @click="downloadExcel('it','csv')">导出csv</el-menu-item>
+                  </el-submenu>
+                </el-menu>
+                <!-- <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
-                           @click="downloadExcel('it')">导出
+                           @click="downloadExcel('it')">导出 -->
                 </el-button>
 
                 <el-table
@@ -772,10 +815,17 @@
                         </div>
                     </div>
                 </div>
-                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
+                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                  <el-submenu index="2" style="float: right;">
+                    <template slot="title">导出格式</template>
+                    <el-menu-item index="2-1" @click="downloadExcel('fr','excel')">导出Excel</el-menu-item>
+                    <el-menu-item index="2-2" @click="downloadExcel('fr','csv')">导出csv</el-menu-item>
+                  </el-submenu>
+                </el-menu>
+                <!-- <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
                            @click="downloadExcel('fr')">导出
-                </el-button>
+                </el-button> -->
 
                 <el-table
                         v-loading="loadingfr"
@@ -889,10 +939,17 @@
                         </div>
                     </div>
                 </div>
-                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
+                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                  <el-submenu index="2" style="float: right;">
+                    <template slot="title">导出格式</template>
+                    <el-menu-item index="2-1" @click="downloadExcel('mx','excel')">导出Excel</el-menu-item>
+                    <el-menu-item index="2-2" @click="downloadExcel('mx','csv')">导出csv</el-menu-item>
+                  </el-submenu>
+                </el-menu>
+                <!-- <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
                            @click="downloadExcel('mx')">导出
-                </el-button>
+                </el-button> -->
 
                 <el-table
                         v-loading="loadingmx"
@@ -1006,10 +1063,17 @@
                         </div>
                     </div>
                 </div>
-                <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
+                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                  <el-submenu index="2" style="float: right;">
+                    <template slot="title">导出格式</template>
+                    <el-menu-item index="2-1" @click="downloadExcel('ca','excel')">导出Excel</el-menu-item>
+                    <el-menu-item index="2-2" @click="downloadExcel('ca','csv')">导出csv</el-menu-item>
+                  </el-submenu>
+                </el-menu>
+                <!-- <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
                            @click="downloadExcel('ca')">导出
-                </el-button>
+                </el-button> -->
 
                 <el-table
                         v-loading="loadingca"
@@ -2520,30 +2584,38 @@
 
 
             usaonSubmit(cu) {
+                this.usacurrentPage=1
                 this.usagetListdata(cu)
             },
             ukonSubmit(cu) {
+                this.ukcurrentPage=1
                 this.ukgetListdata(cu)
             },
             deonSubmit(cu) {
+                this.decurrentPage=1
                 this.degetListdata(cu)
             },
             jponSubmit(cu) {
+                this.jpcurrentPage=1
                 this.jpgetListdata(cu)
             },
             esponSubmit(cu) {
+                this.espcurrentPage=1
                 this.espgetListdata(cu)
             },
             itonSubmit(cu) {
                 this.itgetListdata(cu)
             },
             fronSubmit(cu) {
+                this.frcurrentPage=1
                 this.frgetListdata(cu)
             },
             mxonSubmit(cu) {
+                this.mxcurrentPage=1
                 this.mxgetListdata(cu)
             },
             caonSubmit(cu) {
+                this.cacurrentPage=1
                 this.cagetListdata(cu)
             },
 
@@ -2552,7 +2624,7 @@
                 this.multipleSelection = val;
                 // console.log(this.multipleSelection[0]);
             },
-            downloadExcel(cu) {
+            downloadExcel(cu,type) {
                 var that = this
                 if (this.multipleSelection.length == 0) {
                     this.$message.error('请选择需要导出的数据');
@@ -2562,7 +2634,7 @@
                 for (var i = 0; i < this.multipleSelection.length; i++) {
                     ids += this.multipleSelection[i].id + ',';
                 }
-                window.open("/index/index/expExcel?ids=" + ids + '&cu=' + cu);
+                window.open("/index/index/expExcel?ids=" + ids + '&cu=' + cu+"&type="+type);
             },
             handleClick(tab, event) {
                 this.multipleSelection = [];
@@ -2650,6 +2722,9 @@
 
     .el-form-item {
         margin-bottom: 0px;
+    }
+    .dexc:hover{
+        background-color: red;
     }
 </style>
 </html>

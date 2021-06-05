@@ -16,6 +16,7 @@ class Index extends Controller
     {
         return $this->fetch();
     }
+
     public function tt()
     {
         return $this->fetch();
@@ -117,7 +118,7 @@ class Index extends Controller
         $wek = $date->format('Y-m-d');
         $date->modify('this week +6 days');
         $sund = $date->format('Y-m-d');
-        $pages = ($param['page'] - 1) * $param['limit']; 
+        $pages = ($param['page'] - 1) * $param['limit'];
 
         $datadate = Db::table($this->tablename)->order("update_time", "desc")->limit(1)->select();
         $where[] = ["update_time", '>=', $datadate[0]['update_time']];
@@ -149,8 +150,8 @@ class Index extends Controller
             $nextwe = date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
             $zsdate = " update_time >='" . $nextwe . "' ";
             $zedate = " and update_time <='" . $param['search']['sdate'][1] . "' ";
-            $csdate= " update_time >='".$param['search']['sdate'][0]."'";
-            $cedate=" and update_time <='".$param['search']['sdate'][1]."'";
+            $csdate = " update_time >='" . $param['search']['sdate'][0] . "'";
+            $cedate = " and update_time <='" . $param['search']['sdate'][1] . "'";
         } else {
             $fsdate = " update_time >='" . $datadate[0]['update_time'] . "' ";
             $fedate = " and update_time <='" . $sund . "' ";
@@ -160,8 +161,8 @@ class Index extends Controller
 
             $zsdate = " update_time >='" . $nextwe . "'";
             $zedate = "  ";
-            $csdate=" update_time >='" . $nextwe . "'";
-            $cedate=" ";
+            $csdate = " update_time >='" . $nextwe . "'";
+            $cedate = " ";
         }
         $ssatisfy_p = $satisfy_p / 100;
         $percentage_change = $percentage_change / 100;
@@ -173,7 +174,7 @@ class Index extends Controller
             where " . $zsdate . $zedate . " and chang >= " . $val_change . " and " . $percentage_change . " <= (chang/l_rank) and key_words=u.key_words)
             / 
             (select count(1) from " . $this->tablename . " 
-            where " . $zsdate . $zedate . "  and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from ".$this->tablename." where ".$csdate.$cedate."  and key_words=u.key_words) >1  ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY update_time desc,c_rank asc limit " . $pages . "," . $param['limit'] . "
+            where " . $zsdate . $zedate . "  and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from " . $this->tablename . " where " . $csdate . $cedate . "  and key_words=u.key_words) >1  ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY update_time desc,c_rank asc limit " . $pages . "," . $param['limit'] . "
             ");
         $Listcount = Db::query("
             select count(1) num from (
@@ -183,7 +184,7 @@ class Index extends Controller
             where " . $zsdate . $zedate . " and chang >= " . $val_change . " and " . $percentage_change . " <= (chang/l_rank) and key_words=u.key_words)
             / 
             (select count(1) from " . $this->tablename . " 
-            where " . $zsdate . $zedate . "  and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from ".$this->tablename." where ".$csdate.$cedate."  and key_words=u.key_words) >1  ORDER BY update_time desc limit 9999999999) T1 
+            where " . $zsdate . $zedate . "  and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from " . $this->tablename . " where " . $csdate . $cedate . "  and key_words=u.key_words) >1  ORDER BY update_time desc limit 9999999999) T1 
             ");
 
 
@@ -281,79 +282,79 @@ class Index extends Controller
 
     public function expExcel(Request $request)
     {
-                set_time_limit(0);
+        set_time_limit(0);
 
         $param = $request->param();
         $this->tablename = $param['cu'] . '_list';
-        if($param['all']!=1){
-             if (!empty($param['ids'])) {
-            $idArr = explode(',', $param['ids']);
-                    unset($idArr[count($idArr) - 1]);
-        } else {
-            echo '请选择需要导出的数据';
-            exit;
+        if ($param['all'] != 1) {
+            if (!empty($param['ids'])) {
+                $idArr = explode(',', $param['ids']);
+                unset($idArr[count($idArr) - 1]);
+            } else {
+                echo '请选择需要导出的数据';
+                exit;
+            }
         }
-        }
-       
+
 //        $idArr=[590202,590203,590204];
 //        foreach ($param['ids'] as $k=> $v){
 //            $idArr[]=$v['id'];
 //        }
 
-        if($param['all']==1){
-        $date = new \DateTime();//时间对象
-        $date->modify('this week');
-        $wek = $date->format('Y-m-d');
-        $date->modify('this week +6 days');
-        $sund = $date->format('Y-m-d');
+        if ($param['all'] == 1) {
+            $date = new \DateTime();//时间对象
+            $date->modify('this week');
+            $wek = $date->format('Y-m-d');
+            $date->modify('this week +6 days');
+            $sund = $date->format('Y-m-d');
 
-        $datadate = Db::table($this->tablename)->order("update_time", "desc")->limit(1)->select();
-        $where[] = ["update_time", '>=', $datadate[0]['update_time']];
-        $keywhere = '';
-        $fsdate = '';
-        $fedate = '';
-        $zsdate = '';
-        $zedate = '';
-        $val_change = -100000;
-        $percentage_change = -100000;
-        $satisfy_p = 100;
-        if (!empty($param['val_change']) && $param['val_change'] !='undefined') {
-            $val_change = $param['val_change'];
-        }
-        if (!empty($param['percentage_change']) && $param['percentage_change'] !='undefined') {
-            $percentage_change = $param['percentage_change'];
-        }
-        if (!empty($param['satisfy_p']) && $param['satisfy_p'] !='undefined') {
-            $satisfy_p = $param['satisfy_p'];
-        }
-        if (!empty($param['key_words']) && $param['key_words'] !='undefined') {
-            $keywhere = " and key_words like '%" . $param['key_words'] . "%'";
-        }
-        $botime = date("Y-m-d", strtotime("-6 month"));
-        if (!empty($param['sdate']) && $param['sdate'] !='undefined') {
-            $fsdate = " update_time >='" . $param['sdate'] . "' ";
-            $fedate = " and update_time <='" . $param['edate'] . "' ";
-            $mindata = Db::table($this->tablename)->where('update_time', '>=', $param['sdate'])->order("update_time")->limit(1)->select();
-            $nextwe = date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
-            $zsdate = " update_time >='" . $nextwe . "' ";
-            $zedate = " and update_time <='" . $param['edate'] . "' ";
-            $csdate= " update_time >='".$param['search']['sdate'][0]."'";
-            $cedate=" and update_time <='".$param['search']['sdate'][1]."'";
-        } else {
-            $fsdate = " update_time >='" . $datadate[0]['update_time'] . "' ";
-            $fedate = " and update_time <='" . $sund . "' ";
-            $mindata = Db::table($this->tablename)->where('update_time', '>=', $botime)->order("update_time")->limit(1)->select();
+            $datadate = Db::table($this->tablename)->order("update_time", "desc")->limit(1)->select();
+            $where[] = ["update_time", '>=', $datadate[0]['update_time']];
+            $keywhere = '';
+            $fsdate = '';
+            $fedate = '';
+            $zsdate = '';
+            $zedate = '';
+            $val_change = -100000;
+            $percentage_change = -100000;
+            $satisfy_p = 100;
+            if (!empty($param['val_change']) && $param['val_change'] != 'undefined') {
+                $val_change = $param['val_change'];
+            }
+            if (!empty($param['percentage_change']) && $param['percentage_change'] != 'undefined') {
+                $percentage_change = $param['percentage_change'];
+            }
+            if (!empty($param['satisfy_p']) && $param['satisfy_p'] != 'undefined') {
+                $satisfy_p = $param['satisfy_p'];
+            }
+            if (!empty($param['key_words']) && $param['key_words'] != 'undefined') {
+                $keywhere = " and key_words like '%" . $param['key_words'] . "%'";
+            }
+            $botime = date("Y-m-d", strtotime("-6 month"));
+            if (!empty($param['sdate']) && $param['sdate'] != 'undefined') {
+                $fsdate = " update_time >='" . $param['sdate'] . "' ";
+                $fedate = " and update_time <='" . $param['edate'] . "' ";
+                $mindata = Db::table($this->tablename)->where('update_time', '>=', $param['sdate'])->order("update_time")->limit(1)->select();
+                $nextwe = date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
+                $zsdate = " update_time >='" . $nextwe . "' ";
+                $zedate = " and update_time <='" . $param['edate'] . "' ";
+                $csdate = " update_time >='" . $param['search']['sdate'][0] . "'";
+                $cedate = " and update_time <='" . $param['search']['sdate'][1] . "'";
+            } else {
+                $fsdate = " update_time >='" . $datadate[0]['update_time'] . "' ";
+                $fedate = " and update_time <='" . $sund . "' ";
+                $mindata = Db::table($this->tablename)->where('update_time', '>=', $botime)->order("update_time")->limit(1)->select();
 
-            $nextwe = date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
+                $nextwe = date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
 
-            $zsdate = " update_time >='" . $nextwe . "'";
-            $zedate = "  ";
-            $csdate=" update_time >='" . $nextwe . "'";
-            $cedate=" ";
-        }
-        $ssatisfy_p = $satisfy_p / 100;
-        $percentage_change = $percentage_change / 100;
-        $List = Db::query("
+                $zsdate = " update_time >='" . $nextwe . "'";
+                $zedate = "  ";
+                $csdate = " update_time >='" . $nextwe . "'";
+                $cedate = " ";
+            }
+            $ssatisfy_p = $satisfy_p / 100;
+            $percentage_change = $percentage_change / 100;
+            $List = Db::query("
             select * from (
             select * from " . $this->tablename . " u
             where " . $fsdate . $fedate . $keywhere . " and 
@@ -361,12 +362,12 @@ class Index extends Controller
             where " . $zsdate . $zedate . " and chang >= " . $val_change . " and " . $percentage_change . " <= (chang/l_rank) and key_words=u.key_words)
             / 
             (select count(1) from " . $this->tablename . " 
-            where " . $zsdate . $zedate . "  and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from ".$this->tablename." where ".$csdate.$cedate."  and key_words=u.key_words) >1  ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY update_time desc,c_rank asc 
+            where " . $zsdate . $zedate . "  and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from " . $this->tablename . " where " . $csdate . $cedate . "  and key_words=u.key_words) >1  ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY update_time desc,c_rank asc 
             ");
-                    }else{
-                          $List = Db::table($this->tablename)->whereIn("id", $idArr)->order("update_time asc")->select();
+        } else {
+            $List = Db::table($this->tablename)->whereIn("id", $idArr)->order("update_time asc")->select();
 
-                    }
+        }
         $data = $this->getPicData($List, $param);
         $path = dirname(__FILE__);//找到当前脚本所在路径
         $PHPExcel = new \PHPExcel();//实例化phpexcel
@@ -398,23 +399,21 @@ class Index extends Controller
 
 
         }
-        if($param['type']=='excel'){
-       $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel5");//创建生成的格式
-       header('Content-Disposition: attachment;filename="' . $this->tablename . date('Y-m-d') . '.xls"');//下载下来的表格名
-       header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-       $PHPWriter->save("php://output");//表示在$path路径下面生成demo.xlsx文件
-        exit;
+        if ($param['type'] == 'excel') {
+            $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel5");//创建生成的格式
+            header('Content-Disposition: attachment;filename="' . $this->tablename . date('Y-m-d') . '.xls"');//下载下来的表格名
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            $PHPWriter->save("php://output");//表示在$path路径下面生成demo.xlsx文件
+            exit;
         }
-        if($param['type']=='csv'){
-        $objWriter = new  \PHPExcel_Writer_CSV ($PHPExcel);
-        header('Content-Disposition: attachment;filename="' . $this->tablename . date('Y-m-d') . '.csv"');
-        $objWriter -> save("php://output");
-        exit;
+        if ($param['type'] == 'csv') {
+            $objWriter = new  \PHPExcel_Writer_CSV ($PHPExcel);
+            header('Content-Disposition: attachment;filename="' . $this->tablename . date('Y-m-d') . '.csv"');
+            $objWriter->save("php://output");
+            exit;
         }
-       
 
 
-        
     }
 
 

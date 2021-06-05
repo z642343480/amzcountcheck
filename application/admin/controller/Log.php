@@ -11,8 +11,7 @@ use GuzzleHttp\Client;
 class Log
 {
     private $is_auto = 1;
-    private $datacount = 0;
-
+    private $opset=0;
 
     public function index()
     {
@@ -33,6 +32,7 @@ class Log
     public function hsync()
     {
         ini_set('memory_limit','256M');
+
         if (!empty($_GET['type'])) {
             $this->is_auto = 0;
         }
@@ -195,7 +195,7 @@ class Log
 
     public function getAmzList($area)
     {
-
+        $datacount = 0;
         set_time_limit(0);
         $table_update_time = '';
         $error_data = array();
@@ -220,7 +220,6 @@ class Log
                     $error_e = $e;
                     $is_error = "get_error";
                     break 2;
-                    exit;
                 }
                 $TempData = array();
                 $kw = array();
@@ -247,7 +246,7 @@ class Log
                     $table_update_time = $update_time;
                 }
                 if ($is_existence) {
-                    return false;
+                    $is_error == 'isex';
                     break 2;
                 }
                 foreach ($TempData as $key => $val) {
@@ -282,7 +281,8 @@ class Log
 
                 try {
                     $IsSuccess = Db::table($area . '_list')->insertAll($TempData);
-                    $this->datacount += $IsSuccess;
+                    $datacount += $IsSuccess;
+                    echo $datacount;
                 } catch (\Exception $e) {
                     $error_e = $e;
                     $is_error = "insert_error";
@@ -293,25 +293,31 @@ class Log
             }
         }
         if ($is_error == '') {
-            $logData = ['error_code' => 200, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => '任务执行成功', 'is_success' => 1, 'data_count' => $this->datacount, 'area' => $area];
-            $IsSuccess = Db::table('log')->insert($logData);
             Db::commit();
+            echo '成功';
+            $logData = ['error_code' => 200, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => '任务执行成功', 'is_success' => 1, 'data_count' => $datacount, 'area' => $area];
+            $IsSuccess = Db::table('log')->insert($logData);
         } else {
             if ($is_error == 'insert_error') {
                 Db::rollback();
-                $logData = ['error_code' => 10000, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => '任务执行失败' . $error_e->getMessage(), 'is_success' => 0, 'data_count' => $this->datacount, 'area' => $area];
+                $logData = ['error_code' => 10000, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => '任务执行失败' . $error_e->getMessage(), 'is_success' => 0, 'data_count' => $datacount, 'area' => $area];
                 $IsSuccess = Db::table('log')->insert($logData);
 
-            }
-            if ($is_error == 'get_error') {
+            }else if ($is_error == 'get_error') {
                 Db::rollback();
-                if ($e->hasResponse()) {
+
                     $error_code = $e->getCode();
                     $error_remark = $e->getMessage();
-                    $ErrorData = ['error_code' => $error_code, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => $error_remark, 'is_success' => 0, 'data_count' => $this->datacount, 'area' => $area];
+                    $ErrorData = ['error_code' => $error_code, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => $error_remark, 'is_success' => 0, 'data_count' => $datacount, 'area' => $area];
                     $IsSuccess = Db::table('log')->insert($ErrorData);
 
-                }
+
+            }else if($is_error == 'isex'){
+                Db::rollback();
+            }else{
+                Db::rollback();
+                $logData = ['error_code' => 10000, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => '任务执行失败,原因未知', 'is_success' => 0, 'data_count' => $datacount, 'area' => $area];
+                $IsSuccess = Db::table('log')->insert($logData);
             }
         }
 

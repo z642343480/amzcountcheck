@@ -32,6 +32,7 @@ class Log
 
     public function hsync()
     {
+        ini_set('memory_limit','256M');
         if (!empty($_GET['type'])) {
             $this->is_auto = 0;
         }

@@ -173,7 +173,7 @@ class Index extends Controller
             where " . $zsdate . $zedate . " and chang >= " . $val_change . " and " . $percentage_change . " <= (chang/l_rank) and key_words=u.key_words)
             / 
             (select count(1) from " . $this->tablename . " 
-            where " . $zsdate . $zedate . "  and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from ".$this->tablename." where update_time>=".$csdate.$cedate."  and key_words=u.key_words) >1  ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY update_time desc,c_rank asc limit " . $pages . "," . $param['limit'] . "
+            where " . $zsdate . $zedate . "  and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from ".$this->tablename." where ".$csdate.$cedate."  and key_words=u.key_words) >1  ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY update_time desc,c_rank asc limit " . $pages . "," . $param['limit'] . "
             ");
         $Listcount = Db::query("
             select count(1) num from (

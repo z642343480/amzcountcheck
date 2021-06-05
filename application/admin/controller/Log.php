@@ -246,7 +246,7 @@ class Log
                     $table_update_time = $update_time;
                 }
                 if ($is_existence) {
-                    $is_error == 'isex';
+                    $is_error = 'isex';
                     break 2;
                 }
                 foreach ($TempData as $key => $val) {

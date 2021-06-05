@@ -39,8 +39,8 @@ class Log
         $prog = Db::table('prog')->where("id", 1)->update(['progress' => 0]);
         $prog = Db::table('prog')->where("id", 1)->update(['is_stop' => 0]);
         set_time_limit(0);
-        ob_end_clean();
-        ob_implicit_flush(1);
+        // ob_end_clean();
+        // ob_implicit_flush(1);
         $prog = Db::table('prog')->select();
         if ($prog[0]['is_stop'] == 1) {
             return 1;
@@ -48,7 +48,7 @@ class Log
         $this->usa();
         $prog = Db::table('prog')->where("id", 1)->update(['progress' => 10]);
 
-        echo 10;
+        //echo 10;
 
         $prog = Db::table('prog')->select();
         if ($prog[0]['is_stop'] == 1) {
@@ -57,7 +57,7 @@ class Log
         $this->uk();
         $prog = Db::table('prog')->where("id", 1)->update(['progress' => 22]);
 
-        echo 22;
+        //echo 22;
 
         $prog = Db::table('prog')->select();
         if ($prog[0]['is_stop'] == 1) {
@@ -66,7 +66,7 @@ class Log
         $this->de();
 
         $prog = Db::table('prog')->where("id", 1)->update(['progress' => 33]);
-        echo 33;
+        //echo 33;
 
 
         $prog = Db::table('prog')->select();
@@ -76,7 +76,7 @@ class Log
         $this->jp();
 
         $prog = Db::table('prog')->where("id", 1)->update(['progress' => 44]);
-        echo 44;
+        //echo 44;
 
 
         $prog = Db::table('prog')->select();
@@ -86,7 +86,7 @@ class Log
         $this->esp();
 
         $prog = Db::table('prog')->where("id", 1)->update(['progress' => 55]);
-        echo 55;
+        //echo 55;
 
 
         $prog = Db::table('prog')->select();
@@ -96,7 +96,7 @@ class Log
         $this->it();
 
         $prog = Db::table('prog')->where("id", 1)->update(['progress' => 66]);
-        echo 66;
+        //echo 66;
 
 
         $prog = Db::table('prog')->select();
@@ -106,7 +106,7 @@ class Log
         $this->mx();
 
         $prog = Db::table('prog')->where("id", 1)->update(['progress' => 77]);
-        echo 77;
+        //echo 77;
 
         $prog = Db::table('prog')->select();
         if ($prog[0]['is_stop'] == 1) {
@@ -115,7 +115,7 @@ class Log
         $this->ca();
 
         $prog = Db::table('prog')->where("id", 1)->update(['progress' => 88]);
-        echo 88;
+        //echo 88;
 
 
         $prog = Db::table('prog')->select();
@@ -125,7 +125,7 @@ class Log
         $this->fr();
 
         $prog = Db::table('prog')->where("id", 1)->update(['progress' => 100]);
-        echo 100;
+        //echo 100;
 
 
     }
@@ -282,7 +282,7 @@ class Log
                 try {
                     $IsSuccess = Db::table($area . '_list')->insertAll($TempData);
                     $datacount += $IsSuccess;
-                    echo $datacount;
+                    //echo $datacount.',';
                 } catch (\Exception $e) {
                     $error_e = $e;
                     $is_error = "insert_error";
@@ -294,7 +294,6 @@ class Log
         }
         if ($is_error == '') {
             Db::commit();
-            echo '成功';
             $logData = ['error_code' => 200, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => '任务执行成功', 'is_success' => 1, 'data_count' => $datacount, 'area' => $area];
             $IsSuccess = Db::table('log')->insert($logData);
         } else {

@@ -208,9 +208,9 @@
                                 $("#do_sync_btn").css("background-color", "#F5F5F5");
                                 $(".syncing").hide();
                                 if(data[0]['count']==0){
-                                    $(".done_sync").append("更新数据量:"+data[0]['count']+'（库内数据无需更新）')
+                                    $(".done_sync").html("已完成，更新数据量:"+data[0]['count']+'（库内数据无需更新）')
                                 }else{
-                                    $(".done_sync").append("更新数据量:"+data[0]['count'])
+                                    $(".done_sync").html("已完成，更新数据量:"+data[0]['count'])
                                 }
 
                                 $(".done_sync").show();

@@ -39,7 +39,7 @@ class Log
         }
         $prog = Db::table('prog')->select();
         if ($prog[0]['is_exc'] == 1) {
-            return 2;
+            return 22;
         }else{
             $prog = Db::table('prog')->where("id", 1)->update(['is_exc' => 1]);
         }

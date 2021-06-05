@@ -55,7 +55,7 @@ class Log
         }
          Db::table('prog')->where("id", 1)->update(['tablename_sync' => '美国']);
         $this->usa();
-         Db::table('prog')->where("id", 1)->update(['progress' => 10]);
+//         Db::table('prog')->where("id", 1)->update(['progress' => 10]);
 
         //echo 10;
 
@@ -66,7 +66,7 @@ class Log
         }
          Db::table('prog')->where("id", 1)->update(['tablename_sync' => '英国']);
         $this->uk();
-         Db::table('prog')->where("id", 1)->update(['progress' => 22]);
+//         Db::table('prog')->where("id", 1)->update(['progress' => 22]);
 
         //echo 22;
 
@@ -78,7 +78,7 @@ class Log
          Db::table('prog')->where("id", 1)->update(['tablename_sync' => '德国']);
         $this->de();
 
-         Db::table('prog')->where("id", 1)->update(['progress' => 33]);
+//         Db::table('prog')->where("id", 1)->update(['progress' => 33]);
         //echo 33;
 
 
@@ -90,7 +90,7 @@ class Log
          Db::table('prog')->where("id", 1)->update(['tablename_sync' => '日本']);
         $this->jp();
 
-         Db::table('prog')->where("id", 1)->update(['progress' => 44]);
+//         Db::table('prog')->where("id", 1)->update(['progress' => 44]);
         //echo 44;
 
 
@@ -102,7 +102,7 @@ class Log
          Db::table('prog')->where("id", 1)->update(['tablename_sync' => '西班牙']);
         $this->esp();
 
-         Db::table('prog')->where("id", 1)->update(['progress' => 55]);
+//         Db::table('prog')->where("id", 1)->update(['progress' => 55]);
         //echo 55;
 
 
@@ -115,7 +115,7 @@ class Log
 
         $this->it();
 
-        Db::table('prog')->where("id", 1)->update(['progress' => 66]);
+//        Db::table('prog')->where("id", 1)->update(['progress' => 66]);
         //echo 66;
 
 
@@ -127,7 +127,7 @@ class Log
          Db::table('prog')->where("id", 1)->update(['tablename_sync' => '墨西哥']);
         $this->mx();
 
-         Db::table('prog')->where("id", 1)->update(['progress' => 77]);
+//         Db::table('prog')->where("id", 1)->update(['progress' => 77]);
         //echo 77;
 
         $prog = Db::table('prog')->select();
@@ -138,7 +138,7 @@ class Log
         Db::table('prog')->where("id", 1)->update(['tablename_sync' => '加拿大']);
         $this->ca();
 
-         Db::table('prog')->where("id", 1)->update(['progress' => 88]);
+//         Db::table('prog')->where("id", 1)->update(['progress' => 88]);
         //echo 88;
 
 
@@ -151,7 +151,7 @@ class Log
 
         $this->fr();
 
-         Db::table('prog')->where("id", 1)->update(['progress' => 100]);
+//         Db::table('prog')->where("id", 1)->update(['progress' => 100]);
         //echo 100;
          Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
 
@@ -311,7 +311,9 @@ class Log
                     $IsSuccess = Db::table($area . '_list')->insertAll($TempData);
                     $datacount += $IsSuccess;
                     $this->zcount += $IsSuccess;
-                    $prog = Db::table('prog')->where("id", 1)->update(['count' => $this->zcount]);
+                    $prd = Db::table('prog')->select();
+                    $dprd=(float)$prd[0]['progress'] + 0.188;
+                    $prog = Db::table('prog')->where("id", 1)->update(['count' => $this->zcount,"progress" => $dprd]);
                     //echo $datacount.',';
                 } catch (\Exception $e) {
                     $error_e = $e;
@@ -343,8 +345,9 @@ class Log
 
             }else if($is_error == 'isex'){
                 Db::rollback();
+                $prd1 = Db::table('prog')->select();
                 $this->zcount += 0;
-                $prog = Db::table('prog')->where("id", 1)->update(['count' => $this->zcount]);
+                $prog = Db::table('prog')->where("id", 1)->update(['count' => $this->zcount,'progress'=>(float)$prd1[0]['progress']+9.9]);
             }else{
                 Db::rollback();
                 $logData = ['error_code' => 10000, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => '任务执行失败,原因未知', 'is_success' => 0, 'data_count' => $datacount, 'area' => $area];

@@ -33,18 +33,18 @@ class Log
     public function hsync()
     {
         ini_set('memory_limit','256M');
+        set_time_limit(0);
 
         if (!empty($_GET['type'])) {
             $this->is_auto = 0;
         }
-        $prog = Db::table('prog')->select();
-        if ($prog[0]['is_exc'] == 1) {
-            return 22;
+        $is_exc = Db::table('prog')->select();
+        if ($is_exc[0]['is_exc'] == 1) {
+            return 2;
         }else{
-            $prog = Db::table('prog')->where("id", 1)->update(['is_exc' => 1]);
+            Db::table('prog')->where("id", 1)->update(['is_exc' => 1]);
         }
-        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 0,'is_stop' => 0]);
-        set_time_limit(0);
+        Db::table('prog')->where("id", 1)->update(['progress' => 0,'is_stop' => 0]);
         // ob_end_clean();
         // ob_implicit_flush(1);
         $prog = Db::table('prog')->select();
@@ -52,107 +52,107 @@ class Log
             $prog = Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
             return 1;
         }
-        $prog = Db::table('prog')->where("id", 1)->update(['tablename_sync' => '美国']);
+         Db::table('prog')->where("id", 1)->update(['tablename_sync' => '美国']);
         $this->usa();
-        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 10]);
+         Db::table('prog')->where("id", 1)->update(['progress' => 10]);
 
         //echo 10;
 
         $prog = Db::table('prog')->select();
         if ($prog[0]['is_stop'] == 1) {
-            $prog = Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
+            Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
             return 1;
         }
-        $prog = Db::table('prog')->where("id", 1)->update(['tablename_sync' => '英国']);
+         Db::table('prog')->where("id", 1)->update(['tablename_sync' => '英国']);
         $this->uk();
-        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 22]);
+         Db::table('prog')->where("id", 1)->update(['progress' => 22]);
 
         //echo 22;
 
         $prog = Db::table('prog')->select();
         if ($prog[0]['is_stop'] == 1) {
-            $prog = Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
+             Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
             return 1;
         }
-        $prog = Db::table('prog')->where("id", 1)->update(['tablename_sync' => '德国']);
+         Db::table('prog')->where("id", 1)->update(['tablename_sync' => '德国']);
         $this->de();
 
-        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 33]);
+         Db::table('prog')->where("id", 1)->update(['progress' => 33]);
         //echo 33;
 
 
         $prog = Db::table('prog')->select();
         if ($prog[0]['is_stop'] == 1) {
-            $prog = Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
+            Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
             return 1;
         }
-        $prog = Db::table('prog')->where("id", 1)->update(['tablename_sync' => '日本']);
+         Db::table('prog')->where("id", 1)->update(['tablename_sync' => '日本']);
         $this->jp();
 
-        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 44]);
+         Db::table('prog')->where("id", 1)->update(['progress' => 44]);
         //echo 44;
 
 
         $prog = Db::table('prog')->select();
         if ($prog[0]['is_stop'] == 1) {
-            $prog = Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
+             Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
             return 1;
         }
-        $prog = Db::table('prog')->where("id", 1)->update(['tablename_sync' => '西班牙']);
+         Db::table('prog')->where("id", 1)->update(['tablename_sync' => '西班牙']);
         $this->esp();
 
-        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 55]);
+         Db::table('prog')->where("id", 1)->update(['progress' => 55]);
         //echo 55;
 
 
         $prog = Db::table('prog')->select();
         if ($prog[0]['is_stop'] == 1) {
-            $prog = Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
+            Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
             return 1;
         }
-        $prog = Db::table('prog')->where("id", 1)->update(['tablename_sync' => '意大利']);
+        Db::table('prog')->where("id", 1)->update(['tablename_sync' => '意大利']);
 
         $this->it();
 
-        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 66]);
+        Db::table('prog')->where("id", 1)->update(['progress' => 66]);
         //echo 66;
 
 
         $prog = Db::table('prog')->select();
         if ($prog[0]['is_stop'] == 1) {
-            $prog = Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
+             Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
             return 1;
         }
-        $prog = Db::table('prog')->where("id", 1)->update(['tablename_sync' => '墨西哥']);
+         Db::table('prog')->where("id", 1)->update(['tablename_sync' => '墨西哥']);
         $this->mx();
 
-        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 77]);
+         Db::table('prog')->where("id", 1)->update(['progress' => 77]);
         //echo 77;
 
         $prog = Db::table('prog')->select();
         if ($prog[0]['is_stop'] == 1) {
-            $prog = Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
+             Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
             return 1;
         }
-        $prog = Db::table('prog')->where("id", 1)->update(['tablename_sync' => '加拿大']);
+        Db::table('prog')->where("id", 1)->update(['tablename_sync' => '加拿大']);
         $this->ca();
 
-        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 88]);
+         Db::table('prog')->where("id", 1)->update(['progress' => 88]);
         //echo 88;
 
 
         $prog = Db::table('prog')->select();
         if ($prog[0]['is_stop'] == 1) {
-            $prog = Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
+            Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
             return 1;
         }
-        $prog = Db::table('prog')->where("id", 1)->update(['tablename_sync' => '法国']);
+         Db::table('prog')->where("id", 1)->update(['tablename_sync' => '法国']);
 
         $this->fr();
 
-        $prog = Db::table('prog')->where("id", 1)->update(['progress' => 100]);
+         Db::table('prog')->where("id", 1)->update(['progress' => 100]);
         //echo 100;
-        $prog = Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
+         Db::table('prog')->where("id", 1)->update(['is_exc' => 0]);
 
 
     }

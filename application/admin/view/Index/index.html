@@ -12,6 +12,7 @@
 </style>
 <body>
 <div style="width: 98%;height:200px;margin: 0 auto;">
+    <div style="position:fixed;right:23px;top:10px;z-index:9999999"><a href="/index/index" style="color: #409EFF">返回前台</a></div>
     <form class="layui-form" action="">
         <div class="layui-form-item">
             <label style="width: auto;" class="layui-form-label">自动同步功能：</label>
@@ -214,7 +215,12 @@
                                 $("#do_sync_btn").removeAttr("disabled");
                                 $("#do_sync_btn").css("background-color", "#F5F5F5");
                                 $(".syncing").hide();
-                                $(".done_sync").append("总数据量")
+                                if(data[0]['count']==0){
+                                    $(".done_sync").append("更新数据量:"+data[0]['count']+'（库内数据无需更新）')
+                                }else{
+                                    $(".done_sync").append("更新数据量:"+data[0]['count'])
+                                }
+
                                 $(".done_sync").show();
                                 layer.close(loading);
                                 table.reload('demo');

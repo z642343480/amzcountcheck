@@ -310,6 +310,7 @@ class Log
                     $IsSuccess = Db::table($area . '_list')->insertAll($TempData);
                     $datacount += $IsSuccess;
                     $this->zcount += $IsSuccess;
+                    $prog = Db::table('prog')->where("id", 1)->update(['count' => $this->zcount]);
                     //echo $datacount.',';
                 } catch (\Exception $e) {
                     $error_e = $e;
@@ -341,6 +342,8 @@ class Log
 
             }else if($is_error == 'isex'){
                 Db::rollback();
+                $this->zcount += 0;
+                $prog = Db::table('prog')->where("id", 1)->update(['count' => $this->zcount]);
             }else{
                 Db::rollback();
                 $logData = ['error_code' => 10000, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => '任务执行失败,原因未知', 'is_success' => 0, 'data_count' => $datacount, 'area' => $area];

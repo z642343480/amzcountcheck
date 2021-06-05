@@ -66,7 +66,7 @@ class Index extends \think\Controller
             $where[] = ['error_time', '>=', $_GET['errortime']];
         }
         $LogCount = Db::table('log')->where($where)->count();
-        $LogData = Db::table('log')->where($where)->limit($pages, $_GET['limit'])->select();
+        $LogData = Db::table('log')->where($where)->order("error_time","desc")->limit($pages, $_GET['limit'])->select();
         $res = array(
             'code' => 0,
             'count' => $LogCount,

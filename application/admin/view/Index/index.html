@@ -192,6 +192,39 @@
                 var element = layui.element;
                 var table = layui.table;
                 $(".syncing").show();
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/log/hsync?type=1",
+                    data: {},
+                    dataType: "json",
+                    success: function (data) {
+                        if(data==1){
+                            layer.msg('同步终止');
+                            $("#do_sync_btn").removeAttr("disabled");
+                            $(".syncing").hide();
+                            $(".done_sync").hide();
+                            layer.close(loading)
+                            element.progress('demo','0%');
+                        }
+                        if(data==2){
+                            layer.msg('另一个同步进程正在执行，请稍后再试');
+                            $("#do_sync_btn").removeAttr("disabled");
+                            $(".syncing").hide();
+                            $(".done_sync").hide();
+                            layer.close(loading)
+                            window.clearInterval(t2)
+                            element.progress('demo','0%');
+
+                        }
+                    },
+                    error: function (jqXHR) {
+                        layer.msg('同步失败');
+                        $("#do_sync_btn").removeAttr("disabled");
+                        $(".syncing").hide();
+                        $(".done_sync").hide();
+                        layer.close(loading)
+                    }
+                });
                 t2 = window.setInterval(function () {
                     var n = 0;
                     $.ajax({
@@ -226,39 +259,7 @@
                     });
 
                 }, 1000)
-                $.ajax({
-                    type: "POST",
-                    url: "/admin/log/hsync?type=1",
-                    data: {},
-                    dataType: "json",
-                    success: function (data) {
-                        if(data==1){
-                            layer.msg('同步终止');
-                            $("#do_sync_btn").removeAttr("disabled");
-                            $(".syncing").hide();
-                            $(".done_sync").hide();
-                            layer.close(loading)
-                            element.progress('demo','0%');
-                        }
-                        if(data==2){
-                            layer.msg('另一个同步进程正在执行，请稍后再试');
-                            $("#do_sync_btn").removeAttr("disabled");
-                            $(".syncing").hide();
-                            $(".done_sync").hide();
-                            layer.close(loading)
-                            window.clearInterval(t2)
-                            element.progress('demo','0%');
 
-                        }
-                    },
-                    error: function (jqXHR) {
-                        layer.msg('同步失败');
-                        $("#do_sync_btn").removeAttr("disabled");
-                        $(".syncing").hide();
-                        $(".done_sync").hide();
-                        layer.close(loading)
-                    }
-                });
 
             })
         });

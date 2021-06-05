@@ -4,6 +4,7 @@
     <list default="true" id="8d5818fa-6604-46e9-b4f5-f7039231be8d" name="默认变更列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/admin/controller/Log.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Log.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/admin/view/Index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/Index/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +90,7 @@
       <workItem from="1622342031294" duration="38559000" />
       <workItem from="1622558626007" duration="112000" />
       <workItem from="1622726616507" duration="11066000" />
-      <workItem from="1622862317701" duration="14545000" />
+      <workItem from="1622862317701" duration="14834000" />
     </task>
     <servers />
   </component>

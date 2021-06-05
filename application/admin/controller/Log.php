@@ -40,7 +40,8 @@ class Log
         }
         $is_exc = Db::table('prog')->select();
         if ($is_exc[0]['is_exc'] == 1) {
-            return 2;
+            echo 2;
+            exit;
         }else{
             Db::table('prog')->where("id", 1)->update(['is_exc' => 1]);
         }

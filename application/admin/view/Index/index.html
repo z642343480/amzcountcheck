@@ -94,6 +94,7 @@
                 , height: 512
                 , url: '/admin/Index/getListData' //数据接口
                 , page: true //开启分页
+                ,limits: [5, 10, 20, 40, 80, 200]
                 , cols: [[ //表头
                     {type: 'checkbox', fixed: 'left'}
                     , {field: 'id', title: 'ID', sort: true, fixed: 'left'}
@@ -143,15 +144,6 @@
                         }
                     }
                 ]]
-                , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
-                    layout: ['prev', 'page', 'next', 'skip', 'count', 'limit'] //自定义分页布局
-                    //,curr: 5 //设定初始在第 5 页
-                    // ,groups: 1 //只显示 1 个连续页码
-                    , limits: [5, 10, 20, 40, 80, 200]
-                    , first: false //不显示首页
-                    , last: false //不显示尾页
-
-                }
             });
             form.on('switch(task_state)', function (data) {
                 //开关是否开启，true或者false
@@ -318,6 +310,7 @@
                     , height: 512
                     , url: '/admin/Index/getListData?errortime=' + errortime //数据接口
                     , page: true //开启分页
+                    ,limits: [5, 10, 20, 40, 80, 200]
                     , cols: [[ //表头
                         {type: 'checkbox', fixed: 'left'}
                         , {field: 'id', title: 'ID', sort: true, fixed: 'left'}
@@ -367,15 +360,7 @@
                             }
                         }
                     ]]
-                    , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
-                        layout: ['prev', 'page', 'next', 'skip', 'count', 'limit'] //自定义分页布局
-                        //,curr: 5 //设定初始在第 5 页
-                        // ,groups: 1 //只显示 1 个连续页码
-                        , limits: [5, 10, 20, 40, 80, 200]
-                        , first: false //不显示首页
-                        , last: false //不显示尾页
 
-                    }
                 });
             });
 

@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\admin\view\index\index.html";i:1622600491;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\admin\view\index\index.html";i:1622888037;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +13,7 @@
 </style>
 <body>
 <div style="width: 98%;height:200px;margin: 0 auto;">
+    <div style="position:fixed;right:23px;top:10px;z-index:9999999"><a href="/index/index" style="color: #409EFF">返回前台</a></div>
     <form class="layui-form" action="">
         <div class="layui-form-item">
             <label style="width: auto;" class="layui-form-label">自动同步功能：</label>
@@ -94,6 +95,7 @@
                 , height: 512
                 , url: '/admin/Index/getListData' //数据接口
                 , page: true //开启分页
+                ,limits: [5, 10, 20, 40, 80, 200]
                 , cols: [[ //表头
                     {type: 'checkbox', fixed: 'left'}
                     , {field: 'id', title: 'ID', sort: true, fixed: 'left'}
@@ -143,15 +145,6 @@
                         }
                     }
                 ]]
-                , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
-                    layout: ['prev', 'page', 'next', 'skip', 'count', 'limit'] //自定义分页布局
-                    //,curr: 5 //设定初始在第 5 页
-                    // ,groups: 1 //只显示 1 个连续页码
-                    , limits: [5, 10, 20, 40, 80, 200]
-                    , first: false //不显示首页
-                    , last: false //不显示尾页
-
-                }
             });
             form.on('switch(task_state)', function (data) {
                 //开关是否开启，true或者false
@@ -200,13 +193,30 @@
                 var element = layui.element;
                 var table = layui.table;
                 $(".syncing").show();
-
                 $.ajax({
                     type: "POST",
                     url: "/admin/log/hsync?type=1",
                     data: {},
                     dataType: "json",
                     success: function (data) {
+                        if(data==1){
+                            layer.msg('同步终止');
+                            $("#do_sync_btn").removeAttr("disabled");
+                            $(".syncing").hide();
+                            $(".done_sync").hide();
+                            layer.close(loading)
+                            element.progress('demo','0%');
+                        }
+                        if(data==2){
+                            layer.msg('另一个同步进程正在执行，请稍后再试');
+                            $("#do_sync_btn").removeAttr("disabled");
+                            $(".syncing").hide();
+                            $(".done_sync").hide();
+                            layer.close(loading)
+                            window.clearInterval(t2)
+                            element.progress('demo','0%');
+
+                        }
                     },
                     error: function (jqXHR) {
                         layer.msg('同步失败');
@@ -223,6 +233,7 @@
                         url: "/admin/log/getlong",
                         data: {},
                         dataType: "json",
+                        async:false,
                         success: function (data) {
                             element.progress('demo', data[0]['progress'] + '%');
                             if (data[0]['progress'] == 100) {
@@ -231,10 +242,18 @@
                                 $("#do_sync_btn").removeAttr("disabled");
                                 $("#do_sync_btn").css("background-color", "#F5F5F5");
                                 $(".syncing").hide();
+                                if(data[0]['count']==0){
+                                    $(".done_sync").html("已完成，更新数据量:"+data[0]['count']+'（库内数据无需更新）')
+                                }else{
+                                    $(".done_sync").html("已完成，更新数据量:"+data[0]['count'])
+                                }
+
                                 $(".done_sync").show();
                                 layer.close(loading);
                                 table.reload('demo');
 
+                            }else{
+                                $(".syncing").html("正在同步"+data[0]['tablename_sync']+"站");
                             }
                         },
                         error: function (jqXHR) {
@@ -242,6 +261,7 @@
                     });
 
                 }, 1000)
+
 
             })
         });
@@ -293,6 +313,7 @@
                     , height: 512
                     , url: '/admin/Index/getListData?errortime=' + errortime //数据接口
                     , page: true //开启分页
+                    ,limits: [5, 10, 20, 40, 80, 200]
                     , cols: [[ //表头
                         {type: 'checkbox', fixed: 'left'}
                         , {field: 'id', title: 'ID', sort: true, fixed: 'left'}
@@ -342,15 +363,7 @@
                             }
                         }
                     ]]
-                    , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
-                        layout: ['prev', 'page', 'next', 'skip', 'count', 'limit'] //自定义分页布局
-                        //,curr: 5 //设定初始在第 5 页
-                        // ,groups: 1 //只显示 1 个连续页码
-                        , limits: [5, 10, 20, 40, 80, 200]
-                        , first: false //不显示首页
-                        , last: false //不显示尾页
 
-                    }
                 });
             });
 

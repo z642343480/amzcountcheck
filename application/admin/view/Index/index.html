@@ -232,6 +232,7 @@
                         url: "/admin/log/getlong",
                         data: {},
                         dataType: "json",
+                        async:false,
                         success: function (data) {
                             element.progress('demo', data[0]['progress'] + '%');
                             if (data[0]['progress'] == 100) {

@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622782641;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622881322;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +20,7 @@
 <body>
 <div id="app">
     <template>
+        <div style="position:fixed;right:23px;top:10px;z-index:9999999"><a href="/admin/index" style="color: #409EFF">进入后台</a></div>
         <el-tabs type="border-card" v-model="activeName" @tab-click="handleClick" style="width: 98%;margin:0 auto;">
             <el-tab-pane label="美国" name="usa">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">

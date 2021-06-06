@@ -312,7 +312,7 @@ class Log
                     $datacount += $IsSuccess;
                     $this->zcount += $IsSuccess;
                     $prd = Db::table('prog')->select();
-                    $dprd=(float)$prd[0]['progress'] + 0.22;
+                    $dprd=(float)$prd[0]['progress'] + 0.21;
                     $prog = Db::table('prog')->where("id", 1)->update(['count' => $this->zcount,"progress" => $dprd]);
                     //echo $datacount.',';
                 } catch (\Exception $e) {
@@ -331,12 +331,17 @@ class Log
         } else {
             if ($is_error == 'insert_error') {
                 Db::rollback();
+                $prd1 = Db::table('prog')->select();
+                $this->zcount += 0;
+                $prog = Db::table('prog')->where("id", 1)->update(['count' => $this->zcount,'progress'=>(float)$prd1[0]['progress']+11.2]);
                 $logData = ['error_code' => 10000, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => '任务执行失败' . $error_e->getMessage(), 'is_success' => 0, 'data_count' => $datacount, 'area' => $area];
                 $IsSuccess = Db::table('log')->insert($logData);
 
             }else if ($is_error == 'get_error') {
                 Db::rollback();
-
+                $prd1 = Db::table('prog')->select();
+                $this->zcount += 0;
+                $prog = Db::table('prog')->where("id", 1)->update(['count' => $this->zcount,'progress'=>(float)$prd1[0]['progress']+11.2]);
                     $error_code = $e->getCode();
                     $error_remark = $e->getMessage();
                     $ErrorData = ['error_code' => $error_code, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => $error_remark, 'is_success' => 0, 'data_count' => $datacount, 'area' => $area];
@@ -350,6 +355,9 @@ class Log
                 $prog = Db::table('prog')->where("id", 1)->update(['count' => $this->zcount,'progress'=>(float)$prd1[0]['progress']+11.2]);
             }else{
                 Db::rollback();
+                $prd1 = Db::table('prog')->select();
+                $this->zcount += 0;
+                $prog = Db::table('prog')->where("id", 1)->update(['count' => $this->zcount,'progress'=>(float)$prd1[0]['progress']+11.2]);
                 $logData = ['error_code' => 10000, 'error_time' => date("Y-m-d H:i:s"), 'o_type' => $this->is_auto, 'remark' => '任务执行失败,原因未知', 'is_success' => 0, 'data_count' => $datacount, 'area' => $area];
                 $IsSuccess = Db::table('log')->insert($logData);
             }

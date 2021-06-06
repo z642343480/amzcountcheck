@@ -29,7 +29,7 @@ class Index extends Controller
         if (!isset($param['page']) || !isset($param['limit'])) {
             exit;
         }
-        if (isset($param['search']['val_change']) && !empty($param['search']['val_change'])) {
+        if (!empty($param['search']['val_change']) && !empty($param['search']['val_change'])) {
             if (!is_numeric($param['search']['val_change'])) {
                 $res = array(
                     'data' => [],
@@ -53,7 +53,7 @@ class Index extends Controller
                 }
             }
         }
-        if (isset($param['search']['percentage_change']) && !empty($param['search']['percentage_change'])) {
+        if (!empty($param['search']['percentage_change']) && !empty($param['search']['percentage_change'])) {
             if (!is_numeric($param['search']['percentage_change'])) {
                 $res = array(
                     'data' => [],
@@ -77,7 +77,7 @@ class Index extends Controller
                 }
             }
         }
-        if (isset($param['search']['satisfy_p'])) {
+        if (!empty($param['search']['satisfy_p'])) {
             if (!is_numeric($param['search']['satisfy_p'])) {
                 $res = array(
                     'data' => [],

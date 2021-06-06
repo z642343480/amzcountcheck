@@ -312,7 +312,7 @@ class Log
                     $datacount += $IsSuccess;
                     $this->zcount += $IsSuccess;
                     $prd = Db::table('prog')->select();
-                    $dprd=(float)$prd[0]['progress'] + 10.188;
+                    $dprd=(float)$prd[0]['progress'] + 0.188;
                     $prog = Db::table('prog')->where("id", 1)->update(['count' => $this->zcount,"progress" => $dprd]);
                     //echo $datacount.',';
                 } catch (\Exception $e) {

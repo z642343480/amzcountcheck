@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\admin\view\index\index.html";i:1622888037;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\admin\view\index\index.html";i:1622973707;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -235,8 +235,8 @@
                         dataType: "json",
                         async:false,
                         success: function (data) {
-                            element.progress('demo', data[0]['progress'] + '%');
-                            if (data[0]['progress'] == 100) {
+                            if (data[0]['progress'] >= 100) {
+                                element.progress('demo','100%');
                                 window.clearInterval(t2)
                                 layer.msg('同步完成');
                                 $("#do_sync_btn").removeAttr("disabled");
@@ -253,7 +253,8 @@
                                 table.reload('demo');
 
                             }else{
-                                $(".syncing").html("正在同步"+data[0]['tablename_sync']+"站");
+                                element.progress('demo', data[0]['progress'] + '%');
+                                $(".syncing").html("正在同步"+data[0]['tablename_sync']+"站,请勿刷新页面......");
                             }
                         },
                         error: function (jqXHR) {

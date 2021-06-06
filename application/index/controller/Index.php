@@ -140,7 +140,17 @@ class Index extends Controller
             $satisfy_p = $param['search']['satisfy_p'];
         }
         if (!empty($param['search']['key_words'])) {
-            $keywhere = " and key_words like '%" . $param['search']['key_words'] . "%'";
+            $kwords = explode(' ', $param['search']['key_words']);
+            if(count($kwords)==1){
+                $keywhere = " and key_words like '%" . $param['search']['key_words'] . "%'";
+            }else{
+                $keywhere = " and (key_words like '%" . $param['search']['key_words'] . "%'";
+                foreach ($kwords as $kwkey=>$kwval){
+                    $keywhere .= " or key_words like '%" . $kwval . "%'";
+                }
+                $keywhere.=') ';
+            }
+
         }
         $botime = date("Y-m-d", strtotime("-6 month"));
         if (!empty($param['search']['sdate'])) {
@@ -328,7 +338,16 @@ class Index extends Controller
                 $satisfy_p = $param['satisfy_p'];
             }
             if (!empty($param['key_words']) && $param['key_words'] != 'undefined') {
-                $keywhere = " and key_words like '%" . $param['key_words'] . "%'";
+                $kwords = explode(' ', $param['key_words']);
+                if(count($kwords)==1){
+                    $keywhere = " and key_words like '%" . $param['key_words'] . "%'";
+                }else{
+                    $keywhere = " and (key_words like '%" . $param['key_words'] . "%'";
+                    foreach ($kwords as $kwkey=>$kwval){
+                        $keywhere .= " or key_words like '%" . $kwval . "%'";
+                    }
+                    $keywhere.=') ';
+                }
             }
             $botime = date("Y-m-d", strtotime("-6 month"));
             if (!empty($param['sdate']) && $param['sdate'] != 'undefined') {

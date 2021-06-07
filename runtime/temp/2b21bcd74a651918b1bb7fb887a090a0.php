@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1622881322;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1623047368;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,15 +20,16 @@
 <body>
 <div id="app">
     <template>
-        <div style="position:fixed;right:23px;top:10px;z-index:9999999"><a href="/admin/index" style="color: #409EFF">进入后台</a></div>
+        <div style="position:fixed;right:23px;top:10px;z-index:9999999"><a href="/admin/index" style="color: #409EFF">进入后台</a>
+        </div>
         <el-tabs type="border-card" v-model="activeName" @tab-click="handleClick" style="width: 98%;margin:0 auto;">
             <el-tab-pane label="美国" name="usa">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="usaform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model.lazy="usaform.key_words" placeholder="请输入关键词" size="small"  @input="updateValue($event)"></el-input>
-
+                                <!--                                <el-input v-model.lazy="usaform.key_words" placeholder="请输入关键词" size="small"  @input="updateValue($event)"></el-input>-->
+                                <input type="text" class="inputstyle" name="usa_key_words"/>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="usaonSubmit('usa')">搜索</el-button>
@@ -55,18 +56,25 @@
                                 <input type="radio" name="usaonly_who" checked="checked"
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model.number="usaform.val_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>
+                                    <!--                                    <el-input v-model.number="usaform.val_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="usa_val_change"/>
+
                                 </el-form-item>
 
                                 <input type="radio" name="usaonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model.number="usaform.percentage_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="usaform.percentage_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle"
+                                           name="usa_percentage_change"/>
+                                    &nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model.number="usaform.satisfy_p" size="small"
-                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="usaform.satisfy_p" size="small"-->
+                                    <!--                                              style="width: 71%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="usa_satisfy_p"/>
+                                    &nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -74,12 +82,12 @@
                 </div>
                 <!-- <div style="widt:50px;height:30px;float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;background: #3a8ee6;border-color: #3a8ee6;color: #FFF;border: 1px solid block">导出</div> -->
                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
-                  <el-submenu index="2" style="float: right;">
-                    <template slot="title">导出格式</template>
-                    <el-menu-item index="2-1" @click="downloadExcel('usa','excel')">导出Excel</el-menu-item>
-                    <el-menu-item index="2-2" @click="downloadExcel('usa','csv')">导出csv</el-menu-item>
-                    <el-menu-item index="2-3" @click="downloadExcel('usa','csv',1)">导出全部(csv)</el-menu-item>
-                  </el-submenu>
+                    <el-submenu index="2" style="float: right;">
+                        <template slot="title">导出格式</template>
+                        <el-menu-item index="2-1" @click="downloadExcel('usa','excel')">导出Excel</el-menu-item>
+                        <el-menu-item index="2-2" @click="downloadExcel('usa','csv')">导出csv</el-menu-item>
+                        <el-menu-item index="2-3" @click="downloadExcel('usa','csv',1)">导出全部(csv)</el-menu-item>
+                    </el-submenu>
                 </el-menu>
                 <!-- <el-button class="dexc" style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
@@ -154,7 +162,8 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="ukform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="ukform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
+                                <!--                                <el-input v-model="ukform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
+                                <input type="text" class="inputstyle" name="uk_key_words"/>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="ukonSubmit('uk')">搜索</el-button>
@@ -181,34 +190,43 @@
                                 <input type="radio" name="ukonly_who" checked="checked"
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model.number="ukform.val_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>
+                                    <!--                                    <el-input v-model.number="ukform.val_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="uk_val_change"/>
+
                                 </el-form-item>
 
                                 <input type="radio" name="ukonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model.number="ukform.percentage_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="ukform.percentage_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle"
+                                           name="uk_percentage_change"/>
+                                    &nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model.number="ukform.satisfy_p" size="small"
-                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="ukform.satisfy_p" size="small"-->
+                                    <!--                                              style="width: 71%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="uk_satisfy_p"/>
+                                    &nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
                     </div>
                 </div>
-                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
-                  <el-submenu index="2" style="float: right;">
-                    <template slot="title">导出格式</template>
-                    <el-menu-item index="2-1" @click="downloadExcel('uk','excel')">导出Excel</el-menu-item>
-                    <el-menu-item index="2-2" @click="downloadExcel('uk','csv')">导出csv</el-menu-item>
-                  </el-submenu>
+                <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                    <el-submenu index="2" style="float: right;">
+                        <template slot="title">导出格式</template>
+                        <el-menu-item index="2-1" @click="downloadExcel('uk','excel')">导出Excel</el-menu-item>
+                        <el-menu-item index="2-2" @click="downloadExcel('uk','csv')">导出csv</el-menu-item>
+                        <el-menu-item index="2-3" @click="downloadExcel('uk','csv',1)">导出全部(csv)</el-menu-item>
+
+                    </el-submenu>
                 </el-menu>
-               <!--  <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
-                           type="primary" icon="el-icon-download"
-                           @click="downloadExcel('uk')">导出
-                </el-button> -->
+                <!--  <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
+                            type="primary" icon="el-icon-download"
+                            @click="downloadExcel('uk')">导出
+                 </el-button> -->
 
                 <el-table
                         v-loading="loadinguk"
@@ -278,7 +296,9 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="deform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="deform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
+                                <!--                                <el-input v-model="deform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
+                                <input type="text" class="inputstyle" name="de_key_words"/>
+
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="deonSubmit('de')">搜索</el-button>
@@ -305,29 +325,36 @@
                                 <input type="radio" name="deonly_who" checked="checked"
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model.number="deform.val_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>
+                                    <!--                                    <el-input v-model.number="deform.val_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="de_val_change"/>
                                 </el-form-item>
 
                                 <input type="radio" name="deonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model.number="deform.percentage_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="deform.percentage_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle"
+                                           name="de_percentage_change"/>
+                                    &nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model.number="deform.satisfy_p" size="small"
-                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="deform.satisfy_p" size="small"-->
+                                    <!--                                              style="width: 71%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="de_satisfy_p"/>
+                                    &nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
                     </div>
                 </div>
-                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
-                  <el-submenu index="2" style="float: right;">
-                    <template slot="title">导出格式</template>
-                    <el-menu-item index="2-1" @click="downloadExcel('de','excel')">导出Excel</el-menu-item>
-                    <el-menu-item index="2-2" @click="downloadExcel('de','csv')">导出csv</el-menu-item>
-                  </el-submenu>
+                <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                    <el-submenu index="2" style="float: right;">
+                        <template slot="title">导出格式</template>
+                        <el-menu-item index="2-1" @click="downloadExcel('de','excel')">导出Excel</el-menu-item>
+                        <el-menu-item index="2-2" @click="downloadExcel('de','csv')">导出csv</el-menu-item>
+                        <el-menu-item index="2-3" @click="downloadExcel('de','csv',1)">导出全部(csv)</el-menu-item>
+                    </el-submenu>
                 </el-menu>
                 <!-- <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
@@ -402,7 +429,9 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="jpform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="jpform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
+                                <!--                                <el-input v-model="jpform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
+                                <input type="text" class="inputstyle" name="jp_key_words"/>
+
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="jponSubmit('jp')">搜索</el-button>
@@ -429,29 +458,38 @@
                                 <input type="radio" name="jponly_who" checked="checked"
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model.number="jpform.val_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>
+                                    <!--                                    <el-input v-model.number="jpform.val_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="jp_val_change"/>
+
                                 </el-form-item>
 
                                 <input type="radio" name="jponly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model.number="jpform.percentage_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="jpform.percentage_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle"
+                                           name="jp_percentage_change"/>
+                                    &nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model.number="jpform.satisfy_p" size="small"
-                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="jpform.satisfy_p" size="small"-->
+                                    <!--                                              style="width: 71%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="jp_satisfy_p"/>
+                                    &nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
                     </div>
                 </div>
-                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
-                  <el-submenu index="2" style="float: right;">
-                    <template slot="title">导出格式</template>
-                    <el-menu-item index="2-1" @click="downloadExcel('jp','excel')">导出Excel</el-menu-item>
-                    <el-menu-item index="2-2" @click="downloadExcel('jp','csv')">导出csv</el-menu-item>
-                  </el-submenu>
+                <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                    <el-submenu index="2" style="float: right;">
+                        <template slot="title">导出格式</template>
+                        <el-menu-item index="2-1" @click="downloadExcel('jp','excel')">导出Excel</el-menu-item>
+                        <el-menu-item index="2-2" @click="downloadExcel('jp','csv')">导出csv</el-menu-item>
+                        <el-menu-item index="2-3" @click="downloadExcel('jp','csv',1)">导出全部(csv)</el-menu-item>
+
+                    </el-submenu>
                 </el-menu>
                 <!-- <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
@@ -526,7 +564,9 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="espform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="espform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
+                                <!--                                <el-input v-model="espform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
+                                <input type="text" class="inputstyle" name="esp_key_words"/>
+
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="esponSubmit('esp')">搜索</el-button>
@@ -553,29 +593,38 @@
                                 <input type="radio" name="esponly_who" checked="checked"
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model.number="espform.val_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>
+                                    <!--                                    <el-input v-model.number="espform.val_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="esp_val_change"/>
+
                                 </el-form-item>
 
                                 <input type="radio" name="esponly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model.number="espform.percentage_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="espform.percentage_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle"
+                                           name="esp_percentage_change"/>
+                                    &nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model.number="espform.satisfy_p" size="small"
-                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="espform.satisfy_p" size="small"-->
+                                    <!--                                              style="width: 71%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="esp_satisfy_p"/>
+                                    &nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
                     </div>
                 </div>
-                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
-                  <el-submenu index="2" style="float: right;">
-                    <template slot="title">导出格式</template>
-                    <el-menu-item index="2-1" @click="downloadExcel('esp','excel')">导出Excel</el-menu-item>
-                    <el-menu-item index="2-2" @click="downloadExcel('esp','csv')">导出csv</el-menu-item>
-                  </el-submenu>
+                <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                    <el-submenu index="2" style="float: right;">
+                        <template slot="title">导出格式</template>
+                        <el-menu-item index="2-1" @click="downloadExcel('esp','excel')">导出Excel</el-menu-item>
+                        <el-menu-item index="2-2" @click="downloadExcel('esp','csv')">导出csv</el-menu-item>
+                        <el-menu-item index="2-3" @click="downloadExcel('esp','csv',1)">导出全部(csv)</el-menu-item>
+
+                    </el-submenu>
                 </el-menu>
                 <!-- <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
@@ -650,7 +699,8 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="itform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="itform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
+                                <!--                                <el-input v-model="itform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
+                                <input type="text" class="inputstyle" name="it_key_words"/>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="itonSubmit('it')">搜索</el-button>
@@ -677,29 +727,37 @@
                                 <input type="radio" name="itonly_who" checked="checked"
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model.number="itform.val_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>
+                                    <!--                                    <el-input v-model.number="itform.val_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="it_val_change"/>
                                 </el-form-item>
 
                                 <input type="radio" name="itonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model.number="itform.percentage_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="itform.percentage_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle"
+                                           name="it_percentage_change"/>
+                                    &nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model.number="itform.satisfy_p" size="small"
-                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="itform.satisfy_p" size="small"-->
+                                    <!--                                              style="width: 71%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="it_satisfy_p"/>
+                                    &nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
                     </div>
                 </div>
-                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
-                  <el-submenu index="2" style="float: right;">
-                    <template slot="title">导出格式</template>
-                    <el-menu-item index="2-1" @click="downloadExcel('it','excel')">导出Excel</el-menu-item>
-                    <el-menu-item index="2-2" @click="downloadExcel('it','csv')">导出csv</el-menu-item>
-                  </el-submenu>
+                <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                    <el-submenu index="2" style="float: right;">
+                        <template slot="title">导出格式</template>
+                        <el-menu-item index="2-1" @click="downloadExcel('it','excel')">导出Excel</el-menu-item>
+                        <el-menu-item index="2-2" @click="downloadExcel('it','csv')">导出csv</el-menu-item>
+                        <el-menu-item index="2-3" @click="downloadExcel('it','csv',1)">导出全部(csv)</el-menu-item>
+
+                    </el-submenu>
                 </el-menu>
                 <!-- <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
@@ -774,7 +832,8 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="frform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="frform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
+                                <!--                                <el-input v-model="frform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
+                                <input type="text" class="inputstyle" name="fr_key_words"/>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="fronSubmit('fr')">搜索</el-button>
@@ -801,29 +860,37 @@
                                 <input type="radio" name="fronly_who" checked="checked"
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model.number="frform.val_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>
+                                    <!--                                    <el-input v-model.number="frform.val_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="fr_val_change"/>
                                 </el-form-item>
 
                                 <input type="radio" name="fronly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model.number="frform.percentage_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="frform.percentage_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle"
+                                           name="fr_percentage_change"/>
+                                    &nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model.number="frform.satisfy_p" size="small"
-                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="frform.satisfy_p" size="small"-->
+                                    <!--                                              style="width: 71%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="fr_satisfy_p"/>
+                                    &nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
                     </div>
                 </div>
-                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
-                  <el-submenu index="2" style="float: right;">
-                    <template slot="title">导出格式</template>
-                    <el-menu-item index="2-1" @click="downloadExcel('fr','excel')">导出Excel</el-menu-item>
-                    <el-menu-item index="2-2" @click="downloadExcel('fr','csv')">导出csv</el-menu-item>
-                  </el-submenu>
+                <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                    <el-submenu index="2" style="float: right;">
+                        <template slot="title">导出格式</template>
+                        <el-menu-item index="2-1" @click="downloadExcel('fr','excel')">导出Excel</el-menu-item>
+                        <el-menu-item index="2-2" @click="downloadExcel('fr','csv')">导出csv</el-menu-item>
+                        <el-menu-item index="2-3" @click="downloadExcel('fr','csv',1)">导出全部(csv)</el-menu-item>
+
+                    </el-submenu>
                 </el-menu>
                 <!-- <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
@@ -898,7 +965,9 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="mxform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="mxform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
+                                <!--                                <el-input v-model="mxform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
+                                <input type="text" class="inputstyle" name="mx_key_words"/>
+
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="mxonSubmit('mx')">搜索</el-button>
@@ -925,29 +994,37 @@
                                 <input type="radio" name="mxonly_who" checked="checked"
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model.number="mxform.val_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>
+                                    <!--                                    <el-input v-model.number="mxform.val_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="mx_val_change"/>
+
                                 </el-form-item>
 
                                 <input type="radio" name="mxonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model.number="mxform.percentage_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="mxform.percentage_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle"
+                                           name="mx_percentage_change"/>
+                                    &nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model.number="mxform.satisfy_p" size="small"
-                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="mxform.satisfy_p" size="small"-->
+                                    <!--                                              style="width: 71%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="mx_satisfy_p"/>
+                                    &nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
                     </div>
                 </div>
-                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
-                  <el-submenu index="2" style="float: right;">
-                    <template slot="title">导出格式</template>
-                    <el-menu-item index="2-1" @click="downloadExcel('mx','excel')">导出Excel</el-menu-item>
-                    <el-menu-item index="2-2" @click="downloadExcel('mx','csv')">导出csv</el-menu-item>
-                  </el-submenu>
+                <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                    <el-submenu index="2" style="float: right;">
+                        <template slot="title">导出格式</template>
+                        <el-menu-item index="2-1" @click="downloadExcel('mx','excel')">导出Excel</el-menu-item>
+                        <el-menu-item index="2-2" @click="downloadExcel('mx','csv')">导出csv</el-menu-item>
+                        <el-menu-item index="2-3" @click="downloadExcel('mx','csv',1)">导出全部(csv)</el-menu-item>
+                    </el-submenu>
                 </el-menu>
                 <!-- <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
@@ -1022,7 +1099,8 @@
                     <div style="width:50%;float: left;margin-top: 30px;">
                         <el-form :inline="true" :model="caform" class="demo-form-inline" style="margin-left: 20px;">
                             <el-form-item label="关键词">
-                                <el-input v-model="caform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>
+                                <!--                                <el-input v-model="caform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
+                                <input type="text" class="inputstyle" name="ca_key_words"/>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" @click="caonSubmit('ca')">搜索</el-button>
@@ -1049,29 +1127,38 @@
                                 <input type="radio" name="caonly_who" checked="checked"
                                        style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长量：">
-                                    <el-input v-model.number="caform.val_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>
+                                    <!--                                    <el-input v-model.number="caform.val_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="ca_val_change"/>
+
                                 </el-form-item>
 
                                 <input type="radio" name="caonly_who" style="float: left;margin-top: 13px;">
                                 <el-form-item label="每周增长率：">
-                                    <el-input v-model.number="caform.percentage_change" size="small"
-                                              style="width: 70%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="caform.percentage_change" size="small"-->
+                                    <!--                                              style="width: 70%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle"
+                                           name="ca_percentage_change"/>
+                                    &nbsp;%
                                 </el-form-item>
                                 <el-form-item label="达标比例：" style="margin-left: 13px;">
-                                    <el-input v-model.number="caform.satisfy_p" size="small"
-                                              style="width: 71%;" @input="updateValue($event)"></el-input>&nbsp;%
+                                    <!--                                    <el-input v-model.number="caform.satisfy_p" size="small"-->
+                                    <!--                                              style="width: 71%;" @input="updateValue($event)"></el-input>-->
+                                    <input style="width: 70%;" type="text" class="inputstyle" name="ca_satisfy_p"/>
+                                    &nbsp;%
                                 </el-form-item>
                             </el-form>
                         </div>
                     </div>
                 </div>
-                 <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
-                  <el-submenu index="2" style="float: right;">
-                    <template slot="title">导出格式</template>
-                    <el-menu-item index="2-1" @click="downloadExcel('ca','excel')">导出Excel</el-menu-item>
-                    <el-menu-item index="2-2" @click="downloadExcel('ca','csv')">导出csv</el-menu-item>
-                  </el-submenu>
+                <el-menu default-active="1" class="el-menu-demo" mode="horizontal" style="width:98%;margin:0 auto">
+                    <el-submenu index="2" style="float: right;">
+                        <template slot="title">导出格式</template>
+                        <el-menu-item index="2-1" @click="downloadExcel('ca','excel')">导出Excel</el-menu-item>
+                        <el-menu-item index="2-2" @click="downloadExcel('ca','csv')">导出csv</el-menu-item>
+                        <el-menu-item index="2-3" @click="downloadExcel('ca','csv',1)">导出全部(csv)</el-menu-item>
+
+                    </el-submenu>
                 </el-menu>
                 <!-- <el-button style="float: right;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" size="small"
                            type="primary" icon="el-icon-download"
@@ -1244,22 +1331,33 @@
             usagetListdata(cu) {
                 this.loadingusa = true
                 var that = this
-                if (this.usaform.key_words != undefined || this.usaform.percentage_change != undefined || this.usaform.satisfy_p != undefined || this.usaform.sdate != undefined || this.usaform.val_change != undefined) {
+                if ($("input[name='usa_key_words']").val() != '' || $("input[name='usa_percentage_change']").val() != '' || $("input[name='usa_satisfy_p']").val() != '' || this.usaform.sdate != undefined || $("input[name='usa_val_change']").val() != '') {
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("usaonly_who");
                     if (obj[0].checked == true) {
-                        delete this.usaform.percentage_change
+                        $("input[name='usa_percentage_change']").val('')
+                        // delete this.usaform.percentage_change
                     }
                     if (obj[1].checked == true) {
-                        delete this.usaform.val_change
+                        $("input[name='usa_val_change']").val('')
+                        // delete this.usaform.val_change
                     }
-                    if (this.usaform.usasatisfy_p != undefined) {
-                        if ((this.usaform.val_change == undefined && this.usaform.percentage_change == '') || (this.usaform.val_change == '' && this.usaform.percentage_change == undefined)) {
+                    console.log($("input[name='usa_satisfy_p']").val());
+                    if ($("input[name='usa_satisfy_p']").val() != '') {
+                        if ($("input[name='usa_val_change']").val() == '' && $("input[name='usa_percentage_change']").val() == '') {
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
                             this.loadingusa = false
                             return false
                         }
                     }
+                }
+                var search = {
+                    key_words: $("input[name='usa_key_words']").val(),
+                    percentage_change: $("input[name='usa_percentage_change']").val(),
+                    satisfy_p: $("input[name='usa_satisfy_p']").val(),
+                    val_change: $("input[name='usa_val_change']").val(),
+                    sdate: this.usaform.sdate,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -1267,7 +1365,7 @@
                     data: {
                         limit: that.usasize,
                         page: that.usacurrentPage,
-                        search: that.usaform,
+                        search: search,
                         cu: cu
                     },
                     dataType: "json",
@@ -1294,22 +1392,33 @@
             ukgetListdata(cu) {
                 this.loadinguk = true
                 var that = this
-                if (this.ukform.key_words != undefined || this.ukform.percentage_change != undefined || this.ukform.satisfy_p != undefined || this.ukform.sdate != undefined || this.ukform.val_change != undefined) {
+                if ($("input[name='uk_key_words']").val() != '' || $("input[name='uk_percentage_change']").val() != '' || $("input[name='uk_satisfy_p']").val() != '' || this.ukform.sdate != undefined || $("input[name='uk_val_change']").val() != '') {
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("ukonly_who");
                     if (obj[0].checked == true) {
-                        delete this.ukform.percentage_change
+                        $("input[name='uk_percentage_change']").val('')
+                        // delete this.usaform.percentage_change
                     }
                     if (obj[1].checked == true) {
-                        delete this.ukform.val_change
+                        $("input[name='uk_val_change']").val('')
+                        // delete this.usaform.val_change
                     }
-                    if (this.ukform.usasatisfy_p != undefined) {
-                        if ((this.ukform.val_change == undefined && this.ukform.percentage_change == '') || (this.ukform.val_change == '' && this.ukform.percentage_change == undefined)) {
+                    console.log($("input[name='uk_satisfy_p']").val());
+                    if ($("input[name='uk_satisfy_p']").val() != '') {
+                        if ($("input[name='uk_val_change']").val() == '' && $("input[name='uk_percentage_change']").val() == '') {
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
                             this.loadinguk = false
                             return false
                         }
                     }
+                }
+                var search = {
+                    key_words: $("input[name='uk_key_words']").val(),
+                    percentage_change: $("input[name='uk_percentage_change']").val(),
+                    satisfy_p: $("input[name='uk_satisfy_p']").val(),
+                    val_change: $("input[name='uk_val_change']").val(),
+                    sdate: this.ukform.sdate,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -1317,7 +1426,7 @@
                     data: {
                         limit: that.uksize,
                         page: that.ukcurrentPage,
-                        search: that.ukform,
+                        search: search,
                         cu: cu
                     },
                     dataType: "json",
@@ -1344,22 +1453,33 @@
             degetListdata(cu) {
                 this.loadingde = true
                 var that = this
-                if (this.deform.key_words != undefined || this.deform.percentage_change != undefined || this.deform.satisfy_p != undefined || this.deform.sdate != undefined || this.deform.val_change != undefined) {
+                if ($("input[name='de_key_words']").val() != '' || $("input[name='de_percentage_change']").val() != '' || $("input[name='de_satisfy_p']").val() != '' || this.deform.sdate != undefined || $("input[name='de_val_change']").val() != '') {
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("deonly_who");
                     if (obj[0].checked == true) {
-                        delete this.deform.percentage_change
+                        $("input[name='de_percentage_change']").val('')
+                        // delete this.usaform.percentage_change
                     }
                     if (obj[1].checked == true) {
-                        delete this.deform.val_change
+                        $("input[name='de_val_change']").val('')
+                        // delete this.usaform.val_change
                     }
-                    if (this.deform.usasatisfy_p != undefined) {
-                        if ((this.deform.val_change == undefined && this.deform.percentage_change == '') || (this.deform.val_change == '' && this.deform.percentage_change == undefined)) {
+                    console.log($("input[name='de_satisfy_p']").val());
+                    if ($("input[name='de_satisfy_p']").val() != '') {
+                        if ($("input[name='de_val_change']").val() == '' && $("input[name='de_percentage_change']").val() == '') {
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
                             this.loadingde = false
                             return false
                         }
                     }
+                }
+                var search = {
+                    key_words: $("input[name='de_key_words']").val(),
+                    percentage_change: $("input[name='de_percentage_change']").val(),
+                    satisfy_p: $("input[name='de_satisfy_p']").val(),
+                    val_change: $("input[name='de_val_change']").val(),
+                    sdate: this.deform.sdate,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -1367,7 +1487,7 @@
                     data: {
                         limit: that.desize,
                         page: that.decurrentPage,
-                        search: that.deform,
+                        search: search,
                         cu: cu
                     },
                     dataType: "json",
@@ -1394,22 +1514,33 @@
             jpgetListdata(cu) {
                 this.loadingjp = true
                 var that = this
-                if (this.jpform.key_words != undefined || this.jpform.percentage_change != undefined || this.jpform.satisfy_p != undefined || this.jpform.sdate != undefined || this.jpform.val_change != undefined) {
+                if ($("input[name='jp_key_words']").val() != '' || $("input[name='jp_percentage_change']").val() != '' || $("input[name='jp_satisfy_p']").val() != '' || this.jpform.sdate != undefined || $("input[name='jp_val_change']").val() != '') {
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("jponly_who");
                     if (obj[0].checked == true) {
-                        delete this.jpform.percentage_change
+                        $("input[name='jp_percentage_change']").val('')
+                        // delete this.usaform.percentage_change
                     }
                     if (obj[1].checked == true) {
-                        delete this.jpform.val_change
+                        $("input[name='jp_val_change']").val('')
+                        // delete this.usaform.val_change
                     }
-                    if (this.jpform.usasatisfy_p != undefined) {
-                        if ((this.jpform.val_change == undefined && this.jpform.percentage_change == '') || (this.jpform.val_change == '' && this.jpform.percentage_change == undefined)) {
+                    console.log($("input[name='jp_satisfy_p']").val());
+                    if ($("input[name='jp_satisfy_p']").val() != '') {
+                        if ($("input[name='jp_val_change']").val() == '' && $("input[name='jp_percentage_change']").val() == '') {
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
                             this.loadingjp = false
                             return false
                         }
                     }
+                }
+                var search = {
+                    key_words: $("input[name='jp_key_words']").val(),
+                    percentage_change: $("input[name='jp_percentage_change']").val(),
+                    satisfy_p: $("input[name='jp_satisfy_p']").val(),
+                    val_change: $("input[name='jp_val_change']").val(),
+                    sdate: this.jpform.sdate,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -1417,7 +1548,7 @@
                     data: {
                         limit: that.jpsize,
                         page: that.jpcurrentPage,
-                        search: that.jpform,
+                        search: search,
                         cu: cu
                     },
                     dataType: "json",
@@ -1444,22 +1575,33 @@
             espgetListdata(cu) {
                 this.loadingesp = true
                 var that = this
-                if (this.espform.key_words != undefined || this.espform.percentage_change != undefined || this.espform.satisfy_p != undefined || this.espform.sdate != undefined || this.espform.val_change != undefined) {
+                if ($("input[name='esp_key_words']").val() != '' || $("input[name='esp_percentage_change']").val() != '' || $("input[name='esp_satisfy_p']").val() != '' || this.espform.sdate != undefined || $("input[name='esp_val_change']").val() != '') {
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("esponly_who");
                     if (obj[0].checked == true) {
-                        delete this.espform.percentage_change
+                        $("input[name='esp_percentage_change']").val('')
+                        // delete this.usaform.percentage_change
                     }
                     if (obj[1].checked == true) {
-                        delete this.espform.val_change
+                        $("input[name='esp_val_change']").val('')
+                        // delete this.usaform.val_change
                     }
-                    if (this.espform.usasatisfy_p != undefined) {
-                        if ((this.espform.val_change == undefined && this.espform.percentage_change == '') || (this.espform.val_change == '' && this.espform.percentage_change == undefined)) {
+                    console.log($("input[name='esp_satisfy_p']").val());
+                    if ($("input[name='esp_satisfy_p']").val() != '') {
+                        if ($("input[name='esp_val_change']").val() == '' && $("input[name='esp_percentage_change']").val() == '') {
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
                             this.loadingesp = false
                             return false
                         }
                     }
+                }
+                var search = {
+                    key_words: $("input[name='esp_key_words']").val(),
+                    percentage_change: $("input[name='esp_percentage_change']").val(),
+                    satisfy_p: $("input[name='esp_satisfy_p']").val(),
+                    val_change: $("input[name='esp_val_change']").val(),
+                    sdate: this.espform.sdate,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -1467,7 +1609,7 @@
                     data: {
                         limit: that.espsize,
                         page: that.espcurrentPage,
-                        search: that.espform,
+                        search: search,
                         cu: cu
                     },
                     dataType: "json",
@@ -1494,22 +1636,33 @@
             itgetListdata(cu) {
                 this.loadingit = true
                 var that = this
-                if (this.itform.key_words != undefined || this.itform.percentage_change != undefined || this.itform.satisfy_p != undefined || this.itform.sdate != undefined || this.itform.val_change != undefined) {
+                if ($("input[name='it_key_words']").val() != '' || $("input[name='it_percentage_change']").val() != '' || $("input[name='it_satisfy_p']").val() != '' || this.itform.sdate != undefined || $("input[name='it_val_change']").val() != '') {
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("itonly_who");
                     if (obj[0].checked == true) {
-                        delete this.itform.percentage_change
+                        $("input[name='it_percentage_change']").val('')
+                        // delete this.usaform.percentage_change
                     }
                     if (obj[1].checked == true) {
-                        delete this.itform.val_change
+                        $("input[name='it_val_change']").val('')
+                        // delete this.usaform.val_change
                     }
-                    if (this.itform.usasatisfy_p != undefined) {
-                        if ((this.itform.val_change == undefined && this.itform.percentage_change == '') || (this.itform.val_change == '' && this.itform.percentage_change == undefined)) {
+                    console.log($("input[name='it_satisfy_p']").val());
+                    if ($("input[name='it_satisfy_p']").val() != '') {
+                        if ($("input[name='it_val_change']").val() == '' && $("input[name='it_percentage_change']").val() == '') {
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
                             this.loadingit = false
                             return false
                         }
                     }
+                }
+                var search = {
+                    key_words: $("input[name='it_key_words']").val(),
+                    percentage_change: $("input[name='it_percentage_change']").val(),
+                    satisfy_p: $("input[name='it_satisfy_p']").val(),
+                    val_change: $("input[name='it_val_change']").val(),
+                    sdate: this.itform.sdate,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -1517,7 +1670,7 @@
                     data: {
                         limit: that.itsize,
                         page: that.itcurrentPage,
-                        search: that.itform,
+                        search: search,
                         cu: cu
                     },
                     dataType: "json",
@@ -1544,22 +1697,33 @@
             frgetListdata(cu) {
                 this.loadingfr = true
                 var that = this
-                if (this.frform.key_words != undefined || this.frform.percentage_change != undefined || this.frform.satisfy_p != undefined || this.frform.sdate != undefined || this.frform.val_change != undefined) {
+                if ($("input[name='fr_key_words']").val() != '' || $("input[name='fr_percentage_change']").val() != '' || $("input[name='fr_satisfy_p']").val() != '' || this.frform.sdate != undefined || $("input[name='fr_val_change']").val() != '') {
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("fronly_who");
                     if (obj[0].checked == true) {
-                        delete this.frform.percentage_change
+                        $("input[name='fr_percentage_change']").val('')
+                        // delete this.usaform.percentage_change
                     }
                     if (obj[1].checked == true) {
-                        delete this.frform.val_change
+                        $("input[name='fr_val_change']").val('')
+                        // delete this.usaform.val_change
                     }
-                    if (this.frform.satisfy_p != undefined) {
-                        if ((this.frform.val_change == undefined && this.frform.percentage_change == '') || (this.frform.val_change == '' && this.frform.percentage_change == undefined)) {
+                    console.log($("input[name='fr_satisfy_p']").val());
+                    if ($("input[name='fr_satisfy_p']").val() != '') {
+                        if ($("input[name='fr_val_change']").val() == '' && $("input[name='fr_percentage_change']").val() == '') {
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
                             this.loadingfr = false
                             return false
                         }
                     }
+                }
+                var search = {
+                    key_words: $("input[name='fr_key_words']").val(),
+                    percentage_change: $("input[name='fr_percentage_change']").val(),
+                    satisfy_p: $("input[name='fr_satisfy_p']").val(),
+                    val_change: $("input[name='fr_val_change']").val(),
+                    sdate: this.frform.sdate,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -1567,7 +1731,7 @@
                     data: {
                         limit: that.frsize,
                         page: that.frcurrentPage,
-                        search: that.frform,
+                        search: search,
                         cu: cu
                     },
                     dataType: "json",
@@ -1594,22 +1758,33 @@
             mxgetListdata(cu) {
                 this.loadingmx = true
                 var that = this
-                if (this.mxform.key_words != undefined || this.mxform.percentage_change != undefined || this.mxform.satisfy_p != undefined || this.mxform.sdate != undefined || this.mxform.val_change != undefined) {
+                if ($("input[name='mx_key_words']").val() != '' || $("input[name='mx_percentage_change']").val() != '' || $("input[name='mx_satisfy_p']").val() != '' || this.mxform.sdate != undefined || $("input[name='mx_val_change']").val() != '') {
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("mxonly_who");
                     if (obj[0].checked == true) {
-                        delete this.mxform.percentage_change
+                        $("input[name='mx_percentage_change']").val('')
+                        // delete this.usaform.percentage_change
                     }
                     if (obj[1].checked == true) {
-                        delete this.mxform.val_change
+                        $("input[name='mx_val_change']").val('')
+                        // delete this.usaform.val_change
                     }
-                    if (this.mxform.satisfy_p != undefined) {
-                        if ((this.mxform.val_change == undefined && this.mxform.percentage_change == '') || (this.mxform.val_change == '' && this.mxform.percentage_change == undefined)) {
+                    console.log($("input[name='mx_satisfy_p']").val());
+                    if ($("input[name='mx_satisfy_p']").val() != '') {
+                        if ($("input[name='mx_val_change']").val() == '' && $("input[name='mx_percentage_change']").val() == '') {
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
                             this.loadingmx = false
                             return false
                         }
                     }
+                }
+                var search = {
+                    key_words: $("input[name='mx_key_words']").val(),
+                    percentage_change: $("input[name='mx_percentage_change']").val(),
+                    satisfy_p: $("input[name='mx_satisfy_p']").val(),
+                    val_change: $("input[name='mx_val_change']").val(),
+                    sdate: this.mxform.sdate,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -1617,7 +1792,7 @@
                     data: {
                         limit: that.mxsize,
                         page: that.mxcurrentPage,
-                        search: that.mxform,
+                        search: search,
                         cu: cu
                     },
                     dataType: "json",
@@ -1644,22 +1819,33 @@
             cagetListdata(cu) {
                 this.loadingca = true
                 var that = this
-                if (this.caform.key_words != undefined || this.caform.percentage_change != undefined || this.caform.satisfy_p != undefined || this.caform.sdate != undefined || this.caform.val_change != undefined) {
+                if ($("input[name='ca_key_words']").val() != '' || $("input[name='ca_percentage_change']").val() != '' || $("input[name='ca_satisfy_p']").val() != '' || this.caform.sdate != undefined || $("input[name='ca_val_change']").val() != '') {
                     // console.log(this.form.length)
                     var obj = document.getElementsByName("caonly_who");
                     if (obj[0].checked == true) {
-                        delete this.caform.percentage_change
+                        $("input[name='ca_percentage_change']").val('')
+                        // delete this.usaform.percentage_change
                     }
                     if (obj[1].checked == true) {
-                        delete this.caform.val_change
+                        $("input[name='ca_val_change']").val('')
+                        // delete this.usaform.val_change
                     }
-                    if (this.caform.satisfy_p != undefined) {
-                        if ((this.caform.val_change == undefined && this.caform.percentage_change == '') || (this.caform.val_change == '' && this.caform.percentage_change == undefined)) {
+                    console.log($("input[name='ca_satisfy_p']").val());
+                    if ($("input[name='ca_satisfy_p']").val() != '') {
+                        if ($("input[name='ca_val_change']").val() == '' && $("input[name='ca_percentage_change']").val() == '') {
                             this.$message.error('使用“达标比例”时，“每周增长量”或“每周增长率”必须填写其中一个');
                             this.loadingca = false
                             return false
                         }
                     }
+                }
+                var search = {
+                    key_words: $("input[name='ca_key_words']").val(),
+                    percentage_change: $("input[name='ca_percentage_change']").val(),
+                    satisfy_p: $("input[name='ca_satisfy_p']").val(),
+                    val_change: $("input[name='ca_val_change']").val(),
+                    sdate: this.caform.sdate,
+
                 }
                 $.ajax({
                     type: "POST",
@@ -1667,7 +1853,7 @@
                     data: {
                         limit: that.casize,
                         page: that.cacurrentPage,
-                        search: that.caform,
+                        search: search,
                         cu: cu
                     },
                     dataType: "json",
@@ -1763,7 +1949,7 @@
                     series: [{
                         data: this.usatableData[idname][id].c_rank,
                         type: 'bar',
-                        barWidth : 30,
+                        barWidth: 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -1856,7 +2042,7 @@
                     series: [{
                         data: this.uktableData[idname][id].c_rank,
                         type: 'bar',
-                        barWidth : 30,
+                        barWidth: 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -1949,7 +2135,7 @@
                     series: [{
                         data: this.detableData[idname][id].c_rank,
                         type: 'bar',
-                        barWidth : 30,
+                        barWidth: 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -2016,7 +2202,7 @@
                     series: [{
                         data: this.jptableData[idname][id].c_rank,
                         type: 'bar',
-                        barWidth : 30,
+                        barWidth: 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -2109,7 +2295,7 @@
                     series: [{
                         data: this.esptableData[idname][id].c_rank,
                         type: 'bar',
-                        barWidth : 30,
+                        barWidth: 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -2202,7 +2388,7 @@
                     series: [{
                         data: this.ittableData[idname][id].c_rank,
                         type: 'bar',
-                        barWidth : 30,
+                        barWidth: 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -2295,7 +2481,7 @@
                     series: [{
                         data: this.mxtableData[idname][id].c_rank,
                         type: 'bar',
-                        barWidth : 30,
+                        barWidth: 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -2388,7 +2574,7 @@
                     series: [{
                         data: this.frtableData[idname][id].c_rank,
                         type: 'bar',
-                        barWidth : 30,
+                        barWidth: 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -2481,7 +2667,7 @@
                     series: [{
                         data: this.catableData[idname][id].c_rank,
                         type: 'bar',
-                        barWidth : 30,
+                        barWidth: 30,
                         showBackground: true,
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
@@ -2587,38 +2773,38 @@
 
 
             usaonSubmit(cu) {
-                this.usacurrentPage=1
+                this.usacurrentPage = 1
                 this.usagetListdata(cu)
             },
             ukonSubmit(cu) {
-                this.ukcurrentPage=1
+                this.ukcurrentPage = 1
                 this.ukgetListdata(cu)
             },
             deonSubmit(cu) {
-                this.decurrentPage=1
+                this.decurrentPage = 1
                 this.degetListdata(cu)
             },
             jponSubmit(cu) {
-                this.jpcurrentPage=1
+                this.jpcurrentPage = 1
                 this.jpgetListdata(cu)
             },
             esponSubmit(cu) {
-                this.espcurrentPage=1
+                this.espcurrentPage = 1
                 this.espgetListdata(cu)
             },
             itonSubmit(cu) {
                 this.itgetListdata(cu)
             },
             fronSubmit(cu) {
-                this.frcurrentPage=1
+                this.frcurrentPage = 1
                 this.frgetListdata(cu)
             },
             mxonSubmit(cu) {
-                this.mxcurrentPage=1
+                this.mxcurrentPage = 1
                 this.mxgetListdata(cu)
             },
             caonSubmit(cu) {
-                this.cacurrentPage=1
+                this.cacurrentPage = 1
                 this.cagetListdata(cu)
             },
 
@@ -2627,24 +2813,97 @@
                 this.multipleSelection = val;
                 // console.log(this.multipleSelection[0]);
             },
-            downloadExcel(cu,type,all=0) {
+            downloadExcel(cu, type, all = 0) {
                 var that = this
-                if(cu=='usa'){
-                   var satisfy_p=that.usaform.satisfy_p
-                   var val_change=that.usaform.val_change
-                   var key_words=that.usaform.key_words
-                   var percentage_change=that.usaform.percentage_change                   
-                   if(that.usaform.sdate !=undefined){
-                    var sdate=that.usaform.sdate[0]
-                   var edate=that.usaform.sdate[1]
-               }else{
-                var sdate='undefined'
-                   var edate='undefined'
-               }
-                   
+                    var satisfy_p = $("input[name='"+cu+"_satisfy_p']").val()
+                    var val_change = $("input[name='"+cu+"_val_change']").val()
+                    var key_words = $("input[name='"+cu+"_key_words']").val()
+                    var percentage_change = $("input[name='"+cu+"_percentage_change']").val()
+                if (cu == 'usa') {
+                    if (that.usaform.sdate != undefined) {
+                        var sdate = that.usaform.sdate[0]
+                        var edate = that.usaform.sdate[1]
+                    } else {
+                        var sdate = 'undefined'
+                        var edate = 'undefined'
+                    }
                 }
-                
-                if (this.multipleSelection.length == 0 && all==0) {
+                if (cu == 'uk') {
+                    if (that.ukform.sdate != undefined) {
+                        var sdate = that.ukform.sdate[0]
+                        var edate = that.ukform.sdate[1]
+                    } else {
+                        var sdate = 'undefined'
+                        var edate = 'undefined'
+                    }
+                }
+                if (cu == 'de') {
+                    if (that.deform.sdate != undefined) {
+                        var sdate = that.deform.sdate[0]
+                        var edate = that.deform.sdate[1]
+                    } else {
+                        var sdate = 'undefined'
+                        var edate = 'undefined'
+                    }
+                }
+                if (cu == 'jp') {
+                    if (that.jpform.sdate != undefined) {
+                        var sdate = that.jpform.sdate[0]
+                        var edate = that.jpform.sdate[1]
+                    } else {
+                        var sdate = 'undefined'
+                        var edate = 'undefined'
+                    }
+                }
+                if (cu == 'esp') {
+                    if (that.espform.sdate != undefined) {
+                        var sdate = that.espform.sdate[0]
+                        var edate = that.espform.sdate[1]
+                    } else {
+                        var sdate = 'undefined'
+                        var edate = 'undefined'
+                    }
+                }
+                if (cu == 'it') {
+                    if (that.itform.sdate != undefined) {
+                        var sdate = that.itform.sdate[0]
+                        var edate = that.itform.sdate[1]
+                    } else {
+                        var sdate = 'undefined'
+                        var edate = 'undefined'
+                    }
+                }
+                if (cu == 'fr') {
+                    if (that.frform.sdate != undefined) {
+                        var sdate = that.frform.sdate[0]
+                        var edate = that.frform.sdate[1]
+                    } else {
+                        var sdate = 'undefined'
+                        var edate = 'undefined'
+                    }
+                }
+                if (cu == 'mx') {
+                    if (that.mxform.sdate != undefined) {
+                        var sdate = that.mxform.sdate[0]
+                        var edate = that.mxform.sdate[1]
+                    } else {
+                        var sdate = 'undefined'
+                        var edate = 'undefined'
+                    }
+                }
+                if (cu == 'ca') {
+                    if (that.caform.sdate != undefined) {
+                        var sdate = that.caform.sdate[0]
+                        var edate = that.caform.sdate[1]
+                    } else {
+                        var sdate = 'undefined'
+                        var edate = 'undefined'
+                    }
+                }
+
+
+
+                if (this.multipleSelection.length == 0 && all == 0) {
                     this.$message.error('请选择需要导出的数据');
                     return
                 }
@@ -2652,7 +2911,7 @@
                 for (var i = 0; i < this.multipleSelection.length; i++) {
                     ids += this.multipleSelection[i].id + ',';
                 }
-                window.open("/index/index/expExcel?ids=" + ids + '&cu=' + cu+"&type="+type+"&all="+all+"&satisfy_p="+satisfy_p+"&val_change="+val_change+"&key_words="+key_words+"&percentage_change="+percentage_change+"&sdate="+sdate+"&edate="+edate);
+                window.open("/index/index/expExcel?ids=" + ids + '&cu=' + cu + "&type=" + type + "&all=" + all + "&satisfy_p=" + satisfy_p + "&val_change=" + val_change + "&key_words=" + key_words + "&percentage_change=" + percentage_change + "&sdate=" + sdate + "&edate=" + edate);
             },
             handleClick(tab, event) {
                 this.multipleSelection = [];
@@ -2666,33 +2925,33 @@
                 this.$refs.mxTable.clearSelection();
                 this.$refs.caTable.clearSelection();
                 if (this.isclicktabs.indexOf(tab.name) == -1) {
-                    if(tab.name=='usa'){
+                    if (tab.name == 'usa') {
                         this.usagetListdata('usa')
                     }
-                     if(tab.name=='uk'){
-                         this.ukgetListdata('uk')
-                     }
-                    /**if(tab.name=='de'){
+                    if (tab.name == 'uk') {
+                        this.ukgetListdata('uk')
+                    }
+                    if (tab.name == 'de') {
                         this.degetListdata('de')
                     }
-                    if(tab.name=='jp'){
+                    if (tab.name == 'jp') {
                         this.jpgetListdata('jp')
                     }
-                    if(tab.name=='esp'){
+                    if (tab.name == 'esp') {
                         this.espgetListdata('esp')
                     }
-                    if(tab.name=='it'){
+                    if (tab.name == 'it') {
                         this.itgetListdata('it')
                     }
-                    if(tab.name=='fr'){
+                    if (tab.name == 'fr') {
                         this.frgetListdata('fr')
                     }
-                    if(tab.name=='mx'){
+                    if (tab.name == 'mx') {
                         this.mxgetListdata('mx')
                     }
-                    if(tab.name=='ca'){
-                        this.cagetListdata('ca')
-                    }**/
+                    // if (tab.name == 'ca') {
+                    //     this.cagetListdata('ca')
+                    // }
                     this.isclicktabs.push(tab.name)
                 }
 
@@ -2741,8 +3000,27 @@
     .el-form-item {
         margin-bottom: 0px;
     }
-    .dexc:hover{
+
+    .dexc:hover {
         background-color: red;
+    }
+
+    .inputstyle {
+        height: 32px;
+        line-height: 32px;
+        -webkit-appearance: none;
+        background-color: #FFF;
+        background-image: none;
+        border-radius: 4px;
+        border: 1px solid #DCDFE6;
+        box-sizing: border-box;
+        color: #606266;
+        display: inline-block;
+        font-size: inherit;
+        outline: 0;
+        padding: 0 15px;
+        transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+        width: 100%;
     }
 </style>
 </html>

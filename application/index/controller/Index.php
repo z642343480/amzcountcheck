@@ -140,17 +140,21 @@ class Index extends Controller
             $satisfy_p = $param['search']['satisfy_p'];
         }
         if (!empty($param['search']['key_words'])) {
+             $orderbys=" REPLACE(t1.key_words,'".$param['search']['key_words']."','') ";
             $kwords = explode(' ', $param['search']['key_words']);
             if(count($kwords)==1){
                 $keywhere = " and key_words like '%" . $param['search']['key_words'] . "%'";
             }else{
-                $keywhere = " and (key_words like '%" . $param['search']['key_words'] . "%'";
+                // $keywhere = " and (key_words like '%" . $param['search']['key_words'] . "%'";
+                $keywhere = "and ( 1=1";
                 foreach ($kwords as $kwkey=>$kwval){
-                    $keywhere .= " or key_words like '%" . $kwval . "%'";
+                    $keywhere .= " and key_words like '% " . $kwval . " %'";
                 }
                 $keywhere.=') ';
             }
 
+        }else{
+             $orderbys=' update_time desc,c_rank asc ';
         }
         $botime = date("Y-m-d", strtotime("-6 month"));
         if (!empty($param['search']['sdate'])) {
@@ -184,8 +188,8 @@ class Index extends Controller
             where " . $zsdate . $zedate . " and chang >= " . $val_change . " and " . $percentage_change . " <= (chang/l_rank) and key_words=u.key_words)
             / 
             (select count(1) from " . $this->tablename . " 
-            where " . $zsdate . $zedate . "  and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from " . $this->tablename . " where " . $csdate . $cedate . "  and key_words=u.key_words) >1  ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY update_time desc,c_rank asc limit " . $pages . "," . $param['limit'] . "
-            ");
+            where " . $zsdate . $zedate . "  and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from " . $this->tablename . " where " . $csdate . $cedate . "  and key_words=u.key_words) >1  ORDER BY update_time desc limit 9999999999) T1 group by T1.key_words ORDER BY ".$orderbys." limit " . $pages . "," . $param['limit'] . "
+            ")  ;
         $Listcount = Db::query("
             select count(1) num from (
             select * from " . $this->tablename . " u
@@ -338,16 +342,20 @@ class Index extends Controller
                 $satisfy_p = $param['satisfy_p'];
             }
             if (!empty($param['key_words']) && $param['key_words'] != 'undefined') {
+                $orderbys=" REPLACE(t1.key_words,'".$param['key_words']."','') ";
                 $kwords = explode(' ', $param['key_words']);
                 if(count($kwords)==1){
                     $keywhere = " and key_words like '%" . $param['key_words'] . "%'";
                 }else{
-                    $keywhere = " and (key_words like '%" . $param['key_words'] . "%'";
+                    // $keywhere = " and (key_words like '%" . $param['key_words'] . "%'";
+                    $keywhere = "and ( 1=1";
                     foreach ($kwords as $kwkey=>$kwval){
-                        $keywhere .= " or key_words like '%" . $kwval . "%'";
+                        $keywhere .= " or key_words like '% " . $kwval . " %'";
                     }
                     $keywhere.=') ';
                 }
+            }else{
+                $orderbys=' update_time desc,c_rank asc ';
             }
             $botime = date("Y-m-d", strtotime("-6 month"));
             if (!empty($param['sdate']) && $param['sdate'] != 'undefined') {
@@ -381,7 +389,7 @@ class Index extends Controller
             where " . $zsdate . $zedate . " and chang >= " . $val_change . " and " . $percentage_change . " <= (chang/l_rank) and key_words=u.key_words)
             / 
             (select count(1) from " . $this->tablename . " 
-            where " . $zsdate . $zedate . "  and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from " . $this->tablename . " where " . $csdate . $cedate . "  and key_words=u.key_words) >1  ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY update_time desc,c_rank asc 
+            where " . $zsdate . $zedate . "  and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from " . $this->tablename . " where " . $csdate . $cedate . "  and key_words=u.key_words) >1  ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY ".$orderbys." 
             ");
         } else {
             $List = Db::table($this->tablename)->whereIn("id", $idArr)->order("update_time asc")->select();

@@ -281,7 +281,7 @@ class Log
                     $data = array_merge($val);
                     foreach ($data as $k1 => $v1) {
                         if ($k1 == 0) {
-                            $data['key_words'] = $v1;
+                            $data['key_words'] = ' '.trim($v1).' ';
                         }
                         if ($k1 == 1) {
                             $data['c_rank'] = $v1;
@@ -298,7 +298,7 @@ class Log
 
                 }
                 foreach ($TempData as $key => $val) {
-                    $TempData[$key]['key_words'] = trim($val['key_words']);
+                   // $TempData[$key]['key_words'] = trim($val['key_words']);
                     foreach ($val as $k1 => $v1) {
                         if ($k1 == 'chang') {
                             $TempData[$key][$k1] = ((int)$val['l_rank']) - ((int)$val['c_rank']);

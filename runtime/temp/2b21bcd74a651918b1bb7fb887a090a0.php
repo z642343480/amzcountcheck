@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1623047368;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1623047828;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -2949,9 +2949,9 @@
                     if (tab.name == 'mx') {
                         this.mxgetListdata('mx')
                     }
-                    // if (tab.name == 'ca') {
-                    //     this.cagetListdata('ca')
-                    // }
+                    if (tab.name == 'ca') {
+                        this.cagetListdata('ca')
+                    }
                     this.isclicktabs.push(tab.name)
                 }
 

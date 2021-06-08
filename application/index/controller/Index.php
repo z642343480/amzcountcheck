@@ -415,7 +415,39 @@ class Index extends Controller
             $List = Db::table($this->tablename)->whereIn("id", $idArr)->order("update_time asc")->select();
 
         }
-        $data = $this->getPicData($List, $param);
+        // $data = $this->getPicData($List, $param);
+                if (!empty($List)) {
+            foreach ($List as $key => $val) {
+                $picwhere = [["key_words", '=', $val['key_words']]];
+                if (!empty($param['search']['sdate'])) {
+                    $picwhere[] = ["update_time", '>=', $param['search']['sdate'][0]];
+                    $picwhere[] = ["update_time", '<=', $param['search']['sdate'][1]];
+                    $datewhere[] = ["update_time", '>=', $param['search']['sdate'][0]];
+                    $datewhere[] = ["update_time", '<=', $param['search']['sdate'][1]];
+                } else {
+                    $picwhere[] = ["update_time", '>=', $botime];
+                    $picwhere[] = ["update_time", '<=', date("Y-m-d", time())];
+                    $datewhere[] =["update_time", '>=', $botime];
+                    $datewhere[] =["update_time", '<=', date("Y-m-d", time())];
+                }
+                $PicList = Db::table($this->tablename)->where($picwhere)->order("update_time")->select();
+
+                foreach ($PicList as $pkey => $pvalue) {
+                    if($pkey!=count($PicList)-1){
+                        if(strtotime($PicList[$pkey+1]['update_time'])-strtotime($pvalue['update_time'])>777600){
+                            $List[$key][$val['id']]['update_time'][] = 'null';
+                            $List[$key][$val['id']]['c_rank'][] = 'null';
+                        }
+                    }
+                    $List[$key][$val['id']]['update_time'][] = $pvalue['update_time'];
+                    $List[$key][$val['id']]['c_rank'][] = $pvalue['c_rank'];
+                }
+
+            }
+        }
+        // exit;
+        // $List = array_merge($List);
+        $data=$List;
         $path = dirname(__FILE__);//找到当前脚本所在路径
         $PHPExcel = new \PHPExcel();//实例化phpexcel
         $PHPSheet = $PHPExcel->getActiveSheet();

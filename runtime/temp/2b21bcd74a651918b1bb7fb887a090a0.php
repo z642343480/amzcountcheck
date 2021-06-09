@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1623047828;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1623164305;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -2911,7 +2911,37 @@
                 for (var i = 0; i < this.multipleSelection.length; i++) {
                     ids += this.multipleSelection[i].id + ',';
                 }
-                window.open("/index/index/expExcel?ids=" + ids + '&cu=' + cu + "&type=" + type + "&all=" + all + "&satisfy_p=" + satisfy_p + "&val_change=" + val_change + "&key_words=" + key_words + "&percentage_change=" + percentage_change + "&sdate=" + sdate + "&edate=" + edate);
+                that.loadingusa = true
+                 that.loadinguk = true
+                  that.loadingde = true
+                   that.loadingjp = true
+                    that.loadingesp = true
+                     that.loadingit = true
+                      that.loadingfr = true
+                       that.loadingmx = true
+                        that.loadingca = true
+                    $.ajax({
+                    type: "POST",
+                    url: "/index/index/expExcel?ids=" + ids + '&cu=' + cu + "&type=" + type + "&all=" + all + "&satisfy_p=" + satisfy_p + "&val_change=" + val_change + "&key_words=" + key_words + "&percentage_change=" + percentage_change + "&sdate=" + sdate + "&edate=" + edate,
+                    dataType: "json",
+                    success: function (data) {
+                            that.loadingusa = false
+                             that.loadinguk = false
+                              that.loadingde = false
+                               that.loadingjp = false
+                                that.loadingesp = false
+                                 that.loadingit = false
+                                  that.loadingfr = false
+                                   that.loadingmx = false
+                                    that.loadingca = false
+                                   window.location.href=data;
+                                    // window.open(data);
+                    },
+                    error: function (jqXHR) {
+                        that.loadingusa = false
+                    }
+                });
+                
             },
             handleClick(tab, event) {
                 this.multipleSelection = [];

@@ -7,6 +7,8 @@ use think\Db;
 use think\Request;
 use PHPExcel;
 use PHPExcel_IOFactory;
+use think\facade\App;
+use think\facade\Env;
 
 class Index extends Controller
 {
@@ -365,7 +367,7 @@ class Index extends Controller
                     // $keywhere = " and (key_words like '%" . $param['key_words'] . "%'";
                     $keywhere = "and ( 1=1";
                     foreach ($kwords as $kwkey=>$kwval){
-                        $keywhere .= " or key_words like '% " . $kwval . " %'";
+                        $keywhere .= " and key_words like '% " . $kwval . " %'";
                     }
                     $keywhere.=') ';
                 }
@@ -417,34 +419,60 @@ class Index extends Controller
         }
         // $data = $this->getPicData($List, $param);
                 if (!empty($List)) {
+                            $datadate = Db::table($this->tablename)->order("update_time", "asc")->limit(1)->select();
+        $botime = date("Y-m-d", strtotime("-6 month"));
+        $onekey='';
             foreach ($List as $key => $val) {
+            
                 $picwhere = [["key_words", '=', $val['key_words']]];
                 if (!empty($param['search']['sdate'])) {
-                    $picwhere[] = ["update_time", '>=', $param['search']['sdate'][0]];
-                    $picwhere[] = ["update_time", '<=', $param['search']['sdate'][1]];
-                    $datewhere[] = ["update_time", '>=', $param['search']['sdate'][0]];
-                    $datewhere[] = ["update_time", '<=', $param['search']['sdate'][1]];
+                    $picwhere[] = ["update_time", '>=', $param['sdate']];
+                    $picwhere[] = ["update_time", '<=', $param['edate']];
+                    $datewhere[] = ["update_time", '>=', $param['sdate']];
+                    $datewhere[] = ["update_time", '<=', $param['edate']];
                 } else {
                     $picwhere[] = ["update_time", '>=', $botime];
                     $picwhere[] = ["update_time", '<=', date("Y-m-d", time())];
-                    $datewhere[] =["update_time", '>=', $botime];
-                    $datewhere[] =["update_time", '<=', date("Y-m-d", time())];
+                    // $datewhere[] =["update_time", '>=', $botime];
+                    // $datewhere[] =["update_time", '<=', date("Y-m-d", time())];
                 }
                 $PicList = Db::table($this->tablename)->where($picwhere)->order("update_time")->select();
-
+                
+                
                 foreach ($PicList as $pkey => $pvalue) {
-                    if($pkey!=count($PicList)-1){
-                        if(strtotime($PicList[$pkey+1]['update_time'])-strtotime($pvalue['update_time'])>777600){
-                            $List[$key][$val['id']]['update_time'][] = 'null';
-                            $List[$key][$val['id']]['c_rank'][] = 'null';
-                        }
+                    if($pkey==0 && $onekey ==''){
+                        $onekey=$pvalue['update_time'];
                     }
+                     if($pkey==0){
+                            if($onekey!='' && $pvalue['update_time'] != $onekey){
+                                $sec1=strtotime($pvalue['update_time'])-strtotime($onekey);
+                                $ii1=intval($sec1/604800);
+                                for($d=1;$d<=$ii1;$d++){
+                                    $List[$key][$val['id']]['update_time'][] = date("Y-m-d",strtotime($pvalue['update_time'])+(604800*($d)));
+                                    $List[$key][$val['id']]['c_rank'][] = 'null';
+                                }
+                            }
+
+                        }
                     $List[$key][$val['id']]['update_time'][] = $pvalue['update_time'];
                     $List[$key][$val['id']]['c_rank'][] = $pvalue['c_rank'];
+
+                     if($pkey!=count($PicList)-1){
+                        if(strtotime($PicList[$pkey+1]['update_time'])-strtotime($pvalue['update_time'])>777600){
+                            $sec=strtotime($PicList[$pkey+1]['update_time'])-strtotime($pvalue['update_time']);
+                                $ii=intval($sec/1209600);
+                                for($d=1;$d<=$ii;$d++){
+                                    $List[$key][$val['id']]['update_time'][] = date("Y-m-d",strtotime($pvalue['update_time'])+(604800*($d)));
+                                    $List[$key][$val['id']]['c_rank'][] = 'null';
+                                }
+                            
+                        }
+                    }
                 }
 
             }
         }
+
         // exit;
         // $List = array_merge($List);
         $data=$List;
@@ -479,16 +507,21 @@ class Index extends Controller
 
         }
         if ($param['type'] == 'excel') {
+            $datetimef=time();
             $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel, "Excel5");//创建生成的格式
-            header('Content-Disposition: attachment;filename="' . $this->tablename . date('Y-m-d') . '.xls"');//下载下来的表格名
-            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-            $PHPWriter->save("php://output");//表示在$path路径下面生成demo.xlsx文件
+            // header('Content-Disposition: attachment;filename="' . $this->tablename . date('Y-m-d') . '.xls"');//下载下来的表格名
+            // header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            // $PHPWriter->save("php://output");//表示在$path路径下面生成demo.xlsx文件
+            $PHPWriter->save(Env::get('root_path')."public/exc/". $this->tablename.date('Y-m-d').$datetimef.".xls");//表示在$path路径下面生成demo.xlsx文件
+            return "/exc/". $this->tablename.date('Y-m-d').$datetimef.".xls";
             exit;
         }
         if ($param['type'] == 'csv') {
+            $datetimef=time();
             $objWriter = new  \PHPExcel_Writer_CSV ($PHPExcel);
-            header('Content-Disposition: attachment;filename="' . $this->tablename . date('Y-m-d') . '.csv"');
-            $objWriter->save("php://output");
+            // header('Content-Disposition: attachment;filename="' . $this->tablename . date('Y-m-d') . '.csv"');
+            $objWriter->save(Env::get('root_path')."public/exc/". $this->tablename.date('Y-m-d').$datetimef.".csv");
+            return "/exc/". $this->tablename.date('Y-m-d').$datetimef.".csv";
             exit;
         }
 

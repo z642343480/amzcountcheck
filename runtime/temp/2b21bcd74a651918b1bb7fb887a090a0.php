@@ -1,4 +1,4 @@
-<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1623164305;}*/ ?>
+<?php /*a:1:{s:69:"C:\newwww\wamp64\www\amzcount\application\index\view\index\index.html";i:1623349597;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,13 +26,13 @@
             <el-tab-pane label="美国" name="usa">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="usaform" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="usaform" class="demo-form-inline" style="margin-left: 20px;" @submit.native.prevent>
                             <el-form-item label="关键词">
                                 <!--                                <el-input v-model.lazy="usaform.key_words" placeholder="请输入关键词" size="small"  @input="updateValue($event)"></el-input>-->
                                 <input type="text" class="inputstyle" name="usa_key_words"/>
                             </el-form-item>
                             <el-form-item>
-                                <el-button type="primary" size="small" @click="usaonSubmit('usa')">搜索</el-button>
+                                <el-button type="primary" size="small" @click="usaonSubmit('usa')" >搜索</el-button>
                             </el-form-item>
                         </el-form>
                     </div>
@@ -160,7 +160,7 @@
             <el-tab-pane label="英国" name="uk">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="ukform" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="ukform" class="demo-form-inline" style="margin-left: 20px;" @submit.native.prevent>
                             <el-form-item label="关键词">
                                 <!--                                <el-input v-model="ukform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
                                 <input type="text" class="inputstyle" name="uk_key_words"/>
@@ -294,7 +294,7 @@
             <el-tab-pane label="德国" name="de">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="deform" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="deform" class="demo-form-inline" style="margin-left: 20px;" @submit.native.prevent>
                             <el-form-item label="关键词">
                                 <!--                                <el-input v-model="deform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
                                 <input type="text" class="inputstyle" name="de_key_words"/>
@@ -427,7 +427,7 @@
             <el-tab-pane label="日本" name="jp">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="jpform" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="jpform" class="demo-form-inline" style="margin-left: 20px;" @submit.native.prevent>
                             <el-form-item label="关键词">
                                 <!--                                <el-input v-model="jpform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
                                 <input type="text" class="inputstyle" name="jp_key_words"/>
@@ -562,7 +562,7 @@
             <el-tab-pane label="西班牙" name="esp">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="espform" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="espform" class="demo-form-inline" style="margin-left: 20px;" @submit.native.prevent>
                             <el-form-item label="关键词">
                                 <!--                                <el-input v-model="espform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
                                 <input type="text" class="inputstyle" name="esp_key_words"/>
@@ -697,7 +697,7 @@
             <el-tab-pane label="意大利" name="it">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="itform" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="itform" class="demo-form-inline" style="margin-left: 20px;" @submit.native.prevent>
                             <el-form-item label="关键词">
                                 <!--                                <el-input v-model="itform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
                                 <input type="text" class="inputstyle" name="it_key_words"/>
@@ -830,7 +830,7 @@
             <el-tab-pane label="法国" name="fr">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="frform" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="frform" class="demo-form-inline" style="margin-left: 20px;" @submit.native.prevent>
                             <el-form-item label="关键词">
                                 <!--                                <el-input v-model="frform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
                                 <input type="text" class="inputstyle" name="fr_key_words"/>
@@ -963,7 +963,7 @@
             <el-tab-pane label="墨西哥" name="mx">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="mxform" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="mxform" class="demo-form-inline" style="margin-left: 20px;" @submit.native.prevent>
                             <el-form-item label="关键词">
                                 <!--                                <el-input v-model="mxform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
                                 <input type="text" class="inputstyle" name="mx_key_words"/>
@@ -1097,7 +1097,7 @@
             <el-tab-pane label="加拿大" name="ca">
                 <div style="width: 98%;height:200px;margin:0 auto;border: 1px solid #d1dbe5">
                     <div style="width:50%;float: left;margin-top: 30px;">
-                        <el-form :inline="true" :model="caform" class="demo-form-inline" style="margin-left: 20px;">
+                        <el-form :inline="true" :model="caform" class="demo-form-inline" style="margin-left: 20px;" @submit.native.prevent>
                             <el-form-item label="关键词">
                                 <!--                                <el-input v-model="caform.key_words" placeholder="请输入关键词" size="small" @input="updateValue($event)"></el-input>-->
                                 <input type="text" class="inputstyle" name="ca_key_words"/>
@@ -2993,6 +2993,52 @@
             },
         },
         mounted: function () {
+            var that=this
+                $("input[name='usa_key_words']").keydown(function(event) {  
+                     if (event.keyCode == 13) { 
+                        that.usaonSubmit('usa')
+                     }  
+                 })  
+                $("input[name='uk_key_words']").keydown(function(event) {  
+                     if (event.keyCode == 13) { 
+                        that.ukonSubmit('uk')
+                     }  
+                 })  
+                $("input[name='de_key_words']").keydown(function(event) {  
+                     if (event.keyCode == 13) { 
+                        that.deonSubmit('de')
+                     }  
+                 })  
+                $("input[name='jp_key_words']").keydown(function(event) {  
+                     if (event.keyCode == 13) { 
+                        that.jponSubmit('jp')
+                     }  
+                 })  
+                $("input[name='esp_key_words']").keydown(function(event) {  
+                     if (event.keyCode == 13) { 
+                        that.esponSubmit('esp')
+                     }  
+                 })  
+                $("input[name='it_key_words']").keydown(function(event) {  
+                     if (event.keyCode == 13) { 
+                        that.itonSubmit('it')
+                     }  
+                 })  
+                $("input[name='fr_key_words']").keydown(function(event) {  
+                     if (event.keyCode == 13) { 
+                        that.fronSubmit('fr')
+                     }  
+                 })  
+                $("input[name='mx_key_words']").keydown(function(event) {  
+                     if (event.keyCode == 13) { 
+                        that.mxonSubmit('mx')
+                     }  
+                 })  
+                $("input[name='ca_key_words']").keydown(function(event) {  
+                     if (event.keyCode == 13) { 
+                        that.caonSubmit('ca')
+                     }  
+                 })  
             this.usagetListdata('usa')
             // this.ukgetListdata('uk')
             // this.degetListdata('de')

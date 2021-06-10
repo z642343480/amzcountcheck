@@ -131,7 +131,7 @@ class Index extends Controller
         $zedate = '';
         $val_change = -100000;
         $percentage_change = -100000;
-        $satisfy_p = -1000000;
+        $satisfy_p = 100;
         if (!empty($param['search']['val_change'])) {
             $val_change = $param['search']['val_change'];
         }
@@ -172,8 +172,8 @@ class Index extends Controller
             return json_encode($res, true);
             }
             $nextwe = date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
-            $newfsdate = "  a.update_time >='" . $param['search']['sdate'][0] . "' ";
-            $newfedate = " and a.update_time <='" . $param['search']['sdate'][1] . "' ";
+            $newfsdate = " t5.update_time >='" . $param['search']['sdate'][0] . "' ";
+            $newfedate = " and t5.update_time <='" . $param['search']['sdate'][1] . "' ";
             $zsdate = " update_time >='" . $nextwe . "' ";
             $zedate = " and update_time <='" . $param['search']['sdate'][1] . "' ";
             $csdate = " update_time >='" . $param['search']['sdate'][0] . "'";
@@ -184,7 +184,7 @@ class Index extends Controller
             $mindata = Db::table($this->tablename)->where('update_time', '>=', $botime)->order("update_time")->limit(1)->select();
 
             $nextwe = date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
-            $newfsdate = "  1=1 ";
+            $newfsdate = " 1=1 ";
             $newfedate = ' ';
             $zsdate = " update_time >='" . $nextwe . "'";
             $zedate = "  ";
@@ -194,12 +194,12 @@ class Index extends Controller
         $ssatisfy_p = $satisfy_p / 100;
         $percentage_change = $percentage_change / 100;
         $List = Db::query("
-            select * from1 (
-            select *,
-        @u.keyw AS keyw, 
-        @u.keyw := u.key_words from " . $this->tablename . " u
+            select * from (
+            select * from " . $this->tablename . " u
             where " . $fsdate . $fedate . $keywhere . " and 
-            (select count(1) from (SELECT b.curr,   b.pre,  (b.pre - b.curr) AS diff,b.l_rank FROM  (   SELECT a.`c_rank` AS curr,      @a.DEPOSIT AS pre,      @a.DEPOSIT := a.c_rank,a.l_rank     FROM ".$this->tablename." a,(        SELECT          @a.DEPOSIT := 1         ) r where a.key_words=@u.keyw and ".$newfsdate.$newfedate.") b limit 1,999999999) c  where ".$val_change."<=(c.pre - c.curr)  and (".$percentage_change."<=c.pre - c.curr)/c.l_rank)
+            (select count(1) z from " . $this->tablename . " 
+            where update_time >= (
+        SELECT update_time FROM ".$this->tablename." t5 WHERE ".$newfsdate.$newfedate." and t5.key_words = u.key_words LIMIT 1,1)  and chang >= " . $val_change . " and " . $percentage_change . " <= (chang/l_rank) and key_words=u.key_words)
             / 
             (select count(1) from " . $this->tablename . " 
             where update_time >= (
@@ -207,16 +207,17 @@ class Index extends Controller
             ")  ;
         $Listcount = Db::query("
             select count(1) num from (
-            select *,
-        @u.keyw AS keyw, 
-        @u.keyw := u.key_words from " . $this->tablename . " u
+            select * from " . $this->tablename . " u
             where " . $fsdate . $fedate . $keywhere . " and 
-            (select count(1) from (SELECT b.curr,   b.pre,  (b.pre - b.curr) AS diff,b.l_rank FROM  (   SELECT a.`c_rank` AS curr,      @a.DEPOSIT AS pre,      @a.DEPOSIT := a.c_rank,a.l_rank     FROM ".$this->tablename." a,(        SELECT          @a.DEPOSIT := 1         ) r where a.key_words=@u.keyw and".$newfsdate.$newfedate.") b limit 1,999999999) c  where ".$val_change."<=(c.pre - c.curr)  and (".$percentage_change."<=c.pre - c.curr)/c.l_rank)
+            (select count(1) z from " . $this->tablename . " 
+            where update_time >= (
+        SELECT update_time FROM ".$this->tablename." t5 WHERE ".$newfsdate.$newfedate." and t5.key_words = u.key_words LIMIT 1,1)  and chang >= " . $val_change . " and " . $percentage_change . " <= (chang/l_rank) and key_words=u.key_words)
             / 
             (select count(1) from " . $this->tablename . " 
             where update_time >= (
         SELECT update_time FROM ".$this->tablename." t5 WHERE ".$newfsdate.$newfedate." and t5.key_words = u.key_words LIMIT 1,1)   and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from " . $this->tablename . " where " . $csdate . $cedate . "  and key_words=u.key_words) >=1  ORDER BY update_time desc limit 9999999999) T1 
             ");
+
 
         $res = array(
             'data' => $this->getPicData($List, $param),

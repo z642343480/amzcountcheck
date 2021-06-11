@@ -129,19 +129,22 @@ class Index extends Controller
         $fedate = '';
         $zsdate = '';
         $zedate = '';
-        $val_change = -100000;
-        $percentage_change = -100000;
-        $satisfy_p = 100;
+        $val_change = -10000000000;
+        $percentage_change = -1000000000;
+        $satisfy_p = -111111100;
         if (!empty($param['search']['val_change'])) {
             $val_change = $param['search']['val_change'];
+            $satisfy_p = 100;
         }
         if (!empty($param['search']['percentage_change'])) {
             $percentage_change = $param['search']['percentage_change'];
+            $satisfy_p = 100;
         }
         if (!empty($param['search']['satisfy_p'])) {
             $satisfy_p = $param['search']['satisfy_p'];
         }
         if (!empty($param['search']['key_words'])) {
+            $satisfy_p = 100;
              $orderbys=" REPLACE(t1.key_words,'".$param['search']['key_words']."','') ";
             $kwords = explode(' ', $param['search']['key_words']);
             if(count($kwords)==1){
@@ -160,6 +163,7 @@ class Index extends Controller
         }
         $botime = date("Y-m-d", strtotime("-6 month"));
         if (!empty($param['search']['sdate'])) {
+            $satisfy_p = 100;
             $fsdate = " update_time >='" . $param['search']['sdate'][0] . "' ";
             $fedate = " and update_time <='" . $param['search']['sdate'][1] . "' ";
             $mindata = Db::table($this->tablename)->where('update_time', '>=', $param['search']['sdate'][0])->order("update_time")->limit(1)->select();
@@ -344,17 +348,20 @@ class Index extends Controller
             $zedate = '';
             $val_change = -100000;
             $percentage_change = -100000;
-            $satisfy_p = 100;
+            $satisfy_p = -111111100;
             if (!empty($param['val_change']) && $param['val_change'] != 'undefined') {
                 $val_change = $param['val_change'];
+                $satisfy_p =100;
             }
             if (!empty($param['percentage_change']) && $param['percentage_change'] != 'undefined') {
                 $percentage_change = $param['percentage_change'];
+                $satisfy_p =100;
             }
             if (!empty($param['satisfy_p']) && $param['satisfy_p'] != 'undefined') {
                 $satisfy_p = $param['satisfy_p'];
             }
             if (!empty($param['key_words']) && $param['key_words'] != 'undefined') {
+                $satisfy_p =100;
                 $orderbys=" REPLACE(t1.key_words,'".$param['key_words']."','') ";
                 $kwords = explode(' ', $param['key_words']);
                 if(count($kwords)==1){
@@ -372,6 +379,7 @@ class Index extends Controller
             }
             $botime = date("Y-m-d", strtotime("-6 month"));
             if (!empty($param['sdate']) && $param['sdate'] != 'undefined') {
+                $satisfy_p =100;
                 $fsdate = " update_time >='" . $param['sdate'] . "' ";
                 $fedate = " and update_time <='" . $param['edate'] . "' ";
                 $mindata = Db::table($this->tablename)->where('update_time', '>=', $param['sdate'])->order("update_time")->limit(1)->select();

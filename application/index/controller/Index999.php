@@ -172,8 +172,8 @@ class Index extends Controller
             return json_encode($res, true);
             }
             $nextwe = date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
-            $newfsdate = " and a.update_time >='" . $param['search']['sdate'][0] . "' ";
-            $newfedate = " and a.update_time <='" . $param['search']['sdate'][1] . "' ";
+            $newfsdate = " t5.update_time >='" . $param['search']['sdate'][0] . "' ";
+            $newfedate = " and t5.update_time <='" . $param['search']['sdate'][1] . "' ";
             $zsdate = " update_time >='" . $nextwe . "' ";
             $zedate = " and update_time <='" . $param['search']['sdate'][1] . "' ";
             $csdate = " update_time >='" . $param['search']['sdate'][0] . "'";
@@ -184,7 +184,7 @@ class Index extends Controller
             $mindata = Db::table($this->tablename)->where('update_time', '>=', $botime)->order("update_time")->limit(1)->select();
 
             $nextwe = date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
-            $newfsdate = " and 1=1 ";
+            $newfsdate = " 1=1 ";
             $newfedate = ' ';
             $zsdate = " update_time >='" . $nextwe . "'";
             $zedate = "  ";

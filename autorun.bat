@@ -1,4 +1,4 @@
-SCHTASKS /Create /sc hourly /mo 5 /tn "syncdata" /tr "C:\newwww\wamp64\www\amzcount\atuotask\allrun.bat"
+SCHTASKS /Create /sc hourly /mo 5 /tn "syncdata" /tr "D:\wamp64\www\amzcount\atuotask\allrun.bat"
 rem SCHTASKS /Create /sc daily /st 23:55:00 /tn "usasyncdata" /tr "C:\newwww\wamp64\www\amzcount\atuotask\usa_run.bat"
 rem SCHTASKS /Create /sc daily /st 00:05:00 /tn "uksyncdata" /tr "C:\newwww\wamp64\www\amzcount\atuotask\uk_run.bat"
 rem SCHTASKS /Create /sc daily /st 00:10:00 /tn "desyncdata" /tr "C:\newwww\wamp64\www\amzcount\atuotask\de_run.bat"

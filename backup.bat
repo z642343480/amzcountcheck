@@ -1,0 +1,1 @@
+SCHTASKS /Create /SC WEEKLY /D SUN /TN "backup" /tr "D:\wamp64\www\amzcount\atuotask\backdb.bat"

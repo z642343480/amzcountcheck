@@ -434,7 +434,7 @@ class Index extends Controller
             foreach ($List as $key => $val) {
             
                 $picwhere = [["key_words", '=', $val['key_words']]];
-                if (!empty($param['search']['sdate'])) {
+                if ($param['sdate']!='undefined') {
                     $picwhere[] = ["update_time", '>=', $param['sdate']];
                     $picwhere[] = ["update_time", '<=', $param['edate']];
                     $datewhere[] = ["update_time", '>=', $param['sdate']];
@@ -456,7 +456,7 @@ class Index extends Controller
                             if($onekey!='' && $pvalue['update_time'] != $onekey){
                                 $sec1=strtotime($pvalue['update_time'])-strtotime($onekey);
                                 $ii1=intval($sec1/604800);
-                                for($d=1;$d<=$ii1;$d++){
+                                for($d=1;$d<$ii1;$d++){
                                     $List[$key][$val['id']]['update_time'][] = date("Y-m-d",strtotime($pvalue['update_time'])+(604800*($d)));
                                     $List[$key][$val['id']]['c_rank'][] = 'null';
                                 }
@@ -469,8 +469,8 @@ class Index extends Controller
                      if($pkey!=count($PicList)-1){
                         if(strtotime($PicList[$pkey+1]['update_time'])-strtotime($pvalue['update_time'])>777600){
                             $sec=strtotime($PicList[$pkey+1]['update_time'])-strtotime($pvalue['update_time']);
-                                $ii=intval($sec/1209600);
-                                for($d=1;$d<=$ii;$d++){
+                                $ii=intval($sec/604800);
+                                for($d=1;$d<$ii;$d++){
                                     $List[$key][$val['id']]['update_time'][] = date("Y-m-d",strtotime($pvalue['update_time'])+(604800*($d)));
                                     $List[$key][$val['id']]['c_rank'][] = 'null';
                                 }
@@ -498,7 +498,7 @@ class Index extends Controller
         $num = 1;
         //dd($data);
         //数据
-        $A = ['B', 'C', 'D', 'E', 'F', 'G', 'H'];
+        $A = ['B', 'C', 'D', 'E', 'F', 'G', 'H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
         foreach ($data as $k => $v) {
             $i = ($k + 1);
             $ia = $i + 1;

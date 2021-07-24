@@ -140,9 +140,6 @@ class Index extends Controller
             $percentage_change = $param['search']['percentage_change'];
             $satisfy_p = 100;
         }
-        if (!empty($param['search']['satisfy_p'])) {
-            $satisfy_p = $param['search']['satisfy_p'];
-        }
         if (!empty($param['search']['key_words'])) {
             $satisfy_p = 100;
              $orderbys=" REPLACE(t1.key_words,'".$param['search']['key_words']."','') ";
@@ -166,6 +163,10 @@ class Index extends Controller
             $satisfy_p = 100;
             $fsdate = " update_time >='" . $param['search']['sdate'][0] . "' ";
             $fedate = " and update_time <='" . $param['search']['sdate'][1] . "' ";
+            $mini_c_rank = Db::query("select * from ".$this->tablename." where ".$fsdate.$fedate." group by key_words  order by c_rank limit 1");
+
+            $jishu = Db::query("select * from ".$this->tablename." where key_words='".$mini_c_rank[0]['key_words']."' and ".$fsdate.$fedate);
+            $jishu= count($jishu)-1;
             $mindata = Db::table($this->tablename)->where('update_time', '>=', $param['search']['sdate'][0])->order("update_time")->limit(1)->select();
             if(empty($mindata)){                
                 $res = array(
@@ -198,34 +199,33 @@ class Index extends Controller
             $zedate = "  ";
             $csdate = " update_time >='" . $nextwe . "'";
             $cedate = " ";
+            $mini_c_rank = Db::query("select * from ".$this->tablename." where c_rank > 0 and update_time>='".$botime."' order by update_time desc,c_rank asc limit 1");
+
+            $jishu = Db::query("select * from ".$this->tablename." where key_words='".$mini_c_rank[0]['key_words']."' and update_time>=".$botime);
+            $jishu= count($jishu);
+        }
+        if (!empty($param['search']['satisfy_p'])) {
+            $satisfy_p = $param['search']['satisfy_p'];
         }
         $ssatisfy_p = $satisfy_p / 100;
         $percentage_change = $percentage_change / 100;
+        //print_r($jishu);exit;
         $List = Db::query("
             select * from (
             select *
          from " . $this->tablename . " u
             where " . $fsdate . $fedate . $keywhere . " and 
-            (select count(1) from (SELECT b.curr,   b.pre,  (b.pre - b.curr) AS diff,b.l_rank,b.key_words FROM  (   SELECT a.`c_rank` AS curr,      @a.DEPOSIT AS pre,      @a.DEPOSIT := a.c_rank,a.l_rank,a.key_words,a.update_time     FROM ".$this->tablename." a,(        SELECT          @a.DEPOSIT := 1         ) r where a.key_words=u.key_words and".$newfsdate.$newfedate.") b limit 1,999999999) c  where  ".$val_change."<=(c.pre - c.curr)  and (".$percentage_change."<=c.pre - c.curr)/c.l_rank)
-            / 
-            (select count(1) from " . $this->tablename . " 
-            where update_time >= (
-        SELECT update_time FROM ".$this->tablename." t5 WHERE ".$newfsdate1.$newfedate1." and t5.key_words = u.key_words LIMIT 1,1)   and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from " . $this->tablename . " where " . $csdate . $cedate . "  and key_words=u.key_words) >=1  ORDER BY update_time desc limit 9999999999) T1 group by T1.key_words ORDER BY ".$orderbys." limit " . $pages . "," . $param['limit'] . "
+            (select count(1) from (SELECT b.curr,   b.pre,  (b.pre - b.curr) AS diff,b.l_rank,b.key_words FROM  (   SELECT a.`c_rank` AS curr,      @a.DEPOSIT AS pre,      @a.DEPOSIT := a.c_rank,a.l_rank,a.key_words,a.update_time     FROM ".$this->tablename." a,(        SELECT          @a.DEPOSIT := 1         ) r where a.key_words=u.key_words and".$newfsdate.$newfedate.") b limit 1,999999999) c  where  ".$val_change."<=(c.pre - c.curr)  and (".$percentage_change."<=c.pre - c.curr)/c.l_rank) / ".$jishu." >=" . $ssatisfy_p . " and (select count(1) d from " . $this->tablename . " where " . $csdate . $cedate . "  and key_words=u.key_words) >=1  ORDER BY update_time desc limit 9999999999) T1 group by T1.key_words ORDER BY ".$orderbys." limit " . $pages . "," . $param['limit'] . "
             ")  ;
         $Listcount = Db::query("
-            select count(1) num from (
-            select * from " . $this->tablename . " u
+            select * from (
+            select *
+         from " . $this->tablename . " u
             where " . $fsdate . $fedate . $keywhere . " and 
-            (select count(1) from (SELECT b.curr,   b.pre,  (b.pre - b.curr) AS diff,b.l_rank,b.key_words FROM  (   SELECT a.`c_rank` AS curr,      @a.DEPOSIT AS pre,      @a.DEPOSIT := a.c_rank,a.l_rank,a.key_words,a.update_time     FROM ".$this->tablename." a,(        SELECT          @a.DEPOSIT := 1         ) r where a.key_words=u.key_words and ".$newfsdate.$newfedate.") b limit 1,999999999) c  where ".$val_change."<=(c.pre - c.curr)  and (".$percentage_change."<=c.pre - c.curr)/c.l_rank)
-            / 
-            (select count(1) from " . $this->tablename . " 
-            where update_time >= (
-        SELECT update_time FROM ".$this->tablename." t5 WHERE ".$newfsdate1.$newfedate1." and t5.key_words = u.key_words LIMIT 1,1)   and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from " . $this->tablename . " where " . $csdate . $cedate . "  and key_words=u.key_words) >=1  ORDER BY update_time desc limit 9999999999) T1 
-            ");
-
+            (select count(1) from (SELECT b.curr,   b.pre,  (b.pre - b.curr) AS diff,b.l_rank,b.key_words FROM  (   SELECT a.`c_rank` AS curr,      @a.DEPOSIT AS pre,      @a.DEPOSIT := a.c_rank,a.l_rank,a.key_words,a.update_time     FROM ".$this->tablename." a,(        SELECT          @a.DEPOSIT := 1         ) r where a.key_words=u.key_words and".$newfsdate.$newfedate.") b limit 1,999999999) c  where  ".$val_change."<=(c.pre - c.curr)  and (".$percentage_change."<=c.pre - c.curr)/c.l_rank) / ".$jishu." >=" . $ssatisfy_p . " and (select count(1) d from " . $this->tablename . " where " . $csdate . $cedate . "  and key_words=u.key_words) >=1  ORDER BY update_time desc limit 9999999999) T1 group by T1.key_words");
         $res = array(
             'data' => $this->getPicData($List, $param),
-            'totle' => $Listcount[0]['num'],
+            'totle' => count($Listcount),
             'code' => 1
         );
         return json_encode($res, true);
@@ -361,9 +361,6 @@ class Index extends Controller
                 $percentage_change = $param['percentage_change'];
                 $satisfy_p =100;
             }
-            if (!empty($param['satisfy_p']) && $param['satisfy_p'] != 'undefined') {
-                $satisfy_p = $param['satisfy_p'];
-            }
             if (!empty($param['key_words']) && $param['key_words'] != 'undefined') {
                 $satisfy_p =100;
                 $orderbys=" REPLACE(t1.key_words,'".$param['key_words']."','') ";
@@ -386,6 +383,10 @@ class Index extends Controller
                 $satisfy_p =100;
                 $fsdate = " update_time >='" . $param['sdate'] . "' ";
                 $fedate = " and update_time <='" . $param['edate'] . "' ";
+                $mini_c_rank = Db::query("select * from ".$this->tablename." where ".$fsdate.$fedate." group by key_words  order by c_rank limit 1");
+
+                $jishu = Db::query("select * from ".$this->tablename." where key_words='".$mini_c_rank[0]['key_words']."' and ".$fsdate.$fedate);
+                $jishu= count($jishu)-1;
                 $mindata = Db::table($this->tablename)->where('update_time', '>=', $param['sdate'])->order("update_time")->limit(1)->select();
                 $nextwe = date('Y-m-d', strtotime("next monday", strtotime($mindata[0]['update_time'])));
                 $newfsdate = " a.update_time >='" . $param['sdate'] . "' ";
@@ -409,6 +410,14 @@ class Index extends Controller
                 $zedate = "  ";
                 $csdate = " update_time >='" . $nextwe . "'";
                 $cedate = " ";
+                $mini_c_rank = Db::query("select * from ".$this->tablename." where c_rank > 0 and update_time>='".$botime."' order by update_time desc,c_rank asc limit 1");
+
+                $jishu = Db::query("select * from ".$this->tablename." where key_words='".$mini_c_rank[0]['key_words']."' and update_time>=".$botime);
+                $jishu= count($jishu);
+                }
+
+            if (!empty($param['satisfy_p']) && $param['satisfy_p'] != 'undefined') {
+                $satisfy_p = $param['satisfy_p'];
             }
             $ssatisfy_p = $satisfy_p / 100;
             $percentage_change = $percentage_change / 100;
@@ -417,10 +426,7 @@ class Index extends Controller
             select * from " . $this->tablename . " u
             where " . $fsdate . $fedate . $keywhere . " and 
             (select count(1) from (SELECT b.curr,   b.pre,  (b.pre - b.curr) AS diff,b.l_rank,b.key_words FROM  (   SELECT a.`c_rank` AS curr,      @a.DEPOSIT AS pre,      @a.DEPOSIT := a.c_rank,a.l_rank,a.key_words     FROM ".$this->tablename." a,(        SELECT          @a.DEPOSIT := 1         ) r where a.key_words=u.key_words and".$newfsdate.$newfedate.") b limit 1,999999999) c  where  ".$val_change."<=(c.pre - c.curr)  and (".$percentage_change."<=c.pre - c.curr)/c.l_rank)
-            / 
-            (select count(1) from " . $this->tablename . " 
-            where update_time >= (
-        SELECT update_time FROM ".$this->tablename." t5 WHERE ".$newfsdate1.$newfedate1." and t5.key_words = u.key_words LIMIT 1,1)  and key_words=u.key_words) >=" . $ssatisfy_p . " and (select count(1) d from " . $this->tablename . " where " . $csdate . $cedate . "  and key_words=u.key_words) >=1  ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY ".$orderbys." 
+            / ".$jishu." >=" . $ssatisfy_p . " and (select count(1) d from " . $this->tablename . " where " . $csdate . $cedate . "  and key_words=u.key_words) >=1  ORDER BY update_time desc limit 9999999999) T1 group by key_words ORDER BY ".$orderbys." 
             ");
         } else {
             $List = Db::table($this->tablename)->whereIn("id", $idArr)->order("update_time asc")->select();
